@@ -249,6 +249,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             heatPumpConfiguration.setRequests(configLocator.getRequests());
         }
         categorizeHeatPumpConfiguration();
+        updateRefreshRequests();
 
         this.config = getConfigAs(StiebelHeatPumpConfiguration.class);
         if (!validateConfiguration(config)) {
@@ -412,7 +413,6 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
 
         updateStatus(ThingStatus.ONLINE);
         startTimeRefresh();
-        updateRefreshRequests();
         startAutomaticRefresh();
     }
 
@@ -549,19 +549,20 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
 
     private void updateRefreshRequests() {
         for (Channel channel : getThing().getChannels()) {
-            if (this.isLinked(channel.getUID())) {
-                ChannelUID channelUID = channel.getUID();
-                String[] parts = channelUID.getId()
-                        .split(Pattern.quote(StiebelHeatPumpBindingConstants.CHANNELGROUPSEPERATOR));
-                String channelId = parts[parts.length - 1];
-                Request request = heatPumpConfiguration.getRequestByChannelId(channelId);
-                if (request != null && !heatPumpRefresh.getRequests().contains(request)) {
-                    heatPumpRefresh.getRequests().add(request);
-                    // there is still a channel link in the thing which will require updates
-                    String requestbyte = String.format("%02X", request.getRequestByte());
-                    logger.info("Request {} added to refresh scheduler.", requestbyte);
-                }
+            // TODO: i am not too sure how expensive such a call is and I think this might not be necessary to check
+            // if (isLinked(channel.getUID())) {
+            ChannelUID channelUID = channel.getUID();
+            String[] parts = channelUID.getId()
+                    .split(Pattern.quote(StiebelHeatPumpBindingConstants.CHANNELGROUPSEPERATOR));
+            String channelId = parts[parts.length - 1];
+            Request request = heatPumpConfiguration.getRequestByChannelId(channelId);
+            if (request != null && !heatPumpRefresh.getRequests().contains(request)) {
+                heatPumpRefresh.getRequests().add(request);
+                // there is still a channel link in the thing which will require updates
+                String requestbyte = String.format("%02X", request.getRequestByte());
+                logger.info("Request {} added to refresh scheduler.", requestbyte);
             }
+            // }
         }
     }
 }
