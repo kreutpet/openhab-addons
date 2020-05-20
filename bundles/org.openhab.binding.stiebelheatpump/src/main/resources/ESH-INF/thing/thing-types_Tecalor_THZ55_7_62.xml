@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
 
 
-	<thing-type id="THZ55_7_62">
+	<thing-type id="Tecalor_THZ55_7_62">
 		<label>Tecalor heat pump THZ 5.5 7.62</label>
 		<description>Tecalor heat pump for THZ connecting via serial USB/RS232 interface to firmware version 7.62.
 		</description>
@@ -16,7 +16,7 @@
 			<channel-group id="currentValues" typeId="channelGroupTypeCurrentValues" />
 			<channel-group id="operationCounters" typeId="channelGroupTypeOperationCounters" />
 			<channel-group id="nominalValues" typeId="channelGroupTypeNominalValues" />
-			<channel-group id="tecalorDebug" typeId="tecalorDebugGroup" />
+			<!-- <channel-group id="tecalorDebug" typeId="tecalorDebugGroup" /> -->
 		</channel-groups>
 		<properties>
 			<property name="vendor">Tecalor</property>

@@ -251,6 +251,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             heatPumpConfiguration.setRequests(configLocator.getRequests());
         }
         categorizeHeatPumpConfiguration();
+        updateRefreshRequests();
 
         this.config = getConfigAs(StiebelHeatPumpConfiguration.class);
         if (!validateConfiguration(config)) {
@@ -446,6 +447,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
 
         updateStatus(ThingStatus.ONLINE);
         startTimeRefresh();
+
         updateRefreshRequests();
         startAutomaticSettingRefresh();
         startAutomaticSensorStatusRefresh();

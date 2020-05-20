@@ -34,9 +34,9 @@
 		<state pattern="%.1f %unit%" readOnly="true" />
 	</channel-type>
 	<channel-type id="speed">
-		<item-type>Number:Dimensionless:Percent</item-type>
+		<item-type>Number:Dimensionless</item-type>
 		<label>Fan speed in %</label>
-		<state pattern="%d %unit%" readOnly="true" />
+		<state pattern="%.0f %%" readOnly="true" />
 	</channel-type>
 	<channel-type id="hourCounter">
 		<item-type>Number</item-type>
