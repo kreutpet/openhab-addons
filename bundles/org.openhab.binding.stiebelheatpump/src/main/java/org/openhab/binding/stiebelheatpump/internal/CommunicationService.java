@@ -79,7 +79,7 @@ public class CommunicationService {
     public String getVersion(Request versionRequest) throws StiebelHeatPumpException {
         logger.debug("Loading version info ...");
         Map<String, Object> data = readData(versionRequest);
-        String versionKey = StiebelHeatPumpBindingConstants.CHANNELID_VERSION;
+        String versionKey = StiebelHeatPumpBindingConstants.CHANNEL_VERSION;
         return data.get(versionKey).toString();
     }
 
@@ -176,7 +176,7 @@ public class CommunicationService {
             response = getData(requestMessage);
             data = parser.parseRecords(response, timeRequest);
 
-            data.put(StiebelHeatPumpBindingConstants.CHANNELID_CURRENTTIME, formattedString);
+            data.put(StiebelHeatPumpBindingConstants.CHANNEL_LASTUPDATE, formattedString);
             for (Map.Entry<String, Object> entry : data.entrySet()) {
                 logger.info("Key = {} , Value =  {}", entry.getKey(), entry.getValue());
             }
@@ -201,17 +201,25 @@ public class CommunicationService {
                 request.getDescription(), requestStr);
         byte responseAvailable[] = new byte[0];
         byte requestMessage[] = createRequestMessage(request.getRequestByte());
-        try {
-            while (true) {
+
+        boolean success = false;
+        int count = 0, MAX_TRIES = 3;
+        while (!success && count++ < MAX_TRIES) {
+            try {
                 startCommunication();
                 responseAvailable = getData(requestMessage);
                 responseAvailable = parser.fixDuplicatedBytes(responseAvailable);
                 if (parser.headerCheck(responseAvailable)) {
                     return parser.parseRecords(responseAvailable, request);
                 }
+                success = true;
+            } catch (StiebelHeatPumpException e) {
+                logger.error("Error reading data : {} -> Retry: {}", e.toString(), count);
+                logger.warn("Retry readData {}", count);
             }
-        } catch (StiebelHeatPumpException e) {
-            logger.error("Error reading data : {}", e.toString());
+        }
+        if (!success) {
+            new StiebelHeatPumpException("readData failed 3 time!");
         }
         return data;
     }
@@ -410,11 +418,9 @@ public class CommunicationService {
             connector.write(DataParser.STARTCOMMUNICATION);
             response = connector.get();
         } catch (Exception e) {
-            logger.error("heat pump communication could not be established ! {}", e.getMessage());
-            throw new StiebelHeatPumpException();
+            throw new StiebelHeatPumpException("heat pump communication could not be established !" + e.getMessage());
         }
         if (response != DataParser.ESCAPE) {
-            logger.warn("heat pump is communicating, but did not receive Escape message in initial handshake!");
             throw new StiebelHeatPumpException(
                     "heat pump is communicating, but did not receive Escape message in initial handshake!");
         }

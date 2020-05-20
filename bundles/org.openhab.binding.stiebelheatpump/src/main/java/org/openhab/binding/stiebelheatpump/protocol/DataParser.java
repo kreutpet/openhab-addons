@@ -236,13 +236,11 @@ public class DataParser {
      *         data
      */
     public boolean dataAvailable(byte[] response) throws StiebelHeatPumpException {
-
         if (response.length == 0 || response.length > 2) {
-            throw new StiebelHeatPumpException("invalid response length on request of data " + new String(response));
+            throw new StiebelHeatPumpException("invalid response length on request of data " + bytesToHex(response));
         }
-
         if (response[0] != ESCAPE) {
-            throw new StiebelHeatPumpException("invalid response on request of data " + new String(response));
+            throw new StiebelHeatPumpException("invalid response on request of data " + bytesToHex(response));
         }
         if (response.length == 2 && response[1] == DATAAVAILABLE[1]) {
             return true;
@@ -260,21 +258,21 @@ public class DataParser {
     public void verifyHeader(byte[] response) throws StiebelHeatPumpException {
 
         if (response.length < 4) {
-            throw new StiebelHeatPumpException("invalide response length on request of data " + new String(response));
+            throw new StiebelHeatPumpException("invalide response length on request of data " + bytesToHex(response));
         }
 
         if (response[0] != HEADERSTART) {
             throw new StiebelHeatPumpException(
-                    "invalid response on request of data, found no header start: " + new String(response));
+                    "invalid response on request of data, found no header start: " + bytesToHex(response));
         }
 
         if (response[1] != GET & response[1] != SET) {
             throw new StiebelHeatPumpException(
-                    "invalid response on request of data, response is neither get nor set: " + new String(response));
+                    "invalid response on request of data, response is neither get nor set: " + bytesToHex(response));
         }
 
         if (response[2] != calculateChecksum(response)) {
-            throw new StiebelHeatPumpException("invalid checksum on request of data " + new String(response));
+            throw new StiebelHeatPumpException("invalid checksum on request of data " + bytesToHex(response));
         }
     }
 
@@ -385,21 +383,27 @@ public class DataParser {
      */
     public byte[] fixDuplicatedBytes(byte[] data) {
 
-        // first copy the data except the last 2 bytes , the footer
-        byte[] bytesToBeAnalyzed = new byte[data.length - 2];
-        System.arraycopy(data, 0, bytesToBeAnalyzed, 0, data.length - 2);
+        try {
+            // first copy the data except the last 2 bytes , the footer
+            byte[] bytesToBeAnalyzed = new byte[data.length - 2];
+            System.arraycopy(data, 0, bytesToBeAnalyzed, 0, data.length - 2);
 
-        byte[] fixedData = findReplace(bytesToBeAnalyzed, new byte[] { (byte) 0x10, (byte) 0x10 },
-                new byte[] { (byte) 0x10 });
-        fixedData = findReplace(fixedData, new byte[] { (byte) 0x2b, (byte) 0x18 }, new byte[] { (byte) 0x2b });
+            byte[] fixedData = findReplace(bytesToBeAnalyzed, new byte[] { (byte) 0x10, (byte) 0x10 },
+                    new byte[] { (byte) 0x10 });
+            fixedData = findReplace(fixedData, new byte[] { (byte) 0x2b, (byte) 0x18 }, new byte[] { (byte) 0x2b });
 
-        byte[] result = new byte[fixedData.length + FOOTER.length];
-        // copy fixedData to result
-        System.arraycopy(fixedData, 0, result, 0, fixedData.length);
-        // copy footer to result
-        System.arraycopy(FOOTER, 0, result, fixedData.length, FOOTER.length);
+            byte[] result = new byte[fixedData.length + FOOTER.length];
+            // copy fixedData to result
+            System.arraycopy(fixedData, 0, result, 0, fixedData.length);
+            // copy footer to result
+            System.arraycopy(FOOTER, 0, result, fixedData.length, FOOTER.length);
 
-        return result;
+            return result;
+
+        } catch (Exception e) {
+
+        }
+        return data;
     }
 
     /**

@@ -38,17 +38,15 @@ public class StiebelHeatPumpBindingConstants {
     public static final ThingTypeUID THING_TYPE_THZ55_762 = new ThingTypeUID(BINDING_ID, "Tecalor_THZ55_7_62");
 
     // List of important Channel ids
-    public static final String CHANNELGROUP_VERSION = "channelGroupTypeVersion";
-    public static final String CHANNEL_VERSION = "version" + CHANNELGROUPSEPERATOR + "version";
+    // public static final String CHANNELGROUP_VERSION = "channelGroupTypeVersion";
     public static final String CHANNELID_VERSION = "version";
+    public static final String CHANNEL_VERSION = "version" + CHANNELGROUPSEPERATOR + CHANNELID_VERSION;
     public static final byte REQUEST_VERSION = (byte) 0xFD;
     public static final byte REQUEST_TIME = (byte) 0xFC;
     public static final String CHANNELID_TIME = "time";
-    public static final String CHANNELID_CURRENTTIME = "currentTime";
     public static final String CHANNEL_SETTIME = "time" + CHANNELGROUPSEPERATOR + "setTime";
     public static final String CHANNEL_DUMPRESPONSE = "version" + CHANNELGROUPSEPERATOR + "dumpResponse";
-    public static final String CHANNEL_LASTUPDATE = "version" + CHANNELGROUPSEPERATOR + "refreshTime";
-    public static final String CHANNEL_CURRENTTIME = "time" + CHANNELGROUPSEPERATOR + CHANNELID_CURRENTTIME;
+    public static final String CHANNEL_LASTUPDATE = "currentValues" + CHANNELGROUPSEPERATOR + "refreshTime";
 
     public static final String CHANNELTYPE_TIMESETTING = BINDING_ID + ":" + "timeSetting";
     public static final String CHANNELTYPE_SWITCHSETTING = BINDING_ID + ":" + "switchSetting";

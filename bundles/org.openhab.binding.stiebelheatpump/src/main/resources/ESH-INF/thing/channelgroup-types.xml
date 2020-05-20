@@ -11,7 +11,6 @@
 			<!-- at least 1 channel-group with id = version must be included -->
 			<channel id="version" typeId="version" />
 			<channel id="dumpResponse" typeId="dumpResponse" />
-			<channel id="refreshTime" typeId="dateTime" />	
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeTime" advanced="true">
@@ -32,6 +31,7 @@
 		<label>Measurements</label>
 		<description>Measurements of the heat pump.</description>
 		<channels>
+		    <channel id="refreshTime" typeId="dateTime" />  
 			<channel id="collectorTemperatur" typeId="temperature">
 				<label>Collector temperature</label>
 				<description>Collector temperature</description>

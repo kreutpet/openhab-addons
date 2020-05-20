@@ -42,14 +42,11 @@ public class SerialConnector implements ProtocolConnector {
     SerialPort serialPort = null;
     ByteStreamPipe byteStreamPipe = null;
 
-    private SerialPortManager portManager;
-
     private CircularByteBuffer buffer;
 
     @Override
     public void connect(SerialPortManager portManager, String device, int baudrate) throws StiebelHeatPumpException {
         try {
-            this.portManager = portManager;
             SerialPortIdentifier portIdentifier = portManager.getIdentifier(device);
             SerialPort commPort = portIdentifier.open(this.getClass().getName(), 2000);
             serialPort = commPort;
