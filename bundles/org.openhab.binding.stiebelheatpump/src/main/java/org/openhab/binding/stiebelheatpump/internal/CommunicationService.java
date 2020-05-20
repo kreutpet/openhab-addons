@@ -12,6 +12,8 @@
  */
 package org.openhab.binding.stiebelheatpump.internal;
 
+import static org.openhab.binding.stiebelheatpump.internal.StiebelHeatPumpBindingConstants.DATE_PATTERN;
+
 import java.time.LocalDateTime;
 import java.time.Year;
 import java.time.format.DateTimeFormatter;
@@ -126,6 +128,7 @@ public class CommunicationService {
 
             // get current time from local machine
             LocalDateTime dt = LocalDateTime.now();
+            String formattedString = dt.format(DateTimeFormatter.ofPattern(DATE_PATTERN));
             logger.debug("Current time is : {}", dt);
             short weekday = (short) dt.getDayOfWeek().getValue();
             short day = (short) dt.getDayOfMonth();
@@ -172,7 +175,8 @@ public class CommunicationService {
             Thread.sleep(waitingTime);
             response = getData(requestMessage);
             data = parser.parseRecords(response, timeRequest);
-            data.put(StiebelHeatPumpBindingConstants.CHANNELID_CURRENTTIME, dt.toString());
+
+            data.put(StiebelHeatPumpBindingConstants.CHANNELID_CURRENTTIME, formattedString);
             for (Map.Entry<String, Object> entry : data.entrySet()) {
                 logger.info("Key = {} , Value =  {}", entry.getKey(), entry.getValue());
             }

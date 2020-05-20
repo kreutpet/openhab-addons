@@ -65,6 +65,8 @@ public class StiebelHeatPumpBindingConstants {
     public static final String CHANNEL_PROPERTY_SCALE = "scale";
     public static final int MAXRETRY = 5;
 
+    public static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+
     public static final byte[] DEBUGBYTES = { (byte) 0x01, (byte) 0x03, (byte) 0x04, (byte) 0x05, (byte) 0x06,
             (byte) 0x07, (byte) 0x09, (byte) 0x10, (byte) 0x16, (byte) 0x17, (byte) 0xD1, (byte) 0xD2, (byte) 0xE8,
             (byte) 0xE9, (byte) 0xEE, (byte) 0xF2, (byte) 0xF3, (byte) 0xF4, (byte) 0xF5, (byte) 0xF6, (byte) 0xFB,

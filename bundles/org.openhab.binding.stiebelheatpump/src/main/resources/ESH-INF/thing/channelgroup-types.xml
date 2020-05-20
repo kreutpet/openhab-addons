@@ -18,7 +18,6 @@
 		<label>Time</label>
 		<description>Date and time information of heat pump</description>
 		<channels>
-            <channel id="currentTime" typeId="dateTime" />  			
 			<channel id="setTime" typeId="setTime" />
 			<channel id="weekday" typeId="weekday" />
 			<channel id="hours" typeId="hours" />
