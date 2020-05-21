@@ -391,8 +391,8 @@
 				<option value="11">Automatic</option>
 				<option value="3">DayMode</option>
 				<option value="4">Setback</option>
-				<option value="5">DHWmode</option>
-				<option value="14">DHWmode</option>
+				<option value="5">DHWMode</option>
+				<option value="14">DHWMode</option>
 				<option value="0">Emergengy</option>
 				<!-- info from FHEM "1" =>"standby", "11" => "automatic", "3" =>"DAYmode", "4" =>"setback", "5" =>"DHWmode", "14" =>"manual", 
 					"0" =>"emergency" -->

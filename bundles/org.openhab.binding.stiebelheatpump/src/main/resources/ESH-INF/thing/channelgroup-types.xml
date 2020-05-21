@@ -150,7 +150,7 @@
 				<label>Operation counter heating mode</label>
 				<description>Operation counter heating mode</description>
 			</channel>
-			<channel id="dHWMode" typeId="hourCounter">
+			<channel id="DHWMode" typeId="hourCounter">
 				<label>Operation counter DHW mode</label>
 				<description>Operation counter DHW mode</description>
 			</channel>
