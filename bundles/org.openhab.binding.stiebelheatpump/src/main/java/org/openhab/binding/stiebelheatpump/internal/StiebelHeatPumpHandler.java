@@ -32,6 +32,7 @@ import javax.measure.quantity.Temperature;
 
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
+import org.eclipse.smarthome.core.library.types.OpenClosedType;
 import org.eclipse.smarthome.core.library.types.QuantityType;
 import org.eclipse.smarthome.core.library.types.StringType;
 import org.eclipse.smarthome.core.library.unit.SIUnits;
@@ -493,6 +494,9 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             logger.debug("Data {} has value {}", entry.getKey(), entry.getValue());
             String channelId = entry.getKey();
             Channel ch = getThing().getChannel(channelId);
+            if (ch == null) {
+                logger.debug("For channelid {} no configuration found. Review channel definitions.", channelId);
+            }
             ChannelUID channelUID = ch.getUID();
             ChannelTypeUID channelTypeUID = ch.getChannelTypeUID();
             String channelType = channelTypeUID.toString();
@@ -502,6 +506,10 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             }
             if (channelType.equalsIgnoreCase(CHANNELTYPE_SWITCHSETTING)) {
                 updateSwitchSettingChannel((boolean) entry.getValue(), channelUID);
+                continue;
+            }
+            if (channelType.equalsIgnoreCase(CHANNELTYPE_CONTACTSTATUS)) {
+                updateContactChannel((boolean) entry.getValue(), channelUID);
                 continue;
             }
             if (entry.getValue() instanceof Number) {
@@ -545,10 +553,18 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
     }
 
     private void updateSwitchSettingChannel(Boolean setting, ChannelUID channelUID) {
-        if (setting) {
+        if (Boolean.TRUE.equals(setting)) {
             updateState(channelUID, OnOffType.ON);
         } else {
             updateState(channelUID, OnOffType.OFF);
+        }
+    }
+
+    private void updateContactChannel(Boolean setting, ChannelUID channelUID) {
+        if (Boolean.TRUE.equals(setting)) {
+            updateState(channelUID, OpenClosedType.OPEN);
+        } else {
+            updateState(channelUID, OpenClosedType.CLOSED);
         }
     }
 

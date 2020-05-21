@@ -88,47 +88,47 @@
 				<label>Filtered outside temperature</label>
 				<description>Filtered outside temperature</description>
 			</channel>
-			<channel id="dHWPumpStatus" typeId="switchStatus">
+			<channel id="dHWPumpStatus" typeId="contactStatus">
 				<label>DHW pump status</label>
 				<description>DHW pump status</description>
 			</channel>
-			<channel id="heatingCircuitPumpStatus" typeId="switchStatus">
+			<channel id="heatingCircuitPumpStatus" typeId="contactStatus">
 				<label>Heating Circuit pump status</label>
 				<description>Heating Circuit pump status</description>
 			</channel>
-			<channel id="solarPumpStatus" typeId="switchStatus">
+			<channel id="solarPumpStatus" typeId="contactStatus">
 				<label>Solar pump status</label>
 				<description>Solar pump status</description>
 			</channel>
-			<channel id="mixerOpen" typeId="switchStatus">
+			<channel id="mixerOpen" typeId="contactStatus">
 				<label>Mixer Open status</label>
 				<description>Mixer Open status</description>
 			</channel>
-			<channel id="mixerClose" typeId="switchStatus">
+			<channel id="mixerClose" typeId="contactStatus">
 				<label>Mixer Close status</label>
 				<description>Mixer Close status</description>
 			</channel>
-			<channel id="heatPipeValve" typeId="switchStatus">
+			<channel id="heatPipeValve" typeId="contactStatus">
 				<label>Heat Pipe Valve status</label>
 				<description>Heat Pipe Valve status</description>
 			</channel>
-			<channel id="DiverterValve" typeId="switchStatus">
+			<channel id="DiverterValve" typeId="contactStatus">
 				<label>Diverter Valve status</label>
 				<description>Diverter Valve status</description>
 			</channel>
-			<channel id="CompressorStatus" typeId="switchStatus">
+			<channel id="CompressorStatus" typeId="contactStatus">
 				<label>Compressor status</label>
 				<description>Compressor status</description>
 			</channel>
-			<channel id="BoosterStage3" typeId="switchStatus">
+			<channel id="BoosterStage3" typeId="contactStatus">
 				<label>BoosterStage 3</label>
 				<description>BoosterStage 3</description>
 			</channel>
-			<channel id="BoosterStage2" typeId="switchStatus">
+			<channel id="BoosterStage2" typeId="contactStatus">
 				<label>BoosterStage 2</label>
 				<description>BoosterStage 2</description>
 			</channel>
-			<channel id="BoosterStage1" typeId="switchStatus">
+			<channel id="BoosterStage1" typeId="contactStatus">
 				<label>BoosterStage 1</label>
 				<description>BoosterStage 1</description>
 			</channel>
