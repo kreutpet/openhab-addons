@@ -257,10 +257,10 @@
 		<label>Enabling switch</label>
 		<state min="0" max="1" />
 	</channel-type>
-	<channel-type id="switchStatus">
-		<item-type>Switch</item-type>
-		<label>Enabling switch</label>
-		<state min="0" max="1" readOnly="true" />
+	<channel-type id="contactStatus">
+		<item-type>Contact</item-type>
+		<label>Status Contact</label>
+		<state readOnly="true"/>
 	</channel-type>
 	<channel-type id="timeAp0Setting" advanced="true">
 		<item-type>Number</item-type>
