@@ -70,7 +70,7 @@
 		bitPosition="0" min="0" max="0" step="0.0"></record>
 	<record channelid="compressorB" requestByte="09" dataType="Status" position="6" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="dHWMode" requestByte="09" dataType="Status" position="10" length="2" scale="1.0"
+	<record channelid="dHWMode" requestByte="09" dataType="Status" position="8" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
 	<record channelid="coolingMode" requestByte="09" dataType="Status" position="12" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
