@@ -32,39 +32,39 @@
 		<description>Measurements of the heat pump.</description>
 		<channels>
 		    <channel id="refreshTime" typeId="dateTime" />  
-			<channel id="collectorTemperatur" typeId="temperature">
+			<channel id="collectorTemperature" typeId="temperature">
 				<label>Collector temperature</label>
 				<description>Collector temperature</description>
 			</channel>
-			<channel id="outsideTemperatur" typeId="temperature">
+			<channel id="outsideTemperature" typeId="temperature">
 				<label>Outside temperature</label>
 				<description>Outside temperature</description>
 			</channel>
-			<channel id="flowTemperatur" typeId="temperature">
+			<channel id="flowTemperature" typeId="temperature">
 				<label>Flow temperature</label>
 				<description>Flow temperature</description>
 			</channel>
-			<channel id="returnTemperatur" typeId="temperature">
+			<channel id="returnTemperature" typeId="temperature">
 				<label>Return temperature</label>
 				<description>Return temperature</description>
 			</channel>
-			<channel id="hotGasTemperatur" typeId="temperature">
+			<channel id="hotGasTemperature" typeId="temperature">
 				<label>Hot gas temperature</label>
 				<description>Hot gas temperature</description>
 			</channel>
-			<channel id="dHWTemperatur" typeId="temperature">
+			<channel id="dHWTemperature" typeId="temperature">
 				<label>Cylinder temperature</label>
 				<description>Cylinder temperature</description>
 			</channel>
-			<channel id="flowHC2Temperatur" typeId="temperature">
+			<channel id="flowHC2Temperature" typeId="temperature">
 				<label>Flow temperature HC2</label>
 				<description>Flow temperature HC2</description>
 			</channel>
-			<channel id="insideTemperatur" typeId="temperature">
+			<channel id="insideTemperature" typeId="temperature">
 				<label>Inside temperature</label>
 				<description>Inside temperature</description>
 			</channel>
-			<channel id="evaporatorTemperatur" typeId="temperature">
+			<channel id="evaporatorTemperature" typeId="temperature">
 				<label>Evaporator temperature</label>
 				<description>Evaporator temperature</description>
 			</channel>
@@ -84,7 +84,7 @@
 				<label>Exhaust fan speed</label>
 				<description>Exhaust fan speed</description>
 			</channel>
-			<channel id="filteredOutsideTemperatur" typeId="temperature">
+			<channel id="filteredOutsideTemperature" typeId="temperature">
 				<label>Filtered outside temperature</label>
 				<description>Filtered outside temperature</description>
 			</channel>
