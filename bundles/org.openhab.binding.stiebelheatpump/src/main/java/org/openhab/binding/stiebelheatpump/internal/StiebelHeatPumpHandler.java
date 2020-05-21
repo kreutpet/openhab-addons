@@ -10,6 +10,8 @@ package org.openhab.binding.stiebelheatpump.internal;
 
 import static org.openhab.binding.stiebelheatpump.internal.StiebelHeatPumpBindingConstants.*;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -188,10 +190,12 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
         String requestStr = String.format("%02X", request.getRequestByte());
         logger.debug("Found valid record definition in request {} with ChannelID:{}", requestStr, channelId);
         Type dataType = request.getRecordDefinitionByChannelId(channelId).getDataType();
-        if (dataType == RecordDefinition.Type.Settings && heatPumpSettingRefresh.getRequests().contains(request)) {
+        if (dataType == RecordDefinition.Type.Settings && !heatPumpSettingRefresh.getRequests().contains(request)) {
             heatPumpSettingRefresh.getRequests().add(request);
             getSettings(request);
-        } else if (heatPumpSensorStatusRefresh.getRequests().contains(request)) {
+        }
+        if (dataType != RecordDefinition.Type.Settings
+                && !heatPumpSensorStatusRefresh.getRequests().contains(request)) {
             heatPumpSensorStatusRefresh.getRequests().add(request);
         }
     }
@@ -325,7 +329,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
      */
     private void startAutomaticSensorStatusRefresh() {
         refreshSensorStatusJob = scheduler.scheduleWithFixedDelay(() -> {
-
+            Instant start = Instant.now();
             if (heatPumpSensorStatusRefresh.getRequests().isEmpty()) {
                 logger.debug("nothing to update, sensor/status refresh list is empty");
                 return;
@@ -350,6 +354,8 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
                 communicationService.disconnect();
                 communicationInUse = false;
             }
+            Instant end = Instant.now();
+            logger.debug("Sensor/Status refresh took {} seconds.", Duration.between(start, end).getSeconds());
         }, 20, config.refresh, TimeUnit.SECONDS);
     }
 
@@ -358,7 +364,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
      */
     private void startAutomaticSettingRefresh() {
         refreshSettingJob = scheduler.scheduleWithFixedDelay(() -> {
-
+            Instant start = Instant.now();
             if (heatPumpSettingRefresh.getRequests().isEmpty()) {
                 logger.debug("nothing to update, setting refresh list is empty");
                 return;
@@ -381,6 +387,8 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
                 communicationService.disconnect();
                 communicationInUse = false;
             }
+            Instant end = Instant.now();
+            logger.debug("Setting refresh took {} seconds.", Duration.between(start, end).getSeconds());
         }, 0, 1, TimeUnit.DAYS);
     }
 
@@ -389,7 +397,6 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
      */
     private void getSettings(Request request) {
         refreshSettingJob = scheduler.schedule(() -> {
-
             while (communicationInUse) {
 
             }

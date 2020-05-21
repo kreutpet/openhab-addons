@@ -199,11 +199,12 @@ public class CommunicationService {
         String requestStr = String.format("%02X", request.getRequestByte());
         logger.debug("Request : Name -> {}, Description -> {} , RequestByte -> {}", request.getName(),
                 request.getDescription(), requestStr);
-        byte responseAvailable[] = new byte[0];
-        byte requestMessage[] = createRequestMessage(request.getRequestByte());
+        byte[] responseAvailable;
+        byte[] requestMessage = createRequestMessage(request.getRequestByte());
 
         boolean success = false;
-        int count = 0, MAX_TRIES = 3;
+        int count = 0;
+        int MAX_TRIES = 3;
         while (!success && count++ < MAX_TRIES) {
             try {
                 startCommunication();
@@ -214,12 +215,12 @@ public class CommunicationService {
                 }
                 success = true;
             } catch (StiebelHeatPumpException e) {
-                logger.error("Error reading data : {} -> Retry: {}", e.toString(), count);
+                logger.warn("Error reading data : {} -> Retry: {}", e.toString(), count);
                 logger.warn("Retry readData {}", count);
             }
         }
         if (!success) {
-            new StiebelHeatPumpException("readData failed 3 time!");
+            throw new StiebelHeatPumpException("readData failed 3 time!");
         }
         return data;
     }
@@ -531,6 +532,8 @@ public class CommunicationService {
             requestMessage[2] = parser.shortToByte(checkSum)[0];
             requestMessage = parser.addDuplicatedBytes(requestMessage);
         } catch (StiebelHeatPumpException e) {
+            String requestStr = String.format("%02X", requestByte);
+            logger.error("Could not create request [{}] message !", requestStr, e.toString());
         }
         return requestMessage;
     }
