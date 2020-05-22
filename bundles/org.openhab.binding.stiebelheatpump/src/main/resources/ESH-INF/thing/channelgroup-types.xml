@@ -197,8 +197,8 @@
 				<description>P05 Domestic hot water set back mode setting</description>
 			</channel>
 			<channel id="p06DHWTemperatureStandby" typeId="dHWTemperatureSetting">
-				<label>P06 Domestic hot water temperature set back</label>
-				<description>P06 Domestic hot water set back mode setting</description>
+				<label>P06 Domestic hot water temperature standby</label>
+				<description>P06 Domestic hot water standby mode setting</description>
 			</channel>
 			<channel id="p07FanStageStandardMode" typeId="fanStageSetting">
 				<label>P07 Fan stage standard</label>
