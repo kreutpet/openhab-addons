@@ -80,7 +80,7 @@
 				<label>Supply fan speed</label>
 				<description>Supply fan speed</description>
 			</channel>
-			<channel id="exhaustFanSpeed" typeId="exhaustFanSpeed">
+			<channel id="exhaustFanSpeed" typeId="speed">
 				<label>Exhaust fan speed</label>
 				<description>Exhaust fan speed</description>
 			</channel>
@@ -777,23 +777,55 @@
 				<label>FA00 Number of errors</label>
 				<description>FA00 Numbers of errors listed in the heat pump</description>
 			</channel>
-			<channel id="fn01NoOfErrors" typeId="errorCode">
-				<label>FN01 Error Code 1</label>
-				<description>FN01 Error Code 1st Error.</description>
+			<channel id="faultCode0" typeId="errorCode">
+				<label>Fault 1 Error Code</label>
+				<description>Fault 1 Error Code.</description>
 			</channel>
-			<channel id="fn02NoOfErrors" typeId="errorCode">
-				<label>FN02 Error Code 2</label>
-				<description>FN02 Error Code 2nd Error.</description>
-			</channel>
-			<channel id="fn03NoOfErrors" typeId="errorCode">
-				<label>FN03 Error Code 3</label>
-				<description>FN03 Error Code 3rd Error.</description>
-			</channel>
-			<channel id="fn04NoOfErrors" typeId="errorCode">
-				<label>FN04 Error Code 4</label>
-				<description>FN04 Error Code 4rd Error.</description>
-			</channel>
-		</channels>
+            <channel id="faultTime0" typeId="errorTime">
+                <label>Fault 1 Time</label>
+                <description>Fault 1 Time.</description>
+            </channel>
+            <channel id="faultDate0" typeId="errorDate">
+                <label>Fault 1 Date</label>
+                <description>Fault 1 Date.</description>
+            </channel>
+            <channel id="faultCode1" typeId="errorCode">
+                <label>Fault 2 Error Code</label>
+                <description>Fault 2 Error Code.</description>
+            </channel>
+            <channel id="faultTime1" typeId="errorTime">
+                <label>Fault 2 Time</label>
+                <description>Fault 2 Time.</description>
+            </channel>
+            <channel id="faultDate1" typeId="errorDate">
+                <label>Fault 2 Date</label>
+                <description>Fault 2 Date.</description>
+            </channel>
+            <channel id="faultCode2" typeId="errorCode">
+                <label>Fault 3 Error Code</label>
+                <description>Fault 3 Error Code.</description>
+            </channel>
+            <channel id="faultTime2" typeId="errorTime">
+                <label>Fault 3 Time</label>
+                <description>Fault 3 Time.</description>
+            </channel>
+            <channel id="faultDate2" typeId="errorDate">
+                <label>Fault 3 Date</label>
+                <description>Fault 3 Date.</description>
+            </channel>
+            <channel id="faultCode3" typeId="errorCode">
+                <label>Fault 4 Error Code</label>
+                <description>Fault 4 Error Code.</description>
+            </channel>
+            <channel id="faultTime3" typeId="errorTime">
+                <label>Fault 4 Time</label>
+                <description>Fault 4 Time.</description>
+            </channel>            
+            <channel id="faultDate3" typeId="errorDate">
+                <label>Fault 4 Date</label>
+                <description>Fault 4 Date.</description>
+            </channel>
+        </channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeOperationMode">
 		<label>Operation Mode</label>
@@ -817,4 +849,9 @@
 			</channel>
 		</channels>
 	</channel-group-type>
+<!-- 
+	  "EEprg206" => [["opMode: ",  4, 2,   "opmode2", 1],  [" ProgStateHC: ",  10, 2, "opmodehc", 1],  [" ProgStateDHW: ",     12, 2, "opmodehc", 1],
+          [" ProgStateFAN: ",   14, 2,  "opmodehc", 1], [" BaseTimeAP0: ",  16, 8, "hex", 1],       [" StatusAP0: ",    24, 2, "hex", 1],
+          [" StartTimeAP0: ",   26, 8,  "hex", 1],      [" EndTimeAP0: ",   34, 8, "hex", 1]
+	 -->   
 </thing:thing-descriptions>

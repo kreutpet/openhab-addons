@@ -98,7 +98,10 @@ public class DataParser {
      *            of heat pump
      * @param RecordDefinition
      *            that shall be used for parsing the heat pump response
-     * @return string value of the parse response
+     * @return value of the parse response as primitive type
+     *         boolean for switch or contact
+     *         short for integer values
+     *         double for decimal values
      * @throws StiebelHeatPumpException
      */
     public Object parseRecord(byte[] response, RecordDefinition recordDefinition) throws StiebelHeatPumpException {

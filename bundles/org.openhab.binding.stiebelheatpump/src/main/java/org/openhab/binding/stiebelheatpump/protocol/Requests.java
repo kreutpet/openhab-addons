@@ -79,4 +79,15 @@ public class Requests {
         logger.warn("Could not find valid request definition for {},  please verify thing definition.", channelId);
         return null;
     }
+
+    public Request getRequestByByte(byte requestByte) {
+        for (Request request : requestList) {
+            if (request.getRequestByte() == requestByte) {
+                return request;
+            }
+        }
+        String requestStr = String.format("%02X", requestByte);
+        logger.warn("Could not find valid request definition for {},  please verify thing definition.", requestStr);
+        return null;
+    }
 }

@@ -128,7 +128,14 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
                     break;
                 case CHANNEL_DUMPRESPONSE:
                     for (byte requestByte : DEBUGBYTES) {
-                        communicationService.dumpResponse(requestByte);
+                        Request request = heatPumpConfiguration.getRequestByByte(requestByte);
+                        if (request == null) {
+                            String requestStr = String.format("%02X", requestByte);
+                            logger.debug("Could not find request for {} in the thingtype definition.", requestStr);
+                            request = new Request();
+                            request.setRequestByte(requestByte);
+                        }
+                        communicationService.dumpResponse(request);
                         Thread.sleep(config.waitingTime);
                     }
                     updateState(channelUID, OnOffType.OFF);
@@ -496,12 +503,19 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             Channel ch = getThing().getChannel(channelId);
             if (ch == null) {
                 logger.debug("For channelid {} no configuration found. Review channel definitions.", channelId);
+                continue;
             }
             ChannelUID channelUID = ch.getUID();
             ChannelTypeUID channelTypeUID = ch.getChannelTypeUID();
             String channelType = channelTypeUID.toString();
-            if (channelType.equalsIgnoreCase(CHANNELTYPE_TIMESETTING)) {
+
+            if (channelType.equalsIgnoreCase(CHANNELTYPE_TIMESETTING)
+                    | channelType.equalsIgnoreCase(CHANNELTYPE_ERRORTIME)) {
                 updateTimeChannel(entry.getValue().toString(), channelUID);
+                continue;
+            }
+            if (channelType.equalsIgnoreCase(CHANNELTYPE_ERRORDATE)) {
+                updateDateChannel(entry.getValue().toString(), channelUID);
                 continue;
             }
             if (channelType.equalsIgnoreCase(CHANNELTYPE_SWITCHSETTING)) {
@@ -518,11 +532,10 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             if (entry.getValue() instanceof Boolean) {
                 updateSwitchSettingChannel((boolean) entry.getValue(), channelUID);
             }
-            LocalDateTime dt = LocalDateTime.now();
-            String formattedString = dt.format(DateTimeFormatter.ofPattern(DATE_PATTERN));
-            updateState(CHANNEL_LASTUPDATE, new StringType(formattedString));
         }
-
+        LocalDateTime dt = LocalDateTime.now();
+        String formattedString = dt.format(DateTimeFormatter.ofPattern(DATE_PATTERN));
+        updateState(CHANNEL_LASTUPDATE, new StringType(formattedString));
         updateStatus(ThingStatus.ONLINE);
     }
 
@@ -572,6 +585,12 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
         String newTime = String.format("%04d", Integer.parseInt(timeString));
         newTime = new StringBuilder(newTime).insert(newTime.length() - 2, ":").toString();
         updateState(channelUID, new StringType(newTime));
+    }
+
+    private void updateDateChannel(String dateString, ChannelUID channelUID) {
+        String newDate = String.format("%04d", Integer.parseInt(dateString));
+        newDate = new StringBuilder(newDate).insert(newDate.length() - 2, "-").toString();
+        updateState(channelUID, new StringType(newDate));
     }
 
     /**

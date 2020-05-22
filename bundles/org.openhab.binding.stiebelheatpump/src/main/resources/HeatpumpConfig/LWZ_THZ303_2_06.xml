@@ -346,14 +346,60 @@
 		scale="0.1" bitPosition="0" min="10" max="75" step="0.1"></record>
 	<record channelid="compressorShutdownDHWLoading" requestByte="07" dataType="Settings" position="15" length="1"
 		scale="1.0" bitPosition="0" min="0" max="1" step="0.0"></record>
-	<record channelid="fA00NoOfErrors" requestByte="D1" dataType="Status" position="4" length="2" scale="1.0"
+	<record channelid="fA00NoOfErrors" requestByte="D1" dataType="Status" position="5" length="1" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="fn01NoOfErrors" requestByte="D1" dataType="Status" position="8" length="2" scale="1.0"
+	<record channelid="faultCode0" requestByte="D1" dataType="Status" position="6" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="fn02NoOfErrors" requestByte="D1" dataType="Status" position="20" length="2" scale="1.0"
+    <record channelid="faultTime0" requestByte="D1" dataType="Status" position="8" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultDate0" requestByte="D1" dataType="Status" position="10" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+	<record channelid="faultCode1" requestByte="D1" dataType="Status" position="12" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="fn03NoOfErrors" requestByte="D1" dataType="Status" position="32" length="2" scale="1.0"
+    <record channelid="faultTime1" requestByte="D1" dataType="Status" position="14" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultDate1" requestByte="D1" dataType="Status" position="16" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+	<record channelid="faultCode2" requestByte="D1" dataType="Status" position="18" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="fn04NoOfErrors" requestByte="D1" dataType="Status" position="44" length="2" scale="1.0"
+    <record channelid="faultTime2" requestByte="D1" dataType="Status" position="20" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultDate2" requestByte="D1" dataType="Status" position="22" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+	<record channelid="faultCode3" requestByte="D1" dataType="Status" position="24" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-</records>
+    <record channelid="faultTime3" requestByte="D1" dataType="Status" position="26" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>	
+    <record channelid="faultDate3" requestByte="D1" dataType="Status" position="28" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultCode4" requestByte="D1" dataType="Status" position="30" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultTime4" requestByte="D1" dataType="Status" position="32" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>    
+    <record channelid="faultDate4" requestByte="D1" dataType="Status" position="36" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultCode5" requestByte="D1" dataType="Status" position="38" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultTime5" requestByte="D1" dataType="Status" position="40" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>    
+    <record channelid="faultDate5" requestByte="D1" dataType="Status" position="42" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultCode6" requestByte="D1" dataType="Status" position="44" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultTime6" requestByte="D1" dataType="Status" position="46" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>    
+    <record channelid="faultDate6" requestByte="D1" dataType="Status" position="48" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultCode7" requestByte="D1" dataType="Status" position="50" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultTime7" requestByte="D1" dataType="Status" position="52" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>    
+    <record channelid="faultDate7" requestByte="D1" dataType="Status" position="54" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultCode8" requestByte="D1" dataType="Status" position="56" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultTime8" requestByte="D1" dataType="Status" position="58" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>    
+    <record channelid="faultDate8" requestByte="D1" dataType="Status" position="60" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>       
+</records>        

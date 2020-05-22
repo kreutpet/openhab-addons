@@ -197,8 +197,7 @@ public class CommunicationService {
     public Map<String, Object> readData(Request request) throws StiebelHeatPumpException {
         Map<String, Object> data = new HashMap<>();
         String requestStr = String.format("%02X", request.getRequestByte());
-        logger.debug("Request : Name -> {}, Description -> {} , RequestByte -> {}", request.getName(),
-                request.getDescription(), requestStr);
+        logger.debug("RequestByte -> {}", requestStr);
         byte[] responseAvailable;
         byte[] requestMessage = createRequestMessage(request.getRequestByte());
 
@@ -215,8 +214,7 @@ public class CommunicationService {
                 }
                 success = true;
             } catch (StiebelHeatPumpException e) {
-                logger.warn("Error reading data : {} -> Retry: {}", e.toString(), count);
-                logger.warn("Retry readData {}", count);
+                logger.warn("Error reading data  for {}: {} -> Retry: {}", requestStr, e.toString(), count);
             }
         }
         if (!success) {
@@ -280,38 +278,21 @@ public class CommunicationService {
     /**
      * dumps response of connected heat pump by request byte
      *
+     * @param request
+     * @param requestByte
+     *
      * @param requestByte
      *            request byte to send to heat pump
      */
-    public void dumpResponse(byte requestByte) {
-        int tmp = maxRetry;
-        maxRetry = 1;
-        String requestStr = String.format("%02X", requestByte);
-        logger.info("Prepare response for request byte {}", requestStr);
-        Request request = new Request();
-        request.setRequestByte(requestByte);
-
-        byte[] requestMessage = createRequestMessage(request.getRequestByte());
-
-        if (!establishRequest(requestMessage)) {
-            logger.info("Could not get response for request byte {}", requestStr);
-            return;
-        }
-        maxRetry = tmp;
+    public Map<String, Object> dumpResponse(Request request) {
+        Map<String, Object> data = new HashMap<>();
         try {
-            connector.write(DataParser.ESCAPE);
-            byte[] response = receiveData();
-            response = parser.fixDuplicatedBytes(response);
-            String respondStr = DataParser.bytesToHex(response);
-            logger.info("Request {} received response : {}", requestStr, respondStr);
-
-            boolean validData = parser.headerCheck(response);
-            if (validData) {
-                parser.parseRecords(response, request);
-            }
+            data = readData(request);
         } catch (Exception e) {
-            logger.error(String.format("Could not get data from heat pump! for request %02X", requestByte));
+            String requestStr = String.format("%02X", request.getRequestByte());
+            logger.error("Could not get data from heat pump! for request {}", requestStr);
         }
+        return data;
     }
 
     /**

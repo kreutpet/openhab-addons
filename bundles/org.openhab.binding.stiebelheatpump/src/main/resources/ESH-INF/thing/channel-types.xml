@@ -334,11 +334,21 @@
 		<state pattern="%d #ERR" readOnly="true" />
 	</channel-type>
 	<channel-type id="errorCode" advanced="true">
-		<item-type>String</item-type>
+		<item-type>Number</item-type>
 		<label>Error code</label>
 		<description>Error code</description>
 		<state pattern="F%s" readOnly="true" />
 	</channel-type>
+    <channel-type id="errorTime" advanced="true">
+        <item-type>String</item-type>
+        <label>Time [hh:mm]</label>
+        <state pattern="%s hh:mm" readOnly="true"/>
+    </channel-type>	
+    <channel-type id="errorDate" advanced="true">
+        <item-type>String</item-type>
+        <label>Date [dd-MM]</label>
+        <state pattern="%s dd-MM" readOnly="true"/>
+    </channel-type> 
 	<channel-type id="weekday" advanced="true">
 		<item-type>Number</item-type>
 		<label>Week day</label>
