@@ -68,7 +68,6 @@
 		bitPosition="7" min="0" max="1" step="0.0"></record>
 	<record channelid="compressorA" requestByte="09" dataType="Status" position="4" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="compressorB" requestByte="09" dataType="Status" position="6" length="2" scale="1.0"
 	<record channelid="heatingBoosterMode" requestByte="09" dataType="Status" position="6" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
 	<record channelid="DHWMode" requestByte="09" dataType="Status" position="8" length="2" scale="1.0"
