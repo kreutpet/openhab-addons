@@ -150,13 +150,25 @@
 				<label>Operation counter heating mode</label>
 				<description>Operation counter heating mode</description>
 			</channel>
+			<channel id="heatingBoosterMode" typeId="hourCounter">
+				<label>Operation counter heating booster mode</label>
+				<description>Operation counter heating booster mode</description>
+			</channel>
 			<channel id="DHWMode" typeId="hourCounter">
 				<label>Operation counter DHW mode</label>
 				<description>Operation counter DHW mode</description>
 			</channel>
+			<channel id="DHWBoosterMode" typeId="hourCounter">
+				<label>Operation counter DHW booster mode</label>
+				<description>Operation counter DHW booster mode</description>
+			</channel>
 			<channel id="coolingMode" typeId="hourCounter">
 				<label>Operation counter cooling mode</label>
 				<description>Operation counter cooling mode</description>
+			</channel>
+			<channel id="compressorStarts" typeId="counter">
+				<label>Compressor starts</label>
+				<description>Compressor starts</description>
 			</channel>
 		</channels>
 	</channel-group-type>

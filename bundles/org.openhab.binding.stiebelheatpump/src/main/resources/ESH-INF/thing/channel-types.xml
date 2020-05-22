@@ -43,6 +43,11 @@
 		<label>Operation Counter in [h]</label>
 		<state pattern="%d h" readOnly="true" />
 	</channel-type>
+	<channel-type id="counter">
+		<item-type>Number</item-type>
+		<label>Operation Counter</label>
+		<state pattern="%d" readOnly="true" />
+	</channel-type>
 	<channel-type id="temperatureSetting" advanced="true">
 		<item-type>Number:Temperature</item-type>
 		<label>Temperature Setting in [°C]</label>
