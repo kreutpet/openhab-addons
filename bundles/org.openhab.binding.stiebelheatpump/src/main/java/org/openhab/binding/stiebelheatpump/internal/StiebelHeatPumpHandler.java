@@ -197,10 +197,17 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
         }
         String requestStr = String.format("%02X", request.getRequestByte());
         logger.debug("Found valid record definition in request {} with ChannelID:{}", requestStr, channelId);
-        Type dataType = request.getRecordDefinitionByChannelId(channelId).getDataType();
-        if (dataType == RecordDefinition.Type.Settings && !heatPumpSettingRefresh.getRequests().contains(request)) {
-            heatPumpSettingRefresh.getRequests().add(request);
+        RecordDefinition record = request.getRecordDefinitionByChannelId(channelId);
+        if (record == null) {
+            logger.warn("Could not find valid record definition for {},  please verify thing definition.", channelId);
+            return;
+        }
+        Type dataType = record.getDataType();
+        if (dataType == RecordDefinition.Type.Settings) {
             getSettings(request);
+            if (!heatPumpSettingRefresh.getRequests().contains(request)) {
+                heatPumpSettingRefresh.getRequests().add(request);
+            }
         }
         if (dataType != RecordDefinition.Type.Settings
                 && !heatPumpSensorStatusRefresh.getRequests().contains(request)) {
@@ -337,6 +344,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
      */
     private void startAutomaticSensorStatusRefresh() {
         refreshSensorStatusJob = scheduler.scheduleWithFixedDelay(() -> {
+            Map<String, Object> data = new HashMap<>();
             Instant start = Instant.now();
             if (heatPumpSensorStatusRefresh.getRequests().isEmpty()) {
                 logger.debug("nothing to update, sensor/status refresh list is empty");
@@ -352,9 +360,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             try {
 
                 communicationService.connect();
-                Map<String, Object> data = communicationService
-                        .getRequestData(heatPumpSensorStatusRefresh.getRequests());
-                updateChannels(data);
+                data = communicationService.getRequestData(heatPumpSensorStatusRefresh.getRequests());
             } catch (Exception e) {
                 logger.debug("Exception occurred during execution: {}", e.getMessage(), e);
                 updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR, e.getMessage());
@@ -364,6 +370,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             }
             Instant end = Instant.now();
             logger.debug("Sensor/Status refresh took {} seconds.", Duration.between(start, end).getSeconds());
+            updateChannels(data);
         }, 20, config.refresh, TimeUnit.SECONDS);
     }
 
@@ -372,6 +379,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
      */
     private void startAutomaticSettingRefresh() {
         refreshSettingJob = scheduler.scheduleWithFixedDelay(() -> {
+            Map<String, Object> data = new HashMap<>();
             Instant start = Instant.now();
             if (heatPumpSettingRefresh.getRequests().isEmpty()) {
                 logger.debug("nothing to update, setting refresh list is empty");
@@ -386,8 +394,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             logger.info("Refresh setting data of heat pump.");
             try {
                 communicationService.connect();
-                Map<String, Object> data = communicationService.getRequestData(heatPumpSettingRefresh.getRequests());
-                updateChannels(data);
+                data = communicationService.getRequestData(heatPumpSettingRefresh.getRequests());
             } catch (Exception e) {
                 logger.debug("Exception occurred during execution: {}", e.getMessage(), e);
                 updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR, e.getMessage());
@@ -397,7 +404,8 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             }
             Instant end = Instant.now();
             logger.debug("Setting refresh took {} seconds.", Duration.between(start, end).getSeconds());
-        }, 0, 1, TimeUnit.DAYS);
+            updateChannels(data);
+        }, 60, 3600, TimeUnit.SECONDS);
     }
 
     /**
@@ -405,9 +413,22 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
      */
     private void getSettings(Request request) {
         refreshSettingJob = scheduler.schedule(() -> {
-            while (communicationInUse) {
+            int count = 0;
+            int maxtry = 10;
+            while (count < maxtry && communicationInUse) {
+                try {
+                    Thread.sleep(2000);
 
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                count++;
             }
+            if (maxtry == 10) {
+                logger.error("Setting could not be read from heatpump.communication is used by other task!");
+            }
+            Map<String, Object> data = new HashMap<>();
             communicationInUse = true;
             List<Request> requestList = new ArrayList<>();
             requestList.add(request);
@@ -415,8 +436,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             logger.info("Refresh for newly linked setting of heat pump.");
             try {
                 communicationService.connect();
-                Map<String, Object> data = communicationService.getRequestData(requestList);
-                updateChannels(data);
+                data = communicationService.getRequestData(requestList);
             } catch (
 
             Exception e) {
@@ -425,7 +445,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
                 communicationService.disconnect();
                 communicationInUse = false;
             }
-
+            updateChannels(data);
         }, 0, TimeUnit.SECONDS);
     }
 
@@ -562,7 +582,12 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
             }
             return;
         }
-        updateState(channelUID, new DecimalType((short) value));
+        if (value instanceof Short) {
+            updateState(channelUID, new DecimalType((short) value));
+        }
+        if (value instanceof Integer) {
+            updateState(channelUID, new DecimalType((int) value));
+        }
     }
 
     private void updateSwitchSettingChannel(Boolean setting, ChannelUID channelUID) {
@@ -650,25 +675,23 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
                     .split(Pattern.quote(StiebelHeatPumpBindingConstants.CHANNELGROUPSEPERATOR));
             String channelId = parts[parts.length - 1];
             Request request = heatPumpConfiguration.getRequestByChannelId(channelId);
-
             if (request != null) {
                 String requestbyte = String.format("%02X", request.getRequestByte());
-                Type dataType = request.getRecordDefinitionByChannelId(channelId).getDataType();
                 RecordDefinition record = request.getRecordDefinitionByChannelId(channelId);
+                if (record == null) {
+                    logger.warn("Could not find valid record definition for {},  please verify thing definition.",
+                            channelId);
+                    return;
+                }
                 record.setChannelid(channelUID.getId());
-                switch (dataType) {
-                    case Settings:
-                        if (!heatPumpSettingRefresh.getRequests().contains(request)) {
-                            heatPumpSettingRefresh.getRequests().add(request);
-                            logger.info("Request {} added to setting refresh scheduler.", requestbyte);
-                        }
-                        break;
-                    default:
-                        if (!heatPumpSensorStatusRefresh.getRequests().contains(request)) {
-                            heatPumpSensorStatusRefresh.getRequests().add(request);
-                            logger.info("Request {} added to sensor/status refresh scheduler.", requestbyte);
-                        }
-                        break;
+                if (record.getDataType() == Type.Settings && !heatPumpSettingRefresh.getRequests().contains(request)) {
+                    heatPumpSettingRefresh.getRequests().add(request);
+                    logger.info("Request {} added to setting refresh scheduler.", requestbyte);
+                }
+                if (record.getDataType() != Type.Settings
+                        && !heatPumpSensorStatusRefresh.getRequests().contains(request)) {
+                    heatPumpSensorStatusRefresh.getRequests().add(request);
+                    logger.info("Request {} added to sensor/status refresh scheduler.", requestbyte);
                 }
             }
         }

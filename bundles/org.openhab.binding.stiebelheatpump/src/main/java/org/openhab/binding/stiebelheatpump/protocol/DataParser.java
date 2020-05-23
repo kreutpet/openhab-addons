@@ -127,6 +127,11 @@ public class DataParser {
                     System.arraycopy(response, recordDefinition.getPosition(), bytes, 0, 2);
                     number = buffer.getShort(recordDefinition.getPosition());
                     break;
+                case 4:
+                    bytes = new byte[4];
+                    System.arraycopy(response, recordDefinition.getPosition(), bytes, 0, 4);
+                    int intValue = ByteBuffer.wrap(bytes).getInt();
+                    return intValue;
             }
 
             // get boolean type of data in case we have a defined bitposition

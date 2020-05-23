@@ -15,13 +15,13 @@
 		<label>Dump heat pump response </label>
 		<description>Takes standard request bytes and asks for a heat pump response, which is logged in the log.</description>
 	</channel-type>
-    <channel-type id="dateTime">
-        <item-type>String</item-type>
-        <label>Last refresh</label>
-        <description>Heatpump refreshed date time</description>
-        <category>Date</category>
-        <state readOnly="true"/>
-    </channel-type>	
+	<channel-type id="dateTime">
+		<item-type>String</item-type>
+		<label>Last refresh</label>
+		<description>Heatpump refreshed date time</description>
+		<category>Date</category>
+		<state readOnly="true" />
+	</channel-type>
 	<channel-type id="setTime" advanced="true">
 		<item-type>Switch</item-type>
 		<label>Set time</label>
@@ -260,13 +260,18 @@
 	<channel-type id="contactStatus">
 		<item-type>Contact</item-type>
 		<label>Status Contact</label>
-		<state readOnly="true"/>
+		<state readOnly="true" />
 	</channel-type>
 	<channel-type id="timeAp0Setting" advanced="true">
 		<item-type>Number</item-type>
 		<label>Time settings in [h]</label>
 		<state min="0" max="2388" pattern="%.1f h" />
 	</channel-type>
+    <channel-type id="timeAp0" advanced="true">
+        <item-type>Number</item-type>
+        <label>Time in [h]</label>
+        <state min="0" max="2388" pattern="%.1f h" readOnly="true"/>
+    </channel-type>	
 	<channel-type id="restartBeforeSetbackEnd" advanced="true">
 		<item-type>Number</item-type>
 		<label>Time settings Setting in [min]</label>
@@ -339,16 +344,16 @@
 		<description>Error code</description>
 		<state pattern="F%s" readOnly="true" />
 	</channel-type>
-    <channel-type id="errorTime" advanced="true">
-        <item-type>String</item-type>
-        <label>Time [hh:mm]</label>
-        <state pattern="%s hh:mm" readOnly="true"/>
-    </channel-type>	
-    <channel-type id="errorDate" advanced="true">
-        <item-type>String</item-type>
-        <label>Date [dd-MM]</label>
-        <state pattern="%s dd-MM" readOnly="true"/>
-    </channel-type> 
+	<channel-type id="errorTime" advanced="true">
+		<item-type>String</item-type>
+		<label>Time [hh:mm]</label>
+		<state pattern="%s hh:mm" readOnly="true" />
+	</channel-type>
+	<channel-type id="errorDate" advanced="true">
+		<item-type>String</item-type>
+		<label>Date [dd-MM]</label>
+		<state pattern="%s dd-MM" readOnly="true" />
+	</channel-type>
 	<channel-type id="weekday" advanced="true">
 		<item-type>Number</item-type>
 		<label>Week day</label>
@@ -404,8 +409,17 @@
 				<option value="5">DHWmode</option>
 				<option value="14">DHWmode</option>
 				<option value="0">Emergengy</option>
-				<!-- info from FHEM "1" =>"standby", "11" => "automatic", "3" =>"DAYmode", "4" =>"setback", "5" =>"DHWmode", "14" =>"manual", 
-					"0" =>"emergency" -->
+			</options>
+		</state>
+	</channel-type>
+	<channel-type id="operationMode2" advanced="true">
+		<item-type>Number</item-type>
+		<label>Operation Mode</label>
+		<description>Operation Mode.</description>
+		<state readOnly="true">
+			<options>
+				<option value="0">Manual</option>
+				<option value="1">Automatic</option>
 			</options>
 		</state>
 	</channel-type>
@@ -420,9 +434,7 @@
 				<option value="3">Standby</option>
 				<option value="4">Restart</option>
 				<option value="5">Restart</option>
-				<!-- info from FHEM "1" =>"normal", "2" => "setback", "3" =>"standby", "4" =>"restart", "5" =>"restart" -->
 			</options>
 		</state>
 	</channel-type>
-
 </thing:thing-descriptions>
