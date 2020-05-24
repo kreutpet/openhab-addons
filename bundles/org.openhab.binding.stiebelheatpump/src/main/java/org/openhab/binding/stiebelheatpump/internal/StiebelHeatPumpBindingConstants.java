@@ -51,6 +51,8 @@ public class StiebelHeatPumpBindingConstants {
     public static final String CHANNELTYPE_TIMESETTING = BINDING_ID + ":" + "timeSetting";
     public static final String CHANNELTYPE_SWITCHSETTING = BINDING_ID + ":" + "switchSetting";
     public static final String CHANNELTYPE_CONTACTSTATUS = BINDING_ID + ":" + "contactStatus";
+    public static final String CHANNELTYPE_ERRORTIME = BINDING_ID + ":" + "errorTime";
+    public static final String CHANNELTYPE_ERRORDATE = BINDING_ID + ":" + "errorDate";
 
     // Custom Properties
     public final static String PROPERTY_PORT = "port";

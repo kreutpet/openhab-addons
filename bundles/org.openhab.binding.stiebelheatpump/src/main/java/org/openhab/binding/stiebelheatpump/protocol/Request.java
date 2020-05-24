@@ -80,7 +80,6 @@ public class Request {
                 return record;
             }
         }
-        logger.warn("Could not find valid record definition for {},  please verify thing definition.", channelId);
         return null;
     }
 }

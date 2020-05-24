@@ -25,7 +25,7 @@
 			<channel-group id="restartAndMixerTime" typeId="channelGroupTypeRestartAndMixerTime" />
 			<channel-group id="domesticHotWater" typeId="channelGroupTypeDomesticHotWater" />
 			<channel-group id="lastErrors" typeId="channelGroupTypeLastErrors" />
-			<!-- <channel-group id="operationMode" typeId="channelGroupTypeOperationMode"/> -->
+			<channel-group id="operationMode" typeId="channelGroupTypeOperationMode2"/>
 		</channel-groups>
 		<properties>
 			<property name="vendor">Stiebel Eltron</property>

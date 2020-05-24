@@ -1,7 +1,9 @@
 <?xml version="1.0" ?>
 <records>
+<!-- FD -->
 	<record channelid="version" requestByte="FD" dataType="Status" position="4" length="2" scale="0.01"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
+<!-- FC -->
 	<record channelid="weekday" requestByte="FC" dataType="Settings" position="5" length="1" scale="1.0"
 		bitPosition="0" min="1" max="7" step="1.0"></record>
 	<record channelid="hours" requestByte="FC" dataType="Settings" position="6" length="1" scale="1.0"
@@ -66,6 +68,7 @@
 		bitPosition="6" min="0" max="1" step="0.0"></record>
 	<record channelid="BoosterStage1" requestByte="FB" dataType="Sensor" position="25" length="1" scale="1.0"
 		bitPosition="7" min="0" max="1" step="0.0"></record>
+<!-- 09 -->
 	<record channelid="compressorA" requestByte="09" dataType="Status" position="4" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
 	<record channelid="compressorB" requestByte="09" dataType="Status" position="6" length="2" scale="1.0"
@@ -76,6 +79,7 @@
 		bitPosition="0" min="0" max="0" step="0.0"></record>
 	<record channelid="coolingMode" requestByte="09" dataType="Status" position="12" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
+<!-- 17 -->
 	<record channelid="p01RoomTemperatureStandardMode" requestByte="17" dataType="Settings" position="4" length="2"
 		scale="0.1" bitPosition="0" min="10" max="30" step="0.1"></record>
 	<record channelid="p02RoomTemperatureSetbackMode" requestByte="17" dataType="Settings" position="6" length="2"
@@ -100,6 +104,7 @@
 		scale="0.1" bitPosition="0" min="10" max="65" step="0.1"></record>
 	<record channelid="p12FanStageManual" requestByte="17" dataType="Settings" position="23" length="1" scale="1.0"
 		bitPosition="0" min="0" max="3" step="1.0"></record>
+<!-- 01 -->
 	<record channelid="p37FanStageSupplyAir1" requestByte="01" dataType="Settings" position="4" length="2"
 		scale="1.0" bitPosition="0" min="60" max="280" step="1.0"></record>
 	<record channelid="p38FanStageSupplyAir2" requestByte="01" dataType="Settings" position="6" length="2"
@@ -124,6 +129,7 @@
 		scale="1.0" bitPosition="0" min="0" max="2" step="1.0"></record>
 	<record channelid="stoveFireplaceOperation" requestByte="01" dataType="Settings" position="24" length="1"
 		scale="1.0" bitPosition="0" min="0" max="4" step="1.0"></record>
+<!-- 05 -->
 	<record channelid="p13IncreaseHeatingHC1" requestByte="05" dataType="Settings" position="4" length="2"
 		scale="0.1" bitPosition="0" min="1" max="5" step="0.1"></record>
 	<record channelid="p14LowEndPointHeatingHC1" requestByte="05" dataType="Settings" position="6" length="2"
@@ -148,6 +154,7 @@
 		length="2" scale="0.1" bitPosition="0" min="20" max="65" step="0.1"></record>
 	<record channelid="minSetHeatingCircuitTemperatureHC2" requestByte="05" dataType="Settings" position="24"
 		length="2" scale="0.1" bitPosition="0" min="5" max="40" step="0.1"></record>
+<!-- 06 -->
 	<record channelid="p21HysteresisHeating1" requestByte="06" dataType="Settings" position="4" length="1"
 		scale="0.1" bitPosition="0" min="0" max="10" step="0.1"></record>
 	<record channelid="p22HysteresisHeating2" requestByte="06" dataType="Settings" position="5" length="1"
@@ -184,6 +191,7 @@
 		scale="1.0" bitPosition="0" min="0" max="60" step="1.0"></record>
 	<record channelid="outputElectricalHeatingStage1" requestByte="06" dataType="Settings" position="27" length="1"
 		scale="0.1" bitPosition="0" min="0" max="10" step="1.0"></record>
+<!-- 03 -->
 	<record channelid="upperLimitEvaporatorTemperatureForDefrostEnd" requestByte="03" dataType="Settings"
 		position="4" length="2" scale="0.1" bitPosition="0" min="10" max="30" step="0.1"></record>
 	<record channelid="maxEvaporatorDefrostTime" requestByte="03" dataType="Settings" position="6" length="2"
@@ -198,12 +206,14 @@
 		bitPosition="0" min="10" max="100" step="1.0"></record>
 	<record channelid="maxDefrostDurationAAExchanger" requestByte="04" dataType="Settings" position="4" length="1"
 		scale="1.0" bitPosition="0" min="0" max="20" step="1.0"></record>
+<!-- 04 -->
 	<record channelid="defrostStartThreshold" requestByte="04" dataType="Settings" position="5" length="2"
 		scale="0.1" bitPosition="0" min="0" max="100" step="1.0"></record>
 	<record channelid="volumeFlowFilterReplacement" requestByte="04" dataType="Settings" position="7" length="2"
 		scale="1.0" bitPosition="0" min="50" max="100" step="1.0"></record>
 	<record channelid="p85DefrostModeAAHE" requestByte="04" dataType="Settings" position="9" length="1" scale="1.0"
 		bitPosition="0" min="1" max="5" step="1.0"></record>
+<!-- 0A -->
 	<record channelid="p54minStartupCycles" requestByte="0A" dataType="Settings" position="4" length="1" scale="1.0"
 		bitPosition="0" min="1" max="24" step="1.0"></record>
 	<record channelid="p55maxStartupCycles" requestByte="0A" dataType="Settings" position="5" length="2" scale="1.0"
@@ -214,6 +224,7 @@
 		length="2" scale="0.1" bitPosition="0" min="0" max="25" step="0.1"></record>
 	<record channelid="P58SuppressTemperatureCaptureDuringPumpStart" requestByte="0A" dataType="Settings"
 		position="11" length="2" scale="1.0" bitPosition="0" min="0" max="20" step="0.1"></record>
+<!-- 0B -->
 	<record channelid="hP1StartTime" requestByte="0B" dataType="Settings" position="4" length="2" scale="1.0"
 		bitPosition="0" min="0" max="2359" step="0.0"></record>
 	<record channelid="hP1StopTime" requestByte="0B" dataType="Settings" position="6" length="2" scale="1.0"
@@ -254,6 +265,7 @@
 		bitPosition="1" min="0" max="1" step="0.0"></record>
 	<record channelid="hP2Enabled" requestByte="0B" dataType="Settings" position="15" length="1" scale="1.0"
 		bitPosition="0" min="0" max="1" step="0.0"></record>
+<!-- 0C -->
 	<record channelid="bP1StartTime" requestByte="0C" dataType="Settings" position="4" length="2" scale="1.0"
 		bitPosition="0" min="0" max="2359" step="0.0"></record>
 	<record channelid="bP1StopTime" requestByte="0C" dataType="Settings" position="6" length="2" scale="1.0"
@@ -274,6 +286,7 @@
 		bitPosition="1" min="0" max="1" step="0.0"></record>
 	<record channelid="bP1Enabled" requestByte="0C" dataType="Settings" position="9" length="1" scale="1.0"
 		bitPosition="0" min="0" max="1" step="0.0"></record>
+<!-- 0D -->
 	<record channelid="lP1StartTime" requestByte="0D" dataType="Settings" position="4" length="2" scale="1.0"
 		bitPosition="0" min="0" max="2359" step="0.0"></record>
 	<record channelid="lP1StopTime" requestByte="0D" dataType="Settings" position="6" length="2" scale="1.0"
@@ -314,12 +327,14 @@
 		bitPosition="1" min="0" max="1" step="0.0"></record>
 	<record channelid="lP2Enabled" requestByte="0D" dataType="Settings" position="15" length="1" scale="1.0"
 		bitPosition="0" min="0" max="1" step="0.0"></record>
+<!-- 0F -->
 	<record channelid="aP0DurationUntilAbsenceStart" requestByte="0F" dataType="Settings" position="4" length="2"
 		scale="0.1" bitPosition="0" min="0" max="2388" step="0.0"></record>
 	<record channelid="aP0AbsenceDuration" requestByte="0F" dataType="Settings" position="6" length="2" scale="0.1"
 		bitPosition="0" min="0" max="2388" step="0.0"></record>
 	<record channelid="aP0EnableAbsenceProgram" requestByte="0F" dataType="Settings" position="8" length="1"
 		scale="1.0" bitPosition="0" min="0" max="1" step="0.0"></record>
+<!-- 0E -->
 	<record channelid="p59RestartBeforeSetbackEnd" requestByte="0E" dataType="Settings" position="4" length="2"
 		scale="1.0" bitPosition="0" min="0" max="300" step="1.0"></record>
 	<record channelid="mixerProportionalRange" requestByte="0E" dataType="Settings" position="6" length="2"
@@ -328,6 +343,7 @@
 		bitPosition="0" min="1" max="100" step="0.1"></record>
 	<record channelid="mixerTimeInterval" requestByte="0E" dataType="Settings" position="10" length="2" scale="1.0"
 		bitPosition="0" min="1" max="10" step="0.1"></record>
+<!-- 07 -->
 	<record channelid="p32StartupHysteresisDHWTemperature" requestByte="07" dataType="Settings" position="4"
 		length="1" scale="0.1" bitPosition="0" min="2" max="20" step="0.1"></record>
 	<record channelid="p33TimeDelayElectricalReheating" requestByte="07" dataType="Settings" position="5" length="1"
@@ -346,14 +362,83 @@
 		scale="0.1" bitPosition="0" min="10" max="75" step="0.1"></record>
 	<record channelid="compressorShutdownDHWLoading" requestByte="07" dataType="Settings" position="15" length="1"
 		scale="1.0" bitPosition="0" min="0" max="1" step="0.0"></record>
-	<record channelid="fA00NoOfErrors" requestByte="D1" dataType="Status" position="4" length="2" scale="1.0"
+<!-- D1 -->
+	<record channelid="fA00NoOfErrors" requestByte="D1" dataType="Status" position="5" length="1" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="fn01NoOfErrors" requestByte="D1" dataType="Status" position="8" length="2" scale="1.0"
+	<record channelid="faultCode0" requestByte="D1" dataType="Status" position="6" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="fn02NoOfErrors" requestByte="D1" dataType="Status" position="20" length="2" scale="1.0"
+    <record channelid="faultTime0" requestByte="D1" dataType="Status" position="8" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultDate0" requestByte="D1" dataType="Status" position="10" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+	<record channelid="faultCode1" requestByte="D1" dataType="Status" position="12" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="fn03NoOfErrors" requestByte="D1" dataType="Status" position="32" length="2" scale="1.0"
+    <record channelid="faultTime1" requestByte="D1" dataType="Status" position="14" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultDate1" requestByte="D1" dataType="Status" position="16" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+	<record channelid="faultCode2" requestByte="D1" dataType="Status" position="18" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="fn04NoOfErrors" requestByte="D1" dataType="Status" position="44" length="2" scale="1.0"
+    <record channelid="faultTime2" requestByte="D1" dataType="Status" position="20" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultDate2" requestByte="D1" dataType="Status" position="22" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+	<record channelid="faultCode3" requestByte="D1" dataType="Status" position="24" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-</records>
+    <record channelid="faultTime3" requestByte="D1" dataType="Status" position="26" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>	
+    <record channelid="faultDate3" requestByte="D1" dataType="Status" position="28" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultCode4" requestByte="D1" dataType="Status" position="30" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultTime4" requestByte="D1" dataType="Status" position="32" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>    
+    <record channelid="faultDate4" requestByte="D1" dataType="Status" position="36" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultCode5" requestByte="D1" dataType="Status" position="38" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultTime5" requestByte="D1" dataType="Status" position="40" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>    
+    <record channelid="faultDate5" requestByte="D1" dataType="Status" position="42" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultCode6" requestByte="D1" dataType="Status" position="44" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultTime6" requestByte="D1" dataType="Status" position="46" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>    
+    <record channelid="faultDate6" requestByte="D1" dataType="Status" position="48" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultCode7" requestByte="D1" dataType="Status" position="50" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultTime7" requestByte="D1" dataType="Status" position="52" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>    
+    <record channelid="faultDate7" requestByte="D1" dataType="Status" position="54" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultCode8" requestByte="D1" dataType="Status" position="56" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="faultTime8" requestByte="D1" dataType="Status" position="58" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>    
+    <record channelid="faultDate8" requestByte="D1" dataType="Status" position="60" length="2" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>       
+<!-- D1 -->
+    <record channelid="opMode" requestByte="EE" dataType="Status" position="4" length="1" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+    <record channelid="progStateHC" requestByte="EE" dataType="Status" position="7" length="1" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+   <record channelid="progStateDHW" requestByte="EE" dataType="Status" position="8" length="1" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+   <record channelid="progStateFAN" requestByte="EE" dataType="Status" position="9" length="1" scale="1.0"
+        bitPosition="0" min="0" max="0" step="0.0"></record>
+   <record channelid="baseTimeAP0" requestByte="EE" dataType="Status" position="10" length="4"
+        scale="0.1" bitPosition="0" min="0" max="2388" step="0.0"></record>
+   <record channelid="statusAP0" requestByte="EE" dataType="Status" position="14" length="1"
+        scale="0.1" bitPosition="0" min="0" max="2388" step="0.0"></record>        
+   <record channelid="startTimeAP0" requestByte="EE" dataType="Status" position="15" length="4"
+        scale="0.1" bitPosition="0" min="0" max="35784" step="0.0"></record>  
+   <record channelid="endTimeAP0" requestByte="EE" dataType="Status" position="19" length="4"
+        scale="1.0" bitPosition="0" min="0" max="35784" step="0.0"></record>          
+</records>        
+<!-- 
+      "EEprg206" => [["opMode: ",  4, 2,   "opmode2", 1],  [" ProgStateHC: ",  10, 2, "opmodehc", 1],  [" ProgStateDHW: ",     12, 2, "opmodehc", 1],
+          [" ProgStateFAN: ",   14, 2,  "opmodehc", 1], [" BaseTimeAP0: ",  16, 8, "hex", 1],       [" StatusAP0: ",    24, 2, "hex", 1],
+          [" StartTimeAP0: ",   26, 8,  "hex", 1],      [" EndTimeAP0: ",   34, 8, "hex", 1]
+     --> 

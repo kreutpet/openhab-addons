@@ -31,8 +31,8 @@
 		<label>Measurements</label>
 		<description>Measurements of the heat pump.</description>
 		<channels>
-		    <channel id="refreshTime" typeId="dateTime" />  
-			<channel id="collectorTemperature" typeId="temperature">
+		  <channel id="refreshTime" typeId="dateTime" />  
+  			<channel id="collectorTemperature" typeId="temperature">
 				<label>Collector temperature</label>
 				<description>Collector temperature</description>
 			</channel>
@@ -80,7 +80,7 @@
 				<label>Supply fan speed</label>
 				<description>Supply fan speed</description>
 			</channel>
-			<channel id="exhaustFanSpeed" typeId="exhaustFanSpeed">
+			<channel id="exhaustFanSpeed" typeId="speed">
 				<label>Exhaust fan speed</label>
 				<description>Exhaust fan speed</description>
 			</channel>
@@ -402,10 +402,10 @@
 				<label>P79 Delayed enable re-heating</label>
 				<description>P79 Delayed enable re-heating setting</description>
 			</channel>
-            <channel id="outputElectricalHeatingStage1" typeId="outputElectricalHeatingStage">
-                <label>Electrical heating stage 1</label>
-                <description>Electrical heating stage 1 in [kW]</description>               
-            </channel>
+			<channel id="outputElectricalHeatingStage1" typeId="outputElectricalHeatingStage">
+				<label>Electrical heating stage 1</label>
+				<description>Electrical heating stage 1 in [kW]</description>
+			</channel>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeEvaporator" advanced="true">
@@ -703,8 +703,8 @@
 		<description>Reads Absence Program settings of the heat pump.</description>
 		<channels>
 			<channel id="aP0DurationUntilAbsenceStart" typeId="timeAp0Setting">
-				<label>Absence duration time</label>
-				<description>Absence duration time setting</description>
+				<label>Time duration to start Absence Program</label>
+				<description>Time duration to start Absence Program</description>
 			</channel>
 			<channel id="aP0AbsenceDuration" typeId="timeAp0Setting">
 				<label>Absence Duration</label>
@@ -789,21 +789,53 @@
 				<label>FA00 Number of errors</label>
 				<description>FA00 Numbers of errors listed in the heat pump</description>
 			</channel>
-			<channel id="fn01NoOfErrors" typeId="errorCode">
-				<label>FN01 Error Code 1</label>
-				<description>FN01 Error Code 1st Error.</description>
+			<channel id="faultCode0" typeId="errorCode">
+				<label>Fault 1 Error Code</label>
+				<description>Fault 1 Error Code.</description>
 			</channel>
-			<channel id="fn02NoOfErrors" typeId="errorCode">
-				<label>FN02 Error Code 2</label>
-				<description>FN02 Error Code 2nd Error.</description>
+			<channel id="faultTime0" typeId="errorTime">
+				<label>Fault 1 Time</label>
+				<description>Fault 1 Time.</description>
 			</channel>
-			<channel id="fn03NoOfErrors" typeId="errorCode">
-				<label>FN03 Error Code 3</label>
-				<description>FN03 Error Code 3rd Error.</description>
+			<channel id="faultDate0" typeId="errorDate">
+				<label>Fault 1 Date</label>
+				<description>Fault 1 Date.</description>
 			</channel>
-			<channel id="fn04NoOfErrors" typeId="errorCode">
-				<label>FN04 Error Code 4</label>
-				<description>FN04 Error Code 4rd Error.</description>
+			<channel id="faultCode1" typeId="errorCode">
+				<label>Fault 2 Error Code</label>
+				<description>Fault 2 Error Code.</description>
+			</channel>
+			<channel id="faultTime1" typeId="errorTime">
+				<label>Fault 2 Time</label>
+				<description>Fault 2 Time.</description>
+			</channel>
+			<channel id="faultDate1" typeId="errorDate">
+				<label>Fault 2 Date</label>
+				<description>Fault 2 Date.</description>
+			</channel>
+			<channel id="faultCode2" typeId="errorCode">
+				<label>Fault 3 Error Code</label>
+				<description>Fault 3 Error Code.</description>
+			</channel>
+			<channel id="faultTime2" typeId="errorTime">
+				<label>Fault 3 Time</label>
+				<description>Fault 3 Time.</description>
+			</channel>
+			<channel id="faultDate2" typeId="errorDate">
+				<label>Fault 3 Date</label>
+				<description>Fault 3 Date.</description>
+			</channel>
+			<channel id="faultCode3" typeId="errorCode">
+				<label>Fault 4 Error Code</label>
+				<description>Fault 4 Error Code.</description>
+			</channel>
+			<channel id="faultTime3" typeId="errorTime">
+				<label>Fault 4 Time</label>
+				<description>Fault 4 Time.</description>
+			</channel>
+			<channel id="faultDate3" typeId="errorDate">
+				<label>Fault 4 Date</label>
+				<description>Fault 4 Date.</description>
 			</channel>
 		</channels>
 	</channel-group-type>
@@ -827,6 +859,44 @@
 				<label>Program State Fan</label>
 				<description>Program State Fan</description>
 			</channel>
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeOperationMode2">
+		<label>Operation Mode</label>
+		<description>Reads Operation mode of the heat pump.</description>
+		<channels>
+			<channel id="opMode" typeId="operationMode2">
+				<label>Operation mode</label>
+				<description>Operation mode</description>
+			</channel>
+			<channel id="progStateHC" typeId="programState">
+				<label>Program State HC</label>
+				<description>Program State HC</description>
+			</channel>
+			<channel id="progStateDHW" typeId="programState">
+				<label>Program State DHW</label>
+				<description>Program State DHW</description>
+			</channel>
+			<channel id="progStateFAN" typeId="programState">
+				<label>Program State Fan</label>
+				<description>Program State Fan</description>
+			</channel>
+            <channel id="baseTimeAP0" typeId="timeAp0">
+                <label>Base time AP0</label>
+                <description>Base time AP0</description>
+            </channel>
+            <channel id="statusAP0" typeId="hourCounter">
+                <label>Status AP0</label>
+                <description>Status AP0</description>
+            </channel>            
+            <channel id="startTimeAP0" typeId="timeAp0">
+                <label>Start time AP0</label>
+                <description>Start time AP0</description>
+            </channel>  
+            <channel id="endTimeAP0" typeId="timeAp0">
+                <label>End time AP0</label>
+                <description>End time AP0</description>
+            </channel> 
 		</channels>
 	</channel-group-type>
 </thing:thing-descriptions>
