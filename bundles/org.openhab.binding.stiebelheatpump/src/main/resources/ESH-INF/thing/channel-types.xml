@@ -43,6 +43,11 @@
 		<label>Operation Counter in [h]</label>
 		<state pattern="%d h" readOnly="true" />
 	</channel-type>
+	<channel-type id="counter">
+		<item-type>Number</item-type>
+		<label>Operation Counter</label>
+		<state pattern="%d" readOnly="true" />
+	</channel-type>
 	<channel-type id="temperatureSetting" advanced="true">
 		<item-type>Number:Temperature</item-type>
 		<label>Temperature Setting in [°C]</label>
@@ -406,8 +411,8 @@
 				<option value="11">Automatic</option>
 				<option value="3">DayMode</option>
 				<option value="4">Setback</option>
-				<option value="5">DHWmode</option>
-				<option value="14">DHWmode</option>
+				<option value="5">DHWMode</option>
+				<option value="14">DHWMode</option>
 				<option value="0">Emergengy</option>
 			</options>
 		</state>

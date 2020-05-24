@@ -18,24 +18,23 @@
 		bitPosition="0" min="1" max="12" step="1.0"></record>
 	<record channelid="day" requestByte="FC" dataType="Settings" position="12" length="1" scale="1.0"
 		bitPosition="0" min="1" max="31" step="1.0"></record>
-<!-- FB -->
-	<record channelid="collectorTemperatur" requestByte="FB" dataType="Sensor" position="4" length="2" scale="0.1"
+	<record channelid="collectorTemperature" requestByte="FB" dataType="Sensor" position="4" length="2" scale="0.1"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="outsideTemperatur" requestByte="FB" dataType="Sensor" position="6" length="2" scale="0.1"
+	<record channelid="outsideTemperature" requestByte="FB" dataType="Sensor" position="6" length="2" scale="0.1"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="flowTemperatur" requestByte="FB" dataType="Sensor" position="8" length="2" scale="0.1"
+	<record channelid="flowTemperature" requestByte="FB" dataType="Sensor" position="8" length="2" scale="0.1"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="returnTemperatur" requestByte="FB" dataType="Sensor" position="10" length="2" scale="0.1"
+	<record channelid="returnTemperature" requestByte="FB" dataType="Sensor" position="10" length="2" scale="0.1"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="hotGasTemperatur" requestByte="FB" dataType="Sensor" position="12" length="2" scale="0.1"
+	<record channelid="hotGasTemperature" requestByte="FB" dataType="Sensor" position="12" length="2" scale="0.1"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="dHWTemperatur" requestByte="FB" dataType="Sensor" position="14" length="2" scale="0.1"
+	<record channelid="dHWTemperature" requestByte="FB" dataType="Sensor" position="14" length="2" scale="0.1"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="flowHC2Temperatur" requestByte="FB" dataType="Sensor" position="16" length="2" scale="0.1"
+	<record channelid="flowHC2Temperature" requestByte="FB" dataType="Sensor" position="16" length="2" scale="0.1"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="insideTemperatur" requestByte="FB" dataType="Sensor" position="18" length="2" scale="0.1"
+	<record channelid="insideTemperature" requestByte="FB" dataType="Sensor" position="18" length="2" scale="0.1"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="evaporatorTemperatur" requestByte="FB" dataType="Sensor" position="20" length="2" scale="0.1"
+	<record channelid="evaporatorTemperature" requestByte="FB" dataType="Sensor" position="20" length="2" scale="0.1"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
 	<record channelid="condenserTemperature" requestByte="FB" dataType="Sensor" position="22" length="2" scale="0.1"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
@@ -45,7 +44,7 @@
 		bitPosition="0" min="0" max="0" step="0.0"></record>
 	<record channelid="exhaustFanSpeed" requestByte="FB" dataType="Sensor" position="32" length="1" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="filteredOutsideTemperatur" requestByte="FB" dataType="Sensor" position="34" length="2"
+	<record channelid="filteredOutsideTemperature" requestByte="FB" dataType="Sensor" position="34" length="2"
 		scale="0.1" bitPosition="0" min="0" max="0" step="0.0"></record>
 	<record channelid="dHWPumpStatus" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1.0"
 		bitPosition="1" min="0" max="1" step="0.0"></record>
@@ -76,7 +75,7 @@
 		bitPosition="0" min="0" max="0" step="0.0"></record>
 	<record channelid="heatingMode" requestByte="09" dataType="Status" position="8" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="dHWMode" requestByte="09" dataType="Status" position="10" length="2" scale="1.0"
+	<record channelid="DHWMode" requestByte="09" dataType="Status" position="10" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>
 	<record channelid="coolingMode" requestByte="09" dataType="Status" position="12" length="2" scale="1.0"
 		bitPosition="0" min="0" max="0" step="0.0"></record>

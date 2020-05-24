@@ -31,40 +31,40 @@
 		<label>Measurements</label>
 		<description>Measurements of the heat pump.</description>
 		<channels>
-			<channel id="refreshTime" typeId="dateTime" />
-			<channel id="collectorTemperatur" typeId="temperature">
+		  <channel id="refreshTime" typeId="dateTime" />  
+  			<channel id="collectorTemperature" typeId="temperature">
 				<label>Collector temperature</label>
 				<description>Collector temperature</description>
 			</channel>
-			<channel id="outsideTemperatur" typeId="temperature">
+			<channel id="outsideTemperature" typeId="temperature">
 				<label>Outside temperature</label>
 				<description>Outside temperature</description>
 			</channel>
-			<channel id="flowTemperatur" typeId="temperature">
+			<channel id="flowTemperature" typeId="temperature">
 				<label>Flow temperature</label>
 				<description>Flow temperature</description>
 			</channel>
-			<channel id="returnTemperatur" typeId="temperature">
+			<channel id="returnTemperature" typeId="temperature">
 				<label>Return temperature</label>
 				<description>Return temperature</description>
 			</channel>
-			<channel id="hotGasTemperatur" typeId="temperature">
+			<channel id="hotGasTemperature" typeId="temperature">
 				<label>Hot gas temperature</label>
 				<description>Hot gas temperature</description>
 			</channel>
-			<channel id="dHWTemperatur" typeId="temperature">
+			<channel id="dHWTemperature" typeId="temperature">
 				<label>Cylinder temperature</label>
 				<description>Cylinder temperature</description>
 			</channel>
-			<channel id="flowHC2Temperatur" typeId="temperature">
+			<channel id="flowHC2Temperature" typeId="temperature">
 				<label>Flow temperature HC2</label>
 				<description>Flow temperature HC2</description>
 			</channel>
-			<channel id="insideTemperatur" typeId="temperature">
+			<channel id="insideTemperature" typeId="temperature">
 				<label>Inside temperature</label>
 				<description>Inside temperature</description>
 			</channel>
-			<channel id="evaporatorTemperatur" typeId="temperature">
+			<channel id="evaporatorTemperature" typeId="temperature">
 				<label>Evaporator temperature</label>
 				<description>Evaporator temperature</description>
 			</channel>
@@ -84,7 +84,7 @@
 				<label>Exhaust fan speed</label>
 				<description>Exhaust fan speed</description>
 			</channel>
-			<channel id="filteredOutsideTemperatur" typeId="temperature">
+			<channel id="filteredOutsideTemperature" typeId="temperature">
 				<label>Filtered outside temperature</label>
 				<description>Filtered outside temperature</description>
 			</channel>
@@ -150,13 +150,25 @@
 				<label>Operation counter heating mode</label>
 				<description>Operation counter heating mode</description>
 			</channel>
-			<channel id="dHWMode" typeId="hourCounter">
+			<channel id="heatingBoosterMode" typeId="hourCounter">
+				<label>Operation counter heating booster mode</label>
+				<description>Operation counter heating booster mode</description>
+			</channel>
+			<channel id="DHWMode" typeId="hourCounter">
 				<label>Operation counter DHW mode</label>
 				<description>Operation counter DHW mode</description>
+			</channel>
+			<channel id="DHWBoosterMode" typeId="hourCounter">
+				<label>Operation counter DHW booster mode</label>
+				<description>Operation counter DHW booster mode</description>
 			</channel>
 			<channel id="coolingMode" typeId="hourCounter">
 				<label>Operation counter cooling mode</label>
 				<description>Operation counter cooling mode</description>
+			</channel>
+			<channel id="compressorStarts" typeId="counter">
+				<label>Compressor starts</label>
+				<description>Compressor starts</description>
 			</channel>
 		</channels>
 	</channel-group-type>
@@ -185,8 +197,8 @@
 				<description>P05 Domestic hot water set back mode setting</description>
 			</channel>
 			<channel id="p06DHWTemperatureStandby" typeId="dHWTemperatureSetting">
-				<label>P06 Domestic hot water temperature set back</label>
-				<description>P06 Domestic hot water set back mode setting</description>
+				<label>P06 Domestic hot water temperature standby</label>
+				<description>P06 Domestic hot water standby mode setting</description>
 			</channel>
 			<channel id="p07FanStageStandardMode" typeId="fanStageSetting">
 				<label>P07 Fan stage standard</label>
