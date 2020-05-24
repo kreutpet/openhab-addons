@@ -385,7 +385,7 @@
 	</channel-type>
 	<channel-type id="year" advanced="true">
 		<item-type>Number</item-type>
-		<label>Seconds</label>
+		<label>Year</label>
 		<description>Year of the current time.</description>
 		<state min="0" max="99" step="1" pattern="%d YY" readOnly="true" />
 	</channel-type>
