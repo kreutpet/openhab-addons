@@ -109,8 +109,11 @@
     <module>org.openhab.binding.dsmr</module>
     <module>org.openhab.binding.dwdpollenflug</module>
     <module>org.openhab.binding.dwdunwetter</module>
+    <module>org.openhab.binding.easee</module>
+    <module>org.openhab.binding.echonetlite</module>
     <module>org.openhab.binding.ecobee</module>
     <module>org.openhab.binding.ecotouch</module>
+    <module>org.openhab.binding.ecowatt</module>
     <module>org.openhab.binding.ekey</module>
     <module>org.openhab.binding.electroluxair</module>
     <module>org.openhab.binding.elerotransmitterstick</module>
@@ -183,6 +186,7 @@
     <module>org.openhab.binding.jablotron</module>
     <module>org.openhab.binding.jeelink</module>
     <module>org.openhab.binding.jellyfin</module>
+    <module>org.openhab.binding.juicenet</module>
     <module>org.openhab.binding.kaleidescape</module>
     <module>org.openhab.binding.keba</module>
     <module>org.openhab.binding.km200</module>
@@ -211,9 +215,12 @@
     <module>org.openhab.binding.magentatv</module>
     <module>org.openhab.binding.mail</module>
     <module>org.openhab.binding.max</module>
+    <module>org.openhab.binding.mcd</module>
     <module>org.openhab.binding.mcp23017</module>
+    <module>org.openhab.binding.meater</module>
     <module>org.openhab.binding.mecmeter</module>
     <module>org.openhab.binding.melcloud</module>
+    <module>org.openhab.binding.mercedesme</module>
     <module>org.openhab.binding.meteoalerte</module>
     <module>org.openhab.binding.meteoblue</module>
     <module>org.openhab.binding.meteostick</module>
@@ -255,6 +262,7 @@
     <module>org.openhab.binding.nibeuplink</module>
     <module>org.openhab.binding.nikobus</module>
     <module>org.openhab.binding.nikohomecontrol</module>
+    <module>org.openhab.binding.nobohub</module>
     <module>org.openhab.binding.novafinedust</module>
     <module>org.openhab.binding.ntp</module>
     <module>org.openhab.binding.nuki</module>
@@ -332,9 +340,11 @@
     <module>org.openhab.binding.snmp</module>
     <module>org.openhab.binding.solaredge</module>
     <module>org.openhab.binding.solarlog</module>
+    <module>org.openhab.binding.solarmax</module>
     <module>org.openhab.binding.solarwatt</module>
     <module>org.openhab.binding.somfymylink</module>
     <module>org.openhab.binding.somfytahoma</module>
+    <module>org.openhab.binding.somneo</module>
     <module>org.openhab.binding.sonnen</module>
     <module>org.openhab.binding.sonos</module>
     <module>org.openhab.binding.sonyaudio</module>
@@ -357,6 +367,7 @@
     <module>org.openhab.binding.tibber</module>
     <module>org.openhab.binding.tivo</module>
     <module>org.openhab.binding.touchwand</module>
+    <module>org.openhab.binding.tplinkrouter</module>
     <module>org.openhab.binding.tplinksmarthome</module>
     <module>org.openhab.binding.tr064</module>
     <module>org.openhab.binding.tradfri</module>
@@ -410,6 +421,7 @@
     <module>org.openhab.voice.googletts</module>
     <module>org.openhab.voice.mactts</module>
     <module>org.openhab.voice.marytts</module>
+    <module>org.openhab.voice.mimictts</module>
     <module>org.openhab.voice.actiontemplatehli</module>
     <module>org.openhab.voice.picotts</module>
     <module>org.openhab.voice.pollytts</module>

@@ -34,13 +34,19 @@
 				<description>Password for the Bosch Indego account.</description>
 			</parameter>
 			<parameter name="refresh" type="integer" min="60">
-				<label>Refresh Interval</label>
-				<description>The number of seconds between refreshing device state.</description>
+				<label>Idle Refresh Interval</label>
+				<description>The number of seconds between refreshing device state when idle.</description>
 				<default>180</default>
 			</parameter>
-			<parameter name="cuttingTimeMapRefresh" type="integer" min="1">
-				<label>Cutting Time/Map Refresh Interval</label>
-				<description>The number of minutes between refreshing last/next cutting time and map.</description>
+			<parameter name="stateActiveRefresh" type="integer" min="6">
+				<label>Active Refresh Interval</label>
+				<description>The number of seconds between refreshing device state when active.</description>
+				<advanced>true</advanced>
+				<default>30</default>
+			</parameter>
+			<parameter name="cuttingTimeRefresh" type="integer" min="1">
+				<label>Cutting Time Refresh Interval</label>
+				<description>The number of minutes between refreshing last/next cutting time.</description>
 				<advanced>true</advanced>
 				<default>60</default>
 			</parameter>
@@ -87,6 +93,7 @@
 				<option value="518">@text/indego.state.border-cut</option>
 				<option value="519">@text/indego.state.idle-in-lawn</option>
 				<option value="523">@text/indego.state.spotmow</option>
+				<option value="768">@text/indego.state.returning-to-dock</option>
 				<option value="769">@text/indego.state.returning-to-dock</option>
 				<option value="770">@text/indego.state.returning-to-dock</option>
 				<option value="771">@text/indego.state.returning-to-dock-battery-low</option>
@@ -165,7 +172,7 @@
 	<channel-type id="gardenMap">
 		<item-type>Image</item-type>
 		<label>Garden Map</label>
-		<description>Garden map mapped by the device</description>
+		<description>Garden map created by the device</description>
 		<state readOnly="true"/>
 	</channel-type>
 
