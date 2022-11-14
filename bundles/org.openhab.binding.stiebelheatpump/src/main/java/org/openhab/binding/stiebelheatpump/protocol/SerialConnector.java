@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2020 Contributors to the openHAB project
+ * Copyright (c) 2010-2022 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -148,7 +148,7 @@ public class SerialConnector implements ProtocolConnector {
     public void write(byte data) throws StiebelHeatPumpException {
         try {
             String byteStr = String.format("Send %02X", data);
-            logger.trace(byteStr);
+            logger.trace("{}", byteStr);
             out.write(data);
             out.flush();
         } catch (IOException e) {

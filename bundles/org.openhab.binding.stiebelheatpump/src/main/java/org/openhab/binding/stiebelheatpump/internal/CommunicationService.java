@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2020 Contributors to the openHAB project
+ * Copyright (c) 2010-2022 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -33,20 +33,23 @@ import org.openhab.core.io.transport.serial.SerialPortManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Stefan Triller
+ */
 public class CommunicationService {
 
-    private Logger logger = LoggerFactory.getLogger(CommunicationService.class);
+    private final Logger logger = LoggerFactory.getLogger(CommunicationService.class);
 
-    private ProtocolConnector connector;
-    private int maxRetry = 5;
-    private static int inputBufferLength = 1024;
+    private final ProtocolConnector connector;
+    private final int maxRetry = 5;
+    private static final int inputBufferLength = 1024;
     private byte[] buffer = new byte[inputBufferLength];
 
     DataParser parser = new DataParser();
 
-    private SerialPortManager serialPortManager;
-    private String serialPortName;
-    private int baudRate;
+    private final SerialPortManager serialPortManager;
+    private final String serialPortName;
+    private final int baudRate;
     private int waitingTime = 1200;
 
     public CommunicationService(SerialPortManager serialPortManager, String serialPortName, int baudRate,
@@ -132,7 +135,9 @@ public class CommunicationService {
             LocalDateTime dt = LocalDateTime.now();
             String formattedString = dt.format(DateTimeFormatter.ofPattern(DATE_PATTERN));
             logger.debug("Current time is : {}", dt);
-            short weekday = (short) dt.getDayOfWeek().getValue();
+            // Weekday: Heatpump: 0 (Mo) - 6 (Sun)
+            // LocalDateTime: 1 (Mo) - 7 (Sun)
+            short weekday = (short) (dt.getDayOfWeek().getValue() - 1);
             short day = (short) dt.getDayOfMonth();
             short month = (short) dt.getMonthValue();
             short year = Short.parseShort(Year.now().format(DateTimeFormatter.ofPattern("uu")));
@@ -210,13 +215,12 @@ public class CommunicationService {
             try {
                 startCommunication();
                 responseAvailable = getData(requestMessage);
-                responseAvailable = parser.fixDuplicatedBytes(responseAvailable);
                 if (parser.headerCheck(responseAvailable)) {
                     return parser.parseRecords(responseAvailable, request);
                 }
                 success = true;
             } catch (StiebelHeatPumpException e) {
-                logger.warn("Error reading data  for {}: {} -> Retry: {}", requestStr, e.toString(), count);
+                logger.warn("Error reading data for {}: {} -> Retry: {}", requestStr, e, count);
             }
         }
         if (!success) {
@@ -245,14 +249,13 @@ public class CommunicationService {
             try {
                 startCommunication();
                 responseAvailable = getData(requestMessage);
-                responseAvailable = parser.fixDuplicatedBytes(responseAvailable);
                 if (parser.headerCheck(responseAvailable)) {
                     analyzeResponse(responseAvailable);
                     return DataParser.bytesToHex(responseAvailable, true);
                 }
                 success = true;
             } catch (StiebelHeatPumpException e) {
-                logger.warn("Error reading data  for {}: {} -> Retry: {}", requestStr, e.toString(), count);
+                logger.warn("Error reading data for {}: {} -> Retry: {}", requestStr, e, count);
             }
         }
         if (!success) {
@@ -361,7 +364,6 @@ public class CommunicationService {
             // connector object
             byte[] requestMessage = createRequestMessage(updateRecord.getRequestByte());
             byte[] response = getData(requestMessage);
-            response = parser.fixDuplicatedBytes(response);
             String bytes = DataParser.bytesToHex(response, true);
             logger.debug("Parse bytes: {}", bytes);
             Object currentValue = parser.parseRecord(response, updateRecord);
@@ -378,7 +380,6 @@ public class CommunicationService {
             Thread.sleep(waitingTime);
 
             response = setData(requestUpdateMessage);
-            response = parser.fixDuplicatedBytes(response);
             if (parser.setDataCheck(response)) {
                 logger.debug("Updated parameter {} successfully.", channelId);
                 data.put(channelId, newValue);
@@ -388,9 +389,9 @@ public class CommunicationService {
             }
 
         } catch (StiebelHeatPumpException e) {
-            logger.error("Stiebel heat pump communication error during update of value !");
+            logger.error("Stiebel heat pump communication error during update of value!");
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error("Interrupted", e);
         }
         return data;
     }
@@ -520,7 +521,7 @@ public class CommunicationService {
             connector.write(DataParser.STARTCOMMUNICATION);
             response = connector.get();
         } catch (Exception e) {
-            throw new StiebelHeatPumpException("heat pump communication could not be established !" + e.getMessage());
+            throw new StiebelHeatPumpException("heat pump communication could not be established!" + e.getMessage());
         }
         if (response != DataParser.ESCAPE) {
             throw new StiebelHeatPumpException(
@@ -537,12 +538,12 @@ public class CommunicationService {
      * @return true if data are available from heatpump
      */
     private boolean establishRequest(byte[] request) {
-        int numBytesReadTotal = 0;
         boolean dataAvailable = false;
         int requestRetry = 0;
         int retry = 0;
         try {
             while (requestRetry < maxRetry) {
+                int numBytesReadTotal = 0;
                 connector.write(request);
                 retry = 0;
                 byte singleByte;
@@ -612,7 +613,7 @@ public class CommunicationService {
 
         byte[] responseBuffer = new byte[numBytesReadTotal];
         System.arraycopy(buffer, 0, responseBuffer, 0, numBytesReadTotal);
-        return responseBuffer;
+        return parser.fixDuplicatedBytes(responseBuffer);
     }
 
     /**
@@ -634,7 +635,7 @@ public class CommunicationService {
             requestMessage = parser.addDuplicatedBytes(requestMessage);
         } catch (StiebelHeatPumpException e) {
             String requestStr = String.format("%02X", requestytes);
-            logger.error("Could not create request [{}] message !", requestStr, e.toString());
+            logger.error("Could not create request [{}] message: {}", requestStr, e.toString());
         }
         return requestMessage;
     }

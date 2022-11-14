@@ -1,10 +1,14 @@
 /**
- * Copyright (c) 2010-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2022 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.stiebelheatpump.internal;
 
@@ -130,7 +134,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
                 case CHANNEL_REQUESTBYTES:
                     String requestStr = command.toString();
                     byte[] debugBytes = DataParser.hexStringToByteArray(requestStr);
-                    logger.debug("Dump responds for request byte {} !", requestStr);
+                    logger.debug("Dump responds for request byte {}!", requestStr);
                     String respondStr = communicationService.dumpRequest(debugBytes);
                     updateRespondChannel(respondStr);
                     logger.debug("Response from heatpump: {}", respondStr);
@@ -168,7 +172,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
                             LocalTime time = LocalTime.parse(command.toString(), strictTimeFormatter);
                             value = (short) (time.getHour() * 100 + time.getMinute());
                         } catch (DateTimeParseException e) {
-                            logger.info("Time string is not valid ! : {}", e.getMessage());
+                            logger.info("Time string is not valid! : {}", e.getMessage());
                         }
                     }
                     data = communicationService.writeData(value, channelId, updateRecord);
@@ -193,7 +197,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
         String channelId = channelUID.getId();
         Request request = heatPumpConfiguration.getRequestByChannelId(channelId);
         if (request == null) {
-            logger.debug("No Request found for channelid {} !", channelId);
+            logger.debug("No Request found for channelid {}!", channelId);
             return;
         }
         if (scheduledRequests.getRequests().contains(request)) {
@@ -314,7 +318,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
                 return;
             }
         } catch (StiebelHeatPumpException e) {
-            logger.debug(e.getMessage());
+            logger.debug("{}", e.getMessage());
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.CONFIGURATION_ERROR,
                     "Communication problem with heatpump");
             communicationService.finalizer();
@@ -374,7 +378,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
                 Map<String, Object> time = communicationService.setTime(timeRequest);
                 updateChannels(time);
             } catch (StiebelHeatPumpException e) {
-                logger.debug(e.getMessage());
+                logger.debug("{}", e.getMessage());
             } finally {
                 communicationInUse.unlock();
             }

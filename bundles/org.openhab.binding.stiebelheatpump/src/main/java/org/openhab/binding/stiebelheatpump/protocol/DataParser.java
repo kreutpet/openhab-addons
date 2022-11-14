@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2020 Contributors to the openHAB project
+ * Copyright (c) 2010-2022 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -196,10 +196,10 @@ public class DataParser {
             if (newValue instanceof Double) {
                 Double newValueDouble = (Double) newValue;
                 if (newValueDouble > recordDefinition.getMax() || newValueDouble < recordDefinition.getMin()) {
-                    logger.warn("The record {} can not be set to value {} as allowed range is {}<-->{} !",
+                    logger.warn("The record {} can not be set to value {} as allowed range is {}<-->{}!",
                             recordDefinition.getChannelid(), newValue, recordDefinition.getMax(),
                             recordDefinition.getMin());
-                    throw new StiebelHeatPumpException("invalid value !");
+                    throw new StiebelHeatPumpException("invalid value!");
                 }
                 newValueShort = (short) (newValueDouble / recordDefinition.getScale());
             }
@@ -207,10 +207,10 @@ public class DataParser {
             if (newValue instanceof Short) {
                 newValueShort = (Short) newValue;
                 if (newValueShort > recordDefinition.getMax() || newValueShort < recordDefinition.getMin()) {
-                    logger.warn("The record {} can not be set to value {} as allowed range is {}<-->{} !",
+                    logger.warn("The record {} can not be set to value {} as allowed range is {}<-->{}!",
                             recordDefinition.getChannelid(), newValue, recordDefinition.getMax(),
                             recordDefinition.getMin());
-                    throw new StiebelHeatPumpException("invalid value !");
+                    throw new StiebelHeatPumpException("invalid value!");
                 }
             }
 
@@ -231,8 +231,8 @@ public class DataParser {
         }
         response[2] = this.calculateChecksum(response);
         this.addDuplicatedBytes(response);
-        logger.debug("Updated record {} at position {} to value {}.", recordDefinition.getChannelid(),
-                recordDefinition.getPosition(), newValue);
+        logger.debug("Updated record {} at position {} with length {} to value {}.", recordDefinition.getChannelid(),
+                recordDefinition.getPosition(), recordDefinition.getLength(), newValue);
         return response;
     }
 

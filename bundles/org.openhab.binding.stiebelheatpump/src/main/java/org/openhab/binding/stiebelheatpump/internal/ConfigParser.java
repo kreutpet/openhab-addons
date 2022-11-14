@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2020 Contributors to the openHAB project
+ * Copyright (c) 2010-2022 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -62,11 +62,11 @@ public class ConfigParser {
             records = (Records) xstream.fromXML(x);
 
             if (records == null) {
-                logger.debug("Records could not be desialized from: {} " + configFile.toString());
+                logger.debug("Records could not be deserialized from: {}", configFile.toString());
                 return null;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("IO error while parsing configuration", e);
         }
 
         return records;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2020 Contributors to the openHAB project
+ * Copyright (c) 2010-2022 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -13,6 +13,7 @@
 package org.openhab.binding.stiebelheatpump.protocol;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -84,7 +85,7 @@ public class Requests {
 
     public Request getRequestByByte(byte[] requestByte) {
         for (Request request : requestList) {
-            if (request.getRequestByte() == requestByte) {
+            if (Arrays.equals(request.getRequestByte(), requestByte)) {
                 return request;
             }
         }

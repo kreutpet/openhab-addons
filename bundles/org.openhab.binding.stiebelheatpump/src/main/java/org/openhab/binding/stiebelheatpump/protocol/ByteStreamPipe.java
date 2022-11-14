@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2020 Contributors to the openHAB project
+ * Copyright (c) 2010-2022 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -81,7 +81,7 @@ public class ByteStreamPipe implements Runnable {
             try {
                 if (in.available() > 0) {
                     byte readByte = (byte) in.read();
-                    logger.trace(String.format("Received %02X", readByte));
+                    logger.trace("{}", String.format("Received %02X", readByte));
                     buffer.put(readByte);
                 }
                 Thread.sleep(3);
