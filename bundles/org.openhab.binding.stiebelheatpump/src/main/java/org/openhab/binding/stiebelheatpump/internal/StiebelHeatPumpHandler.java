@@ -31,9 +31,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.regex.Pattern;
 
-import javax.measure.quantity.Dimensionless;
-import javax.measure.quantity.Power;
-import javax.measure.quantity.Temperature;
+import javax.measure.Unit;
+import javax.measure.format.MeasurementParseException;
 
 import org.openhab.binding.stiebelheatpump.protocol.DataParser;
 import org.openhab.binding.stiebelheatpump.protocol.RecordDefinition;
@@ -47,8 +46,6 @@ import org.openhab.core.library.types.OnOffType;
 import org.openhab.core.library.types.OpenClosedType;
 import org.openhab.core.library.types.QuantityType;
 import org.openhab.core.library.types.StringType;
-import org.openhab.core.library.unit.SIUnits;
-import org.openhab.core.library.unit.Units;
 import org.openhab.core.thing.Channel;
 import org.openhab.core.thing.ChannelUID;
 import org.openhab.core.thing.Thing;
@@ -60,6 +57,8 @@ import org.openhab.core.types.Command;
 import org.openhab.core.types.RefreshType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import tech.units.indriya.format.SimpleUnitFormat;
 
 /**
  * The {@link StiebelHeatPumpHandler} is responsible for handling commands, which are
@@ -235,7 +234,7 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
         }
 
         communicationService = new CommunicationService(serialPortManager, config.port, config.baudRate,
-                config.waitingTime, scheduler);
+                config.waitingTime);
 
         scheduler.schedule(this::getInitialHeatPumpSettings, 0, TimeUnit.SECONDS);
         updateStatus(ThingStatus.UNKNOWN, ThingStatusDetail.HANDLER_CONFIGURATION_PENDING,
@@ -435,34 +434,35 @@ public class StiebelHeatPumpHandler extends BaseThingHandler {
     }
 
     private void updateStatus(Number value, ChannelUID channelUID) {
-        String itemType = getThing().getChannel(channelUID).getAcceptedItemType();
-        if (value instanceof Double) {
-            switch (itemType) {
-                case "Number:Temperature":
-                    QuantityType<Temperature> temperature = new QuantityType<>(value, SIUnits.CELSIUS);
-                    updateState(channelUID, temperature);
-                    break;
-                case "Number:Energy":
-                    // TODO: how to make this kW as these are coming from heatpump
-                    QuantityType<Power> energy = new QuantityType<>(value, Units.WATT);
-                    updateState(channelUID, energy);
-                    break;
-                case "Number:Dimensionless:Percent":
-                    QuantityType<Dimensionless> percent = new QuantityType<>(value, Units.PERCENT);
-                    updateState(channelUID, percent);
-                    break;
-                case "String":
-                    updateState(channelUID, new StringType(value.toString()));
-                    break;
-                default:
-                    updateState(channelUID, new DecimalType((Double) value));
+        // Try to get the value as a quantity first, i.e., including the unit
+        RecordDefinition requestDefinition = heatPumpConfiguration.getRecordDefinitionByChannelId(channelUID.getId());
+        if (requestDefinition != null) {
+            String unitString = requestDefinition.getUnit();
+            if (unitString != null && !unitString.isBlank()) {
+                try {
+                    Unit<?> unit = SimpleUnitFormat.getInstance().parse(unitString);
+                    QuantityType<?> quantity = new QuantityType<>(value, unit);
+                    logger.debug("Determined unit {} as {} for {}, value {}", unitString, unit, channelUID.getId(),
+                            value);
+                    updateState(channelUID, quantity);
+                    return;
+                } catch (MeasurementParseException e) {
+                    logger.warn("Cannot parse unit {} for {}: {}", unitString, channelUID.getId(), e.getMessage());
+                }
             }
-            return;
         }
-        if (value instanceof Short) {
+
+        // Otherwise, publish it as a unit-less value
+        if (value instanceof Double) {
+            String itemType = getThing().getChannel(channelUID).getAcceptedItemType();
+            if ("String".equals(itemType)) {
+                updateState(channelUID, new StringType(value.toString()));
+            } else {
+                updateState(channelUID, new DecimalType((Double) value));
+            }
+        } else if (value instanceof Short) {
             updateState(channelUID, new DecimalType((short) value));
-        }
-        if (value instanceof Integer) {
+        } else if (value instanceof Integer) {
             updateState(channelUID, new DecimalType((int) value));
         }
     }

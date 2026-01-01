@@ -66,7 +66,8 @@ public class DataParser {
      *            request defined for heat pump response
      * @return Map of Strings with name and values
      */
-    public Map<String, Object> parseRecords(final byte[] response, Request request) throws StiebelHeatPumpException {
+    public Map<String, Object> parseRecords(final byte[] response, final byte[] response1000, Request request)
+            throws StiebelHeatPumpException {
 
         Map<String, Object> map = new HashMap<>();
         String bytes = bytesToHex(response, true);
@@ -77,10 +78,21 @@ public class DataParser {
             return map;
         }
 
+        String bytes1000 = null;
+        if (response1000 != null) {
+            bytes1000 = bytesToHex(response1000, true);
+            logger.debug("Parse bytes1000: {}", bytes1000);
+
+            if (response1000.length < 2) {
+                logger.error("response1000 does not have a valid length of bytes: {}", bytes1000);
+                return map;
+            }
+        }
+
         // parse response and fill map
         for (RecordDefinition recordDefinition : request.getRecordDefinitions()) {
             try {
-                Object value = parseRecord(response, recordDefinition);
+                Object value = parseRecord(response, response1000, recordDefinition);
                 String channel = recordDefinition.getChannelid();
                 logger.debug("Parsed value {} -> {} with pos: {} , len: {}", channel, value,
                         recordDefinition.getPosition(), recordDefinition.getLength());
@@ -104,7 +116,8 @@ public class DataParser {
      *         double for decimal values
      * @throws StiebelHeatPumpException
      */
-    public Object parseRecord(byte[] response, RecordDefinition recordDefinition) throws StiebelHeatPumpException {
+    public Object parseRecord(byte[] response, byte[] response1000, RecordDefinition recordDefinition)
+            throws StiebelHeatPumpException {
         String responseStr = bytesToHex(response, true);
         try {
             if (response.length < 2) {
@@ -113,6 +126,7 @@ public class DataParser {
             }
             short number = 0;
             ByteBuffer buffer = ByteBuffer.wrap(response);
+            ByteBuffer buffer1000 = response1000 != null ? ByteBuffer.wrap(response1000) : null;
             byte[] bytes = null;
 
             // get number type of data depending on byte length
@@ -126,6 +140,9 @@ public class DataParser {
                     bytes = new byte[2];
                     System.arraycopy(response, recordDefinition.getPosition(), bytes, 0, 2);
                     number = buffer.getShort(recordDefinition.getPosition());
+                    if (buffer1000 != null) {
+                        return buffer1000.getShort(recordDefinition.getPosition()) * 1000 + number;
+                    }
                     break;
                 case 4:
                     bytes = new byte[4];
@@ -168,7 +185,7 @@ public class DataParser {
      *            pump set command
      * @param string
      *            value to be compose
-     * @return byte[] ready to send to heat pump
+     * @return byte[] ready to send to heat pump (almost - it still needs escaping)
      * @throws StiebelHeatPumpException
      */
     public byte[] composeRecord(Object currentValue, Object newValue, byte[] response,
@@ -230,7 +247,6 @@ public class DataParser {
             }
         }
         response[2] = this.calculateChecksum(response);
-        this.addDuplicatedBytes(response);
         logger.debug("Updated record {} at position {} with length {} to value {}.", recordDefinition.getChannelid(),
                 recordDefinition.getPosition(), recordDefinition.getLength(), newValue);
         return response;

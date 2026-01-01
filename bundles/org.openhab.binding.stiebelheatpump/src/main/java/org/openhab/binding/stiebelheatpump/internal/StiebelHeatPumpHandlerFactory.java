@@ -38,8 +38,11 @@ public class StiebelHeatPumpHandlerFactory extends BaseThingHandlerFactory {
     private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = new HashSet<>() {
         {
             add(THING_TYPE_LWZ206);
+            add(THING_TYPE_LWZ214);
+            add(THING_TYPE_LWZ214J);
             add(THING_TYPE_LWZ236);
             add(THING_TYPE_LWZ419);
+            add(THING_TYPE_LWZ439);
             add(THING_TYPE_LWZ509);
             add(THING_TYPE_LWZ539);
             add(THING_TYPE_LWZ739);

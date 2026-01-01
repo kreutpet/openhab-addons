@@ -54,13 +54,11 @@ public class CommunicationServiceTests {
     public void test() throws Exception {
         mockSerialPort();
 
-        CommunicationService cs = new CommunicationService(serialPortManager, "", 9600, 1000, null);
-        // cs.setConnector(mockSerialConnector());
-        // cs.connect();
+        CommunicationService cs = new CommunicationService(serialPortManager, "", 9600, 1000);
 
         RecordDefinition updateRecord = new RecordDefinition("myChannel",
-                new byte[] { (byte) 0x0a, (byte) 0x05, (byte) 0x6c }, 1, 1, 1, Type.Settings, 0, 3, 1, "unitTest");
-        // cs.writeData(1, "myChannel", updateRecord);
+                new byte[] { (byte) 0x0a, (byte) 0x05, (byte) 0x6c }, null, 1, 1, 1, Type.Settings, 0, 3, 1,
+                "unitTest");
 
         byte[] request = cs.createRequestMessage(updateRecord.getRequestByte());
         String req = HexUtils.bytesToHex(request);
@@ -92,7 +90,6 @@ public class CommunicationServiceTests {
 
             @Override
             public Object answer(InvocationOnMock invocation) {
-                // System.out.println("count = " + count);
                 count++;
                 if (count == 1) {
                     return DataParser.ESCAPE;

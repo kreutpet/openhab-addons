@@ -29,16 +29,18 @@ public class Request {
     private String name;
     private String description;
     private byte[] requestByte;
+    private byte[] requestByte1000;
     private List<RecordDefinition> recordDefinitionList;
 
     public Request() {
         this.recordDefinitionList = new ArrayList<>();
     }
 
-    public Request(String name, String description, byte[] requestByte) {
+    public Request(String name, String description, byte[] requestByte, byte[] requestByte1000) {
         this.name = name;
         this.description = description;
         this.requestByte = requestByte;
+        this.requestByte1000 = requestByte1000;
         this.recordDefinitionList = new ArrayList<>();
     }
 
@@ -64,6 +66,14 @@ public class Request {
 
     public void setRequestByte(byte[] requestByte) {
         this.requestByte = requestByte;
+    }
+
+    public byte[] getRequestByte1000() {
+        return requestByte1000;
+    }
+
+    public void setRequestByte1000(byte[] requestByte1000) {
+        this.requestByte1000 = requestByte1000;
     }
 
     public List<RecordDefinition> getRecordDefinitions() {

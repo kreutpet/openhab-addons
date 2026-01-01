@@ -30,6 +30,8 @@ public class RecordDefinition {
 
     private byte[] requestByte;
 
+    private byte[] requestByte1000;
+
     private Type dataType;
 
     private int position;
@@ -56,9 +58,13 @@ public class RecordDefinition {
      *
      * @param channelid
      *            of record
+     * @param requestByte
+     *            bytes to request the value
+     * @param requestByte1000
+     *            bytes to request the thousands of the value (usually null, i.e. unused)
      * @param position
      *            of the value in the byte array
-     * @param lenght
+     * @param length
      *            of byte representing the value
      * @param scale
      *            to apply to the byte value
@@ -67,12 +73,13 @@ public class RecordDefinition {
      * @param unit
      *            of the value
      */
-    public RecordDefinition(String channelid, byte[] requestByte, int position, int lenght, double scale, Type dataType,
-            String unit) {
+    public RecordDefinition(String channelid, byte[] requestByte, byte[] requestByte1000, int position, int length,
+            double scale, Type dataType, String unit) {
         this.channelid = channelid;
         this.requestByte = requestByte;
+        this.requestByte1000 = requestByte1000;
         this.position = position;
-        this.length = lenght;
+        this.length = length;
         this.scale = scale;
         this.dataType = dataType;
         this.unit = unit;
@@ -84,9 +91,13 @@ public class RecordDefinition {
      *
      * @param channelid
      *            of record
+     * @param requestByte
+     *            bytes to request the value
+     * @param requestByte1000
+     *            bytes to request the thousands of the value (usually null, i.e. unused)
      * @param position
      *            of the value in the byte array
-     * @param lenght
+     * @param length
      *            of byte representing the value
      * @param scale
      *            to apply to the byte value
@@ -103,12 +114,13 @@ public class RecordDefinition {
      * @param unit
      *            of the value
      */
-    public RecordDefinition(String channelid, byte[] requestByte, int position, int lenght, double scale, Type dataType,
-            int min, int max, double step, int bitPosition, String unit) {
+    public RecordDefinition(String channelid, byte[] requestByte, byte[] requestByte1000, int position, int length,
+            double scale, Type dataType, int min, int max, double step, int bitPosition, String unit) {
         this.channelid = channelid;
         this.requestByte = requestByte;
+        this.requestByte1000 = requestByte1000;
         this.position = position;
-        this.length = lenght;
+        this.length = length;
         this.scale = scale;
         this.dataType = dataType;
         this.min = min;
@@ -123,9 +135,13 @@ public class RecordDefinition {
      *
      * @param channelid
      *            of record
+     * @param requestByte
+     *            bytes to request the value
+     * @param requestByte1000
+     *            bytes to request the thousands of the value (usually null, i.e. unused)
      * @param position
      *            of the value in the byte array
-     * @param lenght
+     * @param length
      *            of byte representing the value
      * @param scale
      *            to apply to the byte value
@@ -140,12 +156,13 @@ public class RecordDefinition {
      * @param unit
      *            of the value
      */
-    public RecordDefinition(String channelid, byte[] requestByte, int position, int lenght, double scale, Type dataType,
-            int min, int max, double step, String unit) {
+    public RecordDefinition(String channelid, byte[] requestByte, byte[] requestByte1000, int position, int length,
+            double scale, Type dataType, int min, int max, double step, String unit) {
         this.channelid = channelid;
         this.requestByte = requestByte;
+        this.requestByte1000 = requestByte1000;
         this.position = position;
-        this.length = lenght;
+        this.length = length;
         this.scale = scale;
         this.dataType = dataType;
         this.min = min;
@@ -168,6 +185,14 @@ public class RecordDefinition {
 
     public void setRequestByte(byte[] requestByte) {
         this.requestByte = requestByte;
+    }
+
+    public byte[] getRequestByte1000() {
+        return requestByte1000;
+    }
+
+    public void setRequestByte1000(byte[] requestByte1000) {
+        this.requestByte1000 = requestByte1000;
     }
 
     public int getPosition() {

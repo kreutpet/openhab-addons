@@ -14,7 +14,6 @@ package org.openhab.binding.stiebelheatpump.protocol;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.concurrent.ScheduledExecutorService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,30 +32,15 @@ public class ByteStreamPipe implements Runnable {
     private CircularByteBuffer buffer;
     private Thread taskThread;
 
-    // private ScheduledExecutorService scheduler;
-    // private Future<?> readJob;
-
-    public ByteStreamPipe(InputStream in, CircularByteBuffer buffer, ScheduledExecutorService scheduler) {
+    public ByteStreamPipe(InputStream in, CircularByteBuffer buffer) {
         this.in = in;
         this.buffer = buffer;
-        // this.scheduler = scheduler;
     }
-
-    // public void startTask() {
-    // readJob = scheduler.scheduleWithFixedDelay(this::run, 500, 3, TimeUnit.MILLISECONDS);
-    // }
 
     public void startTask() {
         taskThread = new Thread(this);
         taskThread.start();
     }
-
-    // public void stopTask() {
-    // if (this.readJob != null) {
-    // this.readJob.cancel(true);
-    // }
-    // this.readJob = null;
-    // }
 
     public void stopTask() {
         taskThread.interrupt();
@@ -70,8 +54,6 @@ public class ByteStreamPipe implements Runnable {
         } catch (InterruptedException ex) {
             logger.warn("Stoppping serial thread was interrupted");
             Thread.currentThread().interrupt();
-            // ex.printStackTrace();
-            // System.exit(1);
         }
     }
 
@@ -90,22 +72,9 @@ public class ByteStreamPipe implements Runnable {
                 Thread.currentThread().interrupt();
             } catch (Exception e) {
                 logger.error("Error while reading from COM port. Stopping.", e);
-                // throw new RuntimeException(e);
+                buffer.stop();
+                return;
             }
         }
     }
-
-    // @Override
-    // public void run() {
-    // try {
-    // if (in.available() > 0) {
-    // byte readByte = (byte) in.read();
-    // logger.trace(String.format("Received %02X", readByte));
-    // buffer.put(readByte);
-    // }
-    // } catch (Exception e) {
-    // logger.error("Error while reading from COM port. Stopping.", e);
-    // throw new RuntimeException(e);
-    // }
-    // }
 }

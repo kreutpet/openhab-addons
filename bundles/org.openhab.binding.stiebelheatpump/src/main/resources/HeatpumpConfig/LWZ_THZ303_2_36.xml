@@ -1,349 +1,823 @@
 <?xml version="1.0" ?>
 <records>
-	<record channelid="version" requestByte="FD" dataType="Status" position="4" length="2" scale="0.01"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="weekday" requestByte="FC" dataType="Settings" position="5" length="1" scale="1.0"
-		bitPosition="0" min="1" max="7" step="1.0"></record>
-	<record channelid="hours" requestByte="FC" dataType="Settings" position="6" length="1" scale="1.0"
-		bitPosition="0" min="0" max="23" step="1.0"></record>
-	<record channelid="minutes" requestByte="FC" dataType="Settings" position="7" length="1" scale="1.0"
-		bitPosition="0" min="0" max="59" step="1.0"></record>
-	<record channelid="seconds" requestByte="FC" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="0" min="0" max="59" step="1.0"></record>
-	<record channelid="year" requestByte="FC" dataType="Settings" position="9" length="1" scale="1.0"
-		bitPosition="0" min="0" max="99" step="1.0"></record>
-	<record channelid="month" requestByte="FC" dataType="Settings" position="11" length="1" scale="1.0"
-		bitPosition="0" min="1" max="12" step="1.0"></record>
-	<record channelid="day" requestByte="FC" dataType="Settings" position="12" length="1" scale="1.0"
-		bitPosition="0" min="1" max="31" step="1.0"></record>
-	<record channelid="collectorTemperature" requestByte="FB" dataType="Sensor" position="4" length="2" scale="0.1"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="outsideTemperature" requestByte="FB" dataType="Sensor" position="6" length="2" scale="0.1"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="flowTemperature" requestByte="FB" dataType="Sensor" position="8" length="2" scale="0.1"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="returnTemperature" requestByte="FB" dataType="Sensor" position="10" length="2" scale="0.1"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="hotGasTemperature" requestByte="FB" dataType="Sensor" position="12" length="2" scale="0.1"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="dHWTemperature" requestByte="FB" dataType="Sensor" position="14" length="2" scale="0.1"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="flowHC2Temperature" requestByte="FB" dataType="Sensor" position="16" length="2" scale="0.1"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="insideTemperature" requestByte="FB" dataType="Sensor" position="18" length="2" scale="0.1"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="evaporatorTemperature" requestByte="FB" dataType="Sensor" position="20" length="2" scale="0.1"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="condenserTemperature" requestByte="FB" dataType="Sensor" position="22" length="2" scale="0.1"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="extractFanSpeed" requestByte="FB" dataType="Sensor" position="30" length="1" scale="1.0"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="supplyFanSpeed" requestByte="FB" dataType="Sensor" position="31" length="1" scale="1.0"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="exhaustFanSpeed" requestByte="FB" dataType="Sensor" position="32" length="1" scale="1.0"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="filteredOutsideTemperature" requestByte="FB" dataType="Sensor" position="34" length="2"
-		scale="0.1" bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="dHWPumpStatus" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1.0"
-		bitPosition="1" min="0" max="1" step="0.0"></record>
-	<record channelid="heatingCircuitPumpStatus" requestByte="FB" dataType="Sensor" position="24" length="1"
-		scale="1.0" bitPosition="2" min="0" max="1" step="0.0"></record>
-	<record channelid="solarPumpStatus" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1.0"
-		bitPosition="3" min="0" max="1" step="0.0"></record>
-	<record channelid="mixerOpen" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1.0"
-		bitPosition="4" min="0" max="1" step="0.0"></record>
-	<record channelid="mixerClose" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1.0"
-		bitPosition="5" min="0" max="1" step="0.0"></record>
-	<record channelid="heatPipeValve" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1.0"
-		bitPosition="6" min="0" max="1" step="0.0"></record>
-	<record channelid="DiverterValve" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1.0"
-		bitPosition="7" min="0" max="1" step="0.0"></record>
-	<record channelid="CompressorStatus" requestByte="FB" dataType="Sensor" position="25" length="1" scale="1.0"
-		bitPosition="4" min="0" max="1" step="0.0"></record>
-	<record channelid="BoosterStage3" requestByte="FB" dataType="Sensor" position="25" length="1" scale="1.0"
-		bitPosition="5" min="0" max="1" step="0.0"></record>
-	<record channelid="BoosterStage2" requestByte="FB" dataType="Sensor" position="25" length="1" scale="1.0"
-		bitPosition="6" min="0" max="1" step="0.0"></record>
-	<record channelid="BoosterStage1" requestByte="FB" dataType="Sensor" position="25" length="1" scale="1.0"
-		bitPosition="7" min="0" max="1" step="0.0"></record>
-	<record channelid="compressorA" requestByte="09" dataType="Status" position="4" length="2" scale="1.0"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="compressorB" requestByte="09" dataType="Status" position="6" length="2" scale="1.0"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="heatingMode" requestByte="09" dataType="Status" position="8" length="2" scale="1.0"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="DHWMode" requestByte="09" dataType="Status" position="10" length="2" scale="1.0"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="coolingMode" requestByte="09" dataType="Status" position="12" length="2" scale="1.0"
-		bitPosition="0" min="0" max="0" step="0.0"></record>
-	<record channelid="p01RoomTemperatureStandardMode" requestByte="17" dataType="Settings" position="4" length="2"
-		scale="0.1" bitPosition="0" min="10" max="30" step="0.1"></record>
-	<record channelid="p02RoomTemperatureSetbackMode" requestByte="17" dataType="Settings" position="6" length="2"
-		scale="0.1" bitPosition="0" min="10" max="30" step="0.1"></record>
-	<record channelid="p03RoomTemperatureStandby" requestByte="17" dataType="Settings" position="8" length="2"
-		scale="0.1" bitPosition="0" min="10" max="30" step="0.1"></record>
-	<record channelid="p04DHWTemperatureStandardMode" requestByte="17" dataType="Settings" position="10" length="2"
-		scale="0.1" bitPosition="0" min="10" max="55" step="0.1"></record>
-	<record channelid="p05DHWTemperaturSetbackMode" requestByte="17" dataType="Settings" position="12" length="2"
-		scale="0.1" bitPosition="0" min="10" max="55" step="0.1"></record>
-	<record channelid="p06DHWTemperatureStandby" requestByte="17" dataType="Settings" position="14" length="2"
-		scale="0.1" bitPosition="0" min="10" max="55" step="0.1"></record>
-	<record channelid="p07FanStageStandardMode" requestByte="17" dataType="Settings" position="16" length="1"
-		scale="1.0" bitPosition="0" min="0" max="3" step="1.0"></record>
-	<record channelid="p08FanStageSetbackMode" requestByte="17" dataType="Settings" position="17" length="1"
-		scale="1.0" bitPosition="0" min="0" max="3" step="1.0"></record>
-	<record channelid="p09FanStageStandby" requestByte="17" dataType="Settings" position="18" length="1" scale="1.0"
-		bitPosition="0" min="0" max="3" step="1.0"></record>
-	<record channelid="p10HeatingCircuitTemperatureManual" requestByte="17" dataType="Settings" position="19"
-		length="2" scale="0.1" bitPosition="0" min="10" max="65" step="0.1"></record>
-	<record channelid="p11DHWTemperatureManual" requestByte="17" dataType="Settings" position="21" length="2"
-		scale="0.1" bitPosition="0" min="10" max="65" step="0.1"></record>
-	<record channelid="p12FanStageManual" requestByte="17" dataType="Settings" position="23" length="1" scale="1.0"
-		bitPosition="0" min="0" max="3" step="1.0"></record>
-	<record channelid="p37FanStageSupplyAir1" requestByte="01" dataType="Settings" position="4" length="2"
-		scale="1.0" bitPosition="0" min="60" max="280" step="1.0"></record>
-	<record channelid="p38FanStageSupplyAir2" requestByte="01" dataType="Settings" position="6" length="2"
-		scale="1.0" bitPosition="0" min="60" max="280" step="1.0"></record>
-	<record channelid="p39FanStageSupplyAir3" requestByte="01" dataType="Settings" position="8" length="2"
-		scale="1.0" bitPosition="0" min="60" max="280" step="1.0"></record>
-	<record channelid="p40FanStageExtractAir1" requestByte="01" dataType="Settings" position="10" length="2"
-		scale="1.0" bitPosition="0" min="60" max="280" step="1.0"></record>
-	<record channelid="p41FanStageExtractAir2" requestByte="01" dataType="Settings" position="12" length="2"
-		scale="1.0" bitPosition="0" min="60" max="280" step="1.0"></record>
-	<record channelid="p42FanStageExtractAir3" requestByte="01" dataType="Settings" position="14" length="2"
-		scale="1.0" bitPosition="0" min="60" max="280" step="1.0"></record>
-	<record channelid="p43VentilationTimeUnscheduledStage3" requestByte="01" dataType="Settings" position="16"
-		length="2" scale="1.0" bitPosition="0" min="0" max="1000" step="1.0"></record>
-	<record channelid="p44VentilationTimeUnscheduledStage2" requestByte="01" dataType="Settings" position="18"
-		length="2" scale="1.0" bitPosition="0" min="0" max="1000" step="1.0"></record>
-	<record channelid="p45VentilationTimeUnscheduledStage1" requestByte="01" dataType="Settings" position="20"
-		length="2" scale="1.0" bitPosition="0" min="0" max="1000" step="1.0"></record>
-	<record channelid="p46VentilationTimeUnscheduledStage0" requestByte="01" dataType="Settings" position="22"
-		length="2" scale="1.0" bitPosition="0" min="0" max="1000" step="1.0"></record>
-	<record channelid="p75OperatingModePassiveCooling" requestByte="01" dataType="Settings" position="24" length="2"
-		scale="1.0" bitPosition="0" min="0" max="2" step="1.0"></record>
-	<record channelid="stoveFireplaceOperation" requestByte="01" dataType="Settings" position="24" length="1"
-		scale="1.0" bitPosition="0" min="0" max="4" step="1.0"></record>
-	<record channelid="p13IncreaseHeatingHC1" requestByte="05" dataType="Settings" position="4" length="2"
-		scale="0.1" bitPosition="0" min="1" max="5" step="0.1"></record>
-	<record channelid="p14LowEndPointHeatingHC1" requestByte="05" dataType="Settings" position="6" length="2"
-		scale="0.1" bitPosition="0" min="1" max="20" step="0.1"></record>
-	<record channelid="p15RoomInfluenceHeatingHC1" requestByte="05" dataType="Settings" position="8" length="2"
-		scale="0.1" bitPosition="0" min="1" max="10" step="0.1"></record>
-	<record channelid="p16IncreaseHeatingHC2" requestByte="05" dataType="Settings" position="10" length="1"
-		scale="0.1" bitPosition="0" min="1" max="5" step="0.1"></record>
-	<record channelid="p17LowEndPointHeatingHC2" requestByte="05" dataType="Settings" position="11" length="2"
-		scale="0.1" bitPosition="0" min="1" max="20" step="0.1"></record>
-	<record channelid="p18RoomInfluenceHeatingHC2" requestByte="05" dataType="Settings" position="13" length="2"
-		scale="0.1" bitPosition="0" min="1" max="10" step="0.1"></record>
-	<record channelid="p19TemperatureCaptureReturnFlowHC1" requestByte="05" dataType="Settings" position="15"
-		length="1" scale="1.0" bitPosition="0" min="1" max="100" step="1.0"></record>
-	<record channelid="p20TemperatureCaptureReturnFlowHC2" requestByte="05" dataType="Settings" position="16"
-		length="1" scale="1.0" bitPosition="0" min="1" max="100" step="1.0"></record>
-	<record channelid="maxSetHeatingCircuitTemperatureHC1" requestByte="05" dataType="Settings" position="18"
-		length="2" scale="0.1" bitPosition="0" min="20" max="65" step="0.1"></record>
-	<record channelid="minSetHeatingCircuitTemperatureHC1" requestByte="05" dataType="Settings" position="20"
-		length="2" scale="0.1" bitPosition="0" min="5" max="40" step="0.1"></record>
-	<record channelid="maxSetHeatingCircuitTemperatureHC2" requestByte="05" dataType="Settings" position="22"
-		length="2" scale="0.1" bitPosition="0" min="20" max="65" step="0.1"></record>
-	<record channelid="minSetHeatingCircuitTemperatureHC2" requestByte="05" dataType="Settings" position="24"
-		length="2" scale="0.1" bitPosition="0" min="5" max="40" step="0.1"></record>
-	<record channelid="p21HysteresisHeating1" requestByte="06" dataType="Settings" position="4" length="1"
-		scale="0.1" bitPosition="0" min="0" max="10" step="0.1"></record>
-	<record channelid="p22HysteresisHeating2" requestByte="06" dataType="Settings" position="5" length="1"
-		scale="0.1" bitPosition="0" min="0" max="10" step="0.1"></record>
-	<record channelid="p23HysteresisHeating3" requestByte="06" dataType="Settings" position="6" length="1"
-		scale="0.1" bitPosition="0" min="0" max="5" step="0.1"></record>
-	<record channelid="p24HysteresisHeating4" requestByte="06" dataType="Settings" position="7" length="1"
-		scale="0.1" bitPosition="0" min="0" max="5" step="0.1"></record>
-	<record channelid="p25HysteresisHeating5" requestByte="06" dataType="Settings" position="8" length="1"
-		scale="0.1" bitPosition="0" min="0" max="5" step="0.1"></record>
-	<record channelid="p26HysteresisHeating6" requestByte="06" dataType="Settings" position="9" length="1"
-		scale="0.1" bitPosition="0" min="0" max="5" step="0.1"></record>
-	<record channelid="p27HysteresisHeating7" requestByte="06" dataType="Settings" position="10" length="1"
-		scale="0.1" bitPosition="0" min="0" max="5" step="0.1"></record>
-	<record channelid="p28HysteresisHeating8" requestByte="06" dataType="Settings" position="11" length="1"
-		scale="0.1" bitPosition="0" min="0" max="5" step="0.1"></record>
-	<record channelid="p29SwitchingHysteresisAsymmetry" requestByte="06" dataType="Settings" position="12"
-		length="1" scale="1.0" bitPosition="0" min="1" max="5" step="1.0"></record>
-	<record channelid="p30SwitchingValueIntegralPortionHeating" requestByte="06" dataType="Settings" position="13"
-		length="1" scale="1.0" bitPosition="0" min="1" max="999" step="1.0"></record>
-	<record channelid="p31AmountOfUnlockedElectricalBoosterStages" requestByte="06" dataType="Settings"
-		position="15" length="1" scale="1.0" bitPosition="0" min="0" max="3" step="1.0"></record>
-	<record channelid="maxFlowTemperatureHeatingMode" requestByte="06" dataType="Settings" position="16" length="2"
-		scale="0.1" bitPosition="0" min="10" max="75" step="0.1"></record>
-	<record channelid="p49ChangeoverTemperatureSummerWinter" requestByte="06" dataType="Settings" position="18"
-		length="2" scale="0.1" bitPosition="0" min="10" max="25" step="0.1"></record>
-	<record channelid="p50HysteresisChangeoverTemperatureSummerWinter" requestByte="06" dataType="Settings"
-		position="20" length="2" scale="0.1" bitPosition="0" min="1" max="5" step="0.1"></record>
-	<record channelid="p77OutsideTemperatureAdjustment" requestByte="06" dataType="Settings" position="22"
-		length="2" scale="1.0" bitPosition="0" min="0" max="24" step="1.0"></record>
-	<record channelid="p78BivalencePoint" requestByte="06" dataType="Settings" position="24" length="2" scale="0.1"
-		bitPosition="0" min="-10" max="20" step="0.1"></record>
-	<record channelid="p79DelayedEnableReheating" requestByte="06" dataType="Settings" position="26" length="1"
-		scale="1.0" bitPosition="0" min="0" max="60" step="1.0"></record>
-	<record channelid="outputElectricalHeatingStage1" requestByte="06" dataType="Settings" position="27" length="1"
-		scale="0.1" bitPosition="0" min="0" max="10" step="1.0"></record>
-	<record channelid="upperLimitEvaporatorTemperatureForDefrostEnd" requestByte="03" dataType="Settings"
-		position="4" length="2" scale="0.1" bitPosition="0" min="10" max="30" step="0.1"></record>
-	<record channelid="maxEvaporatorDefrostTime" requestByte="03" dataType="Settings" position="6" length="2"
-		scale="1.0" bitPosition="0" min="2" max="20" step="1.0"></record>
-	<record channelid="limitTemperatureCondenserElectricalReheating" requestByte="03" dataType="Settings"
-		position="8" length="2" scale="0.1" bitPosition="0" min="10" max="30" step="0.1"></record>
-	<record channelid="limitTemperatureCondenserDefrostTermination" requestByte="03" dataType="Settings"
-		position="10" length="2" scale="0.1" bitPosition="0" min="5" max="10" step="0.1"></record>
-	<record channelid="p47CompressorRestartDelay" requestByte="03" dataType="Settings" position="12" length="1"
-		scale="1.0" bitPosition="0" min="0" max="20" step="1.0"></record>
-	<record channelid="p48ExhaustFanSpeed" requestByte="03" dataType="Settings" position="13" length="1" scale="1.0"
-		bitPosition="0" min="10" max="100" step="1.0"></record>
-	<record channelid="maxDefrostDurationAAExchanger" requestByte="04" dataType="Settings" position="4" length="1"
-		scale="1.0" bitPosition="0" min="0" max="20" step="1.0"></record>
-	<record channelid="defrostStartThreshold" requestByte="04" dataType="Settings" position="5" length="2"
-		scale="0.1" bitPosition="0" min="0" max="100" step="1.0"></record>
-	<record channelid="volumeFlowFilterReplacement" requestByte="04" dataType="Settings" position="7" length="2"
-		scale="1.0" bitPosition="0" min="50" max="100" step="1.0"></record>
-	<record channelid="p85DefrostModeAAHE" requestByte="04" dataType="Settings" position="9" length="1" scale="1.0"
-		bitPosition="0" min="1" max="5" step="1.0"></record>
-	<record channelid="p54minStartupCycles" requestByte="0A" dataType="Settings" position="4" length="1" scale="1.0"
-		bitPosition="0" min="1" max="24" step="1.0"></record>
-	<record channelid="p55maxStartupCycles" requestByte="0A" dataType="Settings" position="5" length="2" scale="1.0"
-		bitPosition="0" min="1" max="288" step="1.0"></record>
-	<record channelid="p56OutsideTemperatureMaxHeatingCycles" requestByte="0A" dataType="Settings" position="7"
-		length="2" scale="0.1" bitPosition="0" min="0" max="20" step="0.1"></record>
-	<record channelid="p57OutsideTemperatureMinHeatingCycles" requestByte="0A" dataType="Settings" position="9"
-		length="2" scale="0.1" bitPosition="0" min="0" max="25" step="0.1"></record>
-	<record channelid="P58SuppressTemperatureCaptureDuringPumpStart" requestByte="0A" dataType="Settings"
-		position="11" length="2" scale="1.0" bitPosition="0" min="0" max="20" step="0.1"></record>
-	<record channelid="hP1StartTime" requestByte="0B" dataType="Settings" position="4" length="2" scale="1.0"
-		bitPosition="0" min="0" max="2359" step="0.0"></record>
-	<record channelid="hP1StopTime" requestByte="0B" dataType="Settings" position="6" length="2" scale="1.0"
-		bitPosition="0" min="0" max="2359" step="0.0"></record>
-	<record channelid="hP1Monday" requestByte="0B" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="7" min="0" max="1" step="0.0"></record>
-	<record channelid="hP1Tuesday" requestByte="0B" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="6" min="0" max="1" step="0.0"></record>
-	<record channelid="hP1Wednesday" requestByte="0B" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="5" min="0" max="1" step="0.0"></record>
-	<record channelid="hP1Thursday" requestByte="0B" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="4" min="0" max="1" step="0.0"></record>
-	<record channelid="hP1Friday" requestByte="0B" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="3" min="0" max="1" step="0.0"></record>
-	<record channelid="hP1Saturday" requestByte="0B" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="2" min="0" max="1" step="0.0"></record>
-	<record channelid="hP1Sunday" requestByte="0B" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="1" min="0" max="1" step="0.0"></record>
-	<record channelid="hP1Enabled" requestByte="0B" dataType="Settings" position="9" length="1" scale="1.0"
-		bitPosition="0" min="0" max="1" step="0.0"></record>
-	<record channelid="hP2StartTime" requestByte="0B" dataType="Settings" position="10" length="2" scale="1.0"
-		bitPosition="0" min="0" max="2359" step="0.0"></record>
-	<record channelid="hP2StopTime" requestByte="0B" dataType="Settings" position="12" length="2" scale="1.0"
-		bitPosition="0" min="0" max="2359" step="0.0"></record>
-	<record channelid="hP2Monday" requestByte="0B" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="7" min="0" max="1" step="0.0"></record>
-	<record channelid="hP2Tuesday" requestByte="0B" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="6" min="0" max="1" step="0.0"></record>
-	<record channelid="hP2Wednesday" requestByte="0B" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="5" min="0" max="1" step="0.0"></record>
-	<record channelid="hP2Thursday" requestByte="0B" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="4" min="0" max="1" step="0.0"></record>
-	<record channelid="hP2Friday" requestByte="0B" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="3" min="0" max="1" step="0.0"></record>
-	<record channelid="hP2Saturday" requestByte="0B" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="2" min="0" max="1" step="0.0"></record>
-	<record channelid="hP2Sunday" requestByte="0B" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="1" min="0" max="1" step="0.0"></record>
-	<record channelid="hP2Enabled" requestByte="0B" dataType="Settings" position="15" length="1" scale="1.0"
-		bitPosition="0" min="0" max="1" step="0.0"></record>
-	<record channelid="bP1StartTime" requestByte="0C" dataType="Settings" position="4" length="2" scale="1.0"
-		bitPosition="0" min="0" max="2359" step="0.0"></record>
-	<record channelid="bP1StopTime" requestByte="0C" dataType="Settings" position="6" length="2" scale="1.0"
-		bitPosition="0" min="0" max="2359" step="0.0"></record>
-	<record channelid="bP1Monday" requestByte="0C" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="7" min="0" max="1" step="0.0"></record>
-	<record channelid="bP1Tuesday" requestByte="0C" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="6" min="0" max="1" step="0.0"></record>
-	<record channelid="bP1Wednesday" requestByte="0C" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="5" min="0" max="1" step="0.0"></record>
-	<record channelid="bP1Thursday" requestByte="0C" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="4" min="0" max="1" step="0.0"></record>
-	<record channelid="bP1Friday" requestByte="0C" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="3" min="0" max="1" step="0.0"></record>
-	<record channelid="bP1Saturday" requestByte="0C" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="2" min="0" max="1" step="0.0"></record>
-	<record channelid="bP1Sunday" requestByte="0C" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="1" min="0" max="1" step="0.0"></record>
-	<record channelid="bP1Enabled" requestByte="0C" dataType="Settings" position="9" length="1" scale="1.0"
-		bitPosition="0" min="0" max="1" step="0.0"></record>
-	<record channelid="lP1StartTime" requestByte="0D" dataType="Settings" position="4" length="2" scale="1.0"
-		bitPosition="0" min="0" max="2359" step="0.0"></record>
-	<record channelid="lP1StopTime" requestByte="0D" dataType="Settings" position="6" length="2" scale="1.0"
-		bitPosition="0" min="0" max="2359" step="0.0"></record>
-	<record channelid="lP1Monday" requestByte="0D" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="7" min="0" max="1" step="0.0"></record>
-	<record channelid="lP1Tuesday" requestByte="0D" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="6" min="0" max="1" step="0.0"></record>
-	<record channelid="lP1Wednesday" requestByte="0D" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="5" min="0" max="1" step="0.0"></record>
-	<record channelid="lP1Thursday" requestByte="0D" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="4" min="0" max="1" step="0.0"></record>
-	<record channelid="lP1Friday" requestByte="0D" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="3" min="0" max="1" step="0.0"></record>
-	<record channelid="lP1Saturday" requestByte="0D" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="2" min="0" max="1" step="0.0"></record>
-	<record channelid="lP1Sunday" requestByte="0D" dataType="Settings" position="8" length="1" scale="1.0"
-		bitPosition="1" min="0" max="1" step="0.0"></record>
-	<record channelid="lP1Enabled" requestByte="0D" dataType="Settings" position="9" length="1" scale="1.0"
-		bitPosition="0" min="0" max="1" step="0.0"></record>
-	<record channelid="lP2StartTime" requestByte="0D" dataType="Settings" position="10" length="2" scale="1.0"
-		bitPosition="0" min="0" max="2359" step="0.0"></record>
-	<record channelid="lP2StopTime" requestByte="0D" dataType="Settings" position="12" length="2" scale="1.0"
-		bitPosition="0" min="0" max="2359" step="0.0"></record>
-	<record channelid="lP2Monday" requestByte="0D" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="7" min="0" max="1" step="0.0"></record>
-	<record channelid="lP2Tuesday" requestByte="0D" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="6" min="0" max="1" step="0.0"></record>
-	<record channelid="lP2Wednesday" requestByte="0D" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="5" min="0" max="1" step="0.0"></record>
-	<record channelid="lP2Thursday" requestByte="0D" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="4" min="0" max="1" step="0.0"></record>
-	<record channelid="lP2Friday" requestByte="0D" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="3" min="0" max="1" step="0.0"></record>
-	<record channelid="lP2Saturday" requestByte="0D" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="2" min="0" max="1" step="0.0"></record>
-	<record channelid="lP2Sunday" requestByte="0D" dataType="Settings" position="14" length="1" scale="1.0"
-		bitPosition="1" min="0" max="1" step="0.0"></record>
-	<record channelid="lP2Enabled" requestByte="0D" dataType="Settings" position="15" length="1" scale="1.0"
-		bitPosition="0" min="0" max="1" step="0.0"></record>
-	<record channelid="aP0DurationUntilAbsenceStart" requestByte="0F" dataType="Settings" position="4" length="2"
-		scale="0.1" bitPosition="0" min="0" max="2388" step="0.0"></record>
-	<record channelid="aP0AbsenceDuration" requestByte="0F" dataType="Settings" position="6" length="2" scale="0.1"
-		bitPosition="0" min="0" max="2388" step="0.0"></record>
-	<record channelid="aP0EnableAbsenceProgram" requestByte="0F" dataType="Settings" position="8" length="1"
-		scale="1.0" bitPosition="0" min="0" max="1" step="0.0"></record>
-	<record channelid="p59RestartBeforeSetbackEnd" requestByte="0E" dataType="Settings" position="4" length="2"
-		scale="1.0" bitPosition="0" min="0" max="300" step="1.0"></record>
-	<record channelid="mixerProportionalRange" requestByte="0E" dataType="Settings" position="6" length="2"
-		scale="0.1" bitPosition="0" min="1" max="100" step="0.1"></record>
-	<record channelid="derivativeMixerTime" requestByte="0E" dataType="Settings" position="8" length="2" scale="0.1"
-		bitPosition="0" min="1" max="100" step="0.1"></record>
-	<record channelid="mixerTimeInterval" requestByte="0E" dataType="Settings" position="10" length="2" scale="1.0"
-		bitPosition="0" min="1" max="10" step="0.1"></record>
-	<record channelid="p32StartupHysteresisDHWTemperature" requestByte="07" dataType="Settings" position="4"
-		length="1" scale="0.1" bitPosition="0" min="2" max="20" step="0.1"></record>
-	<record channelid="p33TimeDelayElectricalReheating" requestByte="07" dataType="Settings" position="5" length="1"
-		scale="1.0" bitPosition="0" min="0" max="240" step="1.0"></record>
-	<record channelid="p34OutsideTemperatureLimitForElectricalReheating" requestByte="07" dataType="Settings"
-		position="6" length="2" scale="0.1" bitPosition="0" min="-10" max="10" step="1.0"></record>
-	<record channelid="p35PasteurisationInterval" requestByte="07" dataType="Settings" position="8" length="1"
-		scale="1.0" bitPosition="0" min="1" max="30" step="1.0"></record>
-	<record channelid="p36MaxDurationDHWLoading" requestByte="07" dataType="Settings" position="9" length="1"
-		scale="1.0" bitPosition="0" min="6" max="12" step="1.0"></record>
-	<record channelid="pasteurisationHeatupTemperature" requestByte="07" dataType="Settings" position="10"
-		length="2" scale="0.1" bitPosition="0" min="10" max="65" step="0.1"></record>
-	<record channelid="noOfEnabledElectricalReheatStagesDHWLoading" requestByte="07" dataType="Settings"
-		position="12" length="1" scale="1.0" bitPosition="0" min="0" max="3" step="1.0"></record>
-	<record channelid="maxFlowTemperatureDHWMode" requestByte="07" dataType="Settings" position="13" length="2"
-		scale="0.1" bitPosition="0" min="10" max="75" step="0.1"></record>
-	<record channelid="compressorShutdownDHWLoading" requestByte="07" dataType="Settings" position="15" length="1"
-		scale="1.0" bitPosition="0" min="0" max="1" step="0.0"></record>
+	<!-- property p01-p12, 17 17pxx206 -->
+	<record channelid="p01-p12_p01RoomTempDay" requestByte="17" dataType="Settings" position="4" length="2"
+		scale="0.1" bitPosition="0" min="10" max="30" step="0.1" unit="°C"></record><!--
+		detail p01RoomTempDay, 4, 4, hex, 10 -->
+	<record channelid="p01-p12_p02RoomTempNight" requestByte="17" dataType="Settings" position="6" length="2"
+		scale="0.1" bitPosition="0" min="10" max="30" step="0.1" unit="°C"></record><!--
+		detail p02RoomTempNight, 8, 4, hex, 10 -->
+	<record channelid="p01-p12_p03RoomTempStandby" requestByte="17" dataType="Settings" position="8" length="2"
+		scale="0.1" bitPosition="0" min="10" max="30" step="0.1" unit="°C"></record><!--
+		detail p03RoomTempStandby, 12, 4, hex, 10 -->
+	<record channelid="p01-p12_p04DHWsetTempDay" requestByte="17" dataType="Settings" position="10" length="2"
+		scale="0.1" bitPosition="0" min="10" max="55" step="0.1" unit="°C"></record><!--
+		detail p04DHWsetTempDay, 16, 4, hex, 10 -->
+	<record channelid="p01-p12_p05DHWsetTempNight" requestByte="17" dataType="Settings" position="12" length="2"
+		scale="0.1" bitPosition="0" min="10" max="55" step="0.1" unit="°C"></record><!--
+		detail p05DHWsetTempNight, 20, 4, hex, 10 -->
+	<record channelid="p01-p12_p06DHWsetTempStandby" requestByte="17" dataType="Settings" position="14" length="2"
+		scale="0.1" bitPosition="0" min="10" max="55" step="0.1" unit="°C"></record><!--
+		detail p06DHWsetTempStandby, 24, 4, hex, 10 -->
+	<record channelid="p01-p12_p07FanStageDay" requestByte="17" dataType="Settings" position="16" length="1"
+		scale="1" bitPosition="0" min="0" max="3" step="1" unit=""></record><!--
+		detail p07FanStageDay, 28, 2, hex, 1 -->
+	<record channelid="p01-p12_p08FanStageNight" requestByte="17" dataType="Settings" position="17" length="1"
+		scale="1" bitPosition="0" min="0" max="3" step="1" unit=""></record><!--
+		detail p08FanStageNight, 30, 2, hex, 1 -->
+	<record channelid="p01-p12_p09FanStageStandby" requestByte="17" dataType="Settings" position="18" length="1"
+		scale="1" bitPosition="0" min="0" max="3" step="1" unit=""></record><!--
+		detail p09FanStageStandby, 32, 2, hex, 1 -->
+	<record channelid="p01-p12_p10HCTempManual" requestByte="17" dataType="Settings" position="19" length="2"
+		scale="0.1" bitPosition="0" min="10" max="65" step="0.1" unit="°C"></record><!--
+		detail p10HCTempManual, 34, 4, hex, 10 -->
+	<record channelid="p01-p12_p11DHWsetTempManual" requestByte="17" dataType="Settings" position="21" length="2"
+		scale="0.1" bitPosition="0" min="10" max="65" step="0.1" unit="°C"></record><!--
+		detail p11DHWsetTempManual, 38, 4, hex, 10 -->
+	<record channelid="p01-p12_p12FanStageManual" requestByte="17" dataType="Settings" position="23" length="1"
+		scale="1" bitPosition="0" min="0" max="3" step="1" unit=""></record><!--
+		detail p12FanStageManual, 42, 2, hex, 1 -->
+	<!-- property pAbsence, 0F 0Fpxx206 -->
+	<record channelid="pAbsence_pA0DurationUntilAbsenceStart" requestByte="0F" dataType="Sensor" position="4"
+		length="2" scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail pA0DurationUntilAbsenceStart,
+		4, 4, hex, 10 -->
+	<record channelid="pAbsence_pA0AbsenceDuration" requestByte="0F" dataType="Sensor" position="6" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail pA0AbsenceDuration, 8, 4, hex, 10 -->
+	<record channelid="pAbsence_pA0EnableAbsenceProg" requestByte="0F" dataType="Sensor" position="8" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail pA0EnableAbsenceProg, 12, 2, hex, 1 -->
+	<!-- property pCircPump, 0A 0Apxx206 -->
+	<record channelid="pCircPump_p54MinPumpCycles" requestByte="0A" dataType="Settings" position="4" length="1"
+		scale="1" bitPosition="0" min="1" max="24" step="1" unit="1/d"></record><!--
+		detail p54MinPumpCycles, 4, 2, hex, 1 -->
+	<record channelid="pCircPump_p55MaxPumpCycles" requestByte="0A" dataType="Settings" position="5" length="2"
+		scale="1" bitPosition="0" min="25" max="288" step="1" unit="1/d"></record><!--
+		detail p55MaxPumpCycles, 6, 4, hex, 1 -->
+	<record channelid="pCircPump_p56OutTempMaxPumpCycles" requestByte="0A" dataType="Settings" position="7"
+		length="2" scale="0.1" bitPosition="0" min="0" max="20" step="0.1" unit="°C"></record><!--
+		detail p56OutTempMaxPumpCycles, 10,
+		4, hex, 10 -->
+	<record channelid="pCircPump_p57OutTempMinPumpCycles" requestByte="0A" dataType="Settings" position="9"
+		length="2" scale="0.1" bitPosition="0" min="0" max="25" step="0.1" unit="°C"></record><!--
+		detail p57OutTempMinPumpCycles, 14,
+		4, hex, 10 -->
+	<record channelid="pCircPump_p58SuppressTempCaptPumpStart" requestByte="0A" dataType="Settings" position="11"
+		length="2" scale="1" bitPosition="0" min="0" max="120" step="1" unit="s"></record><!--
+		detail p58SuppressTempCaptPumpStart,
+		18, 4, hex, 1 -->
+	<!-- property pDHW, 07 07pxx206 -->
+	<record channelid="pDHW_p32HystDHW" requestByte="07" dataType="Settings" position="4" length="1" scale="0.1"
+		bitPosition="0" min="2" max="10" step="0.1" unit="K"></record><!--
+		detail p32HystDHW, 4, 2, hex, 10 -->
+	<record channelid="pDHW_p33BoosterTimeoutDHW" requestByte="07" dataType="Settings" position="5" length="1"
+		scale="1" bitPosition="0" min="0" max="240" step="1" unit="min"></record><!--
+		detail p33BoosterTimeoutDHW, 6, 2, hex, 1 -->
+	<record channelid="pDHW_p34TempLimitBoostDHW" requestByte="07" dataType="Settings" position="6" length="2"
+		scale="0.1" bitPosition="0" min="-10" max="10" step="0.1" unit="°C"></record><!--
+		detail p34TempLimitBoostDHW, 8, 4, hex2int,
+		10 -->
+	<record channelid="pDHW_p35PasteurisationInterval" requestByte="07" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="0" min="3" max="30" step="1" unit="d"></record><!--
+		detail p35PasteurisationInterval, 12, 2, hex, 1 -->
+	<record channelid="pDHW_p36MaxDurationDHWLoad" requestByte="07" dataType="Settings" position="9" length="1"
+		scale="1" bitPosition="0" min="6" max="12" step="1" unit="h"></record><!--
+		detail p36MaxDurationDHWLoad, 14, 2, hex, 1 -->
+	<record channelid="pDHW_pasteurisationTemp" requestByte="07" dataType="Sensor" position="10" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail pasteurisationTemp, 16, 4, hex, 10 -->
+	<record channelid="pDHW_maxBoostStagesDHW" requestByte="07" dataType="Sensor" position="12" length="1" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail maxBoostStagesDHW, 20, 2, hex, 1 -->
+	<record channelid="pDHW_p84EnableDHWBuffer" requestByte="07" dataType="Sensor" position="13" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail p84EnableDHWBuffer, 22, 2, hex, 1 -->
+	<!-- property pDHWProg, 0C 0Cpxx206 -->
+	<record channelid="pDHWProg_progDHWStartTime" requestByte="0C" dataType="Settings" position="4" length="2"
+		scale="1" bitPosition="0" min="0" max="2359" step="1" unit=""></record><!--
+		detail progDHWStartTime, 4, 4, hex2time, 1 -->
+	<record channelid="pDHWProg_progDHWEndTime" requestByte="0C" dataType="Settings" position="6" length="2"
+		scale="1" bitPosition="0" min="0" max="2359" step="1" unit=""></record><!--
+		detail progDHWEndTime, 8, 4, hex2time, 1 -->
+	<record channelid="pDHWProg_progDHWMonday" requestByte="0C" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="7" min="0" max="1" step="1" unit=""></record><!--
+		detail progDHWMonday, 13, 1, bit0, 1 -->
+	<record channelid="pDHWProg_progDHWTuesday" requestByte="0C" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="6" min="0" max="1" step="1" unit=""></record><!--
+		detail progDHWTuesday, 13, 1, bit1, 1 -->
+	<record channelid="pDHWProg_progDHWWednesday" requestByte="0C" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="5" min="0" max="1" step="1" unit=""></record><!--
+		detail progDHWWednesday, 13, 1, bit2, 1 -->
+	<record channelid="pDHWProg_progDHWThursday" requestByte="0C" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="4" min="0" max="1" step="1" unit=""></record><!--
+		detail progDHWThursday, 13, 1, bit3, 1 -->
+	<record channelid="pDHWProg_progDHWFriday" requestByte="0C" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="3" min="0" max="1" step="1" unit=""></record><!--
+		detail progDHWFriday, 12, 1, bit0, 1 -->
+	<record channelid="pDHWProg_progDHWSaturday" requestByte="0C" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="2" min="0" max="1" step="1" unit=""></record><!--
+		detail progDHWSaturday, 12, 1, bit1, 1 -->
+	<record channelid="pDHWProg_progDHWSunday" requestByte="0C" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="1" min="0" max="1" step="1" unit=""></record><!--
+		detail progDHWSunday, 12, 1, bit2, 1 -->
+	<record channelid="pDHWProg_progDHWEnable" requestByte="0C" dataType="Settings" position="9" length="1"
+		scale="1" bitPosition="0" min="0" max="1" step="1" unit=""></record><!--
+		detail progDHWEnable, 14, 2, hex, 1 -->
+	<!-- property pDefrostAA, 04 04pxx206 -->
+	<record channelid="pDefrostAA_MaxDefrostDurationAAExchenger" requestByte="04" dataType="Sensor" position="4"
+		length="1" scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail MaxDefrostDurationAAExchenger,
+		4, 2, hex, 1 -->
+	<record channelid="pDefrostAA_DefrostStartThreshold" requestByte="04" dataType="Sensor" position="5" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail DefrostStartThreshold, 6, 4, hex, 10 -->
+	<record channelid="pDefrostAA_VolumeFlowFilterReplacement" requestByte="04" dataType="Sensor" position="7"
+		length="2" scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail VolumeFlowFilterReplacement, 10,
+		4, hex, 1 -->
+	<!-- property pDefrostEva, 03 03pxx206 -->
+	<record channelid="pDefrostEva_UpTempLimitDefrostEvaporatorEnd" requestByte="03" dataType="Sensor" position="4"
+		length="2" scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail UpTempLimitDefrostEvaporatorEnd,
+		4, 4, hex, 10 -->
+	<record channelid="pDefrostEva_MaxTimeDefrostEvaporator" requestByte="03" dataType="Sensor" position="6"
+		length="2" scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail MaxTimeDefrostEvaporator, 8, 4,
+		hex, 1 -->
+	<record channelid="pDefrostEva_LimitTempCondenserElectBoost" requestByte="03" dataType="Sensor" position="8"
+		length="2" scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail LimitTempCondenserElectBoost,
+		12, 4, hex, 10 -->
+	<record channelid="pDefrostEva_LimitTempCondenserDefrostTerm" requestByte="03" dataType="Sensor" position="10"
+		length="2" scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail LimitTempCondenserDefrostTerm,
+		16, 4, hex, 10 -->
+	<record channelid="pDefrostEva_p47CompressorRestartDelay" requestByte="03" dataType="Settings" position="12"
+		length="1" scale="1" bitPosition="0" min="0" max="20" step="1" unit="min"></record><!--
+		detail p47CompressorRestartDelay, 20,
+		2, hex, 1 -->
+	<record channelid="pDefrostEva_p48MainFanSpeed" requestByte="03" dataType="Settings" position="13" length="1"
+		scale="1" bitPosition="0" min="0" max="100" step="1" unit="%"></record><!--
+		detail p48MainFanSpeed, 22, 2, hex, 1 -->
+	<!-- property pDryHeat, 10 10pxx206 -->
+	<record channelid="pDryHeat_p70StartDryHeat" requestByte="10" dataType="Sensor" position="4" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail p70StartDryHeat, 4, 2, hex, 1 -->
+	<record channelid="pDryHeat_p71BaseTemp" requestByte="10" dataType="Sensor" position="5" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail p71BaseTemp, 6, 4, hex, 10 -->
+	<record channelid="pDryHeat_p72PeakTemp" requestByte="10" dataType="Sensor" position="7" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail p72PeakTemp, 10, 4, hex, 10 -->
+	<record channelid="pDryHeat_p73TempDuration" requestByte="10" dataType="Sensor" position="9" length="2"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit="°C"></record><!--
+		detail p73TempDuration, 14, 4, hex, 1 -->
+	<record channelid="pDryHeat_p74TempIncrease" requestByte="10" dataType="Sensor" position="11" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail p74TempIncrease, 18, 4, hex, 10 -->
+	<!-- property pExpert, 02 02pxx206 -->
+	<!-- Unknown type: 02pxx206 -->
+	<!-- property pFan, 01 01pxx214 -->
+	<record channelid="pFan_p37Fanstage1AirflowInlet" requestByte="01" dataType="Settings" position="4" length="1"
+		scale="1" bitPosition="0" min="60" max="250" step="1" unit="m³/h"></record><!--
+		detail p37Fanstage1AirflowInlet, 4, 2, hex, 1 -->
+	<record channelid="pFan_p38Fanstage2AirflowInlet" requestByte="01" dataType="Settings" position="5" length="1"
+		scale="1" bitPosition="0" min="60" max="250" step="1" unit="m³/h"></record><!--
+		detail p38Fanstage2AirflowInlet, 6, 2, hex, 1 -->
+	<record channelid="pFan_p39Fanstage3AirflowInlet" requestByte="01" dataType="Settings" position="6" length="1"
+		scale="1" bitPosition="0" min="60" max="250" step="1" unit="m³/h"></record><!--
+		detail p39Fanstage3AirflowInlet, 8, 2, hex, 1 -->
+	<record channelid="pFan_p40Fanstage1AirflowOutlet" requestByte="01" dataType="Settings" position="7" length="1"
+		scale="1" bitPosition="0" min="60" max="250" step="1" unit="m³/h"></record><!--
+		detail p40Fanstage1AirflowOutlet, 10, 2, hex,
+		1 -->
+	<record channelid="pFan_p41Fanstage2AirflowOutlet" requestByte="01" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="0" min="60" max="250" step="1" unit="m³/h"></record><!--
+		detail p41Fanstage2AirflowOutlet, 12, 2, hex,
+		1 -->
+	<record channelid="pFan_p42Fanstage3AirflowOutlet" requestByte="01" dataType="Settings" position="9" length="1"
+		scale="1" bitPosition="0" min="60" max="250" step="1" unit="m³/h"></record><!--
+		detail p42Fanstage3AirflowOutlet, 14, 2, hex,
+		1 -->
+	<record channelid="pFan_p43UnschedVent3" requestByte="01" dataType="Settings" position="10" length="2" scale="1"
+		bitPosition="0" min="0" max="1000" step="1" unit="min"></record><!--
+		detail p43UnschedVent3, 16, 4, hex, 1 -->
+	<record channelid="pFan_p44UnschedVent2" requestByte="01" dataType="Settings" position="12" length="2" scale="1"
+		bitPosition="0" min="0" max="1000" step="1" unit="min"></record><!--
+		detail p44UnschedVent2, 20, 4, hex, 1 -->
+	<record channelid="pFan_p45UnschedVent1" requestByte="01" dataType="Settings" position="14" length="2" scale="1"
+		bitPosition="0" min="0" max="1000" step="1" unit="min"></record><!--
+		detail p45UnschedVent1, 24, 4, hex, 1 -->
+	<record channelid="pFan_p46UnschedVent0" requestByte="01" dataType="Settings" position="16" length="2" scale="1"
+		bitPosition="0" min="0" max="1000" step="1" unit="min"></record><!--
+		detail p46UnschedVent0, 28, 4, hex, 1 -->
+	<record channelid="pFan_p75PassiveCooling" requestByte="01" dataType="Settings" position="18" length="1"
+		scale="1" bitPosition="0" min="0" max="1" step="1" unit=""></record><!--
+		detail p75PassiveCooling, 32, 2, hex, 1 -->
+	<!-- property pFanProg, 0D 0Dpxx206 -->
+	<record channelid="pFanProg_progFAN1StartTime" requestByte="0D" dataType="Settings" position="4" length="2"
+		scale="1" bitPosition="0" min="0" max="2359" step="1" unit=""></record><!--
+		detail progFAN1StartTime, 4, 4, hex2time, 1 -->
+	<record channelid="pFanProg_progFAN1EndTime" requestByte="0D" dataType="Settings" position="6" length="2"
+		scale="1" bitPosition="0" min="0" max="2359" step="1" unit=""></record><!--
+		detail progFAN1EndTime, 8, 4, hex2time, 1 -->
+	<record channelid="pFanProg_progFAN1Monday" requestByte="0D" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="7" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN1Monday, 13, 1, bit0, 1 -->
+	<record channelid="pFanProg_progFAN1Tuesday" requestByte="0D" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="6" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN1Tuesday, 13, 1, bit1, 1 -->
+	<record channelid="pFanProg_progFAN1Wednesday" requestByte="0D" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="5" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN1Wednesday, 13, 1, bit2, 1 -->
+	<record channelid="pFanProg_progFAN1Thursday" requestByte="0D" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="4" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN1Thursday, 13, 1, bit3, 1 -->
+	<record channelid="pFanProg_progFAN1Friday" requestByte="0D" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="3" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN1Friday, 12, 1, bit0, 1 -->
+	<record channelid="pFanProg_progFAN1Saturday" requestByte="0D" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="2" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN1Saturday, 12, 1, bit1, 1 -->
+	<record channelid="pFanProg_progFAN1Sunday" requestByte="0D" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="1" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN1Sunday, 12, 1, bit2, 1 -->
+	<record channelid="pFanProg_progFAN1Enable" requestByte="0D" dataType="Settings" position="9" length="1"
+		scale="1" bitPosition="0" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN1Enable, 14, 2, hex, 1 -->
+	<record channelid="pFanProg_progFAN2StartTime" requestByte="0D" dataType="Settings" position="10" length="2"
+		scale="1" bitPosition="0" min="0" max="2359" step="1" unit=""></record><!--
+		detail progFAN2StartTime, 16, 4, hex2time, 1 -->
+	<record channelid="pFanProg_progFAN2EndTime" requestByte="0D" dataType="Settings" position="12" length="2"
+		scale="1" bitPosition="0" min="0" max="2359" step="1" unit=""></record><!--
+		detail progFAN2EndTime, 20, 4, hex2time, 1 -->
+	<record channelid="pFanProg_progFAN2Monday" requestByte="0D" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="7" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN2Monday, 25, 1, bit0, 1 -->
+	<record channelid="pFanProg_progFAN2Tuesday" requestByte="0D" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="6" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN2Tuesday, 25, 1, bit1, 1 -->
+	<record channelid="pFanProg_progFAN2Wednesday" requestByte="0D" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="5" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN2Wednesday, 25, 1, bit2, 1 -->
+	<record channelid="pFanProg_progFAN2Thursday" requestByte="0D" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="4" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN2Thursday, 25, 1, bit3, 1 -->
+	<record channelid="pFanProg_progFAN2Friday" requestByte="0D" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="3" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN2Friday, 24, 1, bit0, 1 -->
+	<record channelid="pFanProg_progFAN2Saturday" requestByte="0D" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="2" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN2Saturday, 24, 1, bit1, 1 -->
+	<record channelid="pFanProg_progFAN2Sunday" requestByte="0D" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="1" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN2Sunday, 24, 1, bit2, 1 -->
+	<record channelid="pFanProg_progFAN2Enable" requestByte="0D" dataType="Settings" position="15" length="1"
+		scale="1" bitPosition="0" min="0" max="1" step="1" unit=""></record><!--
+		detail progFAN2Enable, 26, 2, hex, 1 -->
+	<!-- property pHeat1, 05 05pxx206 -->
+	<record channelid="pHeat1_p13GradientHC1" requestByte="05" dataType="Settings" position="4" length="2"
+		scale="0.1" bitPosition="0" min="0" max="5" step="0.1" unit=""></record><!--
+		detail p13GradientHC1, 4, 4, hex, 10 -->
+	<record channelid="pHeat1_p14LowEndHC1" requestByte="05" dataType="Settings" position="6" length="2" scale="0.1"
+		bitPosition="0" min="0" max="20" step="0.1" unit="K"></record><!--
+		detail p14LowEndHC1, 8, 4, hex, 10 -->
+	<record channelid="pHeat1_p15RoomInfluenceHC1" requestByte="05" dataType="Settings" position="8" length="1"
+		scale="0.1" bitPosition="0" min="0" max="10" step="0.1" unit=""></record><!--
+		detail p15RoomInfluenceHC1, 12, 2, hex, 10 -->
+	<record channelid="pHeat1_p16GradientHC2" requestByte="05" dataType="Settings" position="9" length="2"
+		scale="0.1" bitPosition="0" min="0" max="5" step="0.1" unit=""></record><!--
+		detail p16GradientHC2, 14, 4, hex, 10 -->
+	<record channelid="pHeat1_p17LowEndHC2" requestByte="05" dataType="Settings" position="11" length="2"
+		scale="0.1" bitPosition="0" min="0" max="10" step="0.1" unit="K"></record><!--
+		detail p17LowEndHC2, 18, 4, hex, 10 -->
+	<record channelid="pHeat1_p18RoomInfluenceHC2" requestByte="05" dataType="Settings" position="13" length="1"
+		scale="0.1" bitPosition="0" min="0" max="10" step="0.1" unit=""></record><!--
+		detail p18RoomInfluenceHC2, 22, 2, hex, 10 -->
+	<record channelid="pHeat1_p19FlowProportionHC1" requestByte="05" dataType="Settings" position="14" length="2"
+		scale="1" bitPosition="0" min="0" max="100" step="1" unit="%"></record><!--
+		detail p19FlowProportionHC1, 24, 4, hex, 1 -->
+	<record channelid="pHeat1_p20FlowProportionHC2" requestByte="05" dataType="Settings" position="16" length="2"
+		scale="1" bitPosition="0" min="0" max="100" step="1" unit="%"></record><!--
+		detail p20FlowProportionHC2, 28, 4, hex, 1 -->
+	<record channelid="pHeat1_MaxSetHeatFlowTempHC1" requestByte="05" dataType="Sensor" position="18" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail MaxSetHeatFlowTempHC1, 32, 4, hex, 10 -->
+	<record channelid="pHeat1_MinSetHeatFlowTempHC1" requestByte="05" dataType="Sensor" position="20" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail MinSetHeatFlowTempHC1, 36, 4, hex, 10 -->
+	<record channelid="pHeat1_MaxSetHeatFlowTempHC2" requestByte="05" dataType="Sensor" position="22" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail MaxSetHeatFlowTempHC2, 40, 4, hex, 10 -->
+	<record channelid="pHeat1_MinSetHeatFlowTempHC2" requestByte="05" dataType="Sensor" position="24" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail MinSetHeatFlowTempHC2, 44, 4, hex, 10 -->
+	<!-- property pHeat2, 06 06pxx206 -->
+	<record channelid="pHeat2_p21Hyst1" requestByte="06" dataType="Settings" position="4" length="1" scale="0.1"
+		bitPosition="0" min="0" max="10" step="0.1" unit="K"></record><!--
+		detail p21Hyst1, 4, 2, hex, 10 -->
+	<record channelid="pHeat2_p22Hyst2" requestByte="06" dataType="Settings" position="5" length="1" scale="0.1"
+		bitPosition="0" min="0" max="10" step="0.1" unit="K"></record><!--
+		detail p22Hyst2, 6, 2, hex, 10 -->
+	<record channelid="pHeat2_p23Hyst3" requestByte="06" dataType="Settings" position="6" length="1" scale="0.1"
+		bitPosition="0" min="0" max="5" step="0.1" unit="K"></record><!--
+		detail p23Hyst3, 8, 2, hex, 10 -->
+	<record channelid="pHeat2_p24Hyst4" requestByte="06" dataType="Settings" position="7" length="1" scale="0.1"
+		bitPosition="0" min="0" max="5" step="0.1" unit="K"></record><!--
+		detail p24Hyst4, 10, 2, hex, 10 -->
+	<record channelid="pHeat2_p25Hyst5" requestByte="06" dataType="Settings" position="8" length="1" scale="0.1"
+		bitPosition="0" min="0" max="5" step="0.1" unit="K"></record><!--
+		detail p25Hyst5, 12, 2, hex, 10 -->
+	<record channelid="pHeat2_p26Hyst6" requestByte="06" dataType="Sensor" position="9" length="1" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail p26Hyst6, 14, 2, hex, 10 -->
+	<record channelid="pHeat2_p27Hyst7" requestByte="06" dataType="Sensor" position="10" length="1" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail p27Hyst7, 16, 2, hex, 10 -->
+	<record channelid="pHeat2_p28Hyst8" requestByte="06" dataType="Sensor" position="11" length="1" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail p28Hyst8, 18, 2, hex, 10 -->
+	<record channelid="pHeat2_p29HystAsymmetry" requestByte="06" dataType="Settings" position="12" length="1"
+		scale="1" bitPosition="0" min="1" max="5" step="1" unit=""></record><!--
+		detail p29HystAsymmetry, 20, 2, hex, 1 -->
+	<record channelid="pHeat2_p30integralComponent" requestByte="06" dataType="Settings" position="13" length="2"
+		scale="1" bitPosition="0" min="10" max="999" step="1" unit="Kmin"></record><!--
+		detail p30integralComponent, 22, 4, hex, 1 -->
+	<record channelid="pHeat2_p31MaxBoostStages" requestByte="06" dataType="Sensor" position="15" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail p31MaxBoostStages, 26, 2, hex, 1 -->
+	<record channelid="pHeat2_MaxHeatFlowTemp" requestByte="06" dataType="Sensor" position="16" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail MaxHeatFlowTemp, 28, 4, hex, 10 -->
+	<record channelid="pHeat2_p49SummerModeTemp" requestByte="06" dataType="Settings" position="18" length="2"
+		scale="0.1" bitPosition="0" min="10" max="24" step="0.1" unit="°C"></record><!--
+		detail p49SummerModeTemp, 32, 4, hex, 10 -->
+	<record channelid="pHeat2_p50SummerModeHysteresis" requestByte="06" dataType="Settings" position="20" length="2"
+		scale="0.1" bitPosition="0" min="1" max="5" step="0.1" unit="K"></record><!--
+		detail p50SummerModeHysteresis, 36, 4, hex, 10 -->
+	<record channelid="pHeat2_p77OutTempFilterTime" requestByte="06" dataType="Settings" position="22" length="2"
+		scale="1" bitPosition="0" min="0" max="24" step="1" unit="h"></record><!--
+		detail p77OutTempFilterTime, 40, 4, hex, 1 -->
+	<record channelid="pHeat2_p78DualModePoint" requestByte="06" dataType="Settings" position="24" length="2"
+		scale="0.1" bitPosition="0" min="-10" max="20" step="0.1" unit="°C"></record><!--
+		detail p78DualModePoint, 44, 4, hex2int, 10 -->
+	<record channelid="pHeat2_p79BoosterTimeoutHC" requestByte="06" dataType="Settings" position="26" length="1"
+		scale="1" bitPosition="0" min="0" max="60" step="1" unit="min"></record><!--
+		detail p79BoosterTimeoutHC, 48, 2, hex, 1 -->
+	<!-- property pHeatProg, 0B 0Bpxx206 -->
+	<record channelid="pHeatProg_progHC1StartTime" requestByte="0B" dataType="Settings" position="4" length="2"
+		scale="1" bitPosition="0" min="0" max="2359" step="1" unit=""></record><!--
+		detail progHC1StartTime, 4, 4, hex2time, 1 -->
+	<record channelid="pHeatProg_progHC1EndTime" requestByte="0B" dataType="Settings" position="6" length="2"
+		scale="1" bitPosition="0" min="0" max="2359" step="1" unit=""></record><!--
+		detail progHC1EndTime, 8, 4, hex2time, 1 -->
+	<record channelid="pHeatProg_progHC1Monday" requestByte="0B" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="7" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC1Monday, 13, 1, bit0, 1 -->
+	<record channelid="pHeatProg_progHC1Tuesday" requestByte="0B" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="6" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC1Tuesday, 13, 1, bit1, 1 -->
+	<record channelid="pHeatProg_progHC1Wednesday" requestByte="0B" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="5" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC1Wednesday, 13, 1, bit2, 1 -->
+	<record channelid="pHeatProg_progHC1Thursday" requestByte="0B" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="4" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC1Thursday, 13, 1, bit3, 1 -->
+	<record channelid="pHeatProg_progHC1Friday" requestByte="0B" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="3" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC1Friday, 12, 1, bit0, 1 -->
+	<record channelid="pHeatProg_progHC1Saturday" requestByte="0B" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="2" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC1Saturday, 12, 1, bit1, 1 -->
+	<record channelid="pHeatProg_progHC1Sunday" requestByte="0B" dataType="Settings" position="8" length="1"
+		scale="1" bitPosition="1" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC1Sunday, 12, 1, bit2, 1 -->
+	<record channelid="pHeatProg_progHC1Enable" requestByte="0B" dataType="Settings" position="9" length="1"
+		scale="1" bitPosition="0" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC1Enable, 14, 2, hex, 1 -->
+	<record channelid="pHeatProg_progHC2StartTime" requestByte="0B" dataType="Settings" position="10" length="2"
+		scale="1" bitPosition="0" min="0" max="2359" step="1" unit=""></record><!--
+		detail progHC2StartTime, 16, 4, hex2time, 1 -->
+	<record channelid="pHeatProg_progHC2EndTime" requestByte="0B" dataType="Settings" position="12" length="2"
+		scale="1" bitPosition="0" min="0" max="2359" step="1" unit=""></record><!--
+		detail progHC2EndTime, 20, 4, hex2time, 1 -->
+	<record channelid="pHeatProg_progHC2Monday" requestByte="0B" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="7" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC2Monday, 25, 1, bit0, 1 -->
+	<record channelid="pHeatProg_progHC2Tuesday" requestByte="0B" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="6" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC2Tuesday, 25, 1, bit1, 1 -->
+	<record channelid="pHeatProg_progHC2Wednesday" requestByte="0B" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="5" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC2Wednesday, 25, 1, bit2, 1 -->
+	<record channelid="pHeatProg_progHC2Thursday" requestByte="0B" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="4" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC2Thursday, 25, 1, bit3, 1 -->
+	<record channelid="pHeatProg_progHC2Friday" requestByte="0B" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="3" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC2Friday, 24, 1, bit0, 1 -->
+	<record channelid="pHeatProg_progHC2Saturday" requestByte="0B" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="2" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC2Saturday, 24, 1, bit1, 1 -->
+	<record channelid="pHeatProg_progHC2Sunday" requestByte="0B" dataType="Settings" position="14" length="1"
+		scale="1" bitPosition="1" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC2Sunday, 24, 1, bit2, 1 -->
+	<record channelid="pHeatProg_progHC2Enable" requestByte="0B" dataType="Settings" position="15" length="1"
+		scale="1" bitPosition="0" min="0" max="1" step="1" unit=""></record><!--
+		detail progHC2Enable, 26, 2, hex, 1 -->
+	<!-- property pRestart, 0E 0Epxx206 -->
+	<record channelid="pRestart_p59RestartBeforeSetbackEnd" requestByte="0E" dataType="Sensor" position="4"
+		length="2" scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail p59RestartBeforeSetbackEnd, 4,
+		4, hex, 1 -->
+	<!-- property pSolar, 08 08pxx206 -->
+	<record channelid="pSolar_p80EnableSolar" requestByte="08" dataType="Settings" position="4" length="1" scale="1"
+		bitPosition="0" min="0" max="1" step="1" unit=""></record><!--
+		detail p80EnableSolar, 4, 2, hex, 1 -->
+	<record channelid="pSolar_p81DiffTempSolarLoading" requestByte="08" dataType="Sensor" position="5" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail p81DiffTempSolarLoading, 6, 4, hex, 10 -->
+	<record channelid="pSolar_p82DelayCompStartSolar" requestByte="08" dataType="Sensor" position="7" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail p82DelayCompStartSolar, 10, 2, hex, 1 -->
+	<record channelid="pSolar_p84DHWTempSolarMode" requestByte="08" dataType="Sensor" position="8" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail p84DHWTempSolarMode, 12, 4, hex, 10 -->
+	<record channelid="pSolar_HystDiffTempSolar" requestByte="08" dataType="Sensor" position="10" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail HystDiffTempSolar, 16, 4, hex, 10 -->
+	<record channelid="pSolar_CollectLimitTempSolar" requestByte="08" dataType="Sensor" position="12" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail CollectLimitTempSolar, 20, 4, hex, 10 -->
+	<!-- property sControl, F2 F2type -->
+	<!-- Unknown type: F2type -->
+	<!-- property sDHW, F3 F3dhw -->
+	<record channelid="sDHW_dhwTemp" requestByte="F3" dataType="Sensor" position="4" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail dhwTemp, 4, 4, hex2int, 10 -->
+	<record channelid="sDHW_outsideTemp" requestByte="F3" dataType="Sensor" position="6" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail outsideTemp, 8, 4, hex2int, 10 -->
+	<record channelid="sDHW_dhwSetTemp" requestByte="F3" dataType="Sensor" position="8" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail dhwSetTemp, 12, 4, hex2int, 10 -->
+	<record channelid="sDHW_compBlockTime" requestByte="F3" dataType="Sensor" position="10" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail compBlockTime, 16, 4, hex2int, 1 -->
+	<record channelid="sDHW_out" requestByte="F3" dataType="Sensor" position="12" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail out, 20, 4, raw, 1 -->
+	<record channelid="sDHW_heatBlockTime" requestByte="F3" dataType="Sensor" position="14" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail heatBlockTime, 24, 4, hex2int, 1 -->
+	<record channelid="sDHW_dhwBoosterStage" requestByte="F3" dataType="Sensor" position="16" length="1" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail dhwBoosterStage, 28, 2, hex, 1 -->
+	<record channelid="sDHW_pasteurisationMode" requestByte="F3" dataType="Sensor" position="18" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail pasteurisationMode, 32, 2, hex, 1 -->
+	<record channelid="sDHW_dhwOpMode" requestByte="F3" dataType="Sensor" position="19" length="1" scale="1"
+		bitPosition="0" min="1" max="5" step="1" unit=""></record><!--
+		detail dhwOpMode, 34, 2, opmodehc, 1 -->
+	<record channelid="sDHW_x36" requestByte="F3" dataType="Sensor" position="20" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail x36, 36, 4, raw, 1 -->
+	<!-- property sFan, E8 E8fan206 -->
+	<record channelid="sFan_statusAFC" requestByte="E8" dataType="Sensor" position="4" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail statusAFC, 4, 4, hex, 1 -->
+	<record channelid="sFan_supplyFanSpeedCAL" requestByte="E8" dataType="Sensor" position="6" length="2"
+		scale="0.0166666666666667" bitPosition="0" min="0" max="0" step="0.0166666666666667" unit=""></record><!--
+		detail supplyFanSpeedCAL,
+		8, 4, hex, 60 -->
+	<record channelid="sFan_exhaustFanSpeedCAL" requestByte="E8" dataType="Sensor" position="8" length="2"
+		scale="0.0166666666666667" bitPosition="0" min="0" max="0" step="0.0166666666666667" unit=""></record><!--
+		detail exhaustFanSpeedCAL,
+		12, 4, hex, 60 -->
+	<record channelid="sFan_supplyFanAirflowCAL" requestByte="E8" dataType="Sensor" position="10" length="2"
+		scale="0.01" bitPosition="0" min="0" max="0" step="0.01" unit=""></record><!--
+		detail supplyFanAirflowCAL, 16, 4, hex, 100 -->
+	<record channelid="sFan_exhaustFanAirflowCAL" requestByte="E8" dataType="Sensor" position="12" length="2"
+		scale="0.01" bitPosition="0" min="0" max="0" step="0.01" unit=""></record><!--
+		detail exhaustFanAirflowCAL, 20, 4, hex, 100 -->
+	<record channelid="sFan_supplyFanSpeed" requestByte="E8" dataType="Sensor" position="14" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail supplyFanSpeed, 24, 4, hex, 1 -->
+	<record channelid="sFan_exhaustFanSpeed" requestByte="E8" dataType="Sensor" position="16" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail exhaustFanSpeed, 28, 4, hex, 1 -->
+	<record channelid="sFan_supplyFanAirflowSet" requestByte="E8" dataType="Sensor" position="18" length="2"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail supplyFanAirflowSet, 32, 4, hex, 1 -->
+	<record channelid="sFan_exhaustFanAirflowSet" requestByte="E8" dataType="Sensor" position="20" length="2"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail exhaustFanAirflowSet, 36, 4, hex, 1 -->
+	<record channelid="sFan_supplyFanSpeedTarget" requestByte="E8" dataType="Sensor" position="22" length="2"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail supplyFanSpeedTarget, 40, 4, hex, 1 -->
+	<record channelid="sFan_exhaustFanSpeedTarget" requestByte="E8" dataType="Sensor" position="24" length="2"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail exhaustFanSpeedTarget, 44, 4, hex, 1 -->
+	<record channelid="sFan_supplyFanSpeed0" requestByte="E8" dataType="Sensor" position="26" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail supplyFanSpeed0, 48, 4, hex, 10 -->
+	<record channelid="sFan_exhaustFanSpeed0" requestByte="E8" dataType="Sensor" position="28" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail exhaustFanSpeed0, 52, 4, hex, 10 -->
+	<record channelid="sFan_supplyFanSpeed200" requestByte="E8" dataType="Sensor" position="30" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail supplyFanSpeed200, 56, 4, hex, 10 -->
+	<record channelid="sFan_exhaustFanSpeed200" requestByte="E8" dataType="Sensor" position="32" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail exhaustFanSpeed200, 60, 4, hex, 10 -->
+	<record channelid="sFan_airflowTolerance" requestByte="E8" dataType="Sensor" position="34" length="1" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail airflowTolerance, 64, 2, hex, 1 -->
+	<record channelid="sFan_airflowCalibrationInterval" requestByte="E8" dataType="Sensor" position="35" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail airflowCalibrationInterval, 66, 2, hex, 1 -->
+	<record channelid="sFan_timeToCalibration" requestByte="E8" dataType="Sensor" position="36" length="1" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail timeToCalibration, 68, 2, hex, 1 -->
+	<!-- property sGlobal, FB FBglob214 -->
+	<record channelid="sGlobal_outsideTemp" requestByte="FB" dataType="Sensor" position="6" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail outsideTemp, 8, 4, hex2int, 10 -->
+	<record channelid="sGlobal_flowTemp" requestByte="FB" dataType="Sensor" position="8" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail flowTemp, 12, 4, hex2int, 10 -->
+	<record channelid="sGlobal_returnTemp" requestByte="FB" dataType="Sensor" position="10" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail returnTemp, 16, 4, hex2int, 10 -->
+	<record channelid="sGlobal_hotGasTemp" requestByte="FB" dataType="Sensor" position="12" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail hotGasTemp, 20, 4, hex2int, 10 -->
+	<record channelid="sGlobal_dhwTemp" requestByte="FB" dataType="Sensor" position="14" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail dhwTemp, 24, 4, hex2int, 10 -->
+	<record channelid="sGlobal_flowTempHC2" requestByte="FB" dataType="Sensor" position="16" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail flowTempHC2, 28, 4, hex2int, 10 -->
+	<record channelid="sGlobal_evaporatorTemp" requestByte="FB" dataType="Sensor" position="20" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail evaporatorTemp, 36, 4, hex2int, 10 -->
+	<record channelid="sGlobal_condenserTemp" requestByte="FB" dataType="Sensor" position="22" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail condenserTemp, 40, 4, hex2int, 10 -->
+	<record channelid="sGlobal_mixerOpen" requestByte="FB" dataType="Sensor" position="25" length="1" scale="1"
+		bitPosition="6" min="0" max="0" step="1" unit=""></record><!--
+		detail mixerOpen, 47, 1, bit1, 1 -->
+	<record channelid="sGlobal_mixerClosed" requestByte="FB" dataType="Sensor" position="25" length="1" scale="1"
+		bitPosition="7" min="0" max="0" step="1" unit=""></record><!--
+		detail mixerClosed, 47, 1, bit0, 1 -->
+	<record channelid="sGlobal_heatPipeValve" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1"
+		bitPosition="4" min="0" max="0" step="1" unit=""></record><!--
+		detail heatPipeValve, 45, 1, bit3, 1 -->
+	<record channelid="sGlobal_diverterValve" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1"
+		bitPosition="5" min="0" max="0" step="1" unit=""></record><!--
+		detail diverterValve, 45, 1, bit2, 1 -->
+	<record channelid="sGlobal_dhwPump" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1"
+		bitPosition="6" min="0" max="0" step="1" unit=""></record><!--
+		detail dhwPump, 45, 1, bit1, 1 -->
+	<record channelid="sGlobal_heatingCircuitPump" requestByte="FB" dataType="Sensor" position="24" length="1"
+		scale="1" bitPosition="7" min="0" max="0" step="1" unit=""></record><!--
+		detail heatingCircuitPump, 45, 1, bit0, 1 -->
+	<record channelid="sGlobal_solarPump" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1"
+		bitPosition="1" min="0" max="0" step="1" unit=""></record><!--
+		detail solarPump, 44, 1, bit2, 1 -->
+	<record channelid="sGlobal_compressor" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1"
+		bitPosition="3" min="0" max="0" step="1" unit=""></record><!--
+		detail compressor, 44, 1, bit0, 1 -->
+	<record channelid="sGlobal_boosterStage2" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail boosterStage2, 44, 1, bit3, 1 -->
+	<!-- Unknown format: n.a. --><!-- detail boosterStage3, 44, 1, n.a., 1 -->
+	<record channelid="sGlobal_boosterStage1" requestByte="FB" dataType="Sensor" position="24" length="1" scale="1"
+		bitPosition="2" min="0" max="0" step="1" unit=""></record><!--
+		detail boosterStage1, 44, 1, bit1, 1 -->
+	<record channelid="sGlobal_highPressureSensor" requestByte="FB" dataType="Sensor" position="29" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail highPressureSensor, 54, 1, bit3, 1 -->
+	<record channelid="sGlobal_lowPressureSensor" requestByte="FB" dataType="Sensor" position="29" length="1"
+		scale="1" bitPosition="1" min="0" max="0" step="1" unit=""></record><!--
+		detail lowPressureSensor, 54, 1, bit2, 1 -->
+	<record channelid="sGlobal_evaporatorIceMonitor" requestByte="FB" dataType="Sensor" position="29" length="1"
+		scale="1" bitPosition="4" min="0" max="0" step="1" unit=""></record><!--
+		detail evaporatorIceMonitor, 55, 1, bit3, 1 -->
+	<record channelid="sGlobal_signalAnode" requestByte="FB" dataType="Sensor" position="29" length="1" scale="1"
+		bitPosition="2" min="0" max="0" step="1" unit=""></record><!--
+		detail signalAnode, 54, 1, bit1, 1 -->
+	<!-- Unknown format: n.a. --><!-- detail evuRelease, 48, 1, n.a., 1 -->
+	<record channelid="sGlobal_ovenFireplace" requestByte="FB" dataType="Sensor" position="29" length="1" scale="1"
+		bitPosition="3" min="0" max="0" step="1" unit=""></record><!--
+		detail ovenFireplace, 54, 1, bit0, 1 -->
+	<!-- Unknown format: n.a. --><!-- detail STB, 48, 1, n.a., 1 -->
+	<record channelid="sGlobal_outputVentilatorPower" requestByte="FB" dataType="Sensor" position="26" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit="%"></record><!--
+		detail outputVentilatorPower, 48, 2, hex, 1 -->
+	<record channelid="sGlobal_inputVentilatorPower" requestByte="FB" dataType="Sensor" position="27" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit="%"></record><!--
+		detail inputVentilatorPower, 50, 2, hex, 1 -->
+	<record channelid="sGlobal_mainVentilatorPower" requestByte="FB" dataType="Sensor" position="28" length="1"
+		scale="0.392156862745098" bitPosition="0" min="0" max="0" step="0.392156862745098" unit="%"></record><!--
+		detail mainVentilatorPower,
+		52, 2, hex, 2.55 -->
+	<record channelid="sGlobal_outputVentilatorSpeed" requestByte="FB" dataType="Sensor" position="30" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit="%"></record><!--
+		detail outputVentilatorSpeed, 56, 2, hex, 1 -->
+	<record channelid="sGlobal_inputVentilatorSpeed" requestByte="FB" dataType="Sensor" position="31" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit="%"></record><!--
+		detail inputVentilatorSpeed, 58, 2, hex, 1 -->
+	<record channelid="sGlobal_mainVentilatorSpeed" requestByte="FB" dataType="Sensor" position="32" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit="%"></record><!--
+		detail mainVentilatorSpeed, 60, 2, hex, 1 -->
+	<record channelid="sGlobal_outsideTempFiltered" requestByte="FB" dataType="Sensor" position="34" length="2"
+		scale="0.1" bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail outsideTempFiltered, 64, 4, hex2int, 10 -->
+	<!-- Unknown format: n.a. --><!-- detail relHumidity, 70, 4, n.a., 1 -->
+	<!-- Unknown format: n.a. --><!-- detail dewPoint, 5, 4, n.a., 1 -->
+	<!-- Unknown format: n.a. --><!-- detail P_Nd, 5, 4, n.a., 1 -->
+	<!-- Unknown format: n.a. --><!-- detail P_Hd, 5, 4, n.a., 1 -->
+	<!-- Unknown format: n.a. --><!-- detail actualPower_Qc, 5, 8, n.a., 1 -->
+	<!-- Unknown format: n.a. --><!-- detail actualPower_Pel, 5, 8, n.a., 1 -->
+	<record channelid="sGlobal_collectorTemp" requestByte="FB" dataType="Sensor" position="4" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail collectorTemp, 4, 4, hex2int, 10 -->
+	<record channelid="sGlobal_insideTemp" requestByte="FB" dataType="Sensor" position="18" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail insideTemp, 32, 4, hex2int, 10 -->
+	<!-- property sHC1, F4 F4hc1214 -->
+	<record channelid="sHC1_outsideTemp" requestByte="F4" dataType="Sensor" position="4" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail outsideTemp, 4, 4, hex2int, 10 -->
+	<record channelid="sHC1_x08" requestByte="F4" dataType="Sensor" position="6" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail x08, 8, 4, raw, 1 -->
+	<record channelid="sHC1_returnTemp" requestByte="F4" dataType="Sensor" position="8" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail returnTemp, 12, 4, hex2int, 10 -->
+	<record channelid="sHC1_integralHeat" requestByte="F4" dataType="Sensor" position="10" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail integralHeat, 16, 4, hex2int, 1 -->
+	<record channelid="sHC1_flowTemp" requestByte="F4" dataType="Sensor" position="12" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail flowTemp, 20, 4, hex2int, 10 -->
+	<record channelid="sHC1_heatSetTemp" requestByte="F4" dataType="Sensor" position="14" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail heatSetTemp, 24, 4, hex2int, 10 -->
+	<record channelid="sHC1_heatTemp" requestByte="F4" dataType="Sensor" position="16" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail heatTemp, 28, 4, hex2int, 10 -->
+	<record channelid="sHC1_seasonMode" requestByte="F4" dataType="Sensor" position="21" length="1" scale="1"
+		bitPosition="0" min="1" max="2" step="1" unit=""></record><!--
+		detail seasonMode, 38, 2, somwinmode, 1 -->
+	<record channelid="sHC1_integralSwitch" requestByte="F4" dataType="Sensor" position="24" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail integralSwitch, 44, 4, hex2int, 1 -->
+	<record channelid="sHC1_hcOpMode" requestByte="F4" dataType="Sensor" position="26" length="1" scale="1"
+		bitPosition="0" min="1" max="5" step="1" unit=""></record><!--
+		detail hcOpMode, 48, 2, opmodehc, 1 -->
+	<record channelid="sHC1_roomSetTemp" requestByte="F4" dataType="Sensor" position="33" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail roomSetTemp, 62, 4, hex2int, 10 -->
+	<record channelid="sHC1_x60" requestByte="F4" dataType="Sensor" position="32" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail x60, 60, 4, hex2int, 10 -->
+	<record channelid="sHC1_x64" requestByte="F4" dataType="Sensor" position="34" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail x64, 64, 4, raw, 1 -->
+	<record channelid="sHC1_insideTempRC" requestByte="F4" dataType="Sensor" position="36" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail insideTempRC, 68, 4, hex2int, 10 -->
+	<record channelid="sHC1_x72" requestByte="F4" dataType="Sensor" position="38" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail x72, 72, 4, raw, 1 -->
+	<record channelid="sHC1_x76" requestByte="F4" dataType="Sensor" position="40" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail x76, 76, 4, raw, 1 -->
+	<record channelid="sHC1_onHysteresisNo" requestByte="F4" dataType="Sensor" position="18" length="1" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail onHysteresisNo, 32, 2, hex, 1 -->
+	<record channelid="sHC1_offHysteresisNo" requestByte="F4" dataType="Sensor" position="19" length="1" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail offHysteresisNo, 34, 2, hex, 1 -->
+	<record channelid="sHC1_hcBoosterStage" requestByte="F4" dataType="Sensor" position="20" length="1" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail hcBoosterStage, 36, 2, hex, 1 -->
+	<!-- property sHC2, F5 F5hc2 -->
+	<record channelid="sHC2_outsideTemp" requestByte="F5" dataType="Sensor" position="4" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail outsideTemp, 4, 4, hex2int, 10 -->
+	<record channelid="sHC2_returnTemp" requestByte="F5" dataType="Sensor" position="6" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail returnTemp, 8, 4, hex2int, 10 -->
+	<record channelid="sHC2_vorlaufTemp" requestByte="F5" dataType="Sensor" position="8" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail vorlaufTemp, 12, 4, hex2int, 10 -->
+	<record channelid="sHC2_heatSetTemp" requestByte="F5" dataType="Sensor" position="10" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail heatSetTemp, 16, 4, hex2int, 10 -->
+	<record channelid="sHC2_heatTemp" requestByte="F5" dataType="Sensor" position="12" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail heatTemp, 20, 4, hex2int, 10 -->
+	<record channelid="sHC2_stellgroesse" requestByte="F5" dataType="Sensor" position="14" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit=""></record><!--
+		detail stellgroesse, 24, 4, hex2int, 10 -->
+	<record channelid="sHC2_seasonMode" requestByte="F5" dataType="Sensor" position="17" length="1" scale="1"
+		bitPosition="0" min="1" max="2" step="1" unit=""></record><!--
+		detail seasonMode, 30, 2, somwinmode, 1 -->
+	<record channelid="sHC2_hcOpMode" requestByte="F5" dataType="Sensor" position="20" length="1" scale="1"
+		bitPosition="0" min="1" max="5" step="1" unit=""></record><!--
+		detail hcOpMode, 36, 2, opmodehc, 1 -->
+	<!-- property sHistory, 09 09his206 -->
+	<record channelid="sHistory_operatingHours1" requestByte="09" dataType="Sensor" position="4" length="2"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail operatingHours1, 4, 4, hex, 1 -->
+	<record channelid="sHistory_operatingHours2" requestByte="09" dataType="Sensor" position="6" length="2"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail operatingHours2, 8, 4, hex, 1 -->
+	<record channelid="sHistory_heatingHours" requestByte="09" dataType="Sensor" position="8" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail heatingHours, 12, 4, hex, 1 -->
+	<record channelid="sHistory_DHWhours" requestByte="09" dataType="Sensor" position="10" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail DHWhours, 16, 4, hex, 1 -->
+	<record channelid="sHistory_coolingHours" requestByte="09" dataType="Sensor" position="12" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail coolingHours, 20, 4, hex, 1 -->
+	<!-- property sProgram, EE EEprg206 -->
+	<record channelid="sProgram_opMode" requestByte="EE" dataType="Sensor" position="4" length="1" scale="1"
+		bitPosition="0" min="0" max="1" step="1" unit=""></record><!--
+		detail opMode, 4, 2, opmode2, 1 -->
+	<record channelid="sProgram_ProgStateHC" requestByte="EE" dataType="Sensor" position="7" length="1" scale="1"
+		bitPosition="0" min="1" max="5" step="1" unit=""></record><!--
+		detail ProgStateHC, 10, 2, opmodehc, 1 -->
+	<record channelid="sProgram_ProgStateDHW" requestByte="EE" dataType="Sensor" position="8" length="1" scale="1"
+		bitPosition="0" min="1" max="5" step="1" unit=""></record><!--
+		detail ProgStateDHW, 12, 2, opmodehc, 1 -->
+	<record channelid="sProgram_ProgStateFAN" requestByte="EE" dataType="Sensor" position="9" length="1" scale="1"
+		bitPosition="0" min="1" max="5" step="1" unit=""></record><!--
+		detail ProgStateFAN, 14, 2, opmodehc, 1 -->
+	<record channelid="sProgram_BaseTimeAP0" requestByte="EE" dataType="Sensor" position="10" length="4" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail BaseTimeAP0, 16, 8, hex, 1 -->
+	<record channelid="sProgram_StatusAP0" requestByte="EE" dataType="Sensor" position="14" length="1" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail StatusAP0, 24, 2, hex, 1 -->
+	<record channelid="sProgram_StartTimeAP0" requestByte="EE" dataType="Sensor" position="15" length="4" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail StartTimeAP0, 26, 8, hex, 1 -->
+	<record channelid="sProgram_EndTimeAP0" requestByte="EE" dataType="Sensor" position="19" length="4" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail EndTimeAP0, 34, 8, hex, 1 -->
+	<!-- property sSol, 16 16sol -->
+	<record channelid="sSol_collectorTemp" requestByte="16" dataType="Sensor" position="4" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail collectorTemp, 4, 4, hex2int, 10 -->
+	<record channelid="sSol_dhwTemp" requestByte="16" dataType="Sensor" position="6" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail dhwTemp, 8, 4, hex2int, 10 -->
+	<record channelid="sSol_flowTemp" requestByte="16" dataType="Sensor" position="8" length="2" scale="0.1"
+		bitPosition="0" min="0" max="0" step="0.1" unit="°C"></record><!--
+		detail flowTemp, 12, 4, hex2int, 10 -->
+	<record channelid="sSol_edSolPump" requestByte="16" dataType="Sensor" position="10" length="1" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail edSolPump, 16, 2, hex2int, 1 -->
+	<record channelid="sSol_out" requestByte="16" dataType="Sensor" position="15" length="2" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail out, 26, 4, raw, 1 -->
+	<record channelid="sSol_status" requestByte="16" dataType="Sensor" position="17" length="1" scale="1"
+		bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail status, 30, 2, raw, 1 -->
+	<!-- property sSystem, F6 F6sys206 -->
+	<record channelid="sSystem_userSetFanStage" requestByte="F6" dataType="Sensor" position="17" length="1"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail userSetFanStage, 30, 2, hex, 1 -->
+	<record channelid="sSystem_userSetFanRemainingTime" requestByte="F6" dataType="Sensor" position="20" length="2"
+		scale="1" bitPosition="0" min="0" max="0" step="1" unit=""></record><!--
+		detail userSetFanRemainingTime, 36, 4, hex, 1 -->
+	<!-- Unknown format: hex2error --><!-- detail lastErrors, 4, 8, hex2error, 1 -->
+	<!-- property sTimedate, FC FCtime206 -->
+	<record channelid="sTimedate_Weekday" requestByte="FC" dataType="Sensor" position="5" length="1" scale="1"
+		bitPosition="0" min="0" max="6" step="1" unit=""></record><!--
+		detail Weekday, 7, 1, weekday, 1 -->
+	<record channelid="sTimedate_pClockHour" requestByte="FC" dataType="Sensor" position="6" length="1" scale="1"
+		bitPosition="0" min="0" max="23" step="1" unit=""></record><!--
+		detail pClockHour, 8, 2, hex, 1 -->
+	<record channelid="sTimedate_pClockMinutes" requestByte="FC" dataType="Sensor" position="7" length="1" scale="1"
+		bitPosition="0" min="0" max="59" step="1" unit=""></record><!--
+		detail pClockMinutes, 10, 2, hex, 1 -->
+	<record channelid="sTimedate_Sec" requestByte="FC" dataType="Sensor" position="8" length="1" scale="1"
+		bitPosition="0" min="0" max="59" step="1" unit=""></record><!--
+		detail Sec, 12, 2, hex, 1 -->
+	<record channelid="sTimedate_pClockYear" requestByte="FC" dataType="Sensor" position="9" length="1" scale="1"
+		bitPosition="0" min="12" max="20" step="1" unit=""></record><!--
+		detail pClockYear, 14, 2, hex, 1 -->
+	<record channelid="sTimedate_pClockMonth" requestByte="FC" dataType="Sensor" position="11" length="1" scale="1"
+		bitPosition="0" min="1" max="12" step="1" unit=""></record><!--
+		detail pClockMonth, 18, 2, hex, 1 -->
+	<record channelid="sTimedate_pClockDay" requestByte="FC" dataType="Sensor" position="12" length="1" scale="1"
+		bitPosition="0" min="1" max="31" step="1" unit=""></record><!--
+		detail pClockDay, 20, 2, hex, 1 -->
 </records>

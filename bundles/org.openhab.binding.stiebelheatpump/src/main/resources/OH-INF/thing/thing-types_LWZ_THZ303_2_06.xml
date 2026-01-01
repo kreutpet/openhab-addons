@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="stiebelheatpump"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
-    xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
-    
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+
 	<thing-type id="LWZ_THZ303_2_06">
-		<label>Stiebel heat pump LWZ303 2.06</label>
-		<description>LWZ/THZ connecting with firmware version 2.06.</description>
+		<label>Stiebel Eltron LWZ / Tecalor THZ 303 (2.06)</label>
+		<description>LWZ/THZ heat pump with firmware version 2.06.</description>
 		<channel-groups>
 			<!-- at least 1 channel-group with id = version must be included -->
-			<channel-group id="version" typeId="channelGroupTypeVersion" />
-			<channel-group id="time" typeId="channelGroupTypeTime" />
-			<channel-group id="currentValues" typeId="channelGroupTypeCurrentValues" />
-			<channel-group id="operationCounters" typeId="channelGroupTypeOperationCounters" />
-			<channel-group id="nominalValues" typeId="channelGroupTypeNominalValues" />
-			<channel-group id="ventilation" typeId="channelGroupTypeVentilation" />
-			<channel-group id="heating" typeId="channelGroupTypeHeating" />
-			<channel-group id="evaporator" typeId="channelGroupTypeEvaporator" />
-			<channel-group id="circulationPump" typeId="channelGroupTypeCirculationPump" />
-			<channel-group id="heatingProgram" typeId="channelGroupTypeHeatingProgram" />
-			<channel-group id="domesticHotWaterProgram" typeId="channelGroupTypeDomesticHotWaterProgram" />
-			<channel-group id="ventilationProgram" typeId="channelGroupTypeVentilationProgram" />
-			<channel-group id="absenceProgram" typeId="channelGroupTypeAbsenceProgram" />
-			<channel-group id="restartAndMixerTime" typeId="channelGroupTypeRestartAndMixerTime" />
-			<channel-group id="domesticHotWater" typeId="channelGroupTypeDomesticHotWater" />
-			<channel-group id="lastErrors" typeId="channelGroupTypeLastErrors" />
-			<channel-group id="operationMode" typeId="channelGroupTypeOperationMode2"/>
+			<channel-group id="version" typeId="channelGroupTypeVersion"/>
+			<channel-group id="time" typeId="channelGroupTypeTime"/>
+			<channel-group id="currentValues" typeId="channelGroupTypeCurrentValues"/>
+			<channel-group id="controlValues" typeId="channelGroupTypeControlValues"/>
+			<channel-group id="displayValues" typeId="channelGroupTypeDisplayValues"/>
+			<channel-group id="operationCounters" typeId="channelGroupTypeOperationCounters"/>
+			<channel-group id="nominalValues" typeId="channelGroupTypeNominalValues"/>
+			<channel-group id="ventilation" typeId="channelGroupTypeVentilation"/>
+			<channel-group id="heating" typeId="channelGroupTypeHeating"/>
+			<channel-group id="evaporator" typeId="channelGroupTypeEvaporator"/>
+			<channel-group id="circulationPump" typeId="channelGroupTypeCirculationPump"/>
+			<channel-group id="heatingProgram" typeId="channelGroupTypeHeatingProgram"/>
+			<channel-group id="domesticHotWaterProgram" typeId="channelGroupTypeDomesticHotWaterProgram"/>
+			<channel-group id="ventilationProgram" typeId="channelGroupTypeVentilationProgram"/>
+			<channel-group id="absenceProgram" typeId="channelGroupTypeAbsenceProgram"/>
+			<channel-group id="restartAndMixerTime" typeId="channelGroupTypeRestartAndMixerTime"/>
+			<channel-group id="domesticHotWater" typeId="channelGroupTypeDomesticHotWater"/>
+			<channel-group id="lastErrors" typeId="channelGroupTypeLastErrors"/>
+			<channel-group id="operationMode" typeId="channelGroupTypeOperationMode"/>
+			<channel-group id="misc" typeId="channelGroupTypeMisc"/>
 		</channel-groups>
 		<properties>
 			<property name="vendor">Stiebel Eltron</property>

@@ -74,10 +74,15 @@ public class Records {
 
         for (Record record : records) {
             byte[] requestByte = DatatypeConverter.parseHexBinary(record.getRequestByte());
+            byte[] requestByte1000 = null;
+            if (record.getRequestByte1000() != null) {
+                requestByte1000 = DatatypeConverter.parseHexBinary(record.getRequestByte1000());
+            }
 
             RecordDefinition recordDefinition = new RecordDefinition();
             recordDefinition.setChannelid(record.getChannelid());
             recordDefinition.setRequestByte(requestByte);
+            recordDefinition.setRequestByte1000(requestByte1000);
 
             switch (record.getDataType()) {
                 case Settings:
@@ -108,7 +113,7 @@ public class Records {
                 }
             }
             if (!found) {
-                Request newRequest = new Request("", "", requestByte);
+                Request newRequest = new Request("", "", requestByte, requestByte1000);
                 newRequest.getRecordDefinitions().add(recordDefinition);
                 requests.getRequests().add(newRequest);
             }

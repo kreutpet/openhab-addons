@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="stiebelheatpump"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+    xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+
+	<channel-group-type id="channelGroupTypeVersion">
+		<label>Version</label>
+		<description>Version information of heat pump firmware</description>
+		<channels>
+			<!-- at least 1 channel-group with id = version must be included -->
+			<channel id="version" typeId="version" />
+			<channel id="dumpResponse" typeId="dumpResponse" />
+			<channel id="requestBytes" typeId="requestBytes"/>
+			<channel id="respondBytes" typeId="respondBytes"/>
+%channelGroupTypeVersion%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeTime">
+		<label>Time</label>
+		<description>Date and time information of heat pump</description>
+		<channels>
+			<channel id="setTime" typeId="setTime" />
+%channelGroupTypeTime%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeCurrentValues">
+		<label>Measurements</label>
+		<description>Measurements of the heat pump.</description>
+		<channels>
+			<channel id="refreshTime" typeId="dateTime" />  
+%channelGroupTypeCurrentValues%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeControlValues">
+		<label>Control</label>
+		<description>Control values of the heat pump.</description>
+		<channels>
+%channelGroupTypeControlValues%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeDisplayValues">
+		<label>Display</label>
+		<description>Display values of the heat pump.</description>
+		<channels>
+%channelGroupTypeDisplayValues%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeOperationCounters">
+		<label>Operation Counters</label>
+		<description>Reads Operation counters of the heat pump.</description>
+		<channels>
+%channelGroupTypeOperationCounters%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeNominalValues">
+		<label>Settings nominal values</label>
+		<description>Reads settings nominal values of the heat pump.</description>
+		<channels>
+%channelGroupTypeNominalValues%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeVentilation">
+		<label>Settings ventilation</label>
+		<description>Reads ventilation settings of the heat pump.</description>
+		<channels>
+%channelGroupTypeVentilation%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeHeating">
+		<label>Settings heating</label>
+		<description>Reads heating settings of the heat pump.</description>
+		<channels>
+%channelGroupTypeHeating%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeEvaporator">
+		<label>Settings Evaporator</label>
+		<description>Reads Evaporator settings of the heat pump.</description>
+		<channels>
+%channelGroupTypeEvaporator%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeCirculationPump">
+		<label>Settings Circulation Pump</label>
+		<description>Reads Circulation Pump settings of the heat pump.</description>
+		<channels>
+%channelGroupTypeCirculationPump%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeHeatingProgram">
+		<label>Settings Heating Program</label>
+		<description>Reads Heating Program settings of the heat pump.</description>
+		<channels>
+%channelGroupTypeHeatingProgram%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeDomesticHotWaterProgram">
+		<label>Settings Domestic Hot Water Program</label>
+		<description>Reads Domestic Hot Water Program settings of the heat pump.</description>
+		<channels>
+%channelGroupTypeDomesticHotWaterProgram%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeVentilationProgram">
+		<label>Settings Ventilation Program</label>
+		<description>Reads Ventilation Program settings of the heat pump.</description>
+		<channels>
+%channelGroupTypeVentilationProgram%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeAbsenceProgram">
+		<label>Settings Absence Program</label>
+		<description>Reads Absence Program settings of the heat pump.</description>
+		<channels>
+%channelGroupTypeAbsenceProgram%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeRestartAndMixerTime">
+		<label>Restart and mixer time</label>
+		<description>Read restart and mixer time setting values.</description>
+		<channels>
+%channelGroupTypeRestartAndMixerTime%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeDomesticHotWater">
+		<label>Domestic Hot Water setting</label>
+		<description>Read Domestic Water setting values.</description>
+		<channels>
+%channelGroupTypeDomesticHotWater%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeLastErrors">
+		<label>Last Errors</label>
+		<description>Reads the list of last errors from the heat pump.</description>
+		<channels>
+%channelGroupTypeLastErrors%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeOperationMode">
+		<label>Operation Mode</label>
+		<description>Reads Operation mode of the heat pump.</description>
+		<channels>
+%channelGroupTypeOperationMode%
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeMisc">
+		<label>Miscellaneous</label>
+		<description>Miscellaneous values</description>
+		<channels>
+%channelGroupTypeMisc%
+		</channels>
+	</channel-group-type>
+</thing:thing-descriptions>

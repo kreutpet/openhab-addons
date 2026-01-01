@@ -37,6 +37,9 @@ public class Record {
     private String requestByte;
 
     @XStreamAsAttribute
+    private String requestByte1000;
+
+    @XStreamAsAttribute
     private Type dataType;
 
     @XStreamAsAttribute
@@ -80,6 +83,14 @@ public class Record {
 
     public void setRequestByte(String b) {
         this.requestByte = b;
+    }
+
+    public String getRequestByte1000() {
+        return requestByte1000;
+    }
+
+    public void setRequestByte1000(String b) {
+        this.requestByte1000 = b;
     }
 
     public int getPosition() {

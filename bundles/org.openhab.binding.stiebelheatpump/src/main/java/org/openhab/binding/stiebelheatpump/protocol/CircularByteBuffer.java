@@ -76,7 +76,7 @@ public class CircularByteBuffer {
             }
         }
 
-        if (timeOut == retry) {
+        if (timeOut == retry || !running) {
             return false;
         }
         return true;

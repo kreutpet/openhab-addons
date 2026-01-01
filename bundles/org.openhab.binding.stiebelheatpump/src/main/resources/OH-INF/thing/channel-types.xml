@@ -1,464 +1,3804 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="stiebelheatpump"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
-    xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
-	<channel-type id="version">
-		<item-type>String</item-type>
-		<label>Version</label>
-		<description>Firmware version of heat pump.</description>
-		<state readOnly="true" />
-	</channel-type>
 	<channel-type id="requestBytes" advanced="true">
 		<item-type>String</item-type>
 		<label>Dump heat pump response for request byte </label>
 		<description>Takes this request bytes and asks for a heat pump response, which is logged in the log.</description>
-		<state pattern="%s" />
+		<state pattern="%s"/>
 	</channel-type>
-    <channel-type id="respondBytes" advanced="true">
-        <item-type>String</item-type>
-        <label>Response form heat pump</label>
-        <description>Represents the heat pump responds of the dump request.</description>
-        <state pattern="%s" readOnly="true" />
-    </channel-type>
-    <channel-type id="dumpResponse" advanced="true">
-        <item-type>Switch</item-type>
-        <label>Dump heat pump response </label>
-        <description>Takes standard request bytes and asks for a heat pump response, which is logged in the log.</description>
-    </channel-type>
+	<channel-type id="respondBytes" advanced="true">
+		<item-type>String</item-type>
+		<label>Response form heat pump</label>
+		<description>Represents the heat pump responds of the dump request.</description>
+		<state pattern="%s" readOnly="true"/>
+	</channel-type>
+	<channel-type id="dumpResponse" advanced="true">
+		<item-type>Switch</item-type>
+		<label>Dump heat pump response </label>
+		<description>Takes standard request bytes and asks for a heat pump response, which is logged in the log.</description>
+	</channel-type>
 	<channel-type id="dateTime">
 		<item-type>String</item-type>
 		<label>Last refresh</label>
 		<description>Heatpump refreshed date time</description>
 		<category>Date</category>
-		<state readOnly="true" />
+		<state readOnly="true"/>
 	</channel-type>
 	<channel-type id="setTime" advanced="true">
 		<item-type>Switch</item-type>
 		<label>Set time</label>
 		<description>Set the time of the heat pump to system time of openHAB.</description>
 	</channel-type>
-	<channel-type id="temperature">
+	<channel-type id="p01-p12_p01RoomTempDay">
 		<item-type>Number:Temperature</item-type>
-		<label>Temperature</label>
+		<label>p01-p12_p01RoomTempDay</label>
 		<category>Temperature</category>
-		<state pattern="%.1f %unit%" readOnly="true" />
+		<state min="10" max="30" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="speed">
+	<channel-type id="p01-p12_p02RoomTempNight">
+		<item-type>Number:Temperature</item-type>
+		<label>p01-p12_p02RoomTempNight</label>
+		<category>Temperature</category>
+		<state min="10" max="30" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p01-p12_p03RoomTempStandby">
+		<item-type>Number:Temperature</item-type>
+		<label>p01-p12_p03RoomTempStandby</label>
+		<category>Temperature</category>
+		<state min="10" max="30" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p01-p12_p04DHWsetTempDay">
+		<item-type>Number:Temperature</item-type>
+		<label>p01-p12_p04DHWsetTempDay</label>
+		<category>Temperature</category>
+		<state min="10" max="55" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p01-p12_p05DHWsetTempNight">
+		<item-type>Number:Temperature</item-type>
+		<label>p01-p12_p05DHWsetTempNight</label>
+		<category>Temperature</category>
+		<state min="10" max="55" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p01-p12_p06DHWsetTempStandby">
+		<item-type>Number:Temperature</item-type>
+		<label>p01-p12_p06DHWsetTempStandby</label>
+		<category>Temperature</category>
+		<state min="10" max="55" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p01-p12_p07FanStageDay">
+		<item-type>Number</item-type>
+		<label>p01-p12_p07FanStageDay</label>
+		<state min="0" max="3"/>
+	</channel-type>
+	<channel-type id="p01-p12_p08FanStageNight">
+		<item-type>Number</item-type>
+		<label>p01-p12_p08FanStageNight</label>
+		<state min="0" max="3"/>
+	</channel-type>
+	<channel-type id="p01-p12_p09FanStageStandby">
+		<item-type>Number</item-type>
+		<label>p01-p12_p09FanStageStandby</label>
+		<state min="0" max="3"/>
+	</channel-type>
+	<channel-type id="p01-p12_p10HCTempManual">
+		<item-type>Number:Temperature</item-type>
+		<label>p01-p12_p10HCTempManual</label>
+		<category>Temperature</category>
+		<state min="10" max="65" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p01-p12_p11DHWsetTempManual">
+		<item-type>Number:Temperature</item-type>
+		<label>p01-p12_p11DHWsetTempManual</label>
+		<category>Temperature</category>
+		<state min="10" max="65" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p01-p12_p12FanStageManual">
+		<item-type>Number</item-type>
+		<label>p01-p12_p12FanStageManual</label>
+		<state min="0" max="3"/>
+	</channel-type>
+	<channel-type id="p01RoomTempDayHC1">
+		<item-type>Number:Temperature</item-type>
+		<label>p01RoomTempDayHC1</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p01RoomTempDayHC1SummerMode">
+		<item-type>Number:Temperature</item-type>
+		<label>p01RoomTempDayHC1SummerMode</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p01RoomTempDayHC2">
+		<item-type>Number:Temperature</item-type>
+		<label>p01RoomTempDayHC2</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p01RoomTempDayHC2SummerMode">
+		<item-type>Number:Temperature</item-type>
+		<label>p01RoomTempDayHC2SummerMode</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p02RoomTempNightHC1">
+		<item-type>Number:Temperature</item-type>
+		<label>p02RoomTempNightHC1</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p02RoomTempNightHC1SummerMode">
+		<item-type>Number:Temperature</item-type>
+		<label>p02RoomTempNightHC1SummerMode</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p02RoomTempNightHC2">
+		<item-type>Number:Temperature</item-type>
+		<label>p02RoomTempNightHC2</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p02RoomTempNightHC2SummerMode">
+		<item-type>Number:Temperature</item-type>
+		<label>p02RoomTempNightHC2SummerMode</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p03RoomTempStandbyHC1">
+		<item-type>Number:Temperature</item-type>
+		<label>p03RoomTempStandbyHC1</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p03RoomTempStandbyHC1SummerMode">
+		<item-type>Number:Temperature</item-type>
+		<label>p03RoomTempStandbyHC1SummerMode</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p03RoomTempStandbyHC2">
+		<item-type>Number:Temperature</item-type>
+		<label>p03RoomTempStandbyHC2</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p03RoomTempStandbyHC2SummerMode">
+		<item-type>Number:Temperature</item-type>
+		<label>p03RoomTempStandbyHC2SummerMode</label>
+		<category>Temperature</category>
+		<state min="12" max="32" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p04DHWsetDayTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>p04DHWsetDayTemp</label>
+		<category>Temperature</category>
+		<state min="10" max="55" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p05DHWsetNightTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>p05DHWsetNightTemp</label>
+		<category>Temperature</category>
+		<state min="10" max="55" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p06DHWsetStandbyTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>p06DHWsetStandbyTemp</label>
+		<category>Temperature</category>
+		<state min="10" max="55" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p07FanStageDay">
+		<item-type>Number</item-type>
+		<label>p07FanStageDay</label>
+		<state min="0" max="3"/>
+	</channel-type>
+	<channel-type id="p08FanStageNight">
+		<item-type>Number</item-type>
+		<label>p08FanStageNight</label>
+		<state min="0" max="3"/>
+	</channel-type>
+	<channel-type id="p09FanStageStandby">
+		<item-type>Number</item-type>
+		<label>p09FanStageStandby</label>
+		<state min="0" max="3"/>
+	</channel-type>
+	<channel-type id="p11DHWsetManualTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>p11DHWsetManualTemp</label>
+		<category>Temperature</category>
+		<state min="10" max="55" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p13GradientHC1">
+		<item-type>Number</item-type>
+		<label>p13GradientHC1</label>
+		<state min="0.1" max="5" pattern="%.2f %unit%"/>
+	</channel-type>
+	<channel-type id="p14LowEndHC1">
+		<item-type>Number:Temperature</item-type>
+		<label>p14LowEndHC1</label>
+		<category>Temperature</category>
+		<state min="0" max="10" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p15RoomInfluenceHC1">
 		<item-type>Number:Dimensionless</item-type>
-		<label>Fan speed in %</label>
-		<state pattern="%.0f %%" readOnly="true" />
+		<label>p15RoomInfluenceHC1</label>
+		<category>Dimensionless</category>
+		<state min="0" max="100" pattern="%.0f %unit%"/>
 	</channel-type>
-	<channel-type id="hourCounter">
+	<channel-type id="p16GradientHC2">
 		<item-type>Number</item-type>
-		<label>Operation Counter in [h]</label>
-		<state pattern="%d h" readOnly="true" />
+		<label>p16GradientHC2</label>
+		<state min="0.1" max="5" pattern="%.2f %unit%"/>
 	</channel-type>
-	<channel-type id="counter">
-		<item-type>Number</item-type>
-		<label>Operation Counter</label>
-		<state pattern="%d" readOnly="true" />
-	</channel-type>
-	<channel-type id="temperatureSetting" advanced="true">
+	<channel-type id="p17LowEndHC2">
 		<item-type>Number:Temperature</item-type>
-		<label>Temperature Setting in [°C]</label>
-		<state min="10" max="30" step="0.1" pattern="%.1f %unit%" />
+		<label>p17LowEndHC2</label>
+		<category>Temperature</category>
+		<state min="0" max="10" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="dHWTemperatureSetting" advanced="true">
+	<channel-type id="p18RoomInfluenceHC2">
+		<item-type>Number:Dimensionless</item-type>
+		<label>p18RoomInfluenceHC2</label>
+		<category>Dimensionless</category>
+		<state min="0" max="100" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p19FlowProportionHC1">
+		<item-type>Number:Dimensionless</item-type>
+		<label>p19FlowProportionHC1</label>
+		<category>Dimensionless</category>
+		<state min="0" max="100" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p21Hyst1">
 		<item-type>Number:Temperature</item-type>
-		<label>DHW Temperature Setting in [°C]</label>
-		<state min="10" max="55" step="0.1" pattern="%.1f %unit%" />
+		<label>p21Hyst1</label>
+		<category>Temperature</category>
+		<state min="0" max="10" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="temperatureManualSetting" advanced="true">
+	<channel-type id="p22Hyst2">
 		<item-type>Number:Temperature</item-type>
-		<label>Temperature Setting in [°C]</label>
-		<state min="10" max="65" step="0.1" pattern="%.1f %unit%" />
+		<label>p22Hyst2</label>
+		<category>Temperature</category>
+		<state min="0" max="10" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="maxFlowTemperatureSetting" advanced="true">
+	<channel-type id="p23Hyst3">
 		<item-type>Number:Temperature</item-type>
-		<label>Max flow temperature Setting in [°C]</label>
-		<state min="10" max="75" step="0.1" pattern="%.1f %unit%" />
+		<label>p23Hyst3</label>
+		<category>Temperature</category>
+		<state min="0" max="5" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="changeoverTemperatureSummerWinter" advanced="true">
+	<channel-type id="p24Hyst4">
 		<item-type>Number:Temperature</item-type>
-		<label>Max flow temperature Setting in [°C]</label>
-		<state min="10" max="25" step="0.1" pattern="%.1f %unit%" />
+		<label>p24Hyst4</label>
+		<category>Temperature</category>
+		<state min="0" max="5" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="hysteresisChangeoverTemperatureSummerWinter" advanced="true">
-		<item-type>Number</item-type>
-		<label>Max flow temperature Setting in [K]</label>
-		<state min="1" max="5" step="0.1" pattern="%.1f K" />
-	</channel-type>
-	<channel-type id="outsideTemperatureAdjustment" advanced="true">
-		<item-type>Number</item-type>
-		<label>Outside temperature adjustment Setting in [h]</label>
-		<state min="0" max="24" step="1.0" pattern="%d h" />
-	</channel-type>
-	<channel-type id="bivalencePoint" advanced="true">
+	<channel-type id="p25Hyst5">
 		<item-type>Number:Temperature</item-type>
-		<label>Bivalence point Setting in [°C]</label>
-		<state min="-10" max="20" step="0.1" pattern="%.1f %unit%" />
+		<label>p25Hyst5</label>
+		<category>Temperature</category>
+		<state min="0" max="5" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="delayedEnableReheating" advanced="true">
+	<channel-type id="p29HystAsymmetry">
 		<item-type>Number</item-type>
-		<label>Delayed enable re-heating</label>
-		<description>Delayed enable re-heating.</description>
-		<state min="0" max="60" step="1" pattern="%d min" />
+		<label>p29HystAsymmetry</label>
+		<state min="1" max="5"/>
 	</channel-type>
-	<channel-type id="outputElectricalHeating" advanced="true">
-		<item-type>Number:Energy</item-type>
-		<label>Output electrical heating</label>
-		<description>Output electrical heating.</description>
-		<state min="0" max="10" step="1" pattern="%.1f %unit%" />
-	</channel-type>
-	<channel-type id="increaseHeating" advanced="true">
+	<channel-type id="p30integralComponent">
 		<item-type>Number</item-type>
-		<label>Increase heating</label>
-		<description>Increase heating of heat circuit.</description>
-		<state min="1" max="5" step="0.1" pattern="%.1f %unit%"/>
+		<label>p30integralComponent</label>
+		<state min="10" max="999" pattern="%.0f %unit%"/>
 	</channel-type>
-	<channel-type id="lowEndPointHeating" advanced="true">
+	<channel-type id="p31MaxBoosterStgHtg">
 		<item-type>Number</item-type>
-		<label>Low end point heating Setting in [K]</label>
-		<state min="1" max="20" step="0.1" pattern="%.1f K" />
+		<label>p31MaxBoosterStgHtg</label>
+		<state min="0" max="3"/>
 	</channel-type>
-	<channel-type id="roomInfluenceHeating" advanced="true">
-		<item-type>Number</item-type>
-		<label>Room influence heating</label>
-		<description>Room influence heating of heat circuit.</description>
-		<state min="1" max="10" step="0.1" />
-	</channel-type>
-	<channel-type id="temperatureCaptureReturnFlow" advanced="true">
-		<item-type>Number</item-type>
-		<label>Temperature capture return flow</label>
-		<state min="1" max="100" step="1.0" pattern="%d %%" />
-	</channel-type>
-	<channel-type id="maxSetHeatingCircuitTemperature" advanced="true">
+	<channel-type id="p32HystDHW">
 		<item-type>Number:Temperature</item-type>
-		<label>Max set heating circuit temperature Setting in [°C]</label>
-		<state min="20" max="65" step="0.1" pattern="%.1f %unit%" />
+		<label>p32HystDHW</label>
+		<category>Temperature</category>
+		<state min="0" max="10" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="minSetHeatingCircuitTemperature" advanced="true">
+	<channel-type id="p33BoosterTimeoutDHW">
+		<item-type>Number:Time</item-type>
+		<label>p33BoosterTimeoutDHW</label>
+		<category>Time</category>
+		<state min="0" max="200" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p34BoosterDHWTempAct">
 		<item-type>Number:Temperature</item-type>
-		<label>Min set heating circuit temperature Setting in [°C]</label>
-		<state min="5" max="40" step="0.1" pattern="%.1f %unit%" />
+		<label>p34BoosterDHWTempAct</label>
+		<category>Temperature</category>
+		<state min="-10" max="10" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="temperaturLimitEvaporator" advanced="true">
+	<channel-type id="p35PasteurisationInterval">
+		<item-type>Number</item-type>
+		<label>p35PasteurisationInterval</label>
+		<state min="1" max="30"/>
+	</channel-type>
+	<channel-type id="p35PasteurisationTemp">
 		<item-type>Number:Temperature</item-type>
-		<label>Temperature limit evaporator Setting in [°C]</label>
-		<state min="10" max="30" step="0.1" pattern="%.1f %unit%" />
+		<label>p35PasteurisationTemp</label>
+		<category>Temperature</category>
+		<state min="10" max="65" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="maxEvaporatorDefrostTime" advanced="true">
+	<channel-type id="p36DHWMaxTime">
+		<item-type>Number</item-type>
+		<label>p36DHWMaxTime</label>
+		<state min="6" max="12"/>
+	</channel-type>
+	<channel-type id="p37Fanstage1AirflowInlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>p37Fanstage1AirflowInlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="50" max="300" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p38Fanstage2AirflowInlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>p38Fanstage2AirflowInlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="50" max="300" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p39Fanstage3AirflowInlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>p39Fanstage3AirflowInlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="50" max="300" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p40Fanstage1AirflowOutlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>p40Fanstage1AirflowOutlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="50" max="300" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p41Fanstage2AirflowOutlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>p41Fanstage2AirflowOutlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="50" max="300" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p42Fanstage3AirflowOutlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>p42Fanstage3AirflowOutlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="50" max="300" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p43UnschedVent3">
+		<item-type>Number:Time</item-type>
+		<label>p43UnschedVent3</label>
+		<category>Time</category>
+		<state min="0" max="1000" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p44UnschedVent2">
+		<item-type>Number:Time</item-type>
+		<label>p44UnschedVent2</label>
+		<category>Time</category>
+		<state min="0" max="1000" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p45UnschedVent1">
+		<item-type>Number:Time</item-type>
+		<label>p45UnschedVent1</label>
+		<category>Time</category>
+		<state min="0" max="1000" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p46UnschedVent0">
+		<item-type>Number:Time</item-type>
+		<label>p46UnschedVent0</label>
+		<category>Time</category>
+		<state min="0" max="1000" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p49SummerModeTemp">
 		<item-type>Number:Temperature</item-type>
-		<label>Max evaporator defrost time Setting in [°C]</label>
-		<state min="2" max="20" step="1.0" pattern="%d min" />
+		<label>p49SummerModeTemp</label>
+		<category>Temperature</category>
+		<state min="10" max="24" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="temperaturLimitCondenser" advanced="true">
+	<channel-type id="p50SummerModeHysteresis">
 		<item-type>Number:Temperature</item-type>
-		<label>Temperature limit condenser Setting in [°C]</label>
-		<state min="5" max="10" step="0.1" pattern="%.1f %unit%" />
+		<label>p50SummerModeHysteresis</label>
+		<category>Temperature</category>
+		<state min="0.5" max="5" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="compressorRestartDelayTime" advanced="true">
+	<channel-type id="p54MinPumpCycles">
 		<item-type>Number</item-type>
-		<label>Compressor restart delay time in [min]</label>
-		<state min="0" max="20" step="1.0" pattern="%d min" />
+		<label>p54MinPumpCycles</label>
+		<state min="1" max="24"/>
 	</channel-type>
-	<channel-type id="maxDefrostDurationAAExchanger" advanced="true">
+	<channel-type id="p55MaxPumpCycles">
 		<item-type>Number</item-type>
-		<label>Max defrost duration AA exchanger time in [min]</label>
-		<state min="0" max="120" step="1.0" pattern="%d min" />
+		<label>p55MaxPumpCycles</label>
+		<state min="25" max="288"/>
 	</channel-type>
-	<channel-type id="defrostStartThreshold" advanced="true">
-		<item-type>Number</item-type>
-		<label>Defrost start threshold Setting</label>
-		<state min="0" max="100" step="1" pattern="%d %%" />
-	</channel-type>
-	<channel-type id="volumeFlowFilterReplacement" advanced="true">
-		<item-type>Number</item-type>
-		<label>Defrost start threshold Setting</label>
-		<state min="50" max="100" step="1" pattern="%d %%" />
-	</channel-type>
-	<channel-type id="defrostModeAAHE" advanced="true">
-		<item-type>Number</item-type>
-		<label>Defrost mode AA HE Setting</label>
-		<state min="1" max="5" step="1" />
-	</channel-type>
-	<channel-type id="exhaustFanSpeed" advanced="true">
-		<item-type>Number</item-type>
-		<label>Exhaust fan speed Setting</label>
-		<state min="10" max="100" step="1" pattern="%d %%" />
-	</channel-type>
-	<channel-type id="fanStageSetting" advanced="true">
-		<item-type>Number</item-type>
-		<label>Fan stage Setting</label>
-		<state min="0" max="3" step="1" />
-	</channel-type>
-	<channel-type id="fanStageSettingAir" advanced="true">
-		<item-type>Number</item-type>
-		<label>Fan stage air Setting</label>
-		<state min="60" max="280" step="1" pattern="%d m^3/h" />
-	</channel-type>
-	<channel-type id="ventilationTimeUnscheduled" advanced="true">
-		<item-type>Number</item-type>
-		<label>Unscheduled ventilation time</label>
-		<state min="0" max="1000" step="1" pattern="%d min" />
-	</channel-type>
-	<channel-type id="operatingModePassiveCooling" advanced="true">
-		<item-type>Number</item-type>
-		<label>Operating mode passive cooling</label>
-		<state min="0" max="2" step="1" />
-	</channel-type>
-	<channel-type id="stoveFireplaceOperation" advanced="true">
-		<item-type>Number</item-type>
-		<label>Stove fireplace operation</label>
-		<state min="0" max="4" step="1" />
-	</channel-type>
-	<channel-type id="hysteresisHeatingWide" advanced="true">
-		<item-type>Number</item-type>
-		<label>Hysteresis heating Setting in [K]</label>
-		<state min="0" max="10" step="0.1" pattern="%.1f K" />
-	</channel-type>
-	<channel-type id="hysteresisHeatingNarrow" advanced="true">
-		<item-type>Number</item-type>
-		<label>Hysteresis heating Setting in [K]</label>
-		<state min="0" max="5" step="0.1" pattern="%.1f K" />
-	</channel-type>
-	<channel-type id="hysteresisHeatingSwitching" advanced="true">
-		<item-type>Number</item-type>
-		<label>Hysteresis switching heating Setting</label>
-		<state min="1" max="5" step="1.0" />
-	</channel-type>
-	<channel-type id="switchingValueIntegralPortionHeating" advanced="true">
-		<item-type>Number</item-type>
-		<label>Switching value for integral portion heating Setting</label>
-		<state min="1" max="999" step="1.0" />
-	</channel-type>
-	<channel-type id="outputElectricalHeatingStage" advanced="true">
-		<item-type>Number:Power</item-type>
-		<label>Switching value for integral portion heating Setting</label>
-		<state min="0" max="10" step="1" pattern="%.1f %unit%" />
-	</channel-type>
-	<channel-type id="minStartupCycles" advanced="true">
-		<item-type>Number</item-type>
-		<label>Minimum startup cycles Setting in [per/day]</label>
-		<state min="1" max="24" step="1" pattern="%d per/day" />
-	</channel-type>
-	<channel-type id="maxStartupCycles" advanced="true">
-		<item-type>Number</item-type>
-		<label>Max startup cycles Setting in [per/day]</label>
-		<state min="1" max="288" step="1" pattern="%d per/day" />
-	</channel-type>
-	<channel-type id="outsideTemperatureMinHeatingCycles" advanced="true">
+	<channel-type id="p56OutTempMaxPumpCycles">
 		<item-type>Number:Temperature</item-type>
-		<label>Outside temperature min heating cycles Setting in [°C]</label>
-		<state min="0" max="25" step="0.1" pattern="%.1f %unit%" />
+		<label>p56OutTempMaxPumpCycles</label>
+		<category>Temperature</category>
+		<state min="0" max="20" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="outsideTemperatureMaxHeatingCycles" advanced="true">
+	<channel-type id="p57OutTempMinPumpCycles">
 		<item-type>Number:Temperature</item-type>
-		<label>Outside temperature max heating cycles Setting in [°C]</label>
-		<state min="0" max="20" step="0.1" pattern="%.1f %unit%" />
+		<label>p57OutTempMinPumpCycles</label>
+		<category>Temperature</category>
+		<state min="0" max="25" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="suppressTemperatureCaptureDuringPumpStart" advanced="true">
+	<channel-type id="p58SuppressTempCaptPumpStart">
+		<item-type>Number:Time</item-type>
+		<label>p58SuppressTempCaptPumpStart</label>
+		<category>Time</category>
+		<state min="0" max="120" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p75passiveCooling">
 		<item-type>Number</item-type>
-		<label>Suppress temperature capture during pump start Setting in [sec]</label>
-		<state min="0" max="120" step="1" pattern="%d sec" />
+		<label>p75passiveCooling</label>
+		<state min="0" max="4"/>
 	</channel-type>
-	<channel-type id="timeSetting" advanced="true">
-		<item-type>String</item-type>
-		<label>Time settings Setting in [hh:mm]</label>
-		<state min="0" max="2359" pattern="%s hh:mm" />
+	<channel-type id="p76RoomThermCorrection">
+		<item-type>Number:Temperature</item-type>
+		<label>p76RoomThermCorrection</label>
+		<category>Temperature</category>
+		<state min="-5" max="5" pattern="%.0f %unit%"/>
 	</channel-type>
-	<channel-type id="switchSetting" advanced="true">
+	<channel-type id="p77OutThermFilterTime">
+		<item-type>Number:Time</item-type>
+		<label>p77OutThermFilterTime</label>
+		<category>Time</category>
+		<state min="1" max="24" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p78DualModePoint">
+		<item-type>Number:Temperature</item-type>
+		<label>p78DualModePoint</label>
+		<category>Temperature</category>
+		<state min="-10" max="20" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p79BoosterTimeoutHC">
+		<item-type>Number:Time</item-type>
+		<label>p79BoosterTimeoutHC</label>
+		<category>Time</category>
+		<state min="0" max="60" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p80EnableSolar">
+		<item-type>Number</item-type>
+		<label>p80EnableSolar</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="p83DHWsetSolarTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>p83DHWsetSolarTemp</label>
+		<category>Temperature</category>
+		<state min="10" max="75" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p85DefrStartThreshold">
+		<item-type>Number:Dimensionless</item-type>
+		<label>p85DefrStartThreshold</label>
+		<category>Dimensionless</category>
+		<state min="0" max="50" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p85FilterSpeed">
+		<item-type>Number:Dimensionless</item-type>
+		<label>p85FilterSpeed</label>
+		<category>Dimensionless</category>
+		<state min="0" max="100" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p85MaxDefrostDur">
+		<item-type>Number:Time</item-type>
+		<label>p85MaxDefrostDur</label>
+		<category>Time</category>
+		<state min="60" max="250" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="p86OutTempCorrection">
+		<item-type>Number:Temperature</item-type>
+		<label>p86OutTempCorrection</label>
+		<category>Temperature</category>
+		<state min="-20" max="30" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p89DHWeco">
+		<item-type>Number</item-type>
+		<label>p89DHWeco</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="p99CoolingHC1HysterFlowTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>p99CoolingHC1HysterFlowTemp</label>
+		<category>Temperature</category>
+		<state min="0.5" max="5" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p99CoolingHC1HysterRoomTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>p99CoolingHC1HysterRoomTemp</label>
+		<category>Temperature</category>
+		<state min="0.5" max="3" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p99CoolingHC1SetTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>p99CoolingHC1SetTemp</label>
+		<category>Temperature</category>
+		<state min="12" max="27" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p99CoolingHC1Switch">
+		<item-type>Number</item-type>
+		<label>p99CoolingHC1Switch</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="p99DHWmaxFlowTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>p99DHWmaxFlowTemp</label>
+		<category>Temperature</category>
+		<state min="10" max="75" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p99FanStageParty">
+		<item-type>Number</item-type>
+		<label>p99FanStageParty</label>
+		<state min="0" max="3"/>
+	</channel-type>
+	<channel-type id="p99FrostProtectionBoost">
+		<item-type>Number:Temperature</item-type>
+		<label>p99FrostProtectionBoost</label>
+		<category>Temperature</category>
+		<state min="10" max="30" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p99FrostProtectionCancel">
+		<item-type>Number:Temperature</item-type>
+		<label>p99FrostProtectionCancel</label>
+		<category>Temperature</category>
+		<state min="0" max="20" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p99HC1maxFlowTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>p99HC1maxFlowTemp</label>
+		<category>Temperature</category>
+		<state min="10" max="75" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p99PumpRateDHW">
+		<item-type>Number:Dimensionless</item-type>
+		<label>p99PumpRateDHW</label>
+		<category>Dimensionless</category>
+		<state min="0" max="100" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p99PumpRateHC">
+		<item-type>Number:Dimensionless</item-type>
+		<label>p99PumpRateHC</label>
+		<category>Dimensionless</category>
+		<state min="0" max="100" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="p99startUnschedVent">
+		<item-type>Number</item-type>
+		<label>p99startUnschedVent</label>
+		<state min="0" max="3"/>
+	</channel-type>
+	<channel-type id="pAbsence_pA0AbsenceDuration">
+		<item-type>Number</item-type>
+		<label>pAbsence_pA0AbsenceDuration</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pAbsence_pA0DurationUntilAbsenceStart">
+		<item-type>Number</item-type>
+		<label>pAbsence_pA0DurationUntilAbsenceStart</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pAbsence_pA0EnableAbsenceProg">
+		<item-type>Number</item-type>
+		<label>pAbsence_pA0EnableAbsenceProg</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pCircPump_p54MinPumpCycles">
+		<item-type>Number:Time</item-type>
+		<label>pCircPump_p54MinPumpCycles</label>
+		<category>Time</category>
+		<state min="1" max="24" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pCircPump_p55MaxPumpCycles">
+		<item-type>Number:Time</item-type>
+		<label>pCircPump_p55MaxPumpCycles</label>
+		<category>Time</category>
+		<state min="25" max="288" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pCircPump_p56OutTempMaxPumpCycles">
+		<item-type>Number:Temperature</item-type>
+		<label>pCircPump_p56OutTempMaxPumpCycles</label>
+		<category>Temperature</category>
+		<state min="0" max="20" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pCircPump_p57OutTempMinPumpCycles">
+		<item-type>Number:Temperature</item-type>
+		<label>pCircPump_p57OutTempMinPumpCycles</label>
+		<category>Temperature</category>
+		<state min="0" max="25" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pCircPump_p58SuppressTempCaptPumpStart">
+		<item-type>Number:Time</item-type>
+		<label>pCircPump_p58SuppressTempCaptPumpStart</label>
+		<category>Time</category>
+		<state min="0" max="120" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pClockDay">
+		<item-type>Number</item-type>
+		<label>pClockDay</label>
+		<state min="1" max="31"/>
+	</channel-type>
+	<channel-type id="pClockHour">
+		<item-type>Number</item-type>
+		<label>pClockHour</label>
+		<state min="0" max="23"/>
+	</channel-type>
+	<channel-type id="pClockMinutes">
+		<item-type>Number</item-type>
+		<label>pClockMinutes</label>
+		<state min="0" max="59"/>
+	</channel-type>
+	<channel-type id="pClockMonth">
+		<item-type>Number</item-type>
+		<label>pClockMonth</label>
+		<state min="1" max="12"/>
+	</channel-type>
+	<channel-type id="pClockYear">
+		<item-type>Number</item-type>
+		<label>pClockYear</label>
+		<state min="12" max="20"/>
+	</channel-type>
+	<channel-type id="pDHWProg_progDHWEnable">
+		<item-type>Number</item-type>
+		<label>pDHWProg_progDHWEnable</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pDHWProg_progDHWEndTime">
+		<item-type>Number</item-type>
+		<label>pDHWProg_progDHWEndTime</label>
+		<state min="0" max="2359"/>
+	</channel-type>
+	<channel-type id="pDHWProg_progDHWFriday">
 		<item-type>Switch</item-type>
-		<label>Enabling switch</label>
-		<state min="0" max="1" />
+		<label>pDHWProg_progDHWFriday</label>
+		<state min="0" max="1"/>
 	</channel-type>
-	<channel-type id="contactStatus">
-		<item-type>Contact</item-type>
-		<label>Status Contact</label>
-		<state readOnly="true" />
+	<channel-type id="pDHWProg_progDHWMonday">
+		<item-type>Switch</item-type>
+		<label>pDHWProg_progDHWMonday</label>
+		<state min="0" max="1"/>
 	</channel-type>
-	<channel-type id="timeAp0Setting" advanced="true">
+	<channel-type id="pDHWProg_progDHWSaturday">
+		<item-type>Switch</item-type>
+		<label>pDHWProg_progDHWSaturday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pDHWProg_progDHWStartTime">
 		<item-type>Number</item-type>
-		<label>Time settings in [h]</label>
-		<state min="0" max="2388" pattern="%.1f h" />
+		<label>pDHWProg_progDHWStartTime</label>
+		<state min="0" max="2359"/>
 	</channel-type>
-    <channel-type id="timeAp0" advanced="true">
-        <item-type>Number</item-type>
-        <label>Time in [h]</label>
-        <state min="0" max="2388" pattern="%.1f h" readOnly="true"/>
-    </channel-type>	
-	<channel-type id="restartBeforeSetbackEnd" advanced="true">
+	<channel-type id="pDHWProg_progDHWSunday">
+		<item-type>Switch</item-type>
+		<label>pDHWProg_progDHWSunday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pDHWProg_progDHWThursday">
+		<item-type>Switch</item-type>
+		<label>pDHWProg_progDHWThursday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pDHWProg_progDHWTuesday">
+		<item-type>Switch</item-type>
+		<label>pDHWProg_progDHWTuesday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pDHWProg_progDHWWednesday">
+		<item-type>Switch</item-type>
+		<label>pDHWProg_progDHWWednesday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pDHW_maxBoostStagesDHW">
 		<item-type>Number</item-type>
-		<label>Time settings Setting in [min]</label>
-		<state min="0" max="300" step="1" pattern="%d min" />
+		<label>pDHW_maxBoostStagesDHW</label>
+		<state min="0" max="0" readOnly="true"/>
 	</channel-type>
-	<channel-type id="mixerProportionalRange" advanced="true">
-		<item-type>Number</item-type>
-		<label>Mixer proportional range Setting</label>
-		<state min="1" max="100" step="0.1" pattern="%.1f %%" />
-	</channel-type>
-	<channel-type id="derivativeMixerTime" advanced="true">
-		<item-type>Number</item-type>
-		<label>Derivative mixer time Setting</label>
-		<state min="1" max="100" step="0.1" pattern="%.1f sec" />
-	</channel-type>
-	<channel-type id="mixerTimeInterval" advanced="true">
-		<item-type>Number</item-type>
-		<label>Mixer time interval Setting</label>
-		<state min="1" max="10" step="0.1" pattern="%.1f K/day" />
-	</channel-type>
-	<channel-type id="startupHysteresisDHWTemperature" advanced="true">
-		<item-type>Number</item-type>
-		<label>Startup Hysteresis DHW Temperature Setting in [K]</label>
-		<state min="2" max="20" step="0.1" pattern="%.1f K" />
-	</channel-type>
-	<channel-type id="timeDelayElectricalReheating" advanced="true">
-		<item-type>Number</item-type>
-		<label>Time Delay Electrical Re-heating Setting in [K]</label>
-		<state min="0" max="240" step="1.0" pattern="%d min" />
-	</channel-type>
-	<channel-type id="limitForElectricalReheating" advanced="true">
+	<channel-type id="pDHW_p32HystDHW">
 		<item-type>Number:Temperature</item-type>
-		<label>Limit for Electrical Re-heating Setting in [°C]</label>
-		<state min="-10" max="10" step="1.0" pattern="%d %unit%" />
+		<label>pDHW_p32HystDHW</label>
+		<category>Temperature</category>
+		<state min="2" max="10" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="pasteurisationInterval" advanced="true">
-		<item-type>Number</item-type>
-		<label>Pasteurization Interval [K/day]</label>
-		<state min="1" max="30" step="1.0" pattern="%d K/day" />
+	<channel-type id="pDHW_p33BoosterTimeoutDHW">
+		<item-type>Number:Time</item-type>
+		<label>pDHW_p33BoosterTimeoutDHW</label>
+		<category>Time</category>
+		<state min="0" max="240" pattern="%.0f %unit%"/>
 	</channel-type>
-	<channel-type id="maxDurationDHWLoading" advanced="true">
-		<item-type>Number</item-type>
-		<label>Max Duration DHW Loading [h]</label>
-		<state min="6" max="12" step="1.0" pattern="%d h" />
-	</channel-type>
-	<channel-type id="pasteurisationHeatupTemperature" advanced="true">
+	<channel-type id="pDHW_p34TempLimitBoostDHW">
 		<item-type>Number:Temperature</item-type>
-		<label>Pasteurization Heat-up Temperature Setting in [°C]</label>
-		<state min="10" max="65" step="0.1" pattern="%.1f %unit%" />
+		<label>pDHW_p34TempLimitBoostDHW</label>
+		<category>Temperature</category>
+		<state min="-10" max="10" pattern="%.1f %unit%"/>
 	</channel-type>
-	<channel-type id="noOfEnabledElectricalReheatStagesDHWLoading" advanced="true">
+	<channel-type id="pDHW_p35PasteurisationInterval">
+		<item-type>Number:Time</item-type>
+		<label>pDHW_p35PasteurisationInterval</label>
+		<category>Time</category>
+		<state min="3" max="30" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pDHW_p36MaxDurationDHWLoad">
+		<item-type>Number:Time</item-type>
+		<label>pDHW_p36MaxDurationDHWLoad</label>
+		<category>Time</category>
+		<state min="6" max="12" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pDHW_p84EnableDHWBuffer">
 		<item-type>Number</item-type>
-		<label>Number Of Enabled Electrical Re-heat Stages DHW Loading</label>
-		<state min="0" max="3" step="1.0" />
+		<label>pDHW_p84EnableDHWBuffer</label>
+		<state min="0" max="0" readOnly="true"/>
 	</channel-type>
-	<channel-type id="maxFlowTemperatureDHWMode" advanced="true">
+	<channel-type id="pDHW_pasteurisationTemp">
 		<item-type>Number:Temperature</item-type>
-		<label>Max Flow Temperature DHW Mode</label>
-		<state min="10" max="75" step="0.1" pattern="%.1f %unit%" />
+		<label>pDHW_pasteurisationTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
 	</channel-type>
-	<channel-type id="noOfErrors">
+	<channel-type id="pDefrostAA_DefrostStartThreshold">
 		<item-type>Number</item-type>
-		<label>Number of Errors</label>
-		<description>Number of Errors</description>
-		<state pattern="%d #ERR" readOnly="true" />
+		<label>pDefrostAA_DefrostStartThreshold</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
 	</channel-type>
-	<channel-type id="errorCode" advanced="true">
+	<channel-type id="pDefrostAA_MaxDefrostDurationAAExchenger">
 		<item-type>Number</item-type>
-		<label>Error code</label>
-		<description>Error code</description>
-		<state pattern="F%s" readOnly="true" />
+		<label>pDefrostAA_MaxDefrostDurationAAExchenger</label>
+		<state min="0" max="0" readOnly="true"/>
 	</channel-type>
-	<channel-type id="errorTime" advanced="true">
-		<item-type>String</item-type>
-		<label>Time [hh:mm]</label>
-		<state pattern="%s hh:mm" readOnly="true" />
-	</channel-type>
-	<channel-type id="errorDate" advanced="true">
-		<item-type>String</item-type>
-		<label>Date [dd-MM]</label>
-		<state pattern="%s dd-MM" readOnly="true" />
-	</channel-type>
-	<channel-type id="weekday" advanced="true">
+	<channel-type id="pDefrostAA_VolumeFlowFilterReplacement">
 		<item-type>Number</item-type>
-		<label>Week day</label>
-		<description>Weekday of the current time.</description>
-		<state min="1" max="7" step="1" pattern="%d" readOnly="true" />
+		<label>pDefrostAA_VolumeFlowFilterReplacement</label>
+		<state min="0" max="0" readOnly="true"/>
 	</channel-type>
-	<channel-type id="hours" advanced="true">
+	<channel-type id="pDefrostEva_LimitTempCondenserDefrostTerm">
+		<item-type>Number:Temperature</item-type>
+		<label>pDefrostEva_LimitTempCondenserDefrostTerm</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pDefrostEva_LimitTempCondenserElectBoost">
+		<item-type>Number:Temperature</item-type>
+		<label>pDefrostEva_LimitTempCondenserElectBoost</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pDefrostEva_MaxTimeDefrostEvaporator">
 		<item-type>Number</item-type>
-		<label>Hours</label>
-		<description>Hours of the current time.</description>
-		<state min="0" max="23" step="1" pattern="%d h" readOnly="true" />
+		<label>pDefrostEva_MaxTimeDefrostEvaporator</label>
+		<state min="0" max="0" readOnly="true"/>
 	</channel-type>
-	<channel-type id="minutes" advanced="true">
+	<channel-type id="pDefrostEva_UpTempLimitDefrostEvaporatorEnd">
+		<item-type>Number:Temperature</item-type>
+		<label>pDefrostEva_UpTempLimitDefrostEvaporatorEnd</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pDefrostEva_p47CompressorRestartDelay">
+		<item-type>Number:Time</item-type>
+		<label>pDefrostEva_p47CompressorRestartDelay</label>
+		<category>Time</category>
+		<state min="0" max="20" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pDefrostEva_p48MainFanSpeed">
+		<item-type>Number:Dimensionless</item-type>
+		<label>pDefrostEva_p48MainFanSpeed</label>
+		<category>Dimensionless</category>
+		<state min="0" max="100" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pDryHeat_p70StartDryHeat">
 		<item-type>Number</item-type>
-		<label>Minutes</label>
-		<description>Minutes of the current time.</description>
-		<state min="0" max="59" step="1" pattern="%d min" readOnly="true" />
+		<label>pDryHeat_p70StartDryHeat</label>
+		<state min="0" max="0" readOnly="true"/>
 	</channel-type>
-	<channel-type id="seconds" advanced="true">
+	<channel-type id="pDryHeat_p71BaseTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>pDryHeat_p71BaseTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pDryHeat_p72PeakTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>pDryHeat_p72PeakTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pDryHeat_p73TempDuration">
+		<item-type>Number:Temperature</item-type>
+		<label>pDryHeat_p73TempDuration</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pDryHeat_p74TempIncrease">
+		<item-type>Number:Temperature</item-type>
+		<label>pDryHeat_p74TempIncrease</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN1Enable">
 		<item-type>Number</item-type>
-		<label>Seconds</label>
-		<description>Seconds of the current time.</description>
-		<state min="0" max="59" step="1" pattern="%d s" readOnly="true" />
+		<label>pFanProg_progFAN1Enable</label>
+		<state min="0" max="1"/>
 	</channel-type>
-	<channel-type id="year" advanced="true">
+	<channel-type id="pFanProg_progFAN1EndTime">
 		<item-type>Number</item-type>
-		<label>Year</label>
-		<description>Year of the current time.</description>
-		<state min="0" max="99" step="1" pattern="%d YY" readOnly="true" />
+		<label>pFanProg_progFAN1EndTime</label>
+		<state min="0" max="2359"/>
 	</channel-type>
-	<channel-type id="month" advanced="true">
+	<channel-type id="pFanProg_progFAN1Friday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN1Friday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN1Monday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN1Monday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN1Saturday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN1Saturday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN1StartTime">
 		<item-type>Number</item-type>
-		<label>Month</label>
-		<description>Month of the current time.</description>
-		<state min="1" max="12" step="1" pattern="%d MM" readOnly="true" />
+		<label>pFanProg_progFAN1StartTime</label>
+		<state min="0" max="2359"/>
 	</channel-type>
-	<channel-type id="day" advanced="true">
+	<channel-type id="pFanProg_progFAN1Sunday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN1Sunday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN1Thursday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN1Thursday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN1Tuesday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN1Tuesday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN1Wednesday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN1Wednesday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN2Enable">
 		<item-type>Number</item-type>
-		<label>Day</label>
-		<description>Day of the current time.</description>
-		<state min="1" max="31" step="1" pattern="%d dd" readOnly="true" />
+		<label>pFanProg_progFAN2Enable</label>
+		<state min="0" max="1"/>
 	</channel-type>
-	<channel-type id="operationMode" advanced="true">
+	<channel-type id="pFanProg_progFAN2EndTime">
 		<item-type>Number</item-type>
-		<label>Operation Mode</label>
-		<description>Operation Mode.</description>
-		<state readOnly="true">
-			<options>
-				<option value="1">Standby</option>
-				<option value="11">Automatic</option>
-				<option value="3">DayMode</option>
-				<option value="4">Setback</option>
-				<option value="5">DHWMode</option>
-				<option value="14">DHWMode</option>
-				<option value="0">Emergengy</option>
-			</options>
-		</state>
+		<label>pFanProg_progFAN2EndTime</label>
+		<state min="0" max="2359"/>
 	</channel-type>
-	<channel-type id="operationMode2" advanced="true">
+	<channel-type id="pFanProg_progFAN2Friday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN2Friday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN2Monday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN2Monday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN2Saturday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN2Saturday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN2StartTime">
 		<item-type>Number</item-type>
-		<label>Operation Mode</label>
-		<description>Operation Mode.</description>
-		<state readOnly="true">
-			<options>
-				<option value="0">Manual</option>
-				<option value="1">Automatic</option>
-			</options>
-		</state>
+		<label>pFanProg_progFAN2StartTime</label>
+		<state min="0" max="2359"/>
 	</channel-type>
-	<channel-type id="programState" advanced="true">
+	<channel-type id="pFanProg_progFAN2Sunday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN2Sunday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN2Thursday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN2Thursday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN2Tuesday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN2Tuesday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFanProg_progFAN2Wednesday">
+		<item-type>Switch</item-type>
+		<label>pFanProg_progFAN2Wednesday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pFan_p37Fanstage1AirflowInlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>pFan_p37Fanstage1AirflowInlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="60" max="250" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pFan_p38Fanstage2AirflowInlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>pFan_p38Fanstage2AirflowInlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="60" max="250" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pFan_p39Fanstage3AirflowInlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>pFan_p39Fanstage3AirflowInlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="60" max="250" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pFan_p40Fanstage1AirflowOutlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>pFan_p40Fanstage1AirflowOutlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="60" max="250" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pFan_p41Fanstage2AirflowOutlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>pFan_p41Fanstage2AirflowOutlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="60" max="250" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pFan_p42Fanstage3AirflowOutlet">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>pFan_p42Fanstage3AirflowOutlet</label>
+		<category>VolumetricFlowRate</category>
+		<state min="60" max="250" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pFan_p43UnschedVent3">
+		<item-type>Number:Time</item-type>
+		<label>pFan_p43UnschedVent3</label>
+		<category>Time</category>
+		<state min="0" max="1000" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pFan_p44UnschedVent2">
+		<item-type>Number:Time</item-type>
+		<label>pFan_p44UnschedVent2</label>
+		<category>Time</category>
+		<state min="0" max="1000" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pFan_p45UnschedVent1">
+		<item-type>Number:Time</item-type>
+		<label>pFan_p45UnschedVent1</label>
+		<category>Time</category>
+		<state min="0" max="1000" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pFan_p46UnschedVent0">
+		<item-type>Number:Time</item-type>
+		<label>pFan_p46UnschedVent0</label>
+		<category>Time</category>
+		<state min="0" max="1000" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pFan_p75PassiveCooling">
 		<item-type>Number</item-type>
-		<label>Program State mode</label>
-		<description>Program State mode.</description>
-		<state readOnly="true">
-			<options>
-				<option value="1">Normal</option>
-				<option value="2">Setback</option>
-				<option value="3">Standby</option>
-				<option value="4">Restart</option>
-				<option value="5">Restart</option>
-			</options>
-		</state>
+		<label>pFan_p75PassiveCooling</label>
+		<state min="0" max="1"/>
 	</channel-type>
-	<!-- Stefan -->    
-    <channel-type id="tecalorFanStage">
-        <item-type>Number</item-type>
-        <label>Fan Stage</label>
-        <description>Stage of the fan from 0-3</description>        
-    </channel-type>    
-    <!-- End-Stefan -->
+	<channel-type id="pHeat1_MaxSetHeatFlowTempHC1">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat1_MaxSetHeatFlowTempHC1</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pHeat1_MaxSetHeatFlowTempHC2">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat1_MaxSetHeatFlowTempHC2</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pHeat1_MinSetHeatFlowTempHC1">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat1_MinSetHeatFlowTempHC1</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pHeat1_MinSetHeatFlowTempHC2">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat1_MinSetHeatFlowTempHC2</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pHeat1_p13GradientHC1">
+		<item-type>Number</item-type>
+		<label>pHeat1_p13GradientHC1</label>
+		<state min="0" max="5" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat1_p14LowEndHC1">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat1_p14LowEndHC1</label>
+		<category>Temperature</category>
+		<state min="0" max="20" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat1_p15RoomInfluenceHC1">
+		<item-type>Number</item-type>
+		<label>pHeat1_p15RoomInfluenceHC1</label>
+		<state min="0" max="10" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat1_p16GradientHC2">
+		<item-type>Number</item-type>
+		<label>pHeat1_p16GradientHC2</label>
+		<state min="0" max="5" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat1_p17LowEndHC2">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat1_p17LowEndHC2</label>
+		<category>Temperature</category>
+		<state min="0" max="10" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat1_p18RoomInfluenceHC2">
+		<item-type>Number</item-type>
+		<label>pHeat1_p18RoomInfluenceHC2</label>
+		<state min="0" max="10" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat1_p19FlowProportionHC1">
+		<item-type>Number:Dimensionless</item-type>
+		<label>pHeat1_p19FlowProportionHC1</label>
+		<category>Dimensionless</category>
+		<state min="0" max="100" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat1_p20FlowProportionHC2">
+		<item-type>Number:Dimensionless</item-type>
+		<label>pHeat1_p20FlowProportionHC2</label>
+		<category>Dimensionless</category>
+		<state min="0" max="100" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat2_MaxHeatFlowTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat2_MaxHeatFlowTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pHeat2_p21Hyst1">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat2_p21Hyst1</label>
+		<category>Temperature</category>
+		<state min="0" max="10" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat2_p22Hyst2">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat2_p22Hyst2</label>
+		<category>Temperature</category>
+		<state min="0" max="10" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat2_p23Hyst3">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat2_p23Hyst3</label>
+		<category>Temperature</category>
+		<state min="0" max="5" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat2_p24Hyst4">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat2_p24Hyst4</label>
+		<category>Temperature</category>
+		<state min="0" max="5" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat2_p25Hyst5">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat2_p25Hyst5</label>
+		<category>Temperature</category>
+		<state min="0" max="5" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat2_p26Hyst6">
+		<item-type>Number</item-type>
+		<label>pHeat2_p26Hyst6</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pHeat2_p27Hyst7">
+		<item-type>Number</item-type>
+		<label>pHeat2_p27Hyst7</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pHeat2_p28Hyst8">
+		<item-type>Number</item-type>
+		<label>pHeat2_p28Hyst8</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pHeat2_p29HystAsymmetry">
+		<item-type>Number</item-type>
+		<label>pHeat2_p29HystAsymmetry</label>
+		<state min="1" max="5"/>
+	</channel-type>
+	<channel-type id="pHeat2_p30integralComponent">
+		<item-type>Number</item-type>
+		<label>pHeat2_p30integralComponent</label>
+		<state min="10" max="999" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat2_p31MaxBoostStages">
+		<item-type>Number</item-type>
+		<label>pHeat2_p31MaxBoostStages</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pHeat2_p49SummerModeTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat2_p49SummerModeTemp</label>
+		<category>Temperature</category>
+		<state min="10" max="24" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat2_p50SummerModeHysteresis">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat2_p50SummerModeHysteresis</label>
+		<category>Temperature</category>
+		<state min="1" max="5" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat2_p77OutTempFilterTime">
+		<item-type>Number:Time</item-type>
+		<label>pHeat2_p77OutTempFilterTime</label>
+		<category>Time</category>
+		<state min="0" max="24" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat2_p78DualModePoint">
+		<item-type>Number:Temperature</item-type>
+		<label>pHeat2_p78DualModePoint</label>
+		<category>Temperature</category>
+		<state min="-10" max="20" pattern="%.1f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeat2_p79BoosterTimeoutHC">
+		<item-type>Number:Time</item-type>
+		<label>pHeat2_p79BoosterTimeoutHC</label>
+		<category>Time</category>
+		<state min="0" max="60" pattern="%.0f %unit%"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC1Enable">
+		<item-type>Number</item-type>
+		<label>pHeatProg_progHC1Enable</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC1EndTime">
+		<item-type>Number</item-type>
+		<label>pHeatProg_progHC1EndTime</label>
+		<state min="0" max="2359"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC1Friday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC1Friday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC1Monday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC1Monday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC1Saturday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC1Saturday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC1StartTime">
+		<item-type>Number</item-type>
+		<label>pHeatProg_progHC1StartTime</label>
+		<state min="0" max="2359"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC1Sunday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC1Sunday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC1Thursday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC1Thursday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC1Tuesday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC1Tuesday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC1Wednesday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC1Wednesday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC2Enable">
+		<item-type>Number</item-type>
+		<label>pHeatProg_progHC2Enable</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC2EndTime">
+		<item-type>Number</item-type>
+		<label>pHeatProg_progHC2EndTime</label>
+		<state min="0" max="2359"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC2Friday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC2Friday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC2Monday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC2Monday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC2Saturday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC2Saturday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC2StartTime">
+		<item-type>Number</item-type>
+		<label>pHeatProg_progHC2StartTime</label>
+		<state min="0" max="2359"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC2Sunday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC2Sunday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC2Thursday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC2Thursday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC2Tuesday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC2Tuesday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHeatProg_progHC2Wednesday">
+		<item-type>Switch</item-type>
+		<label>pHeatProg_progHC2Wednesday</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pHolidayBeginDay">
+		<item-type>Number</item-type>
+		<label>pHolidayBeginDay</label>
+		<state min="1" max="31"/>
+	</channel-type>
+	<channel-type id="pHolidayBeginMonth">
+		<item-type>Number</item-type>
+		<label>pHolidayBeginMonth</label>
+		<state min="1" max="12"/>
+	</channel-type>
+	<channel-type id="pHolidayBeginTime_Begin">
+		<item-type>Number</item-type>
+		<label>pHolidayBeginTime_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="pHolidayBeginYear">
+		<item-type>Number</item-type>
+		<label>pHolidayBeginYear</label>
+		<state min="12" max="30"/>
+	</channel-type>
+	<channel-type id="pHolidayEndDay">
+		<item-type>Number</item-type>
+		<label>pHolidayEndDay</label>
+		<state min="1" max="31"/>
+	</channel-type>
+	<channel-type id="pHolidayEndMonth">
+		<item-type>Number</item-type>
+		<label>pHolidayEndMonth</label>
+		<state min="1" max="12"/>
+	</channel-type>
+	<channel-type id="pHolidayEndTime_Begin">
+		<item-type>Number</item-type>
+		<label>pHolidayEndTime_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="pHolidayEndYear">
+		<item-type>Number</item-type>
+		<label>pHolidayEndYear</label>
+		<state min="12" max="30"/>
+	</channel-type>
+	<channel-type id="pOpMode">
+		<item-type>Number</item-type>
+		<label>pOpMode</label>
+		<state min="0" max="14"/>
+	</channel-type>
+	<channel-type id="pOvenFireplace">
+		<item-type>Number</item-type>
+		<label>pOvenFireplace</label>
+		<state min="0" max="4"/>
+	</channel-type>
+	<channel-type id="pRestart_p59RestartBeforeSetbackEnd">
+		<item-type>Number</item-type>
+		<label>pRestart_p59RestartBeforeSetbackEnd</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pSolar_CollectLimitTempSolar">
+		<item-type>Number:Temperature</item-type>
+		<label>pSolar_CollectLimitTempSolar</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pSolar_HystDiffTempSolar">
+		<item-type>Number:Temperature</item-type>
+		<label>pSolar_HystDiffTempSolar</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pSolar_p80EnableSolar">
+		<item-type>Number</item-type>
+		<label>pSolar_p80EnableSolar</label>
+		<state min="0" max="1"/>
+	</channel-type>
+	<channel-type id="pSolar_p81DiffTempSolarLoading">
+		<item-type>Number:Temperature</item-type>
+		<label>pSolar_p81DiffTempSolarLoading</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pSolar_p82DelayCompStartSolar">
+		<item-type>Number</item-type>
+		<label>pSolar_p82DelayCompStartSolar</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="pSolar_p84DHWTempSolarMode">
+		<item-type>Number:Temperature</item-type>
+		<label>pSolar_p84DHWTempSolarMode</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="party-time_Begin">
+		<item-type>Number</item-type>
+		<label>party-time_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="party-time_End">
+		<item-type>Number</item-type>
+		<label>party-time_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Fr_0_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Fr_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Fr_0_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Fr_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Fr_1_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Fr_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Fr_1_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Fr_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Fr_2_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Fr_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Fr_2_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Fr_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-Fr_0_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-Fr_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-Fr_0_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-Fr_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-Fr_1_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-Fr_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-Fr_1_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-Fr_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-Fr_2_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-Fr_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-Fr_2_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-Fr_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-So_0_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-So_1_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo-So_2_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo-So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo_0_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo_0_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo_1_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo_1_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo_2_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Mo_2_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Mo_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa-So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa-So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa-So_0_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa-So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa-So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa-So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa-So_1_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa-So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa-So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa-So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa-So_2_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa-So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa_0_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa_0_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa_1_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa_1_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa_2_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Sa_2_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Sa_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_So_0_End">
+		<item-type>Number</item-type>
+		<label>programDHW_So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_So_1_End">
+		<item-type>Number</item-type>
+		<label>programDHW_So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_So_2_End">
+		<item-type>Number</item-type>
+		<label>programDHW_So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Th_0_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Th_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Th_0_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Th_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Th_1_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Th_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Th_1_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Th_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Th_2_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Th_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Th_2_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Th_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Tu_0_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Tu_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Tu_0_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Tu_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Tu_1_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Tu_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Tu_1_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Tu_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Tu_2_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_Tu_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_Tu_2_End">
+		<item-type>Number</item-type>
+		<label>programDHW_Tu_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_We_0_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_We_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_We_0_End">
+		<item-type>Number</item-type>
+		<label>programDHW_We_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_We_1_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_We_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_We_1_End">
+		<item-type>Number</item-type>
+		<label>programDHW_We_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_We_2_Begin">
+		<item-type>Number</item-type>
+		<label>programDHW_We_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programDHW_We_2_End">
+		<item-type>Number</item-type>
+		<label>programDHW_We_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Fr_0_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Fr_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Fr_0_End">
+		<item-type>Number</item-type>
+		<label>programFan_Fr_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Fr_1_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Fr_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Fr_1_End">
+		<item-type>Number</item-type>
+		<label>programFan_Fr_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Fr_2_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Fr_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Fr_2_End">
+		<item-type>Number</item-type>
+		<label>programFan_Fr_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-Fr_0_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-Fr_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-Fr_0_End">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-Fr_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-Fr_1_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-Fr_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-Fr_1_End">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-Fr_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-Fr_2_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-Fr_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-Fr_2_End">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-Fr_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-So_0_End">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-So_1_End">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo-So_2_End">
+		<item-type>Number</item-type>
+		<label>programFan_Mo-So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo_0_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Mo_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo_0_End">
+		<item-type>Number</item-type>
+		<label>programFan_Mo_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo_1_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Mo_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo_1_End">
+		<item-type>Number</item-type>
+		<label>programFan_Mo_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo_2_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Mo_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Mo_2_End">
+		<item-type>Number</item-type>
+		<label>programFan_Mo_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa-So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Sa-So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa-So_0_End">
+		<item-type>Number</item-type>
+		<label>programFan_Sa-So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa-So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Sa-So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa-So_1_End">
+		<item-type>Number</item-type>
+		<label>programFan_Sa-So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa-So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Sa-So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa-So_2_End">
+		<item-type>Number</item-type>
+		<label>programFan_Sa-So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa_0_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Sa_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa_0_End">
+		<item-type>Number</item-type>
+		<label>programFan_Sa_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa_1_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Sa_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa_1_End">
+		<item-type>Number</item-type>
+		<label>programFan_Sa_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa_2_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Sa_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Sa_2_End">
+		<item-type>Number</item-type>
+		<label>programFan_Sa_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_So_0_End">
+		<item-type>Number</item-type>
+		<label>programFan_So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_So_1_End">
+		<item-type>Number</item-type>
+		<label>programFan_So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_So_2_End">
+		<item-type>Number</item-type>
+		<label>programFan_So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Th_0_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Th_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Th_0_End">
+		<item-type>Number</item-type>
+		<label>programFan_Th_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Th_1_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Th_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Th_1_End">
+		<item-type>Number</item-type>
+		<label>programFan_Th_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Th_2_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Th_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Th_2_End">
+		<item-type>Number</item-type>
+		<label>programFan_Th_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Tu_0_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Tu_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Tu_0_End">
+		<item-type>Number</item-type>
+		<label>programFan_Tu_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Tu_1_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Tu_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Tu_1_End">
+		<item-type>Number</item-type>
+		<label>programFan_Tu_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Tu_2_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_Tu_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_Tu_2_End">
+		<item-type>Number</item-type>
+		<label>programFan_Tu_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_We_0_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_We_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_We_0_End">
+		<item-type>Number</item-type>
+		<label>programFan_We_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_We_1_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_We_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_We_1_End">
+		<item-type>Number</item-type>
+		<label>programFan_We_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_We_2_Begin">
+		<item-type>Number</item-type>
+		<label>programFan_We_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programFan_We_2_End">
+		<item-type>Number</item-type>
+		<label>programFan_We_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Fr_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Fr_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Fr_0_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Fr_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Fr_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Fr_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Fr_1_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Fr_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Fr_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Fr_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Fr_2_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Fr_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-Fr_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-Fr_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-Fr_0_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-Fr_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-Fr_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-Fr_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-Fr_1_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-Fr_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-Fr_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-Fr_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-Fr_2_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-Fr_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-So_0_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-So_1_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo-So_2_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo-So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo_0_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo_1_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Mo_2_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Mo_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa-So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa-So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa-So_0_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa-So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa-So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa-So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa-So_1_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa-So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa-So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa-So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa-So_2_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa-So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa_0_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa_1_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Sa_2_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Sa_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_So_0_End">
+		<item-type>Number</item-type>
+		<label>programHC1_So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_So_1_End">
+		<item-type>Number</item-type>
+		<label>programHC1_So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_So_2_End">
+		<item-type>Number</item-type>
+		<label>programHC1_So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Th_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Th_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Th_0_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Th_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Th_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Th_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Th_1_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Th_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Th_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Th_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Th_2_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Th_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Tu_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Tu_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Tu_0_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Tu_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Tu_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Tu_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Tu_1_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Tu_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Tu_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_Tu_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_Tu_2_End">
+		<item-type>Number</item-type>
+		<label>programHC1_Tu_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_We_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_We_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_We_0_End">
+		<item-type>Number</item-type>
+		<label>programHC1_We_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_We_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_We_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_We_1_End">
+		<item-type>Number</item-type>
+		<label>programHC1_We_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_We_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC1_We_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC1_We_2_End">
+		<item-type>Number</item-type>
+		<label>programHC1_We_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Fr_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Fr_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Fr_0_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Fr_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Fr_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Fr_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Fr_1_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Fr_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Fr_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Fr_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Fr_2_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Fr_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-Fr_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-Fr_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-Fr_0_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-Fr_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-Fr_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-Fr_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-Fr_1_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-Fr_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-Fr_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-Fr_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-Fr_2_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-Fr_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-So_0_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-So_1_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo-So_2_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo-So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo_0_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo_1_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Mo_2_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Mo_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa-So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa-So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa-So_0_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa-So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa-So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa-So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa-So_1_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa-So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa-So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa-So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa-So_2_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa-So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa_0_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa_1_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Sa_2_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Sa_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_So_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_So_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_So_0_End">
+		<item-type>Number</item-type>
+		<label>programHC2_So_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_So_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_So_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_So_1_End">
+		<item-type>Number</item-type>
+		<label>programHC2_So_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_So_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_So_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_So_2_End">
+		<item-type>Number</item-type>
+		<label>programHC2_So_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Th_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Th_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Th_0_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Th_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Th_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Th_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Th_1_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Th_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Th_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Th_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Th_2_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Th_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Tu_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Tu_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Tu_0_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Tu_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Tu_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Tu_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Tu_1_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Tu_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Tu_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_Tu_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_Tu_2_End">
+		<item-type>Number</item-type>
+		<label>programHC2_Tu_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_We_0_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_We_0_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_We_0_End">
+		<item-type>Number</item-type>
+		<label>programHC2_We_0_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_We_1_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_We_1_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_We_1_End">
+		<item-type>Number</item-type>
+		<label>programHC2_We_1_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_We_2_Begin">
+		<item-type>Number</item-type>
+		<label>programHC2_We_2_Begin</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="programHC2_We_2_End">
+		<item-type>Number</item-type>
+		<label>programHC2_We_2_End</label>
+		<state min="0" max="95"/>
+	</channel-type>
+	<channel-type id="sBoostDHWTotal">
+		<item-type>Number:Energy</item-type>
+		<label>sBoostDHWTotal</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sBoostHCTotal">
+		<item-type>Number:Energy</item-type>
+		<label>sBoostHCTotal</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sComprRelPower">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sComprRelPower</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sComprRotLimit">
+		<item-type>Number:Time</item-type>
+		<label>sComprRotLimit</label>
+		<category>Time</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sComprRotUnlimit">
+		<item-type>Number:Time</item-type>
+		<label>sComprRotUnlimit</label>
+		<category>Time</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_boostBlockTimeAfterHD">
+		<item-type>Number</item-type>
+		<label>sControl_boostBlockTimeAfterHD</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_boostBlockTimeAfterPumpStart">
+		<item-type>Number</item-type>
+		<label>sControl_boostBlockTimeAfterPumpStart</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_boosterStage1">
+		<item-type>Switch</item-type>
+		<label>sControl_boosterStage1</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_boosterStage2">
+		<item-type>Switch</item-type>
+		<label>sControl_boosterStage2</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_compBlockTime">
+		<item-type>Number</item-type>
+		<label>sControl_compBlockTime</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_compressor">
+		<item-type>Switch</item-type>
+		<label>sControl_compressor</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_defrostEvaporator">
+		<item-type>Number</item-type>
+		<label>sControl_defrostEvaporator</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_dhwPump">
+		<item-type>Switch</item-type>
+		<label>sControl_dhwPump</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_dhwStage">
+		<item-type>Number</item-type>
+		<label>sControl_dhwStage</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_diverterValve">
+		<item-type>Switch</item-type>
+		<label>sControl_diverterValve</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_hcStage">
+		<item-type>Number</item-type>
+		<label>sControl_hcStage</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_heatPipeValve">
+		<item-type>Switch</item-type>
+		<label>sControl_heatPipeValve</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_heatRequest">
+		<item-type>Number</item-type>
+		<label>sControl_heatRequest</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_heatRequest2">
+		<item-type>Number</item-type>
+		<label>sControl_heatRequest2</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_heatStageControlModul">
+		<item-type>Number</item-type>
+		<label>sControl_heatStageControlModul</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_heatingCircuitPump">
+		<item-type>Switch</item-type>
+		<label>sControl_heatingCircuitPump</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_mixerClosed">
+		<item-type>Switch</item-type>
+		<label>sControl_mixerClosed</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_mixerOpen">
+		<item-type>Switch</item-type>
+		<label>sControl_mixerOpen</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_pasteurisationMode">
+		<item-type>Number</item-type>
+		<label>sControl_pasteurisationMode</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_sensorBits1">
+		<item-type>Number</item-type>
+		<label>sControl_sensorBits1</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_sensorBits2">
+		<item-type>Number</item-type>
+		<label>sControl_sensorBits2</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sControl_solarPump">
+		<item-type>Switch</item-type>
+		<label>sControl_solarPump</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sCoolHCTotal">
+		<item-type>Number:Energy</item-type>
+		<label>sCoolHCTotal</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDHW_compBlockTime">
+		<item-type>Number</item-type>
+		<label>sDHW_compBlockTime</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDHW_dhwBoosterStage">
+		<item-type>Number</item-type>
+		<label>sDHW_dhwBoosterStage</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDHW_dhwOpMode">
+		<item-type>Number</item-type>
+		<label>sDHW_dhwOpMode</label>
+		<state min="1" max="5" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDHW_dhwSetTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sDHW_dhwSetTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDHW_dhwTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sDHW_dhwTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDHW_heatBlockTime">
+		<item-type>Number</item-type>
+		<label>sDHW_heatBlockTime</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDHW_out">
+		<item-type>Number</item-type>
+		<label>sDHW_out</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDHW_outsideTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sDHW_outsideTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDHW_pasteurisationMode">
+		<item-type>Number</item-type>
+		<label>sDHW_pasteurisationMode</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDHW_x36">
+		<item-type>Number</item-type>
+		<label>sDHW_x36</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDewPointHC1">
+		<item-type>Number:Temperature</item-type>
+		<label>sDewPointHC1</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_boosterHC">
+		<item-type>Switch</item-type>
+		<label>sDisplay_boosterHC</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_compressor">
+		<item-type>Switch</item-type>
+		<label>sDisplay_compressor</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_cooling">
+		<item-type>Switch</item-type>
+		<label>sDisplay_cooling</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_defrost">
+		<item-type>Switch</item-type>
+		<label>sDisplay_defrost</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_filterBoth">
+		<item-type>Switch</item-type>
+		<label>sDisplay_filterBoth</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_filterDown">
+		<item-type>Switch</item-type>
+		<label>sDisplay_filterDown</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_filterUp">
+		<item-type>Switch</item-type>
+		<label>sDisplay_filterUp</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_heatingDHW">
+		<item-type>Switch</item-type>
+		<label>sDisplay_heatingDHW</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_heatingHC">
+		<item-type>Switch</item-type>
+		<label>sDisplay_heatingHC</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_pumpHC">
+		<item-type>Switch</item-type>
+		<label>sDisplay_pumpHC</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_service">
+		<item-type>Switch</item-type>
+		<label>sDisplay_service</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_switchingProg">
+		<item-type>Switch</item-type>
+		<label>sDisplay_switchingProg</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sDisplay_ventStage">
+		<item-type>Switch</item-type>
+		<label>sDisplay_ventStage</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sElectrDHWDay">
+		<item-type>Number:Energy</item-type>
+		<label>sElectrDHWDay</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sElectrDHWTotal">
+		<item-type>Number:Energy</item-type>
+		<label>sElectrDHWTotal</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sElectrHCDay">
+		<item-type>Number:Energy</item-type>
+		<label>sElectrHCDay</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sElectrHCTotal">
+		<item-type>Number:Energy</item-type>
+		<label>sElectrHCTotal</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_airflowCalibrationInterval">
+		<item-type>Number</item-type>
+		<label>sFan_airflowCalibrationInterval</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_airflowTolerance">
+		<item-type>Number</item-type>
+		<label>sFan_airflowTolerance</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_exhaustFanAirflowCAL">
+		<item-type>Number</item-type>
+		<label>sFan_exhaustFanAirflowCAL</label>
+		<state min="0" max="0" pattern="%.2f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_exhaustFanAirflowSet">
+		<item-type>Number</item-type>
+		<label>sFan_exhaustFanAirflowSet</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_exhaustFanSpeed">
+		<item-type>Number</item-type>
+		<label>sFan_exhaustFanSpeed</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_exhaustFanSpeed0">
+		<item-type>Number</item-type>
+		<label>sFan_exhaustFanSpeed0</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_exhaustFanSpeed200">
+		<item-type>Number</item-type>
+		<label>sFan_exhaustFanSpeed200</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_exhaustFanSpeedCAL">
+		<item-type>Number</item-type>
+		<label>sFan_exhaustFanSpeedCAL</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_exhaustFanSpeedTarget">
+		<item-type>Number</item-type>
+		<label>sFan_exhaustFanSpeedTarget</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_inputFanPower">
+		<item-type>Number</item-type>
+		<label>sFan_inputFanPower</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_inputFanSpeed">
+		<item-type>Number</item-type>
+		<label>sFan_inputFanSpeed</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_outputFanPower">
+		<item-type>Number</item-type>
+		<label>sFan_outputFanPower</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_outputFanSpeed">
+		<item-type>Number</item-type>
+		<label>sFan_outputFanSpeed</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_pFanstageXAirflowInlet">
+		<item-type>Number</item-type>
+		<label>sFan_pFanstageXAirflowInlet</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_pFanstageXAirflowOutlet">
+		<item-type>Number</item-type>
+		<label>sFan_pFanstageXAirflowOutlet</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_statusAFC">
+		<item-type>Number</item-type>
+		<label>sFan_statusAFC</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_supplyFanAirflowCAL">
+		<item-type>Number</item-type>
+		<label>sFan_supplyFanAirflowCAL</label>
+		<state min="0" max="0" pattern="%.2f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_supplyFanAirflowSet">
+		<item-type>Number</item-type>
+		<label>sFan_supplyFanAirflowSet</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_supplyFanSpeed">
+		<item-type>Number</item-type>
+		<label>sFan_supplyFanSpeed</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_supplyFanSpeed0">
+		<item-type>Number</item-type>
+		<label>sFan_supplyFanSpeed0</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_supplyFanSpeed200">
+		<item-type>Number</item-type>
+		<label>sFan_supplyFanSpeed200</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_supplyFanSpeedCAL">
+		<item-type>Number</item-type>
+		<label>sFan_supplyFanSpeedCAL</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_supplyFanSpeedTarget">
+		<item-type>Number</item-type>
+		<label>sFan_supplyFanSpeedTarget</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFan_timeToCalibration">
+		<item-type>Number</item-type>
+		<label>sFan_timeToCalibration</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFirmware-Id_HW">
+		<item-type>Number</item-type>
+		<label>sFirmware-Id_HW</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFirmware-Id_SW">
+		<item-type>Number</item-type>
+		<label>sFirmware-Id_SW</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sFlowRate">
+		<item-type>Number:VolumetricFlowRate</item-type>
+		<label>sFlowRate</label>
+		<category>VolumetricFlowRate</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_P_Hd">
+		<item-type>Number:Pressure</item-type>
+		<label>sGlobal_P_Hd</label>
+		<category>Pressure</category>
+		<state min="0" max="0" pattern="%.2f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_P_Nd">
+		<item-type>Number:Pressure</item-type>
+		<label>sGlobal_P_Nd</label>
+		<category>Pressure</category>
+		<state min="0" max="0" pattern="%.2f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_STB">
+		<item-type>Switch</item-type>
+		<label>sGlobal_STB</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_boosterStage1">
+		<item-type>Switch</item-type>
+		<label>sGlobal_boosterStage1</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_boosterStage2">
+		<item-type>Switch</item-type>
+		<label>sGlobal_boosterStage2</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_boosterStage3">
+		<item-type>Switch</item-type>
+		<label>sGlobal_boosterStage3</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_collectorTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_collectorTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_compressor">
+		<item-type>Switch</item-type>
+		<label>sGlobal_compressor</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_condenserTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_condenserTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_dewPoint">
+		<item-type>Number</item-type>
+		<label>sGlobal_dewPoint</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_dhwPump">
+		<item-type>Switch</item-type>
+		<label>sGlobal_dhwPump</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_dhwTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_dhwTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_diverterValve">
+		<item-type>Switch</item-type>
+		<label>sGlobal_diverterValve</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_evaporatorIceMonitor">
+		<item-type>Switch</item-type>
+		<label>sGlobal_evaporatorIceMonitor</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_evaporatorTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_evaporatorTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_evuRelease">
+		<item-type>Switch</item-type>
+		<label>sGlobal_evuRelease</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_flowRate">
+		<item-type>Number</item-type>
+		<label>sGlobal_flowRate</label>
+		<state min="0" max="0" pattern="%.2f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_flowTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_flowTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_flowTempHC2">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_flowTempHC2</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_heatPipeValve">
+		<item-type>Switch</item-type>
+		<label>sGlobal_heatPipeValve</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_heatingCircuitPump">
+		<item-type>Switch</item-type>
+		<label>sGlobal_heatingCircuitPump</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_highPressureSensor">
+		<item-type>Switch</item-type>
+		<label>sGlobal_highPressureSensor</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_highPressureSensorInverted">
+		<item-type>Switch</item-type>
+		<label>sGlobal_highPressureSensorInverted</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_hotGasTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_hotGasTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_inputVentilatorPower">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sGlobal_inputVentilatorPower</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_inputVentilatorSpeed">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sGlobal_inputVentilatorSpeed</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_insideTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_insideTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_lowPressureSensor">
+		<item-type>Switch</item-type>
+		<label>sGlobal_lowPressureSensor</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_lowPressureSensorInverted">
+		<item-type>Switch</item-type>
+		<label>sGlobal_lowPressureSensorInverted</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_mainVentilatorPower">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sGlobal_mainVentilatorPower</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_mainVentilatorSpeed">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sGlobal_mainVentilatorSpeed</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_mixerClosed">
+		<item-type>Switch</item-type>
+		<label>sGlobal_mixerClosed</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_mixerOpen">
+		<item-type>Switch</item-type>
+		<label>sGlobal_mixerOpen</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_outputVentilatorPower">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sGlobal_outputVentilatorPower</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_outputVentilatorSpeed">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sGlobal_outputVentilatorSpeed</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_outsideTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_outsideTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_outsideTempFiltered">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_outsideTempFiltered</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_outside_tempFiltered">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_outside_tempFiltered</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_ovenFireplace">
+		<item-type>Switch</item-type>
+		<label>sGlobal_ovenFireplace</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_quickAirVent">
+		<item-type>Switch</item-type>
+		<label>sGlobal_quickAirVent</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_relHumidity">
+		<item-type>Number</item-type>
+		<label>sGlobal_relHumidity</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_returnTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sGlobal_returnTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_signalAnode">
+		<item-type>Switch</item-type>
+		<label>sGlobal_signalAnode</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_solarPump">
+		<item-type>Switch</item-type>
+		<label>sGlobal_solarPump</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sGlobal_windowOpen">
+		<item-type>Switch</item-type>
+		<label>sGlobal_windowOpen</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_blockTimeAfterCompStart">
+		<item-type>Number</item-type>
+		<label>sHC1_blockTimeAfterCompStart</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_boosterStage1">
+		<item-type>Switch</item-type>
+		<label>sHC1_boosterStage1</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_boosterStage2">
+		<item-type>Switch</item-type>
+		<label>sHC1_boosterStage2</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_compressor">
+		<item-type>Switch</item-type>
+		<label>sHC1_compressor</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_dhwPump">
+		<item-type>Switch</item-type>
+		<label>sHC1_dhwPump</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_diverterValve">
+		<item-type>Switch</item-type>
+		<label>sHC1_diverterValve</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_flowTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC1_flowTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_hcBoosterStage">
+		<item-type>Number</item-type>
+		<label>sHC1_hcBoosterStage</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_hcOpMode">
+		<item-type>Number</item-type>
+		<label>sHC1_hcOpMode</label>
+		<state min="1" max="5" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_hcStage">
+		<item-type>Number</item-type>
+		<label>sHC1_hcStage</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_heatPipeValve">
+		<item-type>Switch</item-type>
+		<label>sHC1_heatPipeValve</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_heatSetTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC1_heatSetTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_heatTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC1_heatTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_heatingCircuitPump">
+		<item-type>Switch</item-type>
+		<label>sHC1_heatingCircuitPump</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_insideTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC1_insideTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_insideTempRC">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC1_insideTempRC</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_integralHeat">
+		<item-type>Number</item-type>
+		<label>sHC1_integralHeat</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_integralSwitch">
+		<item-type>Number</item-type>
+		<label>sHC1_integralSwitch</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_mixerClosed">
+		<item-type>Switch</item-type>
+		<label>sHC1_mixerClosed</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_mixerOpen">
+		<item-type>Switch</item-type>
+		<label>sHC1_mixerOpen</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_offHysteresisNo">
+		<item-type>Number</item-type>
+		<label>sHC1_offHysteresisNo</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_onHysteresisNo">
+		<item-type>Number</item-type>
+		<label>sHC1_onHysteresisNo</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_outsideTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC1_outsideTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_returnTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC1_returnTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_roomSetTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC1_roomSetTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_seasonMode">
+		<item-type>Number</item-type>
+		<label>sHC1_seasonMode</label>
+		<state min="1" max="2" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_solarPump">
+		<item-type>Switch</item-type>
+		<label>sHC1_solarPump</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_x08">
+		<item-type>Number</item-type>
+		<label>sHC1_x08</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_x50">
+		<item-type>Number</item-type>
+		<label>sHC1_x50</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_x54">
+		<item-type>Number</item-type>
+		<label>sHC1_x54</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_x58">
+		<item-type>Number</item-type>
+		<label>sHC1_x58</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_x60">
+		<item-type>Number</item-type>
+		<label>sHC1_x60</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_x64">
+		<item-type>Number</item-type>
+		<label>sHC1_x64</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_x66">
+		<item-type>Number</item-type>
+		<label>sHC1_x66</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_x70">
+		<item-type>Number</item-type>
+		<label>sHC1_x70</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_x72">
+		<item-type>Number</item-type>
+		<label>sHC1_x72</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC1_x76">
+		<item-type>Number</item-type>
+		<label>sHC1_x76</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC2_hcOpMode">
+		<item-type>Number</item-type>
+		<label>sHC2_hcOpMode</label>
+		<state min="1" max="5" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC2_heatSetTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC2_heatSetTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC2_heatTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC2_heatTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC2_outsideTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC2_outsideTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC2_returnTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC2_returnTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC2_seasonMode">
+		<item-type>Number</item-type>
+		<label>sHC2_seasonMode</label>
+		<state min="1" max="2" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC2_stellgroesse">
+		<item-type>Number</item-type>
+		<label>sHC2_stellgroesse</label>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHC2_vorlaufTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sHC2_vorlaufTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHeatDHWDay">
+		<item-type>Number:Energy</item-type>
+		<label>sHeatDHWDay</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHeatDHWTotal">
+		<item-type>Number:Energy</item-type>
+		<label>sHeatDHWTotal</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHeatHCDay">
+		<item-type>Number:Energy</item-type>
+		<label>sHeatHCDay</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHeatHCTotal">
+		<item-type>Number:Energy</item-type>
+		<label>sHeatHCTotal</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHeatRecoveredDay">
+		<item-type>Number:Energy</item-type>
+		<label>sHeatRecoveredDay</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHeatRecoveredTotal">
+		<item-type>Number:Energy</item-type>
+		<label>sHeatRecoveredTotal</label>
+		<category>Energy</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHeatingRelPower">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sHeatingRelPower</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHistory_DHWhours">
+		<item-type>Number</item-type>
+		<label>sHistory_DHWhours</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHistory_boosterDHW">
+		<item-type>Number</item-type>
+		<label>sHistory_boosterDHW</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHistory_boosterHeating">
+		<item-type>Number</item-type>
+		<label>sHistory_boosterHeating</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHistory_compressorCooling">
+		<item-type>Number</item-type>
+		<label>sHistory_compressorCooling</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHistory_compressorDHW">
+		<item-type>Number</item-type>
+		<label>sHistory_compressorDHW</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHistory_compressorHeating">
+		<item-type>Number</item-type>
+		<label>sHistory_compressorHeating</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHistory_coolingHours">
+		<item-type>Number</item-type>
+		<label>sHistory_coolingHours</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHistory_heatingHours">
+		<item-type>Number</item-type>
+		<label>sHistory_heatingHours</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHistory_operatingHours1">
+		<item-type>Number</item-type>
+		<label>sHistory_operatingHours1</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHistory_operatingHours2">
+		<item-type>Number</item-type>
+		<label>sHistory_operatingHours2</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHumMaskingTime">
+		<item-type>Number:Time</item-type>
+		<label>sHumMaskingTime</label>
+		<category>Time</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHumProtection">
+		<item-type>Number</item-type>
+		<label>sHumProtection</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sHumThreshold">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sHumThreshold</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault0CODE">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault0CODE</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault0DATE">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault0DATE</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault0TIME">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault0TIME</label>
+		<state min="0" max="2359" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault1CODE">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault1CODE</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault1DATE">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault1DATE</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault1TIME">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault1TIME</label>
+		<state min="0" max="2359" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault2CODE">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault2CODE</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault2DATE">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault2DATE</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault2TIME">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault2TIME</label>
+		<state min="0" max="2359" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault3CODE">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault3CODE</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault3DATE">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault3DATE</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_fault3TIME">
+		<item-type>Number</item-type>
+		<label>sLast10errors_fault3TIME</label>
+		<state min="0" max="2359" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sLast10errors_number_of_faults">
+		<item-type>Number</item-type>
+		<label>sLast10errors_number_of_faults</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sOutputIncrease">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sOutputIncrease</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sOutputReduction">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sOutputReduction</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sProgram_BaseTimeAP0">
+		<item-type>Number</item-type>
+		<label>sProgram_BaseTimeAP0</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sProgram_EndTimeAP0">
+		<item-type>Number</item-type>
+		<label>sProgram_EndTimeAP0</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sProgram_ProgStateDHW">
+		<item-type>Number</item-type>
+		<label>sProgram_ProgStateDHW</label>
+		<state min="1" max="5" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sProgram_ProgStateFAN">
+		<item-type>Number</item-type>
+		<label>sProgram_ProgStateFAN</label>
+		<state min="1" max="5" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sProgram_ProgStateHC">
+		<item-type>Number</item-type>
+		<label>sProgram_ProgStateHC</label>
+		<state min="1" max="5" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sProgram_StartTimeAP0">
+		<item-type>Number</item-type>
+		<label>sProgram_StartTimeAP0</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sProgram_StatusAP0">
+		<item-type>Number</item-type>
+		<label>sProgram_StatusAP0</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sProgram_opMode">
+		<item-type>Number</item-type>
+		<label>sProgram_opMode</label>
+		<state min="0" max="1" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sSetHumidityMax">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sSetHumidityMax</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sSetHumidityMin">
+		<item-type>Number:Dimensionless</item-type>
+		<label>sSetHumidityMin</label>
+		<category>Dimensionless</category>
+		<state min="0" max="0" pattern="%.0f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sSol_collectorTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sSol_collectorTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sSol_dhwTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sSol_dhwTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sSol_edSolPump">
+		<item-type>Number</item-type>
+		<label>sSol_edSolPump</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sSol_flowTemp">
+		<item-type>Number:Temperature</item-type>
+		<label>sSol_flowTemp</label>
+		<category>Temperature</category>
+		<state min="0" max="0" pattern="%.1f %unit%" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sSol_out">
+		<item-type>Number</item-type>
+		<label>sSol_out</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sSol_status">
+		<item-type>Number</item-type>
+		<label>sSol_status</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sSystem_userSetFanRemainingTime">
+		<item-type>Number</item-type>
+		<label>sSystem_userSetFanRemainingTime</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sSystem_userSetFanStage">
+		<item-type>Number</item-type>
+		<label>sSystem_userSetFanStage</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_Day">
+		<item-type>Number</item-type>
+		<label>sTimedate_Day</label>
+		<state min="1" max="31" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_Hour">
+		<item-type>Number</item-type>
+		<label>sTimedate_Hour</label>
+		<state min="0" max="23" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_Min">
+		<item-type>Number</item-type>
+		<label>sTimedate_Min</label>
+		<state min="0" max="59" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_Month">
+		<item-type>Number</item-type>
+		<label>sTimedate_Month</label>
+		<state min="1" max="12" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_Sec">
+		<item-type>Number</item-type>
+		<label>sTimedate_Sec</label>
+		<state min="0" max="59" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_Weekday">
+		<item-type>Number</item-type>
+		<label>sTimedate_Weekday</label>
+		<state min="0" max="6" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_Year">
+		<item-type>Number</item-type>
+		<label>sTimedate_Year</label>
+		<state min="0" max="99" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_pClockDay">
+		<item-type>Number</item-type>
+		<label>sTimedate_pClockDay</label>
+		<state min="1" max="31" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_pClockHour">
+		<item-type>Number</item-type>
+		<label>sTimedate_pClockHour</label>
+		<state min="0" max="23" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_pClockMinutes">
+		<item-type>Number</item-type>
+		<label>sTimedate_pClockMinutes</label>
+		<state min="0" max="59" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_pClockMonth">
+		<item-type>Number</item-type>
+		<label>sTimedate_pClockMonth</label>
+		<state min="1" max="12" readOnly="true"/>
+	</channel-type>
+	<channel-type id="sTimedate_pClockYear">
+		<item-type>Number</item-type>
+		<label>sTimedate_pClockYear</label>
+		<state min="12" max="20" readOnly="true"/>
+	</channel-type>
+	<channel-type id="version">
+		<item-type>Number</item-type>
+		<label>version</label>
+		<state min="0" max="0" readOnly="true"/>
+	</channel-type>
 </thing:thing-descriptions>

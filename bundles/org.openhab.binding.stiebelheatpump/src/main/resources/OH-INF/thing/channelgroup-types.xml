@@ -1,903 +1,851 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="stiebelheatpump"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
-    xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
 	<channel-group-type id="channelGroupTypeVersion">
 		<label>Version</label>
 		<description>Version information of heat pump firmware</description>
 		<channels>
 			<!-- at least 1 channel-group with id = version must be included -->
-			<channel id="version" typeId="version" />
-			<channel id="dumpResponse" typeId="dumpResponse" />
+			<channel id="version" typeId="version"/>
+			<channel id="dumpResponse" typeId="dumpResponse"/>
 			<channel id="requestBytes" typeId="requestBytes"/>
-            <channel id="respondBytes" typeId="respondBytes"/>
+			<channel id="respondBytes" typeId="respondBytes"/>
+			<channel id="sFirmware-Id_HW" typeId="sFirmware-Id_HW"/>
+			<channel id="sFirmware-Id_SW" typeId="sFirmware-Id_SW"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeTime">
 		<label>Time</label>
 		<description>Date and time information of heat pump</description>
 		<channels>
-			<channel id="setTime" typeId="setTime" />
-			<channel id="weekday" typeId="weekday" />
-			<channel id="hours" typeId="hours" />
-			<channel id="minutes" typeId="minutes" />
-			<channel id="seconds" typeId="seconds" />
-			<channel id="year" typeId="year" />
-			<channel id="month" typeId="month" />
-			<channel id="day" typeId="day" />
+			<channel id="setTime" typeId="setTime"/>
+			<channel id="pClockDay" typeId="pClockDay"/>
+			<channel id="pClockHour" typeId="pClockHour"/>
+			<channel id="pClockMinutes" typeId="pClockMinutes"/>
+			<channel id="pClockMonth" typeId="pClockMonth"/>
+			<channel id="pClockYear" typeId="pClockYear"/>
+			<channel id="party-time_Begin" typeId="party-time_Begin"/>
+			<channel id="party-time_End" typeId="party-time_End"/>
+			<channel id="sTimedate_Day" typeId="sTimedate_Day"/>
+			<channel id="sTimedate_Hour" typeId="sTimedate_Hour"/>
+			<channel id="sTimedate_Min" typeId="sTimedate_Min"/>
+			<channel id="sTimedate_Month" typeId="sTimedate_Month"/>
+			<channel id="sTimedate_Sec" typeId="sTimedate_Sec"/>
+			<channel id="sTimedate_Weekday" typeId="sTimedate_Weekday"/>
+			<channel id="sTimedate_Year" typeId="sTimedate_Year"/>
+			<channel id="sTimedate_pClockDay" typeId="sTimedate_pClockDay"/>
+			<channel id="sTimedate_pClockHour" typeId="sTimedate_pClockHour"/>
+			<channel id="sTimedate_pClockMinutes" typeId="sTimedate_pClockMinutes"/>
+			<channel id="sTimedate_pClockMonth" typeId="sTimedate_pClockMonth"/>
+			<channel id="sTimedate_pClockYear" typeId="sTimedate_pClockYear"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeCurrentValues">
 		<label>Measurements</label>
 		<description>Measurements of the heat pump.</description>
 		<channels>
-		  <channel id="refreshTime" typeId="dateTime" />  
-  			<channel id="collectorTemperature" typeId="temperature">
-				<label>Collector temperature</label>
-				<description>Collector temperature</description>
-			</channel>
-			<channel id="outsideTemperature" typeId="temperature">
-				<label>Outside temperature</label>
-				<description>Outside temperature</description>
-			</channel>
-			<channel id="flowTemperature" typeId="temperature">
-				<label>Flow temperature</label>
-				<description>Flow temperature</description>
-			</channel>
-			<channel id="returnTemperature" typeId="temperature">
-				<label>Return temperature</label>
-				<description>Return temperature</description>
-			</channel>
-			<channel id="hotGasTemperature" typeId="temperature">
-				<label>Hot gas temperature</label>
-				<description>Hot gas temperature</description>
-			</channel>
-			<channel id="dHWTemperature" typeId="temperature">
-				<label>Cylinder temperature</label>
-				<description>Cylinder temperature</description>
-			</channel>
-			<channel id="flowHC2Temperature" typeId="temperature">
-				<label>Flow temperature HC2</label>
-				<description>Flow temperature HC2</description>
-			</channel>
-			<channel id="insideTemperature" typeId="temperature">
-				<label>Inside temperature</label>
-				<description>Inside temperature</description>
-			</channel>
-			<channel id="evaporatorTemperature" typeId="temperature">
-				<label>Evaporator temperature</label>
-				<description>Evaporator temperature</description>
-			</channel>
-			<channel id="condenserTemperature" typeId="temperature">
-				<label>Condenser temperature</label>
-				<description>Condenser temperature</description>
-			</channel>
-			<channel id="extractFanSpeed" typeId="speed">
-				<label>Extract fan speed</label>
-				<description>Extract fan speed</description>
-			</channel>
-			<channel id="supplyFanSpeed" typeId="speed">
-				<label>Supply fan speed</label>
-				<description>Supply fan speed</description>
-			</channel>
-			<channel id="exhaustFanSpeed" typeId="speed">
-				<label>Exhaust fan speed</label>
-				<description>Exhaust fan speed</description>
-			</channel>
-			<channel id="filteredOutsideTemperature" typeId="temperature">
-				<label>Filtered outside temperature</label>
-				<description>Filtered outside temperature</description>
-			</channel>
-			<channel id="dHWPumpStatus" typeId="contactStatus">
-				<label>DHW pump status</label>
-				<description>DHW pump status</description>
-			</channel>
-			<channel id="heatingCircuitPumpStatus" typeId="contactStatus">
-				<label>Heating Circuit pump status</label>
-				<description>Heating Circuit pump status</description>
-			</channel>
-			<channel id="solarPumpStatus" typeId="contactStatus">
-				<label>Solar pump status</label>
-				<description>Solar pump status</description>
-			</channel>
-			<channel id="mixerOpen" typeId="contactStatus">
-				<label>Mixer Open status</label>
-				<description>Mixer Open status</description>
-			</channel>
-			<channel id="mixerClose" typeId="contactStatus">
-				<label>Mixer Close status</label>
-				<description>Mixer Close status</description>
-			</channel>
-			<channel id="heatPipeValve" typeId="contactStatus">
-				<label>Heat Pipe Valve status</label>
-				<description>Heat Pipe Valve status</description>
-			</channel>
-			<channel id="DiverterValve" typeId="contactStatus">
-				<label>Diverter Valve status</label>
-				<description>Diverter Valve status</description>
-			</channel>
-			<channel id="CompressorStatus" typeId="contactStatus">
-				<label>Compressor status</label>
-				<description>Compressor status</description>
-			</channel>
-			<channel id="BoosterStage3" typeId="contactStatus">
-				<label>BoosterStage 3</label>
-				<description>BoosterStage 3</description>
-			</channel>
-			<channel id="BoosterStage2" typeId="contactStatus">
-				<label>BoosterStage 2</label>
-				<description>BoosterStage 2</description>
-			</channel>
-			<channel id="BoosterStage1" typeId="contactStatus">
-				<label>BoosterStage 1</label>
-				<description>BoosterStage 1</description>
-			</channel>
+			<channel id="refreshTime" typeId="dateTime"/>
+			<channel id="sGlobal_P_Hd" typeId="sGlobal_P_Hd"/>
+			<channel id="sGlobal_P_Nd" typeId="sGlobal_P_Nd"/>
+			<channel id="sGlobal_STB" typeId="sGlobal_STB"/>
+			<channel id="sGlobal_boosterStage1" typeId="sGlobal_boosterStage1"/>
+			<channel id="sGlobal_boosterStage2" typeId="sGlobal_boosterStage2"/>
+			<channel id="sGlobal_boosterStage3" typeId="sGlobal_boosterStage3"/>
+			<channel id="sGlobal_collectorTemp" typeId="sGlobal_collectorTemp"/>
+			<channel id="sGlobal_compressor" typeId="sGlobal_compressor"/>
+			<channel id="sGlobal_condenserTemp" typeId="sGlobal_condenserTemp"/>
+			<channel id="sGlobal_dewPoint" typeId="sGlobal_dewPoint"/>
+			<channel id="sGlobal_dhwPump" typeId="sGlobal_dhwPump"/>
+			<channel id="sGlobal_dhwTemp" typeId="sGlobal_dhwTemp"/>
+			<channel id="sGlobal_diverterValve" typeId="sGlobal_diverterValve"/>
+			<channel id="sGlobal_evaporatorIceMonitor" typeId="sGlobal_evaporatorIceMonitor"/>
+			<channel id="sGlobal_evaporatorTemp" typeId="sGlobal_evaporatorTemp"/>
+			<channel id="sGlobal_evuRelease" typeId="sGlobal_evuRelease"/>
+			<channel id="sGlobal_flowRate" typeId="sGlobal_flowRate"/>
+			<channel id="sGlobal_flowTemp" typeId="sGlobal_flowTemp"/>
+			<channel id="sGlobal_flowTempHC2" typeId="sGlobal_flowTempHC2"/>
+			<channel id="sGlobal_heatPipeValve" typeId="sGlobal_heatPipeValve"/>
+			<channel id="sGlobal_heatingCircuitPump" typeId="sGlobal_heatingCircuitPump"/>
+			<channel id="sGlobal_highPressureSensor" typeId="sGlobal_highPressureSensor"/>
+			<channel id="sGlobal_highPressureSensorInverted" typeId="sGlobal_highPressureSensorInverted"/>
+			<channel id="sGlobal_hotGasTemp" typeId="sGlobal_hotGasTemp"/>
+			<channel id="sGlobal_inputVentilatorPower" typeId="sGlobal_inputVentilatorPower"/>
+			<channel id="sGlobal_inputVentilatorSpeed" typeId="sGlobal_inputVentilatorSpeed"/>
+			<channel id="sGlobal_insideTemp" typeId="sGlobal_insideTemp"/>
+			<channel id="sGlobal_lowPressureSensor" typeId="sGlobal_lowPressureSensor"/>
+			<channel id="sGlobal_lowPressureSensorInverted" typeId="sGlobal_lowPressureSensorInverted"/>
+			<channel id="sGlobal_mainVentilatorPower" typeId="sGlobal_mainVentilatorPower"/>
+			<channel id="sGlobal_mainVentilatorSpeed" typeId="sGlobal_mainVentilatorSpeed"/>
+			<channel id="sGlobal_mixerClosed" typeId="sGlobal_mixerClosed"/>
+			<channel id="sGlobal_mixerOpen" typeId="sGlobal_mixerOpen"/>
+			<channel id="sGlobal_outputVentilatorPower" typeId="sGlobal_outputVentilatorPower"/>
+			<channel id="sGlobal_outputVentilatorSpeed" typeId="sGlobal_outputVentilatorSpeed"/>
+			<channel id="sGlobal_outsideTemp" typeId="sGlobal_outsideTemp"/>
+			<channel id="sGlobal_outsideTempFiltered" typeId="sGlobal_outsideTempFiltered"/>
+			<channel id="sGlobal_outside_tempFiltered" typeId="sGlobal_outside_tempFiltered"/>
+			<channel id="sGlobal_ovenFireplace" typeId="sGlobal_ovenFireplace"/>
+			<channel id="sGlobal_quickAirVent" typeId="sGlobal_quickAirVent"/>
+			<channel id="sGlobal_relHumidity" typeId="sGlobal_relHumidity"/>
+			<channel id="sGlobal_returnTemp" typeId="sGlobal_returnTemp"/>
+			<channel id="sGlobal_signalAnode" typeId="sGlobal_signalAnode"/>
+			<channel id="sGlobal_solarPump" typeId="sGlobal_solarPump"/>
+			<channel id="sGlobal_windowOpen" typeId="sGlobal_windowOpen"/>
+			<channel id="sProgram_BaseTimeAP0" typeId="sProgram_BaseTimeAP0"/>
+			<channel id="sProgram_EndTimeAP0" typeId="sProgram_EndTimeAP0"/>
+			<channel id="sProgram_ProgStateDHW" typeId="sProgram_ProgStateDHW"/>
+			<channel id="sProgram_ProgStateFAN" typeId="sProgram_ProgStateFAN"/>
+			<channel id="sProgram_ProgStateHC" typeId="sProgram_ProgStateHC"/>
+			<channel id="sProgram_StartTimeAP0" typeId="sProgram_StartTimeAP0"/>
+			<channel id="sProgram_StatusAP0" typeId="sProgram_StatusAP0"/>
+			<channel id="sProgram_opMode" typeId="sProgram_opMode"/>
+			<channel id="sSol_collectorTemp" typeId="sSol_collectorTemp"/>
+			<channel id="sSol_dhwTemp" typeId="sSol_dhwTemp"/>
+			<channel id="sSol_edSolPump" typeId="sSol_edSolPump"/>
+			<channel id="sSol_flowTemp" typeId="sSol_flowTemp"/>
+			<channel id="sSol_out" typeId="sSol_out"/>
+			<channel id="sSol_status" typeId="sSol_status"/>
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeControlValues">
+		<label>Control</label>
+		<description>Control values of the heat pump.</description>
+		<channels>
+			<channel id="sControl_boostBlockTimeAfterHD" typeId="sControl_boostBlockTimeAfterHD"/>
+			<channel id="sControl_boostBlockTimeAfterPumpStart" typeId="sControl_boostBlockTimeAfterPumpStart"/>
+			<channel id="sControl_boosterStage1" typeId="sControl_boosterStage1"/>
+			<channel id="sControl_boosterStage2" typeId="sControl_boosterStage2"/>
+			<channel id="sControl_compBlockTime" typeId="sControl_compBlockTime"/>
+			<channel id="sControl_compressor" typeId="sControl_compressor"/>
+			<channel id="sControl_defrostEvaporator" typeId="sControl_defrostEvaporator"/>
+			<channel id="sControl_dhwPump" typeId="sControl_dhwPump"/>
+			<channel id="sControl_dhwStage" typeId="sControl_dhwStage"/>
+			<channel id="sControl_diverterValve" typeId="sControl_diverterValve"/>
+			<channel id="sControl_hcStage" typeId="sControl_hcStage"/>
+			<channel id="sControl_heatPipeValve" typeId="sControl_heatPipeValve"/>
+			<channel id="sControl_heatRequest" typeId="sControl_heatRequest"/>
+			<channel id="sControl_heatRequest2" typeId="sControl_heatRequest2"/>
+			<channel id="sControl_heatStageControlModul" typeId="sControl_heatStageControlModul"/>
+			<channel id="sControl_heatingCircuitPump" typeId="sControl_heatingCircuitPump"/>
+			<channel id="sControl_mixerClosed" typeId="sControl_mixerClosed"/>
+			<channel id="sControl_mixerOpen" typeId="sControl_mixerOpen"/>
+			<channel id="sControl_pasteurisationMode" typeId="sControl_pasteurisationMode"/>
+			<channel id="sControl_sensorBits1" typeId="sControl_sensorBits1"/>
+			<channel id="sControl_sensorBits2" typeId="sControl_sensorBits2"/>
+			<channel id="sControl_solarPump" typeId="sControl_solarPump"/>
+		</channels>
+	</channel-group-type>
+	<channel-group-type id="channelGroupTypeDisplayValues">
+		<label>Display</label>
+		<description>Display values of the heat pump.</description>
+		<channels>
+			<channel id="sDisplay_boosterHC" typeId="sDisplay_boosterHC"/>
+			<channel id="sDisplay_compressor" typeId="sDisplay_compressor"/>
+			<channel id="sDisplay_cooling" typeId="sDisplay_cooling"/>
+			<channel id="sDisplay_defrost" typeId="sDisplay_defrost"/>
+			<channel id="sDisplay_filterBoth" typeId="sDisplay_filterBoth"/>
+			<channel id="sDisplay_filterDown" typeId="sDisplay_filterDown"/>
+			<channel id="sDisplay_filterUp" typeId="sDisplay_filterUp"/>
+			<channel id="sDisplay_heatingDHW" typeId="sDisplay_heatingDHW"/>
+			<channel id="sDisplay_heatingHC" typeId="sDisplay_heatingHC"/>
+			<channel id="sDisplay_pumpHC" typeId="sDisplay_pumpHC"/>
+			<channel id="sDisplay_service" typeId="sDisplay_service"/>
+			<channel id="sDisplay_switchingProg" typeId="sDisplay_switchingProg"/>
+			<channel id="sDisplay_ventStage" typeId="sDisplay_ventStage"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeOperationCounters">
 		<label>Operation Counters</label>
 		<description>Reads Operation counters of the heat pump.</description>
 		<channels>
-			<channel id="compressorA" typeId="hourCounter">
-				<label>Operation counter compressor A</label>
-				<description>Operation counter compressor A</description>
-			</channel>
-			<channel id="compressorB" typeId="hourCounter">
-				<label>Operation counter compressor B</label>
-				<description>Operation counter compressor B</description>
-			</channel>
-			<channel id="heatingMode" typeId="hourCounter">
-				<label>Operation counter heating mode</label>
-				<description>Operation counter heating mode</description>
-			</channel>
-			<channel id="heatingBoosterMode" typeId="hourCounter">
-				<label>Operation counter heating booster mode</label>
-				<description>Operation counter heating booster mode</description>
-			</channel>
-			<channel id="DHWMode" typeId="hourCounter">
-				<label>Operation counter DHW mode</label>
-				<description>Operation counter DHW mode</description>
-			</channel>
-			<channel id="DHWBoosterMode" typeId="hourCounter">
-				<label>Operation counter DHW booster mode</label>
-				<description>Operation counter DHW booster mode</description>
-			</channel>
-			<channel id="coolingMode" typeId="hourCounter">
-				<label>Operation counter cooling mode</label>
-				<description>Operation counter cooling mode</description>
-			</channel>
-			<channel id="compressorStarts" typeId="counter">
-				<label>Compressor starts</label>
-				<description>Compressor starts</description>
-			</channel>
+			<channel id="sBoostDHWTotal" typeId="sBoostDHWTotal"/>
+			<channel id="sBoostHCTotal" typeId="sBoostHCTotal"/>
+			<channel id="sElectrDHWDay" typeId="sElectrDHWDay"/>
+			<channel id="sElectrDHWTotal" typeId="sElectrDHWTotal"/>
+			<channel id="sElectrHCDay" typeId="sElectrHCDay"/>
+			<channel id="sElectrHCTotal" typeId="sElectrHCTotal"/>
+			<channel id="sHeatDHWDay" typeId="sHeatDHWDay"/>
+			<channel id="sHeatDHWTotal" typeId="sHeatDHWTotal"/>
+			<channel id="sHeatHCDay" typeId="sHeatHCDay"/>
+			<channel id="sHeatHCTotal" typeId="sHeatHCTotal"/>
+			<channel id="sHeatRecoveredDay" typeId="sHeatRecoveredDay"/>
+			<channel id="sHeatRecoveredTotal" typeId="sHeatRecoveredTotal"/>
+			<channel id="sHeatingRelPower" typeId="sHeatingRelPower"/>
+			<channel id="sHistory_DHWhours" typeId="sHistory_DHWhours"/>
+			<channel id="sHistory_boosterDHW" typeId="sHistory_boosterDHW"/>
+			<channel id="sHistory_boosterHeating" typeId="sHistory_boosterHeating"/>
+			<channel id="sHistory_compressorCooling" typeId="sHistory_compressorCooling"/>
+			<channel id="sHistory_compressorDHW" typeId="sHistory_compressorDHW"/>
+			<channel id="sHistory_compressorHeating" typeId="sHistory_compressorHeating"/>
+			<channel id="sHistory_coolingHours" typeId="sHistory_coolingHours"/>
+			<channel id="sHistory_heatingHours" typeId="sHistory_heatingHours"/>
+			<channel id="sHistory_operatingHours1" typeId="sHistory_operatingHours1"/>
+			<channel id="sHistory_operatingHours2" typeId="sHistory_operatingHours2"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeNominalValues">
 		<label>Settings nominal values</label>
 		<description>Reads settings nominal values of the heat pump.</description>
 		<channels>
-			<channel id="p01RoomTemperatureStandardMode" typeId="temperatureSetting">
-				<label>P01 Room temperature standard</label>
-				<description>P01 Room temperature standard mode setting</description>
-			</channel>
-			<channel id="p02RoomTemperatureSetbackMode" typeId="temperatureSetting">
-				<label>P02 Room temperature set back</label>
-				<description>P02 Room temperature set back mode setting</description>
-			</channel>
-			<channel id="p03RoomTemperatureStandby" typeId="temperatureSetting">
-				<label>P03 Room temperature standby</label>
-				<description>P03 Room temperature standby mode setting</description>
-			</channel>
-			<channel id="p04DHWTemperatureStandardMode" typeId="dHWTemperatureSetting">
-				<label>P04 Domestic hot water temperature standard</label>
-				<description>P04 Domestic hot water standard mode setting</description>
-			</channel>
-			<channel id="p05DHWTemperaturSetbackMode" typeId="dHWTemperatureSetting">
-				<label>P05 Domestic hot water temperature set back</label>
-				<description>P05 Domestic hot water set back mode setting</description>
-			</channel>
-			<channel id="p06DHWTemperatureStandby" typeId="dHWTemperatureSetting">
-				<label>P06 Domestic hot water temperature standby</label>
-				<description>P06 Domestic hot water standby mode setting</description>
-			</channel>
-			<channel id="p07FanStageStandardMode" typeId="fanStageSetting">
-				<label>P07 Fan stage standard</label>
-				<description>P07 Fan stage standard mode setting</description>
-			</channel>
-			<channel id="p08FanStageSetbackMode" typeId="fanStageSetting">
-				<label>P08 Fan stage set back</label>
-				<description>P08 Fan stage set back mode setting</description>
-			</channel>
-			<channel id="p09FanStageStandby" typeId="fanStageSetting">
-				<label>P09 Fan stage standby</label>
-				<description>P09 Fan stage standby mode setting</description>
-			</channel>
-			<channel id="p10HeatingCircuitTemperatureManual" typeId="temperatureManualSetting">
-				<label>P10 Heating circuit temperature manual</label>
-				<description>P10 Heating circuit temperature manual mode setting</description>
-			</channel>
-			<channel id="p11DHWTemperatureManual" typeId="temperatureManualSetting">
-				<label>P11 Domestic hot water temperature manual</label>
-				<description>P11 Domestic hot water manual mode setting</description>
-			</channel>
-			<channel id="p12FanStageManual" typeId="fanStageSetting">
-				<label>P12 Fan stage manual</label>
-				<description>P12 Fan stage manual mode setting</description>
-			</channel>
+			<channel id="p01-p12_p01RoomTempDay" typeId="p01-p12_p01RoomTempDay"/>
+			<channel id="p01-p12_p02RoomTempNight" typeId="p01-p12_p02RoomTempNight"/>
+			<channel id="p01-p12_p03RoomTempStandby" typeId="p01-p12_p03RoomTempStandby"/>
+			<channel id="p01-p12_p04DHWsetTempDay" typeId="p01-p12_p04DHWsetTempDay"/>
+			<channel id="p01-p12_p05DHWsetTempNight" typeId="p01-p12_p05DHWsetTempNight"/>
+			<channel id="p01-p12_p06DHWsetTempStandby" typeId="p01-p12_p06DHWsetTempStandby"/>
+			<channel id="p01-p12_p07FanStageDay" typeId="p01-p12_p07FanStageDay"/>
+			<channel id="p01-p12_p08FanStageNight" typeId="p01-p12_p08FanStageNight"/>
+			<channel id="p01-p12_p09FanStageStandby" typeId="p01-p12_p09FanStageStandby"/>
+			<channel id="p01-p12_p10HCTempManual" typeId="p01-p12_p10HCTempManual"/>
+			<channel id="p01-p12_p11DHWsetTempManual" typeId="p01-p12_p11DHWsetTempManual"/>
+			<channel id="p01-p12_p12FanStageManual" typeId="p01-p12_p12FanStageManual"/>
+			<channel id="p01RoomTempDayHC1" typeId="p01RoomTempDayHC1"/>
+			<channel id="p01RoomTempDayHC1SummerMode" typeId="p01RoomTempDayHC1SummerMode"/>
+			<channel id="p01RoomTempDayHC2" typeId="p01RoomTempDayHC2"/>
+			<channel id="p01RoomTempDayHC2SummerMode" typeId="p01RoomTempDayHC2SummerMode"/>
+			<channel id="p02RoomTempNightHC1" typeId="p02RoomTempNightHC1"/>
+			<channel id="p02RoomTempNightHC1SummerMode" typeId="p02RoomTempNightHC1SummerMode"/>
+			<channel id="p02RoomTempNightHC2" typeId="p02RoomTempNightHC2"/>
+			<channel id="p02RoomTempNightHC2SummerMode" typeId="p02RoomTempNightHC2SummerMode"/>
+			<channel id="p03RoomTempStandbyHC1" typeId="p03RoomTempStandbyHC1"/>
+			<channel id="p03RoomTempStandbyHC1SummerMode" typeId="p03RoomTempStandbyHC1SummerMode"/>
+			<channel id="p03RoomTempStandbyHC2" typeId="p03RoomTempStandbyHC2"/>
+			<channel id="p03RoomTempStandbyHC2SummerMode" typeId="p03RoomTempStandbyHC2SummerMode"/>
+			<channel id="p04DHWsetDayTemp" typeId="p04DHWsetDayTemp"/>
+			<channel id="p05DHWsetNightTemp" typeId="p05DHWsetNightTemp"/>
+			<channel id="p06DHWsetStandbyTemp" typeId="p06DHWsetStandbyTemp"/>
+			<channel id="p07FanStageDay" typeId="p07FanStageDay"/>
+			<channel id="p08FanStageNight" typeId="p08FanStageNight"/>
+			<channel id="p09FanStageStandby" typeId="p09FanStageStandby"/>
+			<channel id="p11DHWsetManualTemp" typeId="p11DHWsetManualTemp"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeVentilation">
 		<label>Settings ventilation</label>
 		<description>Reads ventilation settings of the heat pump.</description>
 		<channels>
-			<channel id="p37FanStageSupplyAir1" typeId="fanStageSettingAir">
-				<label>P37 Fan stage 1 supply air</label>
-				<description>P37 Fan stage 1 supply air setting</description>
-			</channel>
-			<channel id="p38FanStageSupplyAir2" typeId="fanStageSettingAir">
-				<label>P38 Fan stage 2 supply air</label>
-				<description>P38 Fan stage 2 supply air setting</description>
-			</channel>
-			<channel id="p39FanStageSupplyAir3" typeId="fanStageSettingAir">
-				<label>P39 Fan stage 3 supply air</label>
-				<description>P39 Fan stage 3 supply air setting</description>
-			</channel>
-			<channel id="p40FanStageExtractAir1" typeId="fanStageSettingAir">
-				<label>P40 Fan stage 1 extract air</label>
-				<description>P40 Fan stage 1 extract air setting</description>
-			</channel>
-			<channel id="p41FanStageExtractAir2" typeId="fanStageSettingAir">
-				<label>P41 Fan stage 2 extract air</label>
-				<description>P41 Fan stage 2 extract air setting</description>
-			</channel>
-			<channel id="p42FanStageExtractAir3" typeId="fanStageSettingAir">
-				<label>P42 Fan stage 3 extract air</label>
-				<description>P42 Fan stage 3 extract air setting</description>
-			</channel>
-			<channel id="p43VentilationTimeUnscheduledStage3" typeId="ventilationTimeUnscheduled">
-				<label>P43 Unscheduled ventilation time stage 3</label>
-				<description>P43 Unscheduled ventilation time stage 3 setting</description>
-			</channel>
-			<channel id="p44VentilationTimeUnscheduledStage2" typeId="ventilationTimeUnscheduled">
-				<label>P44 Unscheduled ventilation time stage 2</label>
-				<description>P44 Unscheduled ventilation time stage 2 setting</description>
-			</channel>
-			<channel id="p45VentilationTimeUnscheduledStage1" typeId="ventilationTimeUnscheduled">
-				<label>P45 Unscheduled ventilation time stage 1</label>
-				<description>P45 Unscheduled ventilation time stage 1 setting</description>
-			</channel>
-			<channel id="p46VentilationTimeUnscheduledStage0" typeId="ventilationTimeUnscheduled">
-				<label>P46 Unscheduled ventilation time stage 0</label>
-				<description>P46 Unscheduled ventilation time stage 0 setting</description>
-			</channel>
-			<channel id="p75OperatingModePassiveCooling" typeId="operatingModePassiveCooling">
-				<label>P75 Operating mode passive cooling</label>
-				<description>P75 Operating mode passive cooling setting</description>
-			</channel>
-			<channel id="stoveFireplaceOperation" typeId="stoveFireplaceOperation">
-				<label>Stove fireplace operation</label>
-				<description>Stove fireplace operation</description>
-			</channel>
+			<channel id="p37Fanstage1AirflowInlet" typeId="p37Fanstage1AirflowInlet"/>
+			<channel id="p38Fanstage2AirflowInlet" typeId="p38Fanstage2AirflowInlet"/>
+			<channel id="p39Fanstage3AirflowInlet" typeId="p39Fanstage3AirflowInlet"/>
+			<channel id="p40Fanstage1AirflowOutlet" typeId="p40Fanstage1AirflowOutlet"/>
+			<channel id="p41Fanstage2AirflowOutlet" typeId="p41Fanstage2AirflowOutlet"/>
+			<channel id="p42Fanstage3AirflowOutlet" typeId="p42Fanstage3AirflowOutlet"/>
+			<channel id="p43UnschedVent3" typeId="p43UnschedVent3"/>
+			<channel id="p44UnschedVent2" typeId="p44UnschedVent2"/>
+			<channel id="p45UnschedVent1" typeId="p45UnschedVent1"/>
+			<channel id="p46UnschedVent0" typeId="p46UnschedVent0"/>
+			<channel id="p75passiveCooling" typeId="p75passiveCooling"/>
+			<channel id="p99FanStageParty" typeId="p99FanStageParty"/>
+			<channel id="p99startUnschedVent" typeId="p99startUnschedVent"/>
+			<channel id="pFan_p37Fanstage1AirflowInlet" typeId="pFan_p37Fanstage1AirflowInlet"/>
+			<channel id="pFan_p38Fanstage2AirflowInlet" typeId="pFan_p38Fanstage2AirflowInlet"/>
+			<channel id="pFan_p39Fanstage3AirflowInlet" typeId="pFan_p39Fanstage3AirflowInlet"/>
+			<channel id="pFan_p40Fanstage1AirflowOutlet" typeId="pFan_p40Fanstage1AirflowOutlet"/>
+			<channel id="pFan_p41Fanstage2AirflowOutlet" typeId="pFan_p41Fanstage2AirflowOutlet"/>
+			<channel id="pFan_p42Fanstage3AirflowOutlet" typeId="pFan_p42Fanstage3AirflowOutlet"/>
+			<channel id="pFan_p43UnschedVent3" typeId="pFan_p43UnschedVent3"/>
+			<channel id="pFan_p44UnschedVent2" typeId="pFan_p44UnschedVent2"/>
+			<channel id="pFan_p45UnschedVent1" typeId="pFan_p45UnschedVent1"/>
+			<channel id="pFan_p46UnschedVent0" typeId="pFan_p46UnschedVent0"/>
+			<channel id="pFan_p75PassiveCooling" typeId="pFan_p75PassiveCooling"/>
+			<channel id="pOvenFireplace" typeId="pOvenFireplace"/>
+			<channel id="sFan_airflowCalibrationInterval" typeId="sFan_airflowCalibrationInterval"/>
+			<channel id="sFan_airflowTolerance" typeId="sFan_airflowTolerance"/>
+			<channel id="sFan_exhaustFanAirflowCAL" typeId="sFan_exhaustFanAirflowCAL"/>
+			<channel id="sFan_exhaustFanAirflowSet" typeId="sFan_exhaustFanAirflowSet"/>
+			<channel id="sFan_exhaustFanSpeed" typeId="sFan_exhaustFanSpeed"/>
+			<channel id="sFan_exhaustFanSpeed0" typeId="sFan_exhaustFanSpeed0"/>
+			<channel id="sFan_exhaustFanSpeed200" typeId="sFan_exhaustFanSpeed200"/>
+			<channel id="sFan_exhaustFanSpeedCAL" typeId="sFan_exhaustFanSpeedCAL"/>
+			<channel id="sFan_exhaustFanSpeedTarget" typeId="sFan_exhaustFanSpeedTarget"/>
+			<channel id="sFan_inputFanPower" typeId="sFan_inputFanPower"/>
+			<channel id="sFan_inputFanSpeed" typeId="sFan_inputFanSpeed"/>
+			<channel id="sFan_outputFanPower" typeId="sFan_outputFanPower"/>
+			<channel id="sFan_outputFanSpeed" typeId="sFan_outputFanSpeed"/>
+			<channel id="sFan_pFanstageXAirflowInlet" typeId="sFan_pFanstageXAirflowInlet"/>
+			<channel id="sFan_pFanstageXAirflowOutlet" typeId="sFan_pFanstageXAirflowOutlet"/>
+			<channel id="sFan_statusAFC" typeId="sFan_statusAFC"/>
+			<channel id="sFan_supplyFanAirflowCAL" typeId="sFan_supplyFanAirflowCAL"/>
+			<channel id="sFan_supplyFanAirflowSet" typeId="sFan_supplyFanAirflowSet"/>
+			<channel id="sFan_supplyFanSpeed" typeId="sFan_supplyFanSpeed"/>
+			<channel id="sFan_supplyFanSpeed0" typeId="sFan_supplyFanSpeed0"/>
+			<channel id="sFan_supplyFanSpeed200" typeId="sFan_supplyFanSpeed200"/>
+			<channel id="sFan_supplyFanSpeedCAL" typeId="sFan_supplyFanSpeedCAL"/>
+			<channel id="sFan_supplyFanSpeedTarget" typeId="sFan_supplyFanSpeedTarget"/>
+			<channel id="sFan_timeToCalibration" typeId="sFan_timeToCalibration"/>
+			<channel id="sSystem_userSetFanRemainingTime" typeId="sSystem_userSetFanRemainingTime"/>
+			<channel id="sSystem_userSetFanStage" typeId="sSystem_userSetFanStage"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeHeating">
 		<label>Settings heating</label>
 		<description>Reads heating settings of the heat pump.</description>
 		<channels>
-			<channel id="p13IncreaseHeatingHC1" typeId="increaseHeating">
-				<label>P13 Increase heating HC1</label>
-				<description>P13 Increase heating HC1 setting</description>
-			</channel>
-			<channel id="p14LowEndPointHeatingHC1" typeId="lowEndPointHeating">
-				<label>P14 Low end point heating HC1</label>
-				<description>P14 Low end point heating HC1 setting</description>
-			</channel>
-			<channel id="p15RoomInfluenceHeatingHC1" typeId="roomInfluenceHeating">
-				<label>P15 Room influence heating HC1</label>
-				<description>P15 Room influence heating HC1 setting</description>
-			</channel>
-			<channel id="p16IncreaseHeatingHC2" typeId="increaseHeating">
-				<label>P16 Increase heating HC2</label>
-				<description>P16 Increase heating HC2 setting</description>
-			</channel>
-			<channel id="p17LowEndPointHeatingHC2" typeId="lowEndPointHeating">
-				<label>P17 Low end point heating HC2</label>
-				<description>P17 Low end point heating HC2 setting</description>
-			</channel>
-			<channel id="p18RoomInfluenceHeatingHC2" typeId="roomInfluenceHeating">
-				<label>P18 Room influence heating HC2</label>
-				<description>P18 Room influence heating HC2 setting</description>
-			</channel>
-			<channel id="p19TemperatureCaptureReturnFlowHC1" typeId="temperatureCaptureReturnFlow">
-				<label>P19 Temperature capture return flow HC1</label>
-				<description>P19 Temperature capture return flow HC1 setting</description>
-			</channel>
-			<channel id="p20TemperatureCaptureReturnFlowHC2" typeId="temperatureCaptureReturnFlow">
-				<label>P20 Temperature capture return flow HC2</label>
-				<description>P20 Temperature capture return flow HC2 setting</description>
-			</channel>
-			<channel id="maxSetHeatingCircuitTemperatureHC1" typeId="maxSetHeatingCircuitTemperature">
-				<label>Max Set heating circuit temperature HC1</label>
-				<description>Max Set heating circuit temperature HC1 setting</description>
-			</channel>
-			<channel id="minSetHeatingCircuitTemperatureHC1" typeId="minSetHeatingCircuitTemperature">
-				<label>Min Set heating circuit temperature HC1</label>
-				<description>Min Set heating circuit temperature HC1 setting</description>
-			</channel>
-			<channel id="maxSetHeatingCircuitTemperatureHC2" typeId="maxSetHeatingCircuitTemperature">
-				<label>Max Set heating circuit temperature HC2</label>
-				<description>Max Set heating circuit temperature HC2 setting</description>
-			</channel>
-			<channel id="minSetHeatingCircuitTemperatureHC2" typeId="minSetHeatingCircuitTemperature">
-				<label>Min Set heating circuit temperature HC2</label>
-				<description>Min Set heating circuit temperature HC2 setting</description>
-			</channel>
-			<channel id="p21HysteresisHeating1" typeId="hysteresisHeatingWide">
-				<label>P21 Hysteresis heating stage 1</label>
-				<description>P21 Hysteresis heating stage 1 setting</description>
-			</channel>
-			<channel id="p22HysteresisHeating2" typeId="hysteresisHeatingWide">
-				<label>P22 Hysteresis heating stage 2</label>
-				<description>P22 Hysteresis heating stage 2 setting</description>
-			</channel>
-			<channel id="p23HysteresisHeating3" typeId="hysteresisHeatingNarrow">
-				<label>P23 Hysteresis heating stage 3</label>
-				<description>P23 Hysteresis heating stage 3 setting</description>
-			</channel>
-			<channel id="p24HysteresisHeating4" typeId="hysteresisHeatingNarrow">
-				<label>P24 Hysteresis heating stage 4</label>
-				<description>P24 Hysteresis heating stage 4 setting</description>
-			</channel>
-			<channel id="p25HysteresisHeating5" typeId="hysteresisHeatingNarrow">
-				<label>P25 Hysteresis heating stage 5</label>
-				<description>P25 Hysteresis heating stage 5 setting</description>
-			</channel>
-			<channel id="p26HysteresisHeating6" typeId="hysteresisHeatingNarrow">
-				<label>P26 Hysteresis heating stage 6</label>
-				<description>P25 Hysteresis heating stage 6 setting</description>
-			</channel>
-			<channel id="p27HysteresisHeating7" typeId="hysteresisHeatingNarrow">
-				<label>P27 Hysteresis heating stage 7</label>
-				<description>P27 Hysteresis heating stage 7 setting</description>
-			</channel>
-			<channel id="p28HysteresisHeating8" typeId="hysteresisHeatingNarrow">
-				<label>P28 Hysteresis heating stage 8</label>
-				<description>P28 Hysteresis heating stage 8 setting</description>
-			</channel>
-			<channel id="p29SwitchingHysteresisAsymmetry" typeId="hysteresisHeatingSwitching">
-				<label>P29 Switching hysteresis asymmetry</label>
-				<description>P29 Switching hysteresis asymmetry setting</description>
-			</channel>
-			<channel id="p30SwitchingValueIntegralPortionHeating" typeId="switchingValueIntegralPortionHeating">
-				<label>P30 Switching value integral portion heating</label>
-				<description>P30 Switching value integral portion heating setting</description>
-			</channel>
-			<channel id="p31AmountOfUnlockedElectricalBoosterStages" typeId="fanStageSetting">
-				<label>P31 Amount of unlocked electrical booster stages</label>
-				<description>P31 Amount of unlocked electrical booster stages setting</description>
-			</channel>
-			<channel id="maxFlowTemperatureHeatingMode" typeId="maxFlowTemperatureSetting">
-				<label>Maximum flow temperature heating mode</label>
-				<description>Maximum flow temperature heating mode setting</description>
-			</channel>
-			<channel id="p49ChangeoverTemperatureSummerWinter" typeId="changeoverTemperatureSummerWinter">
-				<label>P49 Change over temperature Summer Winter</label>
-				<description>P49 Change over temperature Summer Winter setting</description>
-			</channel>
-			<channel id="p50HysteresisChangeoverTemperatureSummerWinter"
-				typeId="hysteresisChangeoverTemperatureSummerWinter">
-				<label>P50 Hysteresis change over temperature Summer Winter</label>
-				<description>P50 Hysteresis change over temperature Summer Winter setting</description>
-			</channel>
-			<channel id="p77OutsideTemperatureAdjustment" typeId="outsideTemperatureAdjustment">
-				<label>P77 Outside temperature adjustment</label>
-				<description>P77 Outside temperature adjustment setting</description>
-			</channel>
-			<channel id="p78BivalencePoint" typeId="bivalencePoint">
-				<label>P78 Bivalence point</label>
-				<description>P78 Bivalence point setting</description>
-			</channel>
-			<channel id="p79DelayedEnableReheating" typeId="delayedEnableReheating">
-				<label>P79 Delayed enable re-heating</label>
-				<description>P79 Delayed enable re-heating setting</description>
-			</channel>
-			<channel id="outputElectricalHeatingStage1" typeId="outputElectricalHeatingStage">
-				<label>Electrical heating stage 1</label>
-				<description>Electrical heating stage 1 in [kW]</description>
-			</channel>
+			<channel id="p13GradientHC1" typeId="p13GradientHC1"/>
+			<channel id="p14LowEndHC1" typeId="p14LowEndHC1"/>
+			<channel id="p15RoomInfluenceHC1" typeId="p15RoomInfluenceHC1"/>
+			<channel id="p16GradientHC2" typeId="p16GradientHC2"/>
+			<channel id="p17LowEndHC2" typeId="p17LowEndHC2"/>
+			<channel id="p18RoomInfluenceHC2" typeId="p18RoomInfluenceHC2"/>
+			<channel id="p19FlowProportionHC1" typeId="p19FlowProportionHC1"/>
+			<channel id="p21Hyst1" typeId="p21Hyst1"/>
+			<channel id="p22Hyst2" typeId="p22Hyst2"/>
+			<channel id="p23Hyst3" typeId="p23Hyst3"/>
+			<channel id="p24Hyst4" typeId="p24Hyst4"/>
+			<channel id="p25Hyst5" typeId="p25Hyst5"/>
+			<channel id="p29HystAsymmetry" typeId="p29HystAsymmetry"/>
+			<channel id="p30integralComponent" typeId="p30integralComponent"/>
+			<channel id="p31MaxBoosterStgHtg" typeId="p31MaxBoosterStgHtg"/>
+			<channel id="p49SummerModeTemp" typeId="p49SummerModeTemp"/>
+			<channel id="p50SummerModeHysteresis" typeId="p50SummerModeHysteresis"/>
+			<channel id="p76RoomThermCorrection" typeId="p76RoomThermCorrection"/>
+			<channel id="p77OutThermFilterTime" typeId="p77OutThermFilterTime"/>
+			<channel id="p78DualModePoint" typeId="p78DualModePoint"/>
+			<channel id="p79BoosterTimeoutHC" typeId="p79BoosterTimeoutHC"/>
+			<channel id="p80EnableSolar" typeId="p80EnableSolar"/>
+			<channel id="p86OutTempCorrection" typeId="p86OutTempCorrection"/>
+			<channel id="p99CoolingHC1HysterFlowTemp" typeId="p99CoolingHC1HysterFlowTemp"/>
+			<channel id="p99CoolingHC1HysterRoomTemp" typeId="p99CoolingHC1HysterRoomTemp"/>
+			<channel id="p99CoolingHC1SetTemp" typeId="p99CoolingHC1SetTemp"/>
+			<channel id="p99CoolingHC1Switch" typeId="p99CoolingHC1Switch"/>
+			<channel id="p99HC1maxFlowTemp" typeId="p99HC1maxFlowTemp"/>
+			<channel id="p99PumpRateHC" typeId="p99PumpRateHC"/>
+			<channel id="pHeat1_MaxSetHeatFlowTempHC1" typeId="pHeat1_MaxSetHeatFlowTempHC1"/>
+			<channel id="pHeat1_MaxSetHeatFlowTempHC2" typeId="pHeat1_MaxSetHeatFlowTempHC2"/>
+			<channel id="pHeat1_MinSetHeatFlowTempHC1" typeId="pHeat1_MinSetHeatFlowTempHC1"/>
+			<channel id="pHeat1_MinSetHeatFlowTempHC2" typeId="pHeat1_MinSetHeatFlowTempHC2"/>
+			<channel id="pHeat1_p13GradientHC1" typeId="pHeat1_p13GradientHC1"/>
+			<channel id="pHeat1_p14LowEndHC1" typeId="pHeat1_p14LowEndHC1"/>
+			<channel id="pHeat1_p15RoomInfluenceHC1" typeId="pHeat1_p15RoomInfluenceHC1"/>
+			<channel id="pHeat1_p16GradientHC2" typeId="pHeat1_p16GradientHC2"/>
+			<channel id="pHeat1_p17LowEndHC2" typeId="pHeat1_p17LowEndHC2"/>
+			<channel id="pHeat1_p18RoomInfluenceHC2" typeId="pHeat1_p18RoomInfluenceHC2"/>
+			<channel id="pHeat1_p19FlowProportionHC1" typeId="pHeat1_p19FlowProportionHC1"/>
+			<channel id="pHeat1_p20FlowProportionHC2" typeId="pHeat1_p20FlowProportionHC2"/>
+			<channel id="pHeat2_MaxHeatFlowTemp" typeId="pHeat2_MaxHeatFlowTemp"/>
+			<channel id="pHeat2_p21Hyst1" typeId="pHeat2_p21Hyst1"/>
+			<channel id="pHeat2_p22Hyst2" typeId="pHeat2_p22Hyst2"/>
+			<channel id="pHeat2_p23Hyst3" typeId="pHeat2_p23Hyst3"/>
+			<channel id="pHeat2_p24Hyst4" typeId="pHeat2_p24Hyst4"/>
+			<channel id="pHeat2_p25Hyst5" typeId="pHeat2_p25Hyst5"/>
+			<channel id="pHeat2_p26Hyst6" typeId="pHeat2_p26Hyst6"/>
+			<channel id="pHeat2_p27Hyst7" typeId="pHeat2_p27Hyst7"/>
+			<channel id="pHeat2_p28Hyst8" typeId="pHeat2_p28Hyst8"/>
+			<channel id="pHeat2_p29HystAsymmetry" typeId="pHeat2_p29HystAsymmetry"/>
+			<channel id="pHeat2_p30integralComponent" typeId="pHeat2_p30integralComponent"/>
+			<channel id="pHeat2_p31MaxBoostStages" typeId="pHeat2_p31MaxBoostStages"/>
+			<channel id="pHeat2_p49SummerModeTemp" typeId="pHeat2_p49SummerModeTemp"/>
+			<channel id="pHeat2_p50SummerModeHysteresis" typeId="pHeat2_p50SummerModeHysteresis"/>
+			<channel id="pHeat2_p77OutTempFilterTime" typeId="pHeat2_p77OutTempFilterTime"/>
+			<channel id="pHeat2_p78DualModePoint" typeId="pHeat2_p78DualModePoint"/>
+			<channel id="pHeat2_p79BoosterTimeoutHC" typeId="pHeat2_p79BoosterTimeoutHC"/>
+			<channel id="pSolar_CollectLimitTempSolar" typeId="pSolar_CollectLimitTempSolar"/>
+			<channel id="pSolar_HystDiffTempSolar" typeId="pSolar_HystDiffTempSolar"/>
+			<channel id="pSolar_p80EnableSolar" typeId="pSolar_p80EnableSolar"/>
+			<channel id="pSolar_p81DiffTempSolarLoading" typeId="pSolar_p81DiffTempSolarLoading"/>
+			<channel id="pSolar_p82DelayCompStartSolar" typeId="pSolar_p82DelayCompStartSolar"/>
+			<channel id="pSolar_p84DHWTempSolarMode" typeId="pSolar_p84DHWTempSolarMode"/>
+			<channel id="sCoolHCTotal" typeId="sCoolHCTotal"/>
+			<channel id="sDewPointHC1" typeId="sDewPointHC1"/>
+			<channel id="sHC1_blockTimeAfterCompStart" typeId="sHC1_blockTimeAfterCompStart"/>
+			<channel id="sHC1_boosterStage1" typeId="sHC1_boosterStage1"/>
+			<channel id="sHC1_boosterStage2" typeId="sHC1_boosterStage2"/>
+			<channel id="sHC1_compressor" typeId="sHC1_compressor"/>
+			<channel id="sHC1_dhwPump" typeId="sHC1_dhwPump"/>
+			<channel id="sHC1_diverterValve" typeId="sHC1_diverterValve"/>
+			<channel id="sHC1_flowTemp" typeId="sHC1_flowTemp"/>
+			<channel id="sHC1_hcBoosterStage" typeId="sHC1_hcBoosterStage"/>
+			<channel id="sHC1_hcOpMode" typeId="sHC1_hcOpMode"/>
+			<channel id="sHC1_hcStage" typeId="sHC1_hcStage"/>
+			<channel id="sHC1_heatPipeValve" typeId="sHC1_heatPipeValve"/>
+			<channel id="sHC1_heatSetTemp" typeId="sHC1_heatSetTemp"/>
+			<channel id="sHC1_heatTemp" typeId="sHC1_heatTemp"/>
+			<channel id="sHC1_heatingCircuitPump" typeId="sHC1_heatingCircuitPump"/>
+			<channel id="sHC1_insideTemp" typeId="sHC1_insideTemp"/>
+			<channel id="sHC1_insideTempRC" typeId="sHC1_insideTempRC"/>
+			<channel id="sHC1_integralHeat" typeId="sHC1_integralHeat"/>
+			<channel id="sHC1_integralSwitch" typeId="sHC1_integralSwitch"/>
+			<channel id="sHC1_mixerClosed" typeId="sHC1_mixerClosed"/>
+			<channel id="sHC1_mixerOpen" typeId="sHC1_mixerOpen"/>
+			<channel id="sHC1_offHysteresisNo" typeId="sHC1_offHysteresisNo"/>
+			<channel id="sHC1_onHysteresisNo" typeId="sHC1_onHysteresisNo"/>
+			<channel id="sHC1_outsideTemp" typeId="sHC1_outsideTemp"/>
+			<channel id="sHC1_returnTemp" typeId="sHC1_returnTemp"/>
+			<channel id="sHC1_roomSetTemp" typeId="sHC1_roomSetTemp"/>
+			<channel id="sHC1_seasonMode" typeId="sHC1_seasonMode"/>
+			<channel id="sHC1_solarPump" typeId="sHC1_solarPump"/>
+			<channel id="sHC1_x08" typeId="sHC1_x08"/>
+			<channel id="sHC1_x50" typeId="sHC1_x50"/>
+			<channel id="sHC1_x54" typeId="sHC1_x54"/>
+			<channel id="sHC1_x58" typeId="sHC1_x58"/>
+			<channel id="sHC1_x60" typeId="sHC1_x60"/>
+			<channel id="sHC1_x64" typeId="sHC1_x64"/>
+			<channel id="sHC1_x66" typeId="sHC1_x66"/>
+			<channel id="sHC1_x70" typeId="sHC1_x70"/>
+			<channel id="sHC1_x72" typeId="sHC1_x72"/>
+			<channel id="sHC1_x76" typeId="sHC1_x76"/>
+			<channel id="sHC2_hcOpMode" typeId="sHC2_hcOpMode"/>
+			<channel id="sHC2_heatSetTemp" typeId="sHC2_heatSetTemp"/>
+			<channel id="sHC2_heatTemp" typeId="sHC2_heatTemp"/>
+			<channel id="sHC2_outsideTemp" typeId="sHC2_outsideTemp"/>
+			<channel id="sHC2_returnTemp" typeId="sHC2_returnTemp"/>
+			<channel id="sHC2_seasonMode" typeId="sHC2_seasonMode"/>
+			<channel id="sHC2_stellgroesse" typeId="sHC2_stellgroesse"/>
+			<channel id="sHC2_vorlaufTemp" typeId="sHC2_vorlaufTemp"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeEvaporator">
 		<label>Settings Evaporator</label>
 		<description>Reads Evaporator settings of the heat pump.</description>
 		<channels>
-			<channel id="upperLimitEvaporatorTemperatureForDefrostEnd" typeId="temperaturLimitEvaporator">
-				<label>Upper limit evaporator temperature for defrost end</label>
-				<description>Upper limit evaporator temperature for defrost end setting</description>
-			</channel>
-			<channel id="maxEvaporatorDefrostTime" typeId="maxEvaporatorDefrostTime">
-				<label>Max evaporator defrost time</label>
-				<description>Max evaporator defrost time setting</description>
-			</channel>
-			<channel id="limitTemperatureCondenserElectricalReheating" typeId="temperaturLimitEvaporator">
-				<label>Max evaporator defrost time</label>
-				<description>Max evaporator defrost time setting</description>
-			</channel>
-			<channel id="limitTemperatureCondenserDefrostTermination" typeId="temperaturLimitCondenser">
-				<label>Limit temperature condenser defrost termination</label>
-				<description>Limit temperature condenser defrost termination setting</description>
-			</channel>
-			<channel id="p47CompressorRestartDelay" typeId="compressorRestartDelayTime">
-				<label>P47 Compressor restart delay</label>
-				<description>P47 Compressor restart delay setting</description>
-			</channel>
-			<channel id="p48ExhaustFanSpeed" typeId="exhaustFanSpeed">
-				<label>P48 Exhaust fan speed</label>
-				<description>P48 Exhaust fan speed setting</description>
-			</channel>
-			<channel id="maxDefrostDurationAAExchanger" typeId="compressorRestartDelayTime">
-				<label>Max defrost duration AA exchanger</label>
-				<description>Max defrost duration AA exchanger setting</description>
-			</channel>
-			<channel id="defrostStartThreshold" typeId="defrostStartThreshold">
-				<label>Defrost start threshold</label>
-				<description>Defrost start threshold setting</description>
-			</channel>
-			<channel id="volumeFlowFilterReplacement" typeId="volumeFlowFilterReplacement">
-				<label>Volume flow filter replacement</label>
-				<description>Volume flow filter replacement setting</description>
-			</channel>
-			<channel id="p85DefrostModeAAHE" typeId="defrostModeAAHE">
-				<label>P85 Defrost mode AA HE</label>
-				<description>P85 Defrost mode AA HE setting</description>
-			</channel>
+			<channel id="p85DefrStartThreshold" typeId="p85DefrStartThreshold"/>
+			<channel id="p85FilterSpeed" typeId="p85FilterSpeed"/>
+			<channel id="p85MaxDefrostDur" typeId="p85MaxDefrostDur"/>
+			<channel id="p99FrostProtectionBoost" typeId="p99FrostProtectionBoost"/>
+			<channel id="p99FrostProtectionCancel" typeId="p99FrostProtectionCancel"/>
+			<channel id="pDefrostEva_LimitTempCondenserDefrostTerm" typeId="pDefrostEva_LimitTempCondenserDefrostTerm"/>
+			<channel id="pDefrostEva_LimitTempCondenserElectBoost" typeId="pDefrostEva_LimitTempCondenserElectBoost"/>
+			<channel id="pDefrostEva_MaxTimeDefrostEvaporator" typeId="pDefrostEva_MaxTimeDefrostEvaporator"/>
+			<channel id="pDefrostEva_UpTempLimitDefrostEvaporatorEnd"
+				typeId="pDefrostEva_UpTempLimitDefrostEvaporatorEnd"/>
+			<channel id="pDefrostEva_p47CompressorRestartDelay" typeId="pDefrostEva_p47CompressorRestartDelay"/>
+			<channel id="pDefrostEva_p48MainFanSpeed" typeId="pDefrostEva_p48MainFanSpeed"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeCirculationPump">
 		<label>Settings Circulation Pump</label>
 		<description>Reads Circulation Pump settings of the heat pump.</description>
 		<channels>
-			<channel id="p54minStartupCycles" typeId="minStartupCycles">
-				<label>P54 minimum startup cycles</label>
-				<description>P54 minimum startup cycles setting</description>
-			</channel>
-			<channel id="p55maxStartupCycles" typeId="maxStartupCycles">
-				<label>P55 max startup cycles</label>
-				<description>P55 max startup cycles setting</description>
-			</channel>
-			<channel id="p56OutsideTemperatureMaxHeatingCycles" typeId="outsideTemperatureMaxHeatingCycles">
-				<label>P56 Outside temperature max heating cycles</label>
-				<description>P56 Outside temperature max heating cycles</description>
-			</channel>
-			<channel id="p57OutsideTemperatureMinHeatingCycles" typeId="outsideTemperatureMinHeatingCycles">
-				<label>P56 Outside temperature min heating cycles</label>
-				<description>P56 Outside temperature min heating cycles</description>
-			</channel>
-			<channel id="P58SuppressTemperatureCaptureDuringPumpStart" typeId="outsideTemperatureMinHeatingCycles">
-				<label>P58 Suppress temperature capture during pump start</label>
-				<description>P58 Suppress temperature capture during pump start</description>
-			</channel>
+			<channel id="p54MinPumpCycles" typeId="p54MinPumpCycles"/>
+			<channel id="p55MaxPumpCycles" typeId="p55MaxPumpCycles"/>
+			<channel id="p56OutTempMaxPumpCycles" typeId="p56OutTempMaxPumpCycles"/>
+			<channel id="p57OutTempMinPumpCycles" typeId="p57OutTempMinPumpCycles"/>
+			<channel id="p58SuppressTempCaptPumpStart" typeId="p58SuppressTempCaptPumpStart"/>
+			<channel id="pCircPump_p54MinPumpCycles" typeId="pCircPump_p54MinPumpCycles"/>
+			<channel id="pCircPump_p55MaxPumpCycles" typeId="pCircPump_p55MaxPumpCycles"/>
+			<channel id="pCircPump_p56OutTempMaxPumpCycles" typeId="pCircPump_p56OutTempMaxPumpCycles"/>
+			<channel id="pCircPump_p57OutTempMinPumpCycles" typeId="pCircPump_p57OutTempMinPumpCycles"/>
+			<channel id="pCircPump_p58SuppressTempCaptPumpStart" typeId="pCircPump_p58SuppressTempCaptPumpStart"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeHeatingProgram">
 		<label>Settings Heating Program</label>
 		<description>Reads Heating Program settings of the heat pump.</description>
 		<channels>
-			<channel id="hP1StartTime" typeId="timeSetting">
-				<label>HP1 Start time</label>
-				<description>HP1 Start time setting</description>
-			</channel>
-			<channel id="hP1StopTime" typeId="timeSetting">
-				<label>HP1 Stop time</label>
-				<description>HP1 Stop time setting</description>
-			</channel>
-			<channel id="hP1Monday" typeId="switchSetting">
-				<label>HP1 Monday</label>
-				<description>HP1 Monday setting</description>
-			</channel>
-			<channel id="hP1Tuesday" typeId="switchSetting">
-				<label>HP1 Tuesday</label>
-				<description>HP1 Tuesday setting</description>
-			</channel>
-			<channel id="hP1Wednesday" typeId="switchSetting">
-				<label>HP1 Tuesday</label>
-				<description>HP1 Tuesday setting</description>
-			</channel>
-			<channel id="hP1Thursday" typeId="switchSetting">
-				<label>HP1 Thursday</label>
-				<description>HP1 Thursday setting</description>
-			</channel>
-			<channel id="hP1Friday" typeId="switchSetting">
-				<label>HP1 Friday</label>
-				<description>HP1 Friday setting</description>
-			</channel>
-			<channel id="hP1Saturday" typeId="switchSetting">
-				<label>HP1 Saturday</label>
-				<description>HP1 Saturday setting</description>
-			</channel>
-			<channel id="hP1Sunday" typeId="switchSetting">
-				<label>HP1 Sunday</label>
-				<description>HP1 Sunday setting</description>
-			</channel>
-			<channel id="hP1Enabled" typeId="switchSetting">
-				<label>HP1 Enabled</label>
-				<description>HP1 Enabled setting</description>
-			</channel>
-			<channel id="hP2StartTime" typeId="timeSetting">
-				<label>HP2 Start time</label>
-				<description>HP2 Start time setting</description>
-			</channel>
-			<channel id="hP2StopTime" typeId="timeSetting">
-				<label>HP2 Stop time</label>
-				<description>HP2 Stop time setting</description>
-			</channel>
-			<channel id="hP2Monday" typeId="switchSetting">
-				<label>HP2 Monday</label>
-				<description>HP2 Monday setting</description>
-			</channel>
-			<channel id="hP2Tuesday" typeId="switchSetting">
-				<label>HP2 Tuesday</label>
-				<description>HP2 Tuesday setting</description>
-			</channel>
-			<channel id="hP2Wednesday" typeId="switchSetting">
-				<label>HP2 Tuesday</label>
-				<description>HP2 Tuesday setting</description>
-			</channel>
-			<channel id="hP2Thursday" typeId="switchSetting">
-				<label>HP2 Thursday</label>
-				<description>HP2 Thursday setting</description>
-			</channel>
-			<channel id="hP2Friday" typeId="switchSetting">
-				<label>HP2 Friday</label>
-				<description>HP2 Friday setting</description>
-			</channel>
-			<channel id="hP2Saturday" typeId="switchSetting">
-				<label>HP2 Saturday</label>
-				<description>HP2 Saturday setting</description>
-			</channel>
-			<channel id="hP2Sunday" typeId="switchSetting">
-				<label>HP2 Sunday</label>
-				<description>HP2 Sunday setting</description>
-			</channel>
-			<channel id="hP2Enabled" typeId="switchSetting">
-				<label>HP2 Enabled</label>
-				<description>HP2 Enabled setting</description>
-			</channel>
+			<channel id="pHeatProg_progHC1Enable" typeId="pHeatProg_progHC1Enable"/>
+			<channel id="pHeatProg_progHC1EndTime" typeId="pHeatProg_progHC1EndTime"/>
+			<channel id="pHeatProg_progHC1Friday" typeId="pHeatProg_progHC1Friday"/>
+			<channel id="pHeatProg_progHC1Monday" typeId="pHeatProg_progHC1Monday"/>
+			<channel id="pHeatProg_progHC1Saturday" typeId="pHeatProg_progHC1Saturday"/>
+			<channel id="pHeatProg_progHC1StartTime" typeId="pHeatProg_progHC1StartTime"/>
+			<channel id="pHeatProg_progHC1Sunday" typeId="pHeatProg_progHC1Sunday"/>
+			<channel id="pHeatProg_progHC1Thursday" typeId="pHeatProg_progHC1Thursday"/>
+			<channel id="pHeatProg_progHC1Tuesday" typeId="pHeatProg_progHC1Tuesday"/>
+			<channel id="pHeatProg_progHC1Wednesday" typeId="pHeatProg_progHC1Wednesday"/>
+			<channel id="pHeatProg_progHC2Enable" typeId="pHeatProg_progHC2Enable"/>
+			<channel id="pHeatProg_progHC2EndTime" typeId="pHeatProg_progHC2EndTime"/>
+			<channel id="pHeatProg_progHC2Friday" typeId="pHeatProg_progHC2Friday"/>
+			<channel id="pHeatProg_progHC2Monday" typeId="pHeatProg_progHC2Monday"/>
+			<channel id="pHeatProg_progHC2Saturday" typeId="pHeatProg_progHC2Saturday"/>
+			<channel id="pHeatProg_progHC2StartTime" typeId="pHeatProg_progHC2StartTime"/>
+			<channel id="pHeatProg_progHC2Sunday" typeId="pHeatProg_progHC2Sunday"/>
+			<channel id="pHeatProg_progHC2Thursday" typeId="pHeatProg_progHC2Thursday"/>
+			<channel id="pHeatProg_progHC2Tuesday" typeId="pHeatProg_progHC2Tuesday"/>
+			<channel id="pHeatProg_progHC2Wednesday" typeId="pHeatProg_progHC2Wednesday"/>
+			<channel id="programHC1_Fr_0_Begin" typeId="programHC1_Fr_0_Begin"/>
+			<channel id="programHC1_Fr_0_End" typeId="programHC1_Fr_0_End"/>
+			<channel id="programHC1_Fr_1_Begin" typeId="programHC1_Fr_1_Begin"/>
+			<channel id="programHC1_Fr_1_End" typeId="programHC1_Fr_1_End"/>
+			<channel id="programHC1_Fr_2_Begin" typeId="programHC1_Fr_2_Begin"/>
+			<channel id="programHC1_Fr_2_End" typeId="programHC1_Fr_2_End"/>
+			<channel id="programHC1_Mo-Fr_0_Begin" typeId="programHC1_Mo-Fr_0_Begin"/>
+			<channel id="programHC1_Mo-Fr_0_End" typeId="programHC1_Mo-Fr_0_End"/>
+			<channel id="programHC1_Mo-Fr_1_Begin" typeId="programHC1_Mo-Fr_1_Begin"/>
+			<channel id="programHC1_Mo-Fr_1_End" typeId="programHC1_Mo-Fr_1_End"/>
+			<channel id="programHC1_Mo-Fr_2_Begin" typeId="programHC1_Mo-Fr_2_Begin"/>
+			<channel id="programHC1_Mo-Fr_2_End" typeId="programHC1_Mo-Fr_2_End"/>
+			<channel id="programHC1_Mo-So_0_Begin" typeId="programHC1_Mo-So_0_Begin"/>
+			<channel id="programHC1_Mo-So_0_End" typeId="programHC1_Mo-So_0_End"/>
+			<channel id="programHC1_Mo-So_1_Begin" typeId="programHC1_Mo-So_1_Begin"/>
+			<channel id="programHC1_Mo-So_1_End" typeId="programHC1_Mo-So_1_End"/>
+			<channel id="programHC1_Mo-So_2_Begin" typeId="programHC1_Mo-So_2_Begin"/>
+			<channel id="programHC1_Mo-So_2_End" typeId="programHC1_Mo-So_2_End"/>
+			<channel id="programHC1_Mo_0_Begin" typeId="programHC1_Mo_0_Begin"/>
+			<channel id="programHC1_Mo_0_End" typeId="programHC1_Mo_0_End"/>
+			<channel id="programHC1_Mo_1_Begin" typeId="programHC1_Mo_1_Begin"/>
+			<channel id="programHC1_Mo_1_End" typeId="programHC1_Mo_1_End"/>
+			<channel id="programHC1_Mo_2_Begin" typeId="programHC1_Mo_2_Begin"/>
+			<channel id="programHC1_Mo_2_End" typeId="programHC1_Mo_2_End"/>
+			<channel id="programHC1_Sa-So_0_Begin" typeId="programHC1_Sa-So_0_Begin"/>
+			<channel id="programHC1_Sa-So_0_End" typeId="programHC1_Sa-So_0_End"/>
+			<channel id="programHC1_Sa-So_1_Begin" typeId="programHC1_Sa-So_1_Begin"/>
+			<channel id="programHC1_Sa-So_1_End" typeId="programHC1_Sa-So_1_End"/>
+			<channel id="programHC1_Sa-So_2_Begin" typeId="programHC1_Sa-So_2_Begin"/>
+			<channel id="programHC1_Sa-So_2_End" typeId="programHC1_Sa-So_2_End"/>
+			<channel id="programHC1_Sa_0_Begin" typeId="programHC1_Sa_0_Begin"/>
+			<channel id="programHC1_Sa_0_End" typeId="programHC1_Sa_0_End"/>
+			<channel id="programHC1_Sa_1_Begin" typeId="programHC1_Sa_1_Begin"/>
+			<channel id="programHC1_Sa_1_End" typeId="programHC1_Sa_1_End"/>
+			<channel id="programHC1_Sa_2_Begin" typeId="programHC1_Sa_2_Begin"/>
+			<channel id="programHC1_Sa_2_End" typeId="programHC1_Sa_2_End"/>
+			<channel id="programHC1_So_0_Begin" typeId="programHC1_So_0_Begin"/>
+			<channel id="programHC1_So_0_End" typeId="programHC1_So_0_End"/>
+			<channel id="programHC1_So_1_Begin" typeId="programHC1_So_1_Begin"/>
+			<channel id="programHC1_So_1_End" typeId="programHC1_So_1_End"/>
+			<channel id="programHC1_So_2_Begin" typeId="programHC1_So_2_Begin"/>
+			<channel id="programHC1_So_2_End" typeId="programHC1_So_2_End"/>
+			<channel id="programHC1_Th_0_Begin" typeId="programHC1_Th_0_Begin"/>
+			<channel id="programHC1_Th_0_End" typeId="programHC1_Th_0_End"/>
+			<channel id="programHC1_Th_1_Begin" typeId="programHC1_Th_1_Begin"/>
+			<channel id="programHC1_Th_1_End" typeId="programHC1_Th_1_End"/>
+			<channel id="programHC1_Th_2_Begin" typeId="programHC1_Th_2_Begin"/>
+			<channel id="programHC1_Th_2_End" typeId="programHC1_Th_2_End"/>
+			<channel id="programHC1_Tu_0_Begin" typeId="programHC1_Tu_0_Begin"/>
+			<channel id="programHC1_Tu_0_End" typeId="programHC1_Tu_0_End"/>
+			<channel id="programHC1_Tu_1_Begin" typeId="programHC1_Tu_1_Begin"/>
+			<channel id="programHC1_Tu_1_End" typeId="programHC1_Tu_1_End"/>
+			<channel id="programHC1_Tu_2_Begin" typeId="programHC1_Tu_2_Begin"/>
+			<channel id="programHC1_Tu_2_End" typeId="programHC1_Tu_2_End"/>
+			<channel id="programHC1_We_0_Begin" typeId="programHC1_We_0_Begin"/>
+			<channel id="programHC1_We_0_End" typeId="programHC1_We_0_End"/>
+			<channel id="programHC1_We_1_Begin" typeId="programHC1_We_1_Begin"/>
+			<channel id="programHC1_We_1_End" typeId="programHC1_We_1_End"/>
+			<channel id="programHC1_We_2_Begin" typeId="programHC1_We_2_Begin"/>
+			<channel id="programHC1_We_2_End" typeId="programHC1_We_2_End"/>
+			<channel id="programHC2_Fr_0_Begin" typeId="programHC2_Fr_0_Begin"/>
+			<channel id="programHC2_Fr_0_End" typeId="programHC2_Fr_0_End"/>
+			<channel id="programHC2_Fr_1_Begin" typeId="programHC2_Fr_1_Begin"/>
+			<channel id="programHC2_Fr_1_End" typeId="programHC2_Fr_1_End"/>
+			<channel id="programHC2_Fr_2_Begin" typeId="programHC2_Fr_2_Begin"/>
+			<channel id="programHC2_Fr_2_End" typeId="programHC2_Fr_2_End"/>
+			<channel id="programHC2_Mo-Fr_0_Begin" typeId="programHC2_Mo-Fr_0_Begin"/>
+			<channel id="programHC2_Mo-Fr_0_End" typeId="programHC2_Mo-Fr_0_End"/>
+			<channel id="programHC2_Mo-Fr_1_Begin" typeId="programHC2_Mo-Fr_1_Begin"/>
+			<channel id="programHC2_Mo-Fr_1_End" typeId="programHC2_Mo-Fr_1_End"/>
+			<channel id="programHC2_Mo-Fr_2_Begin" typeId="programHC2_Mo-Fr_2_Begin"/>
+			<channel id="programHC2_Mo-Fr_2_End" typeId="programHC2_Mo-Fr_2_End"/>
+			<channel id="programHC2_Mo-So_0_Begin" typeId="programHC2_Mo-So_0_Begin"/>
+			<channel id="programHC2_Mo-So_0_End" typeId="programHC2_Mo-So_0_End"/>
+			<channel id="programHC2_Mo-So_1_Begin" typeId="programHC2_Mo-So_1_Begin"/>
+			<channel id="programHC2_Mo-So_1_End" typeId="programHC2_Mo-So_1_End"/>
+			<channel id="programHC2_Mo-So_2_Begin" typeId="programHC2_Mo-So_2_Begin"/>
+			<channel id="programHC2_Mo-So_2_End" typeId="programHC2_Mo-So_2_End"/>
+			<channel id="programHC2_Mo_0_Begin" typeId="programHC2_Mo_0_Begin"/>
+			<channel id="programHC2_Mo_0_End" typeId="programHC2_Mo_0_End"/>
+			<channel id="programHC2_Mo_1_Begin" typeId="programHC2_Mo_1_Begin"/>
+			<channel id="programHC2_Mo_1_End" typeId="programHC2_Mo_1_End"/>
+			<channel id="programHC2_Mo_2_Begin" typeId="programHC2_Mo_2_Begin"/>
+			<channel id="programHC2_Mo_2_End" typeId="programHC2_Mo_2_End"/>
+			<channel id="programHC2_Sa-So_0_Begin" typeId="programHC2_Sa-So_0_Begin"/>
+			<channel id="programHC2_Sa-So_0_End" typeId="programHC2_Sa-So_0_End"/>
+			<channel id="programHC2_Sa-So_1_Begin" typeId="programHC2_Sa-So_1_Begin"/>
+			<channel id="programHC2_Sa-So_1_End" typeId="programHC2_Sa-So_1_End"/>
+			<channel id="programHC2_Sa-So_2_Begin" typeId="programHC2_Sa-So_2_Begin"/>
+			<channel id="programHC2_Sa-So_2_End" typeId="programHC2_Sa-So_2_End"/>
+			<channel id="programHC2_Sa_0_Begin" typeId="programHC2_Sa_0_Begin"/>
+			<channel id="programHC2_Sa_0_End" typeId="programHC2_Sa_0_End"/>
+			<channel id="programHC2_Sa_1_Begin" typeId="programHC2_Sa_1_Begin"/>
+			<channel id="programHC2_Sa_1_End" typeId="programHC2_Sa_1_End"/>
+			<channel id="programHC2_Sa_2_Begin" typeId="programHC2_Sa_2_Begin"/>
+			<channel id="programHC2_Sa_2_End" typeId="programHC2_Sa_2_End"/>
+			<channel id="programHC2_So_0_Begin" typeId="programHC2_So_0_Begin"/>
+			<channel id="programHC2_So_0_End" typeId="programHC2_So_0_End"/>
+			<channel id="programHC2_So_1_Begin" typeId="programHC2_So_1_Begin"/>
+			<channel id="programHC2_So_1_End" typeId="programHC2_So_1_End"/>
+			<channel id="programHC2_So_2_Begin" typeId="programHC2_So_2_Begin"/>
+			<channel id="programHC2_So_2_End" typeId="programHC2_So_2_End"/>
+			<channel id="programHC2_Th_0_Begin" typeId="programHC2_Th_0_Begin"/>
+			<channel id="programHC2_Th_0_End" typeId="programHC2_Th_0_End"/>
+			<channel id="programHC2_Th_1_Begin" typeId="programHC2_Th_1_Begin"/>
+			<channel id="programHC2_Th_1_End" typeId="programHC2_Th_1_End"/>
+			<channel id="programHC2_Th_2_Begin" typeId="programHC2_Th_2_Begin"/>
+			<channel id="programHC2_Th_2_End" typeId="programHC2_Th_2_End"/>
+			<channel id="programHC2_Tu_0_Begin" typeId="programHC2_Tu_0_Begin"/>
+			<channel id="programHC2_Tu_0_End" typeId="programHC2_Tu_0_End"/>
+			<channel id="programHC2_Tu_1_Begin" typeId="programHC2_Tu_1_Begin"/>
+			<channel id="programHC2_Tu_1_End" typeId="programHC2_Tu_1_End"/>
+			<channel id="programHC2_Tu_2_Begin" typeId="programHC2_Tu_2_Begin"/>
+			<channel id="programHC2_Tu_2_End" typeId="programHC2_Tu_2_End"/>
+			<channel id="programHC2_We_0_Begin" typeId="programHC2_We_0_Begin"/>
+			<channel id="programHC2_We_0_End" typeId="programHC2_We_0_End"/>
+			<channel id="programHC2_We_1_Begin" typeId="programHC2_We_1_Begin"/>
+			<channel id="programHC2_We_1_End" typeId="programHC2_We_1_End"/>
+			<channel id="programHC2_We_2_Begin" typeId="programHC2_We_2_Begin"/>
+			<channel id="programHC2_We_2_End" typeId="programHC2_We_2_End"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeDomesticHotWaterProgram">
 		<label>Settings Domestic Hot Water Program</label>
 		<description>Reads Domestic Hot Water Program settings of the heat pump.</description>
 		<channels>
-			<channel id="bP1StartTime" typeId="timeSetting">
-				<label>BP1 Start time</label>
-				<description>BP1 Start time setting</description>
-			</channel>
-			<channel id="bP1StopTime" typeId="timeSetting">
-				<label>BP1 Stop time</label>
-				<description>BP1 Stop time setting</description>
-			</channel>
-			<channel id="bP1Monday" typeId="switchSetting">
-				<label>BP1 Monday</label>
-				<description>BP1 Monday setting</description>
-			</channel>
-			<channel id="bP1Tuesday" typeId="switchSetting">
-				<label>BP1 Tuesday</label>
-				<description>BP1 Tuesday setting</description>
-			</channel>
-			<channel id="bP1Wednesday" typeId="switchSetting">
-				<label>BP1 Tuesday</label>
-				<description>BP1 Tuesday setting</description>
-			</channel>
-			<channel id="bP1Thursday" typeId="switchSetting">
-				<label>BP1 Thursday</label>
-				<description>BP1 Thursday setting</description>
-			</channel>
-			<channel id="bP1Friday" typeId="switchSetting">
-				<label>BP1 Friday</label>
-				<description>BP1 Friday setting</description>
-			</channel>
-			<channel id="bP1Saturday" typeId="switchSetting">
-				<label>BP1 Saturday</label>
-				<description>BP1 Saturday setting</description>
-			</channel>
-			<channel id="bP1Sunday" typeId="switchSetting">
-				<label>BP1 Sunday</label>
-				<description>BP1 Sunday setting</description>
-			</channel>
-			<channel id="bP1Enabled" typeId="switchSetting">
-				<label>BP1 Enabled</label>
-				<description>BP1 Enabled setting</description>
-			</channel>
+			<channel id="programDHW_Fr_0_Begin" typeId="programDHW_Fr_0_Begin"/>
+			<channel id="programDHW_Fr_0_End" typeId="programDHW_Fr_0_End"/>
+			<channel id="programDHW_Fr_1_Begin" typeId="programDHW_Fr_1_Begin"/>
+			<channel id="programDHW_Fr_1_End" typeId="programDHW_Fr_1_End"/>
+			<channel id="programDHW_Fr_2_Begin" typeId="programDHW_Fr_2_Begin"/>
+			<channel id="programDHW_Fr_2_End" typeId="programDHW_Fr_2_End"/>
+			<channel id="programDHW_Mo-Fr_0_Begin" typeId="programDHW_Mo-Fr_0_Begin"/>
+			<channel id="programDHW_Mo-Fr_0_End" typeId="programDHW_Mo-Fr_0_End"/>
+			<channel id="programDHW_Mo-Fr_1_Begin" typeId="programDHW_Mo-Fr_1_Begin"/>
+			<channel id="programDHW_Mo-Fr_1_End" typeId="programDHW_Mo-Fr_1_End"/>
+			<channel id="programDHW_Mo-Fr_2_Begin" typeId="programDHW_Mo-Fr_2_Begin"/>
+			<channel id="programDHW_Mo-Fr_2_End" typeId="programDHW_Mo-Fr_2_End"/>
+			<channel id="programDHW_Mo-So_0_Begin" typeId="programDHW_Mo-So_0_Begin"/>
+			<channel id="programDHW_Mo-So_0_End" typeId="programDHW_Mo-So_0_End"/>
+			<channel id="programDHW_Mo-So_1_Begin" typeId="programDHW_Mo-So_1_Begin"/>
+			<channel id="programDHW_Mo-So_1_End" typeId="programDHW_Mo-So_1_End"/>
+			<channel id="programDHW_Mo-So_2_Begin" typeId="programDHW_Mo-So_2_Begin"/>
+			<channel id="programDHW_Mo-So_2_End" typeId="programDHW_Mo-So_2_End"/>
+			<channel id="programDHW_Mo_0_Begin" typeId="programDHW_Mo_0_Begin"/>
+			<channel id="programDHW_Mo_0_End" typeId="programDHW_Mo_0_End"/>
+			<channel id="programDHW_Mo_1_Begin" typeId="programDHW_Mo_1_Begin"/>
+			<channel id="programDHW_Mo_1_End" typeId="programDHW_Mo_1_End"/>
+			<channel id="programDHW_Mo_2_Begin" typeId="programDHW_Mo_2_Begin"/>
+			<channel id="programDHW_Mo_2_End" typeId="programDHW_Mo_2_End"/>
+			<channel id="programDHW_Sa-So_0_Begin" typeId="programDHW_Sa-So_0_Begin"/>
+			<channel id="programDHW_Sa-So_0_End" typeId="programDHW_Sa-So_0_End"/>
+			<channel id="programDHW_Sa-So_1_Begin" typeId="programDHW_Sa-So_1_Begin"/>
+			<channel id="programDHW_Sa-So_1_End" typeId="programDHW_Sa-So_1_End"/>
+			<channel id="programDHW_Sa-So_2_Begin" typeId="programDHW_Sa-So_2_Begin"/>
+			<channel id="programDHW_Sa-So_2_End" typeId="programDHW_Sa-So_2_End"/>
+			<channel id="programDHW_Sa_0_Begin" typeId="programDHW_Sa_0_Begin"/>
+			<channel id="programDHW_Sa_0_End" typeId="programDHW_Sa_0_End"/>
+			<channel id="programDHW_Sa_1_Begin" typeId="programDHW_Sa_1_Begin"/>
+			<channel id="programDHW_Sa_1_End" typeId="programDHW_Sa_1_End"/>
+			<channel id="programDHW_Sa_2_Begin" typeId="programDHW_Sa_2_Begin"/>
+			<channel id="programDHW_Sa_2_End" typeId="programDHW_Sa_2_End"/>
+			<channel id="programDHW_So_0_Begin" typeId="programDHW_So_0_Begin"/>
+			<channel id="programDHW_So_0_End" typeId="programDHW_So_0_End"/>
+			<channel id="programDHW_So_1_Begin" typeId="programDHW_So_1_Begin"/>
+			<channel id="programDHW_So_1_End" typeId="programDHW_So_1_End"/>
+			<channel id="programDHW_So_2_Begin" typeId="programDHW_So_2_Begin"/>
+			<channel id="programDHW_So_2_End" typeId="programDHW_So_2_End"/>
+			<channel id="programDHW_Th_0_Begin" typeId="programDHW_Th_0_Begin"/>
+			<channel id="programDHW_Th_0_End" typeId="programDHW_Th_0_End"/>
+			<channel id="programDHW_Th_1_Begin" typeId="programDHW_Th_1_Begin"/>
+			<channel id="programDHW_Th_1_End" typeId="programDHW_Th_1_End"/>
+			<channel id="programDHW_Th_2_Begin" typeId="programDHW_Th_2_Begin"/>
+			<channel id="programDHW_Th_2_End" typeId="programDHW_Th_2_End"/>
+			<channel id="programDHW_Tu_0_Begin" typeId="programDHW_Tu_0_Begin"/>
+			<channel id="programDHW_Tu_0_End" typeId="programDHW_Tu_0_End"/>
+			<channel id="programDHW_Tu_1_Begin" typeId="programDHW_Tu_1_Begin"/>
+			<channel id="programDHW_Tu_1_End" typeId="programDHW_Tu_1_End"/>
+			<channel id="programDHW_Tu_2_Begin" typeId="programDHW_Tu_2_Begin"/>
+			<channel id="programDHW_Tu_2_End" typeId="programDHW_Tu_2_End"/>
+			<channel id="programDHW_We_0_Begin" typeId="programDHW_We_0_Begin"/>
+			<channel id="programDHW_We_0_End" typeId="programDHW_We_0_End"/>
+			<channel id="programDHW_We_1_Begin" typeId="programDHW_We_1_Begin"/>
+			<channel id="programDHW_We_1_End" typeId="programDHW_We_1_End"/>
+			<channel id="programDHW_We_2_Begin" typeId="programDHW_We_2_Begin"/>
+			<channel id="programDHW_We_2_End" typeId="programDHW_We_2_End"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeVentilationProgram">
 		<label>Settings Ventilation Program</label>
 		<description>Reads Ventilation Program settings of the heat pump.</description>
 		<channels>
-			<channel id="lP1StartTime" typeId="timeSetting">
-				<label>LP1 Start time</label>
-				<description>LP1 Start time setting</description>
-			</channel>
-			<channel id="lP1StopTime" typeId="timeSetting">
-				<label>LP1 Stop time</label>
-				<description>LP1 Stop time setting</description>
-			</channel>
-			<channel id="lP1Monday" typeId="switchSetting">
-				<label>LP1 Monday</label>
-				<description>LP1 Monday setting</description>
-			</channel>
-			<channel id="lP1Tuesday" typeId="switchSetting">
-				<label>LP1 Tuesday</label>
-				<description>LP1 Tuesday setting</description>
-			</channel>
-			<channel id="lP1Wednesday" typeId="switchSetting">
-				<label>LP1 Tuesday</label>
-				<description>LP1 Tuesday setting</description>
-			</channel>
-			<channel id="lP1Thursday" typeId="switchSetting">
-				<label>LP1 Thursday</label>
-				<description>LP1 Thursday setting</description>
-			</channel>
-			<channel id="lP1Friday" typeId="switchSetting">
-				<label>LP1 Friday</label>
-				<description>LP1 Friday setting</description>
-			</channel>
-			<channel id="lP1Saturday" typeId="switchSetting">
-				<label>LP1 Saturday</label>
-				<description>LP1 Saturday setting</description>
-			</channel>
-			<channel id="lP1Sunday" typeId="switchSetting">
-				<label>LP1 Sunday</label>
-				<description>LP1 Sunday setting</description>
-			</channel>
-			<channel id="lP1Enabled" typeId="switchSetting">
-				<label>LP1 Enabled</label>
-				<description>LP1 Enabled setting</description>
-			</channel>
-			<channel id="lP2StartTime" typeId="timeSetting">
-				<label>LP2 Start time</label>
-				<description>LP2 Start time setting</description>
-			</channel>
-			<channel id="lP2StopTime" typeId="timeSetting">
-				<label>LP2 Stop time</label>
-				<description>LP2 Stop time setting</description>
-			</channel>
-			<channel id="lP2Monday" typeId="switchSetting">
-				<label>LP2 Monday</label>
-				<description>LP2 Monday setting</description>
-			</channel>
-			<channel id="lP2Tuesday" typeId="switchSetting">
-				<label>LP2 Tuesday</label>
-				<description>LP2 Tuesday setting</description>
-			</channel>
-			<channel id="lP2Wednesday" typeId="switchSetting">
-				<label>LP2 Tuesday</label>
-				<description>LP2 Tuesday setting</description>
-			</channel>
-			<channel id="lP2Thursday" typeId="switchSetting">
-				<label>LP2 Thursday</label>
-				<description>LP2 Thursday setting</description>
-			</channel>
-			<channel id="lP2Friday" typeId="switchSetting">
-				<label>LP2 Friday</label>
-				<description>LP2 Friday setting</description>
-			</channel>
-			<channel id="lP2Saturday" typeId="switchSetting">
-				<label>LP2 Saturday</label>
-				<description>LP2 Saturday setting</description>
-			</channel>
-			<channel id="lP2Sunday" typeId="switchSetting">
-				<label>LP2 Sunday</label>
-				<description>LP2 Sunday setting</description>
-			</channel>
-			<channel id="lP2Enabled" typeId="switchSetting">
-				<label>LP2 Enabled</label>
-				<description>LP2 Enabled setting</description>
-			</channel>
+			<channel id="pFanProg_progFAN1Enable" typeId="pFanProg_progFAN1Enable"/>
+			<channel id="pFanProg_progFAN1EndTime" typeId="pFanProg_progFAN1EndTime"/>
+			<channel id="pFanProg_progFAN1Friday" typeId="pFanProg_progFAN1Friday"/>
+			<channel id="pFanProg_progFAN1Monday" typeId="pFanProg_progFAN1Monday"/>
+			<channel id="pFanProg_progFAN1Saturday" typeId="pFanProg_progFAN1Saturday"/>
+			<channel id="pFanProg_progFAN1StartTime" typeId="pFanProg_progFAN1StartTime"/>
+			<channel id="pFanProg_progFAN1Sunday" typeId="pFanProg_progFAN1Sunday"/>
+			<channel id="pFanProg_progFAN1Thursday" typeId="pFanProg_progFAN1Thursday"/>
+			<channel id="pFanProg_progFAN1Tuesday" typeId="pFanProg_progFAN1Tuesday"/>
+			<channel id="pFanProg_progFAN1Wednesday" typeId="pFanProg_progFAN1Wednesday"/>
+			<channel id="pFanProg_progFAN2Enable" typeId="pFanProg_progFAN2Enable"/>
+			<channel id="pFanProg_progFAN2EndTime" typeId="pFanProg_progFAN2EndTime"/>
+			<channel id="pFanProg_progFAN2Friday" typeId="pFanProg_progFAN2Friday"/>
+			<channel id="pFanProg_progFAN2Monday" typeId="pFanProg_progFAN2Monday"/>
+			<channel id="pFanProg_progFAN2Saturday" typeId="pFanProg_progFAN2Saturday"/>
+			<channel id="pFanProg_progFAN2StartTime" typeId="pFanProg_progFAN2StartTime"/>
+			<channel id="pFanProg_progFAN2Sunday" typeId="pFanProg_progFAN2Sunday"/>
+			<channel id="pFanProg_progFAN2Thursday" typeId="pFanProg_progFAN2Thursday"/>
+			<channel id="pFanProg_progFAN2Tuesday" typeId="pFanProg_progFAN2Tuesday"/>
+			<channel id="pFanProg_progFAN2Wednesday" typeId="pFanProg_progFAN2Wednesday"/>
+			<channel id="programFan_Fr_0_Begin" typeId="programFan_Fr_0_Begin"/>
+			<channel id="programFan_Fr_0_End" typeId="programFan_Fr_0_End"/>
+			<channel id="programFan_Fr_1_Begin" typeId="programFan_Fr_1_Begin"/>
+			<channel id="programFan_Fr_1_End" typeId="programFan_Fr_1_End"/>
+			<channel id="programFan_Fr_2_Begin" typeId="programFan_Fr_2_Begin"/>
+			<channel id="programFan_Fr_2_End" typeId="programFan_Fr_2_End"/>
+			<channel id="programFan_Mo-Fr_0_Begin" typeId="programFan_Mo-Fr_0_Begin"/>
+			<channel id="programFan_Mo-Fr_0_End" typeId="programFan_Mo-Fr_0_End"/>
+			<channel id="programFan_Mo-Fr_1_Begin" typeId="programFan_Mo-Fr_1_Begin"/>
+			<channel id="programFan_Mo-Fr_1_End" typeId="programFan_Mo-Fr_1_End"/>
+			<channel id="programFan_Mo-Fr_2_Begin" typeId="programFan_Mo-Fr_2_Begin"/>
+			<channel id="programFan_Mo-Fr_2_End" typeId="programFan_Mo-Fr_2_End"/>
+			<channel id="programFan_Mo-So_0_Begin" typeId="programFan_Mo-So_0_Begin"/>
+			<channel id="programFan_Mo-So_0_End" typeId="programFan_Mo-So_0_End"/>
+			<channel id="programFan_Mo-So_1_Begin" typeId="programFan_Mo-So_1_Begin"/>
+			<channel id="programFan_Mo-So_1_End" typeId="programFan_Mo-So_1_End"/>
+			<channel id="programFan_Mo-So_2_Begin" typeId="programFan_Mo-So_2_Begin"/>
+			<channel id="programFan_Mo-So_2_End" typeId="programFan_Mo-So_2_End"/>
+			<channel id="programFan_Mo_0_Begin" typeId="programFan_Mo_0_Begin"/>
+			<channel id="programFan_Mo_0_End" typeId="programFan_Mo_0_End"/>
+			<channel id="programFan_Mo_1_Begin" typeId="programFan_Mo_1_Begin"/>
+			<channel id="programFan_Mo_1_End" typeId="programFan_Mo_1_End"/>
+			<channel id="programFan_Mo_2_Begin" typeId="programFan_Mo_2_Begin"/>
+			<channel id="programFan_Mo_2_End" typeId="programFan_Mo_2_End"/>
+			<channel id="programFan_Sa-So_0_Begin" typeId="programFan_Sa-So_0_Begin"/>
+			<channel id="programFan_Sa-So_0_End" typeId="programFan_Sa-So_0_End"/>
+			<channel id="programFan_Sa-So_1_Begin" typeId="programFan_Sa-So_1_Begin"/>
+			<channel id="programFan_Sa-So_1_End" typeId="programFan_Sa-So_1_End"/>
+			<channel id="programFan_Sa-So_2_Begin" typeId="programFan_Sa-So_2_Begin"/>
+			<channel id="programFan_Sa-So_2_End" typeId="programFan_Sa-So_2_End"/>
+			<channel id="programFan_Sa_0_Begin" typeId="programFan_Sa_0_Begin"/>
+			<channel id="programFan_Sa_0_End" typeId="programFan_Sa_0_End"/>
+			<channel id="programFan_Sa_1_Begin" typeId="programFan_Sa_1_Begin"/>
+			<channel id="programFan_Sa_1_End" typeId="programFan_Sa_1_End"/>
+			<channel id="programFan_Sa_2_Begin" typeId="programFan_Sa_2_Begin"/>
+			<channel id="programFan_Sa_2_End" typeId="programFan_Sa_2_End"/>
+			<channel id="programFan_So_0_Begin" typeId="programFan_So_0_Begin"/>
+			<channel id="programFan_So_0_End" typeId="programFan_So_0_End"/>
+			<channel id="programFan_So_1_Begin" typeId="programFan_So_1_Begin"/>
+			<channel id="programFan_So_1_End" typeId="programFan_So_1_End"/>
+			<channel id="programFan_So_2_Begin" typeId="programFan_So_2_Begin"/>
+			<channel id="programFan_So_2_End" typeId="programFan_So_2_End"/>
+			<channel id="programFan_Th_0_Begin" typeId="programFan_Th_0_Begin"/>
+			<channel id="programFan_Th_0_End" typeId="programFan_Th_0_End"/>
+			<channel id="programFan_Th_1_Begin" typeId="programFan_Th_1_Begin"/>
+			<channel id="programFan_Th_1_End" typeId="programFan_Th_1_End"/>
+			<channel id="programFan_Th_2_Begin" typeId="programFan_Th_2_Begin"/>
+			<channel id="programFan_Th_2_End" typeId="programFan_Th_2_End"/>
+			<channel id="programFan_Tu_0_Begin" typeId="programFan_Tu_0_Begin"/>
+			<channel id="programFan_Tu_0_End" typeId="programFan_Tu_0_End"/>
+			<channel id="programFan_Tu_1_Begin" typeId="programFan_Tu_1_Begin"/>
+			<channel id="programFan_Tu_1_End" typeId="programFan_Tu_1_End"/>
+			<channel id="programFan_Tu_2_Begin" typeId="programFan_Tu_2_Begin"/>
+			<channel id="programFan_Tu_2_End" typeId="programFan_Tu_2_End"/>
+			<channel id="programFan_We_0_Begin" typeId="programFan_We_0_Begin"/>
+			<channel id="programFan_We_0_End" typeId="programFan_We_0_End"/>
+			<channel id="programFan_We_1_Begin" typeId="programFan_We_1_Begin"/>
+			<channel id="programFan_We_1_End" typeId="programFan_We_1_End"/>
+			<channel id="programFan_We_2_Begin" typeId="programFan_We_2_Begin"/>
+			<channel id="programFan_We_2_End" typeId="programFan_We_2_End"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeAbsenceProgram">
 		<label>Settings Absence Program</label>
 		<description>Reads Absence Program settings of the heat pump.</description>
 		<channels>
-			<channel id="aP0DurationUntilAbsenceStart" typeId="timeAp0Setting">
-				<label>Time duration to start Absence Program</label>
-				<description>Time duration to start Absence Program</description>
-			</channel>
-			<channel id="aP0AbsenceDuration" typeId="timeAp0Setting">
-				<label>Absence Duration</label>
-				<description>Absence duration time setting</description>
-			</channel>
-			<channel id="aP0EnableAbsenceProgram" typeId="switchSetting">
-				<label>Enable Absence Program</label>
-				<description>Enable Absence Program</description>
-			</channel>
+			<channel id="pAbsence_pA0AbsenceDuration" typeId="pAbsence_pA0AbsenceDuration"/>
+			<channel id="pAbsence_pA0DurationUntilAbsenceStart" typeId="pAbsence_pA0DurationUntilAbsenceStart"/>
+			<channel id="pAbsence_pA0EnableAbsenceProg" typeId="pAbsence_pA0EnableAbsenceProg"/>
+			<channel id="pHolidayBeginDay" typeId="pHolidayBeginDay"/>
+			<channel id="pHolidayBeginMonth" typeId="pHolidayBeginMonth"/>
+			<channel id="pHolidayBeginTime_Begin" typeId="pHolidayBeginTime_Begin"/>
+			<channel id="pHolidayBeginYear" typeId="pHolidayBeginYear"/>
+			<channel id="pHolidayEndDay" typeId="pHolidayEndDay"/>
+			<channel id="pHolidayEndMonth" typeId="pHolidayEndMonth"/>
+			<channel id="pHolidayEndTime_Begin" typeId="pHolidayEndTime_Begin"/>
+			<channel id="pHolidayEndYear" typeId="pHolidayEndYear"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeRestartAndMixerTime">
 		<label>Restart and mixer time</label>
 		<description>Read restart and mixer time setting values.</description>
 		<channels>
-			<channel id="p59RestartBeforeSetbackEnd" typeId="restartBeforeSetbackEnd">
-				<label>P59 Restart before set back ends</label>
-				<description>P59 Restart before set back ends setting</description>
-			</channel>
-			<channel id="mixerProportionalRange" typeId="mixerProportionalRange">
-				<label>Mixer Proportional Range</label>
-				<description>Mixer Proportional Range setting</description>
-			</channel>
-			<channel id="derivativeMixerTime" typeId="derivativeMixerTime">
-				<label>Derivative Mixer Time</label>
-				<description>Derivative Mixer Time</description>
-			</channel>
-			<channel id="mixerTimeInterval" typeId="mixerTimeInterval">
-				<label>Mixer Time Interval</label>
-				<description>Mixer Time Interval</description>
-			</channel>
+
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeDomesticHotWater">
 		<label>Domestic Hot Water setting</label>
 		<description>Read Domestic Water setting values.</description>
 		<channels>
-			<channel id="p32StartupHysteresisDHWTemperature" typeId="startupHysteresisDHWTemperature">
-				<label>P32 Startup Hysteresis DHW Temperature</label>
-				<description>P32 Startup Hysteresis DHW Temperature setting</description>
-			</channel>
-			<channel id="p33TimeDelayElectricalReheating" typeId="timeDelayElectricalReheating">
-				<label>P33 Time Delay Electrical Re-heating</label>
-				<description>P33 Time Delay Electrical Re-heating setting</description>
-			</channel>
-			<channel id="p34OutsideTemperatureLimitForElectricalReheating" typeId="limitForElectricalReheating">
-				<label>P34 Outside Temperature limit for Electrical Re-heating</label>
-				<description>P34 Outside Temperature limit for Electrical Re-heating</description>
-			</channel>
-			<channel id="p35PasteurisationInterval" typeId="pasteurisationInterval">
-				<label>P35 Pasteurization Interval</label>
-				<description>P35 Pasteurization Interval</description>
-			</channel>
-			<channel id="p36MaxDurationDHWLoading" typeId="maxDurationDHWLoading">
-				<label>P36 Max Duration DHW Loading</label>
-				<description>P36 Max Duration DHW Loading</description>
-			</channel>
-			<channel id="pasteurisationHeatupTemperature" typeId="pasteurisationHeatupTemperature">
-				<label>Pasteurization Heat-up Temperature</label>
-				<description>Pasteurization Heat-up Temperature</description>
-			</channel>
-			<channel id="noOfEnabledElectricalReheatStagesDHWLoading"
-				typeId="noOfEnabledElectricalReheatStagesDHWLoading">
-				<label>No Of Enabled Electrical Re-heat Stages DHW Loading</label>
-				<description>No Of Enabled Electrical Re-heat Stages DHW Loading</description>
-			</channel>
-			<channel id="maxFlowTemperatureDHWMode" typeId="maxFlowTemperatureDHWMode">
-				<label>Max Flow Temperature DHW Mode</label>
-				<description>Max Flow Temperature DHW Mode</description>
-			</channel>
-			<channel id="compressorShutdownDHWLoading" typeId="switchSetting">
-				<label>Compressor Shutdown DHW Loading</label>
-				<description>Compressor Shutdown DHW Loading</description>
-			</channel>
+			<channel id="p32HystDHW" typeId="p32HystDHW"/>
+			<channel id="p33BoosterTimeoutDHW" typeId="p33BoosterTimeoutDHW"/>
+			<channel id="p34BoosterDHWTempAct" typeId="p34BoosterDHWTempAct"/>
+			<channel id="p35PasteurisationInterval" typeId="p35PasteurisationInterval"/>
+			<channel id="p35PasteurisationTemp" typeId="p35PasteurisationTemp"/>
+			<channel id="p36DHWMaxTime" typeId="p36DHWMaxTime"/>
+			<channel id="p83DHWsetSolarTemp" typeId="p83DHWsetSolarTemp"/>
+			<channel id="p89DHWeco" typeId="p89DHWeco"/>
+			<channel id="p99DHWmaxFlowTemp" typeId="p99DHWmaxFlowTemp"/>
+			<channel id="p99PumpRateDHW" typeId="p99PumpRateDHW"/>
+			<channel id="pDHWProg_progDHWEnable" typeId="pDHWProg_progDHWEnable"/>
+			<channel id="pDHWProg_progDHWEndTime" typeId="pDHWProg_progDHWEndTime"/>
+			<channel id="pDHWProg_progDHWFriday" typeId="pDHWProg_progDHWFriday"/>
+			<channel id="pDHWProg_progDHWMonday" typeId="pDHWProg_progDHWMonday"/>
+			<channel id="pDHWProg_progDHWSaturday" typeId="pDHWProg_progDHWSaturday"/>
+			<channel id="pDHWProg_progDHWStartTime" typeId="pDHWProg_progDHWStartTime"/>
+			<channel id="pDHWProg_progDHWSunday" typeId="pDHWProg_progDHWSunday"/>
+			<channel id="pDHWProg_progDHWThursday" typeId="pDHWProg_progDHWThursday"/>
+			<channel id="pDHWProg_progDHWTuesday" typeId="pDHWProg_progDHWTuesday"/>
+			<channel id="pDHWProg_progDHWWednesday" typeId="pDHWProg_progDHWWednesday"/>
+			<channel id="pDHW_maxBoostStagesDHW" typeId="pDHW_maxBoostStagesDHW"/>
+			<channel id="pDHW_p32HystDHW" typeId="pDHW_p32HystDHW"/>
+			<channel id="pDHW_p33BoosterTimeoutDHW" typeId="pDHW_p33BoosterTimeoutDHW"/>
+			<channel id="pDHW_p34TempLimitBoostDHW" typeId="pDHW_p34TempLimitBoostDHW"/>
+			<channel id="pDHW_p35PasteurisationInterval" typeId="pDHW_p35PasteurisationInterval"/>
+			<channel id="pDHW_p36MaxDurationDHWLoad" typeId="pDHW_p36MaxDurationDHWLoad"/>
+			<channel id="pDHW_p84EnableDHWBuffer" typeId="pDHW_p84EnableDHWBuffer"/>
+			<channel id="pDHW_pasteurisationTemp" typeId="pDHW_pasteurisationTemp"/>
+			<channel id="sDHW_compBlockTime" typeId="sDHW_compBlockTime"/>
+			<channel id="sDHW_dhwBoosterStage" typeId="sDHW_dhwBoosterStage"/>
+			<channel id="sDHW_dhwOpMode" typeId="sDHW_dhwOpMode"/>
+			<channel id="sDHW_dhwSetTemp" typeId="sDHW_dhwSetTemp"/>
+			<channel id="sDHW_dhwTemp" typeId="sDHW_dhwTemp"/>
+			<channel id="sDHW_heatBlockTime" typeId="sDHW_heatBlockTime"/>
+			<channel id="sDHW_out" typeId="sDHW_out"/>
+			<channel id="sDHW_outsideTemp" typeId="sDHW_outsideTemp"/>
+			<channel id="sDHW_pasteurisationMode" typeId="sDHW_pasteurisationMode"/>
+			<channel id="sDHW_x36" typeId="sDHW_x36"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeLastErrors">
 		<label>Last Errors</label>
 		<description>Reads the list of last errors from the heat pump.</description>
 		<channels>
-			<channel id="fA00NoOfErrors" typeId="noOfErrors">
-				<label>FA00 Number of errors</label>
-				<description>FA00 Numbers of errors listed in the heat pump</description>
-			</channel>
-			<channel id="faultCode0" typeId="errorCode">
-				<label>Fault 1 Error Code</label>
-				<description>Fault 1 Error Code.</description>
-			</channel>
-			<channel id="faultTime0" typeId="errorTime">
-				<label>Fault 1 Time</label>
-				<description>Fault 1 Time.</description>
-			</channel>
-			<channel id="faultDate0" typeId="errorDate">
-				<label>Fault 1 Date</label>
-				<description>Fault 1 Date.</description>
-			</channel>
-			<channel id="faultCode1" typeId="errorCode">
-				<label>Fault 2 Error Code</label>
-				<description>Fault 2 Error Code.</description>
-			</channel>
-			<channel id="faultTime1" typeId="errorTime">
-				<label>Fault 2 Time</label>
-				<description>Fault 2 Time.</description>
-			</channel>
-			<channel id="faultDate1" typeId="errorDate">
-				<label>Fault 2 Date</label>
-				<description>Fault 2 Date.</description>
-			</channel>
-			<channel id="faultCode2" typeId="errorCode">
-				<label>Fault 3 Error Code</label>
-				<description>Fault 3 Error Code.</description>
-			</channel>
-			<channel id="faultTime2" typeId="errorTime">
-				<label>Fault 3 Time</label>
-				<description>Fault 3 Time.</description>
-			</channel>
-			<channel id="faultDate2" typeId="errorDate">
-				<label>Fault 3 Date</label>
-				<description>Fault 3 Date.</description>
-			</channel>
-			<channel id="faultCode3" typeId="errorCode">
-				<label>Fault 4 Error Code</label>
-				<description>Fault 4 Error Code.</description>
-			</channel>
-			<channel id="faultTime3" typeId="errorTime">
-				<label>Fault 4 Time</label>
-				<description>Fault 4 Time.</description>
-			</channel>
-			<channel id="faultDate3" typeId="errorDate">
-				<label>Fault 4 Date</label>
-				<description>Fault 4 Date.</description>
-			</channel>
+			<channel id="sLast10errors_fault0CODE" typeId="sLast10errors_fault0CODE"/>
+			<channel id="sLast10errors_fault0DATE" typeId="sLast10errors_fault0DATE"/>
+			<channel id="sLast10errors_fault0TIME" typeId="sLast10errors_fault0TIME"/>
+			<channel id="sLast10errors_fault1CODE" typeId="sLast10errors_fault1CODE"/>
+			<channel id="sLast10errors_fault1DATE" typeId="sLast10errors_fault1DATE"/>
+			<channel id="sLast10errors_fault1TIME" typeId="sLast10errors_fault1TIME"/>
+			<channel id="sLast10errors_fault2CODE" typeId="sLast10errors_fault2CODE"/>
+			<channel id="sLast10errors_fault2DATE" typeId="sLast10errors_fault2DATE"/>
+			<channel id="sLast10errors_fault2TIME" typeId="sLast10errors_fault2TIME"/>
+			<channel id="sLast10errors_fault3CODE" typeId="sLast10errors_fault3CODE"/>
+			<channel id="sLast10errors_fault3DATE" typeId="sLast10errors_fault3DATE"/>
+			<channel id="sLast10errors_fault3TIME" typeId="sLast10errors_fault3TIME"/>
+			<channel id="sLast10errors_number_of_faults" typeId="sLast10errors_number_of_faults"/>
 		</channels>
 	</channel-group-type>
 	<channel-group-type id="channelGroupTypeOperationMode">
 		<label>Operation Mode</label>
 		<description>Reads Operation mode of the heat pump.</description>
 		<channels>
-			<channel id="opMode" typeId="operationMode">
-				<label>Operation mode</label>
-				<description>Operation mode</description>
-			</channel>
-			<channel id="progStateHC" typeId="programState">
-				<label>Program State HC</label>
-				<description>Program State HC</description>
-			</channel>
-			<channel id="progStateDHW" typeId="programState">
-				<label>Program State DHW</label>
-				<description>Program State DHW</description>
-			</channel>
-			<channel id="progStateFAN" typeId="programState">
-				<label>Program State Fan</label>
-				<description>Program State Fan</description>
-			</channel>
+			<channel id="pOpMode" typeId="pOpMode"/>
 		</channels>
 	</channel-group-type>
-	<channel-group-type id="channelGroupTypeOperationMode2">
-		<label>Operation Mode</label>
-		<description>Reads Operation mode of the heat pump.</description>
+	<channel-group-type id="channelGroupTypeMisc">
+		<label>Miscellaneous</label>
+		<description>Miscellaneous values</description>
 		<channels>
-			<channel id="opMode" typeId="operationMode2">
-				<label>Operation mode</label>
-				<description>Operation mode</description>
-			</channel>
-			<channel id="progStateHC" typeId="programState">
-				<label>Program State HC</label>
-				<description>Program State HC</description>
-			</channel>
-			<channel id="progStateDHW" typeId="programState">
-				<label>Program State DHW</label>
-				<description>Program State DHW</description>
-			</channel>
-			<channel id="progStateFAN" typeId="programState">
-				<label>Program State Fan</label>
-				<description>Program State Fan</description>
-			</channel>
-            <channel id="baseTimeAP0" typeId="timeAp0">
-                <label>Base time AP0</label>
-                <description>Base time AP0</description>
-            </channel>
-            <channel id="statusAP0" typeId="hourCounter">
-                <label>Status AP0</label>
-                <description>Status AP0</description>
-            </channel>            
-            <channel id="startTimeAP0" typeId="timeAp0">
-                <label>Start time AP0</label>
-                <description>Start time AP0</description>
-            </channel>  
-            <channel id="endTimeAP0" typeId="timeAp0">
-                <label>End time AP0</label>
-                <description>End time AP0</description>
-            </channel> 
+			<channel id="pDefrostAA_DefrostStartThreshold" typeId="pDefrostAA_DefrostStartThreshold"/>
+			<channel id="pDefrostAA_MaxDefrostDurationAAExchenger" typeId="pDefrostAA_MaxDefrostDurationAAExchenger"/>
+			<channel id="pDefrostAA_VolumeFlowFilterReplacement" typeId="pDefrostAA_VolumeFlowFilterReplacement"/>
+			<channel id="pDryHeat_p70StartDryHeat" typeId="pDryHeat_p70StartDryHeat"/>
+			<channel id="pDryHeat_p71BaseTemp" typeId="pDryHeat_p71BaseTemp"/>
+			<channel id="pDryHeat_p72PeakTemp" typeId="pDryHeat_p72PeakTemp"/>
+			<channel id="pDryHeat_p73TempDuration" typeId="pDryHeat_p73TempDuration"/>
+			<channel id="pDryHeat_p74TempIncrease" typeId="pDryHeat_p74TempIncrease"/>
+			<channel id="pRestart_p59RestartBeforeSetbackEnd" typeId="pRestart_p59RestartBeforeSetbackEnd"/>
+			<channel id="sComprRelPower" typeId="sComprRelPower"/>
+			<channel id="sComprRotLimit" typeId="sComprRotLimit"/>
+			<channel id="sComprRotUnlimit" typeId="sComprRotUnlimit"/>
+			<channel id="sFlowRate" typeId="sFlowRate"/>
+			<channel id="sHumMaskingTime" typeId="sHumMaskingTime"/>
+			<channel id="sHumProtection" typeId="sHumProtection"/>
+			<channel id="sHumThreshold" typeId="sHumThreshold"/>
+			<channel id="sOutputIncrease" typeId="sOutputIncrease"/>
+			<channel id="sOutputReduction" typeId="sOutputReduction"/>
+			<channel id="sSetHumidityMax" typeId="sSetHumidityMax"/>
+			<channel id="sSetHumidityMin" typeId="sSetHumidityMin"/>
 		</channels>
 	</channel-group-type>
 </thing:thing-descriptions>
